@@ -1,0 +1,46 @@
+<ion-view view-title="Search">
+  <ion-content ng-controller="SearchController">
+	
+	<div class="container-fluid">
+		<!-- First row for search -->
+		<div class="row">
+			<div class="col col-100">
+				<!-- Search -->
+				<div class="list">
+					<label class="item item-input">
+						<i class="icon ion-search placeholder-icon"></i>
+						<input type="text" placeholder="Search" ng-model="query">
+					</label>
+					<select ng-model="orderProp">
+						<option value="name">Name</option>
+						<option value="age">Age</option>
+					</select>
+				</div>		
+			</div>	
+		</div>
+		<!-- New row for listing -->
+		<div class="row">
+			<div class="col col-100">
+				<ul class="list">
+				    <li class="item" ng-repeat="phone in details | filter:query | filter:orderProp">
+				      <!-- <div class=""> -->
+				      	<span>{{phone.name}}</span>
+				      	<p>{{phone.snippet}}</p>
+				      <!-- </div> -->
+				    </li>
+		  		</ul>
+			</div>
+		</div>
+
+		<div>
+		<label class="toggle toggle-royal">
+			<input type="checkbox">
+			<div class="track">
+				<div class="handle"></div>
+			</div>
+		</label>
+		</div>
+	</div> <!-- End of container-->
+
+  </ion-content>
+</ion-view>

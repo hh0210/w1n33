@@ -1,0 +1,52 @@
+/* Empty. Add your own CSS if you like */
+.bg{
+	background: url(/img/bg.jpg) no-repeat fixed center center ;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.bg2{
+	background: url(/img/bg2.png) no-repeat fixed center center ;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.cart{
+	background: url(/img/cart.png) no-repeat fixed center center ;
+}
+
+
+
+
+.slider {
+  height: 100%;
+}
+.slider-slide {
+  padding-top: 80px;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+}
+
+.blue {
+  background-color: blue;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;  
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.pink {
+  background-color: pink;
+}
