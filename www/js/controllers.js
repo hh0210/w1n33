@@ -1,10 +1,6 @@
 angular.module('starter.controllers', [])
 
-<<<<<<< HEAD
-appStarter.controller('LandingController', function($scope) {
-=======
 .controller('HomeController', function($scope) {
->>>>>>> origin/master
   
    $scope.img = [{
     src: 'img/ionic.png'
@@ -116,7 +112,6 @@ appStarter.controller('SearchController', function($scope){
     ];
 
      // $scope.orderProp = 'age';
-<<<<<<< HEAD
 });
 
 appStarter.controller('RegisterController', function($scope) {
@@ -124,6 +119,4 @@ appStarter.controller('RegisterController', function($scope) {
   $scope.registerData = {};
 
 })
-=======
-});
->>>>>>> origin/master
+

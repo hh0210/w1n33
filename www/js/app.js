@@ -52,32 +52,19 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-<<<<<<< HEAD
-  .state('app.register', {
-    url: '/register',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/register.html',
-        controller: 'RegisterController'
-=======
   .state('app.categories', {
     url: '/categories',
     views: {
       'menuContent': {
         templateUrl: 'templates/categories.html',
         controller: 'CategoriesController'
->>>>>>> origin/master
       }
     }
   })
 
-<<<<<<< HEAD
-  .state('app.browse', {
-      url: '/browse',
-=======
+
   .state('app.orderhistory', {
       url: '/order/history',
->>>>>>> origin/master
       views: {
         'menuContent': {
           templateUrl: 'templates/order.history.html'
