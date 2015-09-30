@@ -113,10 +113,3 @@ appStarter.controller('SearchController', function($scope){
 
      // $scope.orderProp = 'age';
 });
-
-appStarter.controller('RegisterController', function($scope) {
-  
-  $scope.registerData = {};
-
-})
-
