@@ -32,12 +32,12 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers'])
       controller: 'AppCtrl'
     })
 
-  .state('app.landing', {
-    url: '/landing',
+  .state('app.home', {
+    url: '/home',
     views: {
       'menuContent': {
-        templateUrl: 'templates/landing.html',
-        controller: 'LandingController'
+        templateUrl: 'templates/home.html',
+        controller: 'HomeController'
       }
     }
   })
@@ -52,14 +52,34 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.categories', {
+    url: '/categories',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/categories.html',
+        controller: 'CategoriesController'
+      }
+    }
+  })
+
+  .state('app.orderhistory', {
+      url: '/order/history',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/order.history.html'
         }
       }
     })
+
+  .state('app.promotion', {
+      url: '/promotion',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/promotion.html'
+        }
+      }
+    })
+
     .state('app.playlists', {
       url: '/playlists',
       views: {
