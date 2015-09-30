@@ -1,12 +1,5 @@
 angular.module('starter.controllers', [])
 
-.controller('LandingController', function($scope) {
-  
-   $scope.img = [{
-    src: 'img/ionic.png'
-   }];
-
-})
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -49,7 +42,21 @@ angular.module('starter.controllers', [])
   };
 })
 
+//PRODUCTS
+.controller("CategoriesController", function($scope, $http) {
+ 
+    $scope.images = [];
+ 
+    $scope.loadImages = function() {
+        for(var i = 0; i < 8; i++) {
+            $scope.images.push({id: i, src: "http://placehold.it/50x50"});
+        }
+    }
 
+  })
+
+
+//PRODUCTS
 .controller("ProductController", function($scope, $http) {
  
     $scope.images = [];
@@ -69,7 +76,7 @@ angular.module('starter.controllers', [])
  
 })
 
-appStarter.controller('PlaylistsCtrl', function($scope) {
+.controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -81,10 +88,10 @@ appStarter.controller('PlaylistsCtrl', function($scope) {
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+})
 
 
-appStarter.controller('SearchController', function($scope){
+.controller('SearchController', function($scope){
     $scope.details = [
       {'name':'Nexus S',
        'snippet':'Fast just got faster with Nexus S.',

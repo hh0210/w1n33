@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var appStarter = angular.module('starter', ['ionic', 'starter.controllers'])
+var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.controllers2'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -32,12 +32,12 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers'])
       controller: 'AppCtrl'
     })
 
-  .state('app.landing', {
-    url: '/landing',
+  .state('app.home', {
+    url: '/home',
     views: {
       'menuContent': {
-        templateUrl: 'templates/landing.html',
-        controller: 'LandingController'
+        templateUrl: 'templates/home.html',
+        controller: 'HomeController'
       }
     }
   })
@@ -52,14 +52,43 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.categories', {
+    url: '/categories',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/categories.html',
+        controller: 'CategoriesController'
+      }
+    }
+  })
+
+  .state('app.register', {
+      url: '/register',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/register.html'
         }
       }
     })
+
+  .state('app.orderhistory', {
+      url: '/order/history',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/order.history.html'
+        }
+      }
+    })
+
+  .state('app.promotion', {
+      url: '/promotion',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/promotion.html'
+        }
+      }
+    })
+
     .state('app.playlists', {
       url: '/playlists',
       views: {
