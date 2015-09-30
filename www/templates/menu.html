@@ -18,28 +18,46 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close href="#/app/landing">
-          landing
+        <ion-item menu-close href="#/app/home">
+          <i class="ion-home"></i>
+          Home
         </ion-item>
-        <ion-item menu-close href="#/app/landing">
-          categories
-        </ion-item>        
         <ion-item menu-close href="#/app/search">
+          <i class="ion-search"></i>
           Search
         </ion-item>
-        <ion-item menu-close href="#/app/products">
-          products
+        <ion-item menu-close href="#/app/categories">
+          <i class="ion-cube"></i>
+          Categories
+        </ion-item>
+        <ion-item menu-close href="#/app/products"> 
+          <i class="ion-wineglass"></i>
+          Products
         </ion-item>
         <ion-item menu-close ng-click="login()">
+          <i class="ion-log-in"></i>
           Login
         </ion-item>
+        <ion-item menu-close href="#/app/register">
+          <i class="ion-arrow-up-a"></i>
+          Register
+        </ion-item>
+        <ion-item menu-close href="#/app/order/history">
+          <i class="ion-social-buffer"></i>
+          Order History
+        </ion-item>
+        
         <ion-item menu-close href="#/app/cart">
-          cart
+          <i class="ion-android-cart"></i>
+          Cart List
+          <span class="badge badge-assertive">0</span>
+        </ion-item>
+        <ion-item menu-close href="#/app/promotion">
+          <i class="ion-film-marker"></i>
+          Promotion
         </ion-item>        
-        <ion-item menu-close href="#/app/checkout">
-          checkout
-        </ion-item>        
-      </ion-list>
+        
+
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>
