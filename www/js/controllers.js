@@ -1,6 +1,10 @@
 angular.module('starter.controllers', [])
 
+<<<<<<< HEAD
 appStarter.controller('LandingController', function($scope) {
+=======
+.controller('HomeController', function($scope) {
+>>>>>>> origin/master
   
    $scope.img = [{
     src: 'img/ionic.png'
@@ -49,7 +53,21 @@ appStarter.controller('LandingController', function($scope) {
   };
 })
 
+//PRODUCTS
+.controller("CategoriesController", function($scope, $http) {
+ 
+    $scope.images = [];
+ 
+    $scope.loadImages = function() {
+        for(var i = 0; i < 8; i++) {
+            $scope.images.push({id: i, src: "http://placehold.it/50x50"});
+        }
+    }
 
+  })
+
+
+//PRODUCTS
 .controller("ProductController", function($scope, $http) {
  
     $scope.images = [];
@@ -98,6 +116,7 @@ appStarter.controller('SearchController', function($scope){
     ];
 
      // $scope.orderProp = 'age';
+<<<<<<< HEAD
 });
 
 appStarter.controller('RegisterController', function($scope) {
@@ -105,3 +124,6 @@ appStarter.controller('RegisterController', function($scope) {
   $scope.registerData = {};
 
 })
+=======
+});
+>>>>>>> origin/master
