@@ -1,12 +1,5 @@
 angular.module('starter.controllers', [])
 
-.controller('HomeController', function($scope) {
-  
-   $scope.img = [{
-    src: 'img/ionic.png'
-   }];
-
-})
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -83,7 +76,7 @@ angular.module('starter.controllers', [])
  
 })
 
-appStarter.controller('PlaylistsCtrl', function($scope) {
+.controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -95,10 +88,10 @@ appStarter.controller('PlaylistsCtrl', function($scope) {
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+})
 
 
-appStarter.controller('SearchController', function($scope){
+.controller('SearchController', function($scope){
     $scope.details = [
       {'name':'Nexus S',
        'snippet':'Fast just got faster with Nexus S.',
