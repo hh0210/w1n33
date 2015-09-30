@@ -62,6 +62,14 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     }
   })
 
+  .state('app.register', {
+      url: '/register',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/register.html'
+        }
+      }
+    })
 
   .state('app.orderhistory', {
       url: '/order/history',
