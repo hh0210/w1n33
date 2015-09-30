@@ -1,8 +1,31 @@
-<ion-view view-title="Register">
-  <ion-content ng-controller="RegisterController">
+<ion-view view-title="Sign Up">
+  <ion-content>
 	
-	<p>Welcome to register page</p>
-
+	<form>
+		<div class="list">
+		  <label class="item item-input item-floating-label">
+		    <span class="input-label">Username</span>
+		    <input type="text" placeholder="Username">
+		  </label>
+		  <label class="item item-input item-floating-label">
+		    <span class="input-label">Email</span>
+		    <input type="text" placeholder="Email">
+		  </label>
+		  <label class="item item-input item-floating-label">
+		    <span class="input-label">Password</span>
+		    <input type="password" placeholder="Password">
+		  </label>
+		  <label class="item item-input item-floating-label">
+		    <span class="input-label">Confirm Password</span>
+		    <input type="password" placeholder="Confirm Password">
+		  </label>
+		</div>
+		<div class="row ro-center" class="col col-75 col-offset-25">
+			<button class="button button-block button-positive">
+			  Submit
+			</button>
+		</div>
+	</form>
 
   </ion-content>
 </ion-view>
