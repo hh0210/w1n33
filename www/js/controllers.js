@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('LandingController', function($scope) {
+.controller('HomeController', function($scope) {
   
    $scope.img = [{
     src: 'img/ionic.png'
@@ -49,7 +49,21 @@ angular.module('starter.controllers', [])
   };
 })
 
+//PRODUCTS
+.controller("CategoriesController", function($scope, $http) {
+ 
+    $scope.images = [];
+ 
+    $scope.loadImages = function() {
+        for(var i = 0; i < 8; i++) {
+            $scope.images.push({id: i, src: "http://placehold.it/50x50"});
+        }
+    }
 
+  })
+
+
+//PRODUCTS
 .controller("ProductController", function($scope, $http) {
  
     $scope.images = [];
