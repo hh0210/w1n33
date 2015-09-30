@@ -6,15 +6,19 @@
 	  <div class="col col-50" ng-if="$index < productTypeList.length">
 	  	<div class="sbox center">
 		  	<img ng-src="{{img}}" width="100%">
-		  	<p>{{productTypeList[$index].code}}</p>
-		  	<p>{{productTypeList[$index].name}}</p>
+		  	<p>
+		  		{{productTypeList[$index].name}} 
+		  		<span class="badge badge-assertive">{{productTypeList[$index].type_count}}</span>
+		  	</p>
 	  	</div>
 	  </div>
 	  <div class="col col-50" ng-if="$index+1 < productTypeList.length">
 	  	<div class="sbox center">
 		  	<img ng-src="{{img}}" width="100%">
-		  	<p>{{productTypeList[$index+1].code}}</p>
-		  	<p>{{productTypeList[$index+1].name}}</p>
+		  	<p>
+		  		{{productTypeList[$index+1].name}} 
+		  		<span class="badge badge-assertive">{{productTypeList[$index+1].type_count}}</span>
+		  	</p>
 	  	</div>
 	  </div>
 	</div>
