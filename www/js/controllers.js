@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('LandingController', function($scope) {
+appStarter.controller('LandingController', function($scope) {
   
    $scope.img = [{
     src: 'img/ionic.png'
@@ -99,3 +99,9 @@ appStarter.controller('SearchController', function($scope){
 
      // $scope.orderProp = 'age';
 });
+
+appStarter.controller('RegisterController', function($scope) {
+  
+  $scope.registerData = {};
+
+})
