@@ -1,6 +1,6 @@
 <ion-view view-title="Categories">
 
-  <ion-content ng-controller="CategoriesController" ng-init="loadImages()">
+  <ion-content ng-controller="categories" ng-init="loadImages()">
 
     <div class="row responsive-xs" ng-repeat="image in images" ng-if="$index % 2 === 0">
 	  <div class="col col-50" ng-if="$index < images.length">
