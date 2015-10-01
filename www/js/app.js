@@ -4,7 +4,8 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.controllers2','starter.categories','starter.productdetails'])
+var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.controllers2','starter.categories',
+                                            'starter.productdetails','starter.productlist'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -110,6 +111,28 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       }
     })
 
+
+    .state('app.productlist', {
+      url: '/product/list',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/product.list.html',
+          controller: 'productlist'
+        }
+      }
+    })
+
+
+    .state('app.productdetails', {
+      url: '/product/details',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/product.details.html',
+          controller: 'productdetails'
+        }
+      }
+    })
+
     .state('app.checkout', {
       url: '/checkout',
       views: {
@@ -119,15 +142,6 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       }
     })
 
-    .state('app.productdetails', {
-      url: '/productdetails',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/productdetails.html',
-          controller: 'productdetails'
-        }
-      }
-    })
 
   .state('app.single', {
     url: '/playlists/:playlistId',
