@@ -5,7 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.controllers2','starter.categories',
-                                            'starter.productdetails','starter.productlist'])
+                                            'starter.productdetails','starter.productlist','starter.cartlist',
+                                            'starter.ordersummary'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -129,6 +130,26 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
         'menuContent': {
           templateUrl: 'templates/product.details.html',
           controller: 'productdetails'
+        }
+      }
+    })
+
+    .state('app.cartlist', {
+      url: '/cart/list',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/cart.list.html',
+          controller: 'cartlist'
+        }
+      }
+    })
+
+    .state('app.ordersummary', {
+      url: '/order/summary',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/order.summary.html',
+          controller: 'ordersummary'
         }
       }
     })
