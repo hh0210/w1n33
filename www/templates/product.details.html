@@ -2,99 +2,97 @@
   <ion-content ng-controller="productdetails">
 
     <div class="container">
-        <div class="row">
+        <div class="row default-bg">
           <div class="col col-100 center">
             <label>{{productData[0].name}}</label>
           </div>
         </div>
-        <div class="row mt10">
-          <div class="col col-50">
+        <div class="row mt5">
+          <div class="col col-50 sbox">
               <img ng-src="{{img.src}}">      
           </div>
-          <div class="col col-50">
-               <label class="royal">Price: RM {{productData[0].price}}</label><br><br>
+          <div class="col col-50 center mt20">
+               <label class="font-small">Price: RM &nbsp;
+                      <span class="font-big">{{productData[0].price}}</span>
+               </label><br><br>
                <button class="button button-balanced">
                   <i class="ion-android-cart"></i>&nbsp;&nbsp;&nbsp;Add to Cart
                </button>
           </div>
         </div>
         <!-- Start of the other details -->
-          <ul class="list">
-            <li>
-              <div class="row">
-                <div class="col">
-                  <label>SKU Code</label>
-                </div>
-                <div class="col">
-                  <label>{{productData[0].sku_code}}</label>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="row">
-                <div class="col">
-                  <label>Type</label>
-                </div>
-                <div class="col">
-                  <label>{{productData[0].type}}</label>
-                </div>
-              </div>
-            </li>
-
-          <div class="row">
-            <div class="col">
-              <label>Alcohol</label>
+          <div class="row mt5 mb5">
+            <div class="col col-33 table-header">
+              <label class="font-small">SKU Code</label>
             </div>
-            <div class="col">
+            <div class="col col-67 table-content">
+              <label>{{productData[0].sku_code}}</label>
+            </div>
+          </div>
+        
+          <div class="row mb5">
+            <div class="col col-33 table-header">
+              <label class="font-small">Type</label>
+            </div>
+            <div class="col col-67 table-content">
+              <label>{{productData[0].type}}</label>
+            </div>
+          </div>
+
+          <div class="row mb5">
+            <div class="col col-33 table-header">
+              <label class="font-small">Alcohol</label>
+            </div>
+            <div class="col col-67 table-content">
               <label>{{productData[0].alcohol}}</label>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col">
-              <label>Size</label>
+          <div class="row mb5">
+            <div class="col col-33 table-header">
+              <label class="font-small">Size</label>
             </div>
-            <div class="col">
+            <div class="col col-67 table-content">
               <label>{{productData[0].size}}</label>
             </div>
           </div>
 
-           <div class="row">
-            <div class="col">
-              <label>Year</label>
+           <div class="row mb5">
+            <div class="col col-33 table-header">
+              <label class="font-small">Year</label>
             </div>
-            <div class="col">
+            <div class="col col-67 table-content">
               <label>{{productData[0].year}}</label>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col">
-              <label>Origin</label>
+          <div class="row mb5">
+            <div class="col col-33 table-header">
+              <label class="font-small">Origin</label>
             </div>
-            <div class="col">
+            <div class="col col-67 table-content">
               <label>{{productData[0].origin}}</label>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col">
-              <label>Status</label>
+          <div class="row mb5">
+            <div class="col col-33 table-header">
+              <label class="font-small">Status</label>
             </div>
-            <div class="col">
+            <div class="col col-67 table-content">
               <label>{{productData[0].status}}</label>
             </div>
           </div>
 
            <div class="row">
-              <div class="col">
-                <label>Description</label>
+              <div class="col col-33 table-header">
+                <label class="font-small">Description</label>
               </div>
-              <div class="col">
+              <div class="col col col-67 table-content">
                 <label>{{productData[0].note}}</label>
               </div>
-          </div>
-      </ul>
+          </div> 
+  
     </div> <!-- end of container-->
   
   </ion-content>
