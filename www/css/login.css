@@ -1,3 +1,4 @@
+/*============= LOGIN ===============*/
 .ml30 {
 	margin-left: 30px !important;
 }
@@ -8,4 +9,26 @@
 
 i.icon.ion-locked, i.icon.ion-android-person  {
 	font-size: 25px;
+}
+
+/*========= PRODUCT DETAIL ======*/
+.font-small {
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.font-big {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.table-header {
+	border: 1px solid none;
+	background-color: #FFAD33; 
+	color: #fff;
+}
+
+.table-content {
+	border: 1px solid none;
+	background-color: #F1F1F1; 
 }

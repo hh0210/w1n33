@@ -1,11 +1,27 @@
 /*Paul*/
+/*============COMMON============*/
+a{
+	text-decoration: none;
+	color: #781702;
+}
+.center{
+	text-align: center;
+}
+.default-bg{
+	background: #781702;
+	color: #fff;
+}
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*============BORDER BOX============*/
 .sbox{
 	border: 1px solid #666;
     background: white;
     -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
     -moz-box-shadow: 0 0 5px rgba(0,0,0,0.3);
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
-}
-.center{
-	text-align: center;
 }

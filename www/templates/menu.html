@@ -17,47 +17,71 @@
       <h1 class="title">Menu</h1>
     </ion-header-bar>
     <ion-content>
+
       <ion-list>
+
         <ion-item menu-close href="#/app/home">
           <i class="ion-home"></i>
           Home
         </ion-item>
+
         <ion-item menu-close href="#/app/search">
           <i class="ion-search"></i>
           Search
         </ion-item>
+
         <ion-item menu-close href="#/app/categories">
           <i class="ion-cube"></i>
           Categories
         </ion-item>
-        <ion-item menu-close href="#/app/products"> 
+
+        <ion-item menu-close href="#/app/product/list"> 
           <i class="ion-wineglass"></i>
           Products
         </ion-item>
+
         <ion-item menu-close ng-click="login()">
           <i class="ion-log-in"></i>
           Login
         </ion-item>
+
         <ion-item menu-close href="#/app/register">
           <i class="ion-arrow-up-a"></i>
           Register
         </ion-item>
+
         <ion-item menu-close href="#/app/order/history">
           <i class="ion-social-buffer"></i>
           Order History
         </ion-item>
-        
+
         <ion-item menu-close href="#/app/cart">
           <i class="ion-android-cart"></i>
           Cart List
           <span class="badge badge-assertive">0</span>
         </ion-item>
+
         <ion-item menu-close href="#/app/promotion">
           <i class="ion-film-marker"></i>
           Promotion
-        </ion-item>        
-        
+        </ion-item>
 
+        <ion-item menu-close href="#/app/product/details">
+          Product Details - temp
+        </ion-item> 
+
+        <!-- <ion-item menu-close href="#/app/cart/list">
+          <i class="ion-film-marker"></i>
+          1
+        </ion-item> -->
+
+        <!-- <ion-item menu-close href="#/app/order/summary">
+          <i class="ion-film-marker"></i>
+          2
+        </ion-item>  --> 
+               
+      </ion-list>
+      
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>

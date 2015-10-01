@@ -4,7 +4,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.controllers2','starter.categories'])
+var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.controllers2','starter.categories',
+                                            'starter.productdetails','starter.productlist','starter.cartlist',
+                                            'starter.ordersummary', 'starter.user'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -62,11 +64,12 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     }
   })
 
-  .state('app.register', {
+  .state('app.user', {
       url: '/register',
       views: {
         'menuContent': {
-          templateUrl: 'templates/register.html'
+          templateUrl: 'templates/register.html',
+          controller: 'user'
         }
       }
     })
@@ -110,6 +113,48 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       }
     })
 
+
+    .state('app.productlist', {
+      url: '/product/list',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/product.list.html',
+          controller: 'productlist'
+        }
+      }
+    })
+
+
+    .state('app.productdetails', {
+      url: '/product/details',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/product.details.html',
+          controller: 'productdetails'
+        }
+      }
+    })
+
+    .state('app.cartlist', {
+      url: '/cart/list',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/cart.list.html',
+          controller: 'cartlist'
+        }
+      }
+    })
+
+    .state('app.ordersummary', {
+      url: '/order/summary',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/order.summary.html',
+          controller: 'ordersummary'
+        }
+      }
+    })
+
     .state('app.checkout', {
       url: '/checkout',
       views: {
@@ -118,6 +163,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
         }
       }
     })
+
 
   .state('app.single', {
     url: '/playlists/:playlistId',

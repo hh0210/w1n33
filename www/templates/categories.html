@@ -3,24 +3,24 @@
   <ion-content ng-controller="categories">
 	
     <div class="row" ng-repeat="productTypeInfo in productTypeList" ng-if="$index % 2 == 0">
-	  <div class="col col-50" ng-if="$index < productTypeList.length">
-	  	<div class="sbox center">
-		  	<img ng-src="{{img}}" width="100%">
-		  	<p>
-		  		{{productTypeList[$index].name}} 
-		  		<span class="badge badge-assertive">{{productTypeList[$index].type_count}}</span>
-		  	</p>
-	  	</div>
-	  </div>
-	  <div class="col col-50" ng-if="$index+1 < productTypeList.length">
-	  	<div class="sbox center">
-		  	<img ng-src="{{img}}" width="100%">
-		  	<p>
-		  		{{productTypeList[$index+1].name}} 
-		  		<span class="badge badge-assertive">{{productTypeList[$index+1].type_count}}</span>
-		  	</p>
-	  	</div>
-	  </div>
+    	<a class="col col-50" ng-if="$index < productTypeList.length" ng-href="#/app/product/list" style="cursor: pointer">
+		  	<div class="sbox center">
+			  	<img ng-src="{{img}}" width="100%">
+			  	<p>
+			  		{{productTypeList[$index].name}}
+			  		<span class="badge badge-assertive">{{productTypeList[$index].type_count}}</span>
+			  	</p>
+		  	</div>
+	  	</a>
+	  	<a class="col col-50" ng-if="$index < productTypeList.length" ng-href="#/app/product/list" style="cursor: pointer">
+		  	<div class="sbox center">
+			  	<img ng-src="{{img}}" width="100%">
+			  	<p>
+			  		{{productTypeList[$index+1].name}}
+			  		<span class="badge badge-assertive">{{productTypeList[$index+1].type_count}}</span>
+			  	</p>
+		  	</div>
+	  	</a>
 	</div>
 
   </ion-content>
