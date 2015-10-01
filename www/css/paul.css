@@ -1,5 +1,9 @@
 /*Paul*/
 /*============COMMON============*/
+a{
+	text-decoration: none;
+	color: #781702;
+}
 .center{
 	text-align: center;
 }
