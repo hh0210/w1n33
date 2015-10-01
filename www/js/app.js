@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.controllers2','starter.categories',
                                             'starter.productdetails','starter.productlist','starter.cartlist',
-                                            'starter.ordersummary'])
+                                            'starter.ordersummary', 'starter.user'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -64,11 +64,12 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     }
   })
 
-  .state('app.register', {
+  .state('app.user', {
       url: '/register',
       views: {
         'menuContent': {
-          templateUrl: 'templates/register.html'
+          templateUrl: 'templates/register.html',
+          controller: 'user'
         }
       }
     })
