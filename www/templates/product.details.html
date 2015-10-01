@@ -1,7 +1,21 @@
 <ion-view view-title="Product Details">
-  <ion-content ng-controller="productdetails" >
+  <ion-content ng-controller="productdetails">
 
-  <p ng-repeat="product in productData"> This is product  {{product.id}}
+    <div class="row">
+      <label>{{productData[0].name}}</label>
+    </div>
+    <div class="row">
+      <div class="col col-67">
+          <img ng-src="{{img.src}}">      
+      </div>
+      <div class="col col-33">
+          <p>haha</p>
+      </div>
+    </div>
+ 
+  
+
+  <p ng-repeat="product in productData"> 
   <br>
   {{product.status}}
   {{product.origin}}
@@ -9,9 +23,6 @@
   {{product.note}}
   <br>
   {{product.balance}}
-
-
-
 
   </p>
 
