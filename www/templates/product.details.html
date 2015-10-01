@@ -1,31 +1,101 @@
 <ion-view view-title="Product Details">
   <ion-content ng-controller="productdetails">
 
-    <div class="row">
-      <label>{{productData[0].name}}</label>
-    </div>
-    <div class="row">
-      <div class="col col-67">
-          <img ng-src="{{img.src}}">      
-      </div>
-      <div class="col col-33">
-          <p>haha</p>
-      </div>
-    </div>
- 
-  
+    <div class="container">
+        <div class="row">
+          <div class="col col-100 center">
+            <label>{{productData[0].name}}</label>
+          </div>
+        </div>
+        <div class="row mt10">
+          <div class="col col-50">
+              <img ng-src="{{img.src}}">      
+          </div>
+          <div class="col col-50">
+               <label class="royal">Price: RM {{productData[0].price}}</label><br><br>
+               <button class="button button-balanced">
+                  <i class="ion-android-cart"></i>&nbsp;&nbsp;&nbsp;Add to Cart
+               </button>
+          </div>
+        </div>
+        <!-- Start of the other details -->
+          <ul class="list">
+            <li>
+              <div class="row">
+                <div class="col">
+                  <label>SKU Code</label>
+                </div>
+                <div class="col">
+                  <label>{{productData[0].sku_code}}</label>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="row">
+                <div class="col">
+                  <label>Type</label>
+                </div>
+                <div class="col">
+                  <label>{{productData[0].type}}</label>
+                </div>
+              </div>
+            </li>
 
-  <p ng-repeat="product in productData"> 
-  <br>
-  {{product.status}}
-  {{product.origin}}
-  <br>
-  {{product.note}}
-  <br>
-  {{product.balance}}
+          <div class="row">
+            <div class="col">
+              <label>Alcohol</label>
+            </div>
+            <div class="col">
+              <label>{{productData[0].alcohol}}</label>
+            </div>
+          </div>
 
-  </p>
+          <div class="row">
+            <div class="col">
+              <label>Size</label>
+            </div>
+            <div class="col">
+              <label>{{productData[0].size}}</label>
+            </div>
+          </div>
 
+           <div class="row">
+            <div class="col">
+              <label>Year</label>
+            </div>
+            <div class="col">
+              <label>{{productData[0].year}}</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label>Origin</label>
+            </div>
+            <div class="col">
+              <label>{{productData[0].origin}}</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label>Status</label>
+            </div>
+            <div class="col">
+              <label>{{productData[0].status}}</label>
+            </div>
+          </div>
+
+           <div class="row">
+              <div class="col">
+                <label>Description</label>
+              </div>
+              <div class="col">
+                <label>{{productData[0].note}}</label>
+              </div>
+          </div>
+      </ul>
+    </div> <!-- end of container-->
   
   </ion-content>
 </ion-view>
