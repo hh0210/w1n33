@@ -119,6 +119,16 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       }
     })
 
+    .state('app.productdetails', {
+      url: '/productdetails',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/productdetails.html',
+          controller: 'productdetails'
+        }
+      }
+    })
+
   .state('app.single', {
     url: '/playlists/:playlistId',
     views: {
