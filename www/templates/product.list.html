@@ -1,6 +1,6 @@
-<ion-view view-title="Categories">
+<ion-view view-title="Product List">
 
-  <ion-content ng-controller="categories">
+  <ion-content ng-controller="productlist">
 	
     <div class="row" ng-repeat="productTypeInfo in productTypeList" ng-if="$index % 2 == 0">
     	<a class="col col-50" ng-if="$index < productTypeList.length" ng-href="#/app/cart" style="cursor: pointer">
