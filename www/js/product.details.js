@@ -20,7 +20,9 @@ angular.module('starter.productdetails', [])
   //         console.error('ERR', err);
   //     })
 
-	$scope.productDetails = [];
+	$scope.img = {
+	    src: 'img/ionic.png'
+	};
 
 	$scope.productData = [
 		{"id": "18",
