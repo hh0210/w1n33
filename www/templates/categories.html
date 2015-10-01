@@ -3,7 +3,7 @@
   <ion-content ng-controller="categories">
 	
     <div class="row" ng-repeat="productTypeInfo in productTypeList" ng-if="$index % 2 == 0">
-    	<a class="col col-50" ng-if="$index < productTypeList.length" ng-href="#/app/cart" style="cursor: pointer">
+    	<a class="col col-50" ng-if="$index < productTypeList.length" ng-href="#/app/product/list" style="cursor: pointer">
 		  	<div class="sbox center">
 			  	<img ng-src="{{img}}" width="100%">
 			  	<p>
@@ -12,7 +12,7 @@
 			  	</p>
 		  	</div>
 	  	</a>
-	  	<a class="col col-50" ng-if="$index < productTypeList.length" ng-href="#/app/cart" style="cursor: pointer">
+	  	<a class="col col-50" ng-if="$index < productTypeList.length" ng-href="#/app/product/list" style="cursor: pointer">
 		  	<div class="sbox center">
 			  	<img ng-src="{{img}}" width="100%">
 			  	<p>
