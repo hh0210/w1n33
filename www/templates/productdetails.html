@@ -1,10 +1,20 @@
-<ion-view view-title="Product">
+<ion-view view-title="Product Details">
   <ion-content ng-controller="productdetails" >
 
-  <p> This is product  {{quote.product}}  page </p>
+  <p ng-repeat="product in productData"> This is product  {{product.id}}
+  <br>
+  {{product.status}}
+  {{product.origin}}
+  <br>
+  {{product.note}}
+  <br>
+  {{product.balance}}
+
+
+
+
+  </p>
 
   
-
-  llaa
   </ion-content>
 </ion-view>
