@@ -7,8 +7,12 @@
 	margin-top: 50px !important;
 }
 
+.pt100 {
+	padding-top: 80px !important;
+}
+
 i.icon.ion-locked, i.icon.ion-android-person  {
-	font-size: 25px;
+	font-size: 20px;
 }
 
 /*========= PRODUCT DETAIL ======*/

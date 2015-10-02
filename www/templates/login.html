@@ -1,46 +1,49 @@
 <ion-modal-view>
   <!-- Header  -->
   <ion-header-bar>
-    <h1 class="title">Login</h1>
+     <div class="title center">Wine Enterprise</div>
     <div class="buttons">
-      <button class="button button-clear button-positive" ng-click="closeLogin()">      Close
-      </button>
+      <button class="button button-clear button-positive pull-right font-sm" ng-click="closeLogin()"><span class="font-medium">Close</span></button>
     </div>
   </ion-header-bar>
 
   <!-- Tabs -->
-  <ion-tabs class="tabs-positive tabs-icon-only">
+  <ion-tabs class="tabs-royal tabs-icon-only">
     <ion-tab title="Login">
       <!-- Tab 1 content -->
       <form ng-submit="doLogin()">
         <!-- Login form -->
-        <div class="list">
+        <div class="list pt100 mt20">
+            <div class="center">
+              <img class="cartImg mb20 mt20" ng-src="{{loginData.src}}">
+            </div>
+
           <label class="item item-input item-icon-left">
             <i class="icon ion-android-person"></i>
-            <span class="input-label ml30">Username</span>
+            <span class="input-label ml30 font-small">Username</span>
             <input type="text" ng-model="loginData.username">
           </label>
           <label class="item item-input item-icon-left">
             <i class="icon ion-locked"></i>
-            <span class="input-label ml30">Password</span>
+            <span class="input-label ml30 font-small">Password</span>
             <input type="password" ng-model="loginData.password">
           </label>
           <label class="item">
-            <button class="button button-block button-positive" type="submit">Log in</button>
+            <button class="button button-block button-positive font-medium" type="submit">Log in</button>
           </label>
 
           <!-- Register and Forgot password -->
-          <div class="row mt50">
-              <div class="col col-67">
-                <button class="button button-clear button-positive">
-                      Forgot Password
+          <div class="row">
+              <div class="col">
+                <button class="button button-clear font-small">
+                      Forgot password?
                   </button>
               </div>
-              <div class="col col-33">
+<!--               <div class="col col-33">
                   <button class="button button-block button-balanced pull-right">
                       Sign Up
                   </button>
-              </div>
+              </div> -->
           </div>
         </div>
       </form>
@@ -54,24 +57,24 @@
           <form ng-submit="submit()">
             <div class="list">
               <label class="item item-input item-floating-label">
-                <span class="input-label">Username</span>
+                <span class="input-label font-small">Username</span>
                 <input type="text" placeholder="Username">
               </label>
               <label class="item item-input item-floating-label">
-                <span class="input-label">Email</span>
+                <span class="input-label font-small">Email</span>
                 <input type="text" placeholder="Email">
               </label>
               <label class="item item-input item-floating-label">
-                <span class="input-label">Password</span>
+                <span class="input-label font-small">Password</span>
                 <input type="password" placeholder="Password">
               </label>
               <label class="item item-input item-floating-label">
-                <span class="input-label">Confirm Password</span>
+                <span class="input-label font-small">Confirm Password</span>
                 <input type="password" placeholder="Confirm Password">
               </label>
             </div>
             <div class="row ro-center" class="col col-75 col-offset-25">
-              <button class="button button-block button-positive">
+              <button class="button button-block button-positive font-medium">
                 Submit
               </button>
             </div>
@@ -81,11 +84,4 @@
         </ion-view>
     </ion-tab>
   </ion-tabs>
-
-  <!-- Content -->
-  <!-- <ion-content> -->
-    
-    
-    <!-- End content -->
-  <!-- </ion-content> -->
 </ion-modal-view>
