@@ -11,22 +11,16 @@
           <div class="col col-50 sbox">
               <img ng-src="{{img.src}}">      
           </div>
-          <div class="col col-50 center mt20">
-               <label class="font-small">Price: RM &nbsp;
-                      <span class="font-big">{{productData[0].price}}</span>
-               </label>
-
-                <form>
-                <!-- Submit quantity data -->
-                 <div class="item item-input">
-                    <span class="input-label font-small">Quantity:</span>
-                    <input type="text">
-                  </div>
-                     
-                  <a class="button button-balanced" ng-href="#/app/cart/list">
-                     <i class="ion-android-cart"></i>&nbsp;&nbsp;&nbsp;Add to Cart
-                  </a>
-                </form>
+          <div class="col col-50 center">
+              <label class="item item-input">
+                <span class="input-label">Price:</span>
+                <span class="input-label">MYR {{productData[0].price}}</span>
+              </label>
+              <label class="item item-input">
+                <span class="input-label">Qty:</span>
+                <input type="text">
+              </label>
+              <a class="button button-balanced" ng-href="#/app/cart/list"><i class="ion-android-cart"></i> Add to Cart</a>
           </div>
         </div>
         <!-- Start of the other details -->

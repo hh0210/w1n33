@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.controllers2','starter.categories',
                                             'starter.productdetails','starter.productlist','starter.cartlist',
-                                            'starter.ordersummary', 'starter.user'])
+                                            'starter.ordersummary', 'starter.user', 'starter.payment', 'starter.guest'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -74,6 +74,26 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       }
     })
 
+  .state('app.user', {
+      url: '/profile',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/profile.html',
+          controller: 'user'
+        }
+      }
+    })
+
+  .state('app.user', {
+      url: '/forgotpassword',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/forgotpassword.html',
+          controller: 'user'
+        }
+      }
+    })
+
   .state('app.orderhistory', {
       url: '/order/history',
       views: {
@@ -83,25 +103,14 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       }
     })
 
-  .state('app.promotion', {
-      url: '/promotion',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/promotion.html'
-        }
-      }
-    })
-
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
+  // .state('app.promotion', {
+  //     url: '/promotion',
+  //     views: {
+  //       'menuContent': {
+  //         templateUrl: 'templates/promotion.html'
+  //       }
+  //     }
+  //   })
 
     .state('app.products', {
       url: '/products',
@@ -155,25 +164,25 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       }
     })
 
-    .state('app.checkout', {
-      url: '/checkout',
+    .state('app.guest', {
+      url: '/guest',
       views: {
         'menuContent': {
-          templateUrl: 'templates/checkout.html',
+          templateUrl: 'templates/guest.html',
+          controller: 'guest'
         }
       }
     })
 
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+    .state('app.payment', {
+      url: '/payment',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/payment.html',
+          controller: 'payment'
+        }
       }
-    }
-  });
+    });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
