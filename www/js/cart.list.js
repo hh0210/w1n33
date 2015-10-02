@@ -1,6 +1,6 @@
 angular.module('starter.cartlist', [])
 
-//CATEGORIES
+//CART LIST
 .controller("cartlist", function($scope, $http) {
 
     //GET CART ITEM

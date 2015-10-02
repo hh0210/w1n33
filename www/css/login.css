@@ -17,6 +17,11 @@ i.icon.ion-locked, i.icon.ion-android-person  {
 	font-weight: 500;
 }
 
+.font-medium {
+	font-size: 14px;
+	font-weight: 500;
+}
+
 .font-big {
 	font-size: 20px;
 	font-weight: bold;
@@ -85,3 +90,26 @@ i.icon.ion-locked, i.icon.ion-android-person  {
 }
 
 /*========= ORDER SUMMARY ==============*/
+.col-line {
+  border: solid 1px #444;
+  border-bottom-style: none;
+  border-right-style: none;
+  border-left-style: none;
+}
+
+.col-bg {
+	background-color:#E7EEF4;
+}
+
+.col-header {
+    background-color:#BDC3C7;
+    color: #fff;
+}
+
+/*.col:last-child {
+    border-right: solid 1px #444;
+}
+
+.row:last-child .col {
+    border-bottom: solid 1px #444;
+}*/
