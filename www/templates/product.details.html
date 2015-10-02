@@ -14,10 +14,17 @@
           <div class="col col-50 center mt20">
                <label class="font-small">Price: RM &nbsp;
                       <span class="font-big">{{productData[0].price}}</span>
-               </label><br><br>
-               <button class="button button-balanced">
-                  <i class="ion-android-cart"></i>&nbsp;&nbsp;&nbsp;Add to Cart
-               </button>
+               </label>
+
+                <form>
+                  <p class="font-small">Quantity: 
+                    <input type="text">
+                  </p>
+                     
+                  <a class="button button-balanced" ng-href="#/app/cart/list">
+                     <i class="ion-android-cart"></i>&nbsp;&nbsp;&nbsp;Add to Cart
+                  </a>
+                </form>
           </div>
         </div>
         <!-- Start of the other details -->

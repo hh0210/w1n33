@@ -11,9 +11,17 @@ angular.module('starter.user', [])
     		console.log(response.data);
     	})
 
-
-
 //LOGIN
+	$scope.loginData = {
+    	username: '',
+    	password: ''
+    };
+
+    $scope.signIn = function(form) {
+    	if (form.$valid) {
+    		$state.go('home');
+    	}
+    };
 
 
 });
