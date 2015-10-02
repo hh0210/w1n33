@@ -4,12 +4,12 @@ angular.module('starter.user', [])
 .controller("user", function($scope, $http) {
 
     //GET PRODUCT TYPE
-    $http.post('http://staging.wine-enterprise.com:8011/apis/user/registration',
-    	{username : '123'})
-    	.success(function(response){
-    		$scope.response = response.data;
-    		console.log(response.data);
-    	})
+ 	$http.post('http://staging.wine-enterprise.com:8011/apis/user/registration')
+      .then(function(response) {
+        $scope.test = response.data;
+      }, function(err){
+          console.error('ERR', err);
+      })
 
 //LOGIN
 	$scope.loginData = {
