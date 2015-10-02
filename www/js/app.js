@@ -176,5 +176,5 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/products');
+  $urlRouterProvider.otherwise('/app/home');
 });
