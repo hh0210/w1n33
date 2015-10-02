@@ -64,7 +64,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     }
   })
 
-  .state('app.user', {
+  .state('app.user.register', {
       url: '/register',
       views: {
         'menuContent': {
@@ -74,7 +74,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       }
     })
 
-  .state('app.user', {
+  .state('app.user.profile', {
       url: '/profile',
       views: {
         'menuContent': {
@@ -84,7 +84,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       }
     })
 
-  .state('app.user', {
+  .state('app.user.forgotpassword', {
       url: '/forgotpassword',
       views: {
         'menuContent': {
