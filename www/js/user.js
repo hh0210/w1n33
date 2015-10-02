@@ -4,8 +4,6 @@ angular.module('starter.user', [])
 .controller("user", function($scope, $http) {
 
     //GET PRODUCT TYPE
-
-        console.log('aaaa');
  	$http.post('http://staging.wine-enterprise.com:8011/apis/user/registration')
       .then(function(response) {
         $scope.test = response.data;
@@ -13,8 +11,17 @@ angular.module('starter.user', [])
           console.error('ERR', err);
       })
 
-
 //LOGIN
+	$scope.loginData = {
+    	username: '',
+    	password: ''
+    };
+
+    $scope.signIn = function(form) {
+    	if (form.$valid) {
+    		$state.go('home');
+    	}
+    };
 
 
 });

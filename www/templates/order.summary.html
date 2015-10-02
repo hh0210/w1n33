@@ -2,23 +2,47 @@
 
   <ion-content ng-controller="ordersummary">
 
-    <div class="row" ng-repeat="productInfo in productList" ng-if="$index % 2 == 0">
-    	<a class="col col-50" ng-if="$index < productList.length" ng-href="#/app/product/details">
-		  	<div class="sbox center">
-			  	<img ng-src="{{img}}{{productList[$index].photo}}" width="100%">
-			  	<p class="ellipsis p10">{{productList[$index].name}}</p>
-			  	<p class="default-bg p10">MYR {{productList[$index].price}}</p>
-		  	</div>
-	  	</a>
-	  	<a class="col col-50" ng-if="$index < productList.length" ng-href="#/app/product/details">
-		  	<div class="sbox center">
-			  	<img ng-src="{{img}}{{productList[$index+1].photo}}" width="100%">
-			  	<p class="ellipsis p10">{{productList[$index+1].name}}</p>
-			  	<p class="default-bg p10">MYR {{productList[$index+1].price}}</p>
-		  	</div>
-	  	</a>
-	</div>
+        <div class="row col-header center font-small">
+          <div class="col">Id</div>
+          <div class="col">Name</div>
+          <div class="col">Quantity</div>
+          <div class="col">Price</div>
+          <div class="col">Subtotal</div>
+        </div>
 
+        <div class="row col-bg center col-line font-small" ng-repeat="data in cartData">
+        	<div class="col">{{data.id}}</div>
+			<div class="col">{{data.name}}</div>
+			<div class="col">{{data.quantity}}</div>
+			<div class="col">{{data.price}}</div>
+			<div class="col">{{data.subtotal}}</div>
+        </div>
+       
+       	<form> 
+       	<!-- Submit promo code data -->
+		  <div class="item item-input">
+		    <span class="input-label font-medium">Promo Code:</span>
+		    <input type="text">
+		  </div>
+
+		<!-- Row for total  -->
+        <div class="row">
+			<div class="col col-33">
+				<p class="ml5 font-medium input-label ">Total:</p>
+			</div>
+			<div class="col col-67">
+				<span class="font-big" style="color:#3498DB;">RM {{cartData[0].total}}
+				</span>
+			</div>
+		</div>
+
+		<!-- Row for confirm button -->
+		<div class="row">
+			<div class="col">
+				<a class="button button-block btnCheckOut">Confirm</a>
+			</div>
+		</div>	
+		</form>
   </ion-content>
 
 </ion-view>

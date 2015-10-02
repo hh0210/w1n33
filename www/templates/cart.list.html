@@ -2,22 +2,82 @@
 
   <ion-content ng-controller="cartlist">
 
-    <div class="row" ng-repeat="productInfo in productList" ng-if="$index % 2 == 0">
-    	<a class="col col-50" ng-if="$index < productList.length" ng-href="#/app/product/details">
-		  	<div class="sbox center">
-			  	<img ng-src="{{img}}{{productList[$index].photo}}" width="100%">
-			  	<p class="ellipsis p10">{{productList[$index].name}}</p>
-			  	<p class="default-bg p10">MYR {{productList[$index].price}}</p>
-		  	</div>
-	  	</a>
-	  	<a class="col col-50" ng-if="$index < productList.length" ng-href="#/app/product/details">
-		  	<div class="sbox center">
-			  	<img ng-src="{{img}}{{productList[$index+1].photo}}" width="100%">
-			  	<p class="ellipsis p10">{{productList[$index+1].name}}</p>
-			  	<p class="default-bg p10">MYR {{productList[$index+1].price}}</p>
-		  	</div>
-	  	</a>
+
+ <div class="list">
+ 	<!-- Content -->
+ 	<!-- First Item -->
+    <div class="item item-thumbnail-left">
+	    <div class="row">
+		  <div class="col">
+		  	<img class="cartImg" ng-src="{{img.src}}">
+		  		<br><br>
+		  	<span class="greenbox mt10">Subtotal</span>&nbsp;&nbsp;&nbsp;
+		  	<span class="subtotal">RM {{cartData[0].subtotal}}	
+		  	</span>
+		  </div>
+		  
+		  <div class="col font-small">
+		  	<span class="pl5" style="color:#9B59B6;">{{cartData[0].name}}</span>
+		  	<br>
+		  	<span class="pl5">Quantity:</span><span style="color:#F1C40F;"> {{cartData[0].quantity}}</span>
+		  	<br>
+		  	<span class="pl5">Price:</span><span style="color:#7F8C8D;"> RM {{cartData[0].price}}</span>
+		  </div>
+		  <div class="col"></div>
+		</div>
 	</div>
+
+	<!-- Second Item -->
+	<div class="item item-thumbnail-left">
+		<div class="row">
+		  <div class="col">
+		  	<img class="cartImg" ng-src="{{img.src}}">
+		  	<br><br>
+		  	<span class="greenbox">Subtotal</span>&nbsp;&nbsp;&nbsp;
+		  	<span class="subtotal">RM {{cartData[0].subtotal}}	
+		  	</span>
+		  </div>
+		 
+		  <div class="col font-small">
+		  	<span class="pl5" style="color:#9B59B6;">{{cartData[0].name}}</span>
+		  	<br>
+		  	<span class="pl5">Quantity:</span><span style="color:#F1C40F;"> {{cartData[0].quantity}}</span>
+		  	<br>
+		  	<span class="pl5">Price:</span><span style="color:#7F8C8D;"> RM {{cartData[0].price}}</span>
+		  </div>
+		  <div class="col"></div>
+		</div>
+	</div>
+	<!-- Start of total -->
+	<div class="item item-thumbnail-left">
+		<div class="row">
+			<div class="col col-offset-33 col-33">
+				<p align="right">Total:</p>
+			  	
+			</div>
+			<div class="col col-33">
+				<span class="font-big" style="color:#3498DB;">RM {{cartData[0].total}}	
+			  	</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<a class="button btn-block btnContinue" ng-href="#/app/categories">
+				  Continue Shopping
+				</a>
+			</div>
+			
+			<div class="col">
+				<a class="button btn-block btnCheckOut" ng-href="#/app/order/summary">
+				  Check Out
+				</a>
+			</div>
+		</div>	
+	</div>
+
+
+
+</div>
 
   </ion-content>
 
