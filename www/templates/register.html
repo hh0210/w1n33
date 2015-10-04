@@ -1,11 +1,11 @@
 <ion-view view-title="Sign Up">
   <ion-content ng-controller="user">
 	
-	<form ng-submit="submit()">
+	<form ng-submit="signup(userdata)">
 		<div class="list">
 		  <label class="item item-input item-floating-label">
 		    <span class="input-label">Username</span>
-		    <input type="text" placeholder="Username">
+		    <input type="text" name="username" placeholder="Username">
 		  </label>
 		  <label class="item item-input item-floating-label">
 		    <span class="input-label">Email</span>
@@ -21,9 +21,9 @@
 		  </label>
 		</div>
 		<div class="row ro-center" class="col col-75 col-offset-25">
-			<button class="button button-block button-positive">
-			  Submit
-			</button>
+			<input type="submit" class="button button-block button-positive" value="submit">
+			  <!-- Submit
+			</button> -->
 		</div>
 	</form>
 

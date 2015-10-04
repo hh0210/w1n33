@@ -7,7 +7,7 @@ angular.module('starter.categories', [])
     $http.get('http://staging.wine-enterprise.com:8011/apis/producttype')
       .then(function(response) {
         $scope.productTypeList = response.data;
-        $scope.img = "http://placehold.it/50x50";
+        $scope.img = "http://shared.wine-enterprise.com/upload/product/";
       }, function(err){
           console.error('ERR', err);
       })
