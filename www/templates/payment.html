@@ -1,7 +1,66 @@
-<ion-view view-title="checkout" class="bg">
-  <ion-content>
+<ion-view view-title="Payment">
+  <ion-content ng-controller="payment">
+  
+  	<div class="list card">
+  		<div class="item item-divider">
+		   Banking Details
+		</div>
 
-    <h1>checkout</h1>
+	  <div class="item">
+	    	<div class="row">
+	    		<div class="col col-100 font-medium">
+	    			 Please make your payment to following bank:
+	    		</div>
+	    	</div>
+	    	<div class="row font-medium balanced">
+				<div class="col col-50">
+					1. Maybank
+				</div>
+				<div class="col col-50">
+					131136288888
+				</div>
+	    	</div>
+	    	<div class="row font-medium calm">
+				<div class="col col-50">
+					2. Public Bank
+				</div>
+				<div class="col col-50">
+					131136288888
+				</div>
+	    	</div>
+	    	<div class="row font-medium royal">
+				<div class="col col-50">
+					3. RHB Bank
+				</div>
+				<div class="col col-50">
+					131136288888
+				</div>
+	    	</div>
+	  </div>
+	</div>
+
+	<div class="card">
+	  <div class="item item-divider">
+	    Notice
+	  </div>
+	  <div class="item item-text-wrap font-medium">
+	    We will send you an email notification once we received your payment.
+	  </div>
+	</div>
+	
+    	<div class="row">
+			<div class="col">
+				<a class="button btn-block btnContinue font-medium" ng-href="#/app/categories">
+				  Pay Later
+				</a>
+			</div>
+			
+			<div class="col">
+				<a class="button btn-block btnCheckOut font-medium" ng-click="showPopup()">
+				  Pay Now
+				</a>
+			</div>
+		</div>
 
   </ion-content>
 </ion-view>

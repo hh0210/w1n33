@@ -1,14 +1,19 @@
 angular.module('starter.payment', [])
 
-//CATEGORIES
-.controller("payment", function($scope, $http) {
+//PAYMENT
+.controller("payment", function($scope, $ionicPopup, $state) {
 
-    //GET PRODUCT TYPE
-    $http.get('http://staging.wine-enterprise.com:8011/apis/producttype')
-      .then(function(response) {
-        $scope.productTypeList = response.data;
-        $scope.img = "http://placehold.it/50x50";
-      }, function(err){
-          console.error('ERR', err);
-      })
+   $scope.showPopup = function() {
+
+   var alertPopup = $ionicPopup.alert({
+     title: 'Thanks for your order!',
+     template: 'Your transaction ID is :45GF480X. You will received a confirmation email soon.'
+   });
+   alertPopup.then(function(res) {
+   		
+   		// Pass in state parameter that defined in app, then can go to different state.
+   		$state.go('app.home');
+   });
+ };
+ 
 });

@@ -1,28 +1,118 @@
-<ion-view view-title="Categories">
+<ion-view view-title="Shipping Methods">
 
-  <ion-content ng-controller="categories">
-	
-    <div class="row" ng-repeat="productTypeInfo in productTypeList" ng-if="$index % 2 == 0">
-    	<a class="col col-50" ng-if="$index < productTypeList.length" ng-href="#/app/product/list" style="cursor: pointer">
-		  	<div class="sbox center">
-			  	<img ng-src="{{img}}" width="100%">
-			  	<p>
-			  		{{productTypeList[$index].name}}
-			  		<span class="badge badge-assertive">{{productTypeList[$index].type_count}}</span>
-			  	</p>
-		  	</div>
-	  	</a>
-	  	<a class="col col-50" ng-if="$index < productTypeList.length" ng-href="#/app/product/list" style="cursor: pointer">
-		  	<div class="sbox center">
-			  	<img ng-src="{{img}}" width="100%">
-			  	<p>
-			  		{{productTypeList[$index+1].name}}
-			  		<span class="badge badge-assertive">{{productTypeList[$index+1].type_count}}</span>
-			  	</p>
-		  	</div>
-	  	</a>
-	</div>
+  <!-- Tabs -->
+  <ion-tabs class="tabs-royal tabs-icon-only">
+    <ion-tab title="Delivery">
+	    <ion-content>
+	      <!-- Tab 1 content -->
+		    <form>
+		    	<!-- Shipping information of guest info  -->
+				<div class="card pt75">
+					<div class="item item-divider font-medium">
+						Shipping Information
+					</div>
+					<div class="item item-text-wrap">
+						<div class="row">
+							<div class="col col-50">
+								<input type="text" placeholder="First Name">
+							</div>
+							<div class="col col-50">
+								<input type="text" placeholder="Last Name">
+							</div>
+						</div>
+						<div class="row">
+							<input type="text" class="ml5" placeholder="Phone Number">
+						</div>
+						<div class="row">
+							<input type="text" class="ml5"  placeholder="Street Address 1">
+						</div>
+						<div class="row">
+							<input type="text" class="ml5"  placeholder="Street Address 2">
+						</div>
+						<div class="row">
+							<div class="col col-50">
+								<input type="text" placeholder="City">
+							</div>
+							<div class="col col-50">
+								<input type="text" placeholder="Zip">
+							</div>
+						</div> 
+					</div>
+				</div>
+				<!-- End of shipping detail -->
 
-  </ion-content>
+				<div class="card">
+					<div class="item item-divider font-medium">
+						Email
+					</div>
+					<div class="item item-text-wrap">
+						 <input type="text" class="ml5" placeholder="Email">
+					</div>
+				</div>
+				<!-- End of email -->
+
+				<div class="row">
+					<div class="col">
+						<a class="button button-block button-positive font-medium" ng-href="#/app/payment">
+					  Submit
+					</a>
+					</div>
+				</div>
+			</form>
+		</ion-content>
+    </ion-tab>
+
+    <ion-tab title="Self Pickup">
+      <!-- Tab 2 content -->
+      <ion-content>
+ 		<form>
+	    	<!-- Pickup information of guest info  -->
+			<div class="card pt75">
+				<div class="item item-divider font-medium">
+					Cash On Delivery
+				</div>
+				<div class="item item-text-wrap">
+					<div class="row">
+						<div class="col col-50">
+							<input type="text" placeholder="First Name">
+						</div>
+						<div class="col col-50">
+							<input type="text" placeholder="Last Name">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-50">
+							<input type="text" placeholder="Phone Number">
+						</div>
+						<div class="col col-50">
+							<input type="text" placeholder="Venue">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End of shipping detail -->
+
+			<div class="card">
+				<div class="item item-divider font-medium">
+					Email
+				</div>
+				<div class="item item-text-wrap">
+					 <input type="text" class="ml5" placeholder="Email">
+				</div>
+			</div>
+			<!-- End of email -->
+
+			<div class="row">
+				<div class="col">
+					<a class="button button-block button-positive font-medium" ng-href="#/app/payment">
+				  Submit
+				</a>
+				</div>
+			</div>
+		</form>
+      </ion-content>
+    </ion-tab>
+    <!-- End of two tabs -->
+  </ion-tabs>
 
 </ion-view>
