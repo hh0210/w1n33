@@ -122,3 +122,9 @@ i.icon.ion-locked, i.icon.ion-android-person  {
 .pt75 {
 	padding-top: 75px !important;
 }
+
+/*========= MEMBER PROFILE, GUEST INFO form =============*/
+div > input[type="text"] {
+  border: none;
+  border-bottom: 1px solid #F1C40F;
+}
