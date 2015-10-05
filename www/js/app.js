@@ -124,7 +124,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
 
 
     .state('app.productlist', {
-      url: '/product/list/:type_name',
+      url: '/product/list/:code',
       views: {
         'menuContent': {
           templateUrl: 'templates/product.list.html',
@@ -135,7 +135,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
 
 
     .state('app.productdetails', {
-      url: '/product/details',
+      url: '/product/details/:sku_code',
       views: {
         'menuContent': {
           templateUrl: 'templates/product.details.html',

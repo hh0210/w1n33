@@ -4,7 +4,7 @@
 	
     <div class="row" ng-repeat="productTypeInfo in productTypeList" ng-if="$index % 2 == 0">
     	<a class="col col-50" ng-if="$index < productTypeList.length" 
-    	ng-href="#/app/product/list/{{productTypeList[$index].name}}" style="cursor: pointer">
+    	ng-href="#/app/product/list/{{productTypeList[$index].code}}" style="cursor: pointer">
 		  	<div class="sbox center">
 			  	<img ng-src="{{img}}{{productTypeList[$index].photo}}" width="100%">
 			  	<p>
@@ -14,7 +14,7 @@
 		  	</div>
 	  	</a>
 	  	<a class="col col-50" ng-if="$index < productTypeList.length" 
-	  	ng-href="#/app/product/list/{{productTypeList[$index+1].name}}" style="cursor: pointer">
+	  	ng-href="#/app/product/list/{{productTypeList[$index+1].code}}" style="cursor: pointer">
 		  	<div class="sbox center">
 			  	<img ng-src="{{img}}{{productTypeList[$index+1].photo}}" width="100%">
 			  	<p>
