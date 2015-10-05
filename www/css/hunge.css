@@ -1,3 +1,8 @@
+/*============== HOME ===============*/
+.slider-slide {
+	padding: 0px;
+}
+
 /*============= LOGIN ===============*/
 .ml30 {
 	margin-left: 30px !important;
@@ -121,4 +126,10 @@ i.icon.ion-locked, i.icon.ion-android-person  {
 /*====== GUEST INFORMATION ========*/
 .pt75 {
 	padding-top: 75px !important;
+}
+
+/*========= MEMBER PROFILE, GUEST INFO form =============*/
+div > input[type="text"] {
+  border: none;
+  border-bottom: 1px solid #F1C40F;
 }

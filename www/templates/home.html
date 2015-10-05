@@ -5,27 +5,13 @@
      on-slide-changed="slideHasChanged($index)"
        does-continue="true" auto-play="true" slide-interval="3000">
 	  <ion-slide>
-	  	<!-- First slide -->
-	  	<div class="row">
-		  	<div class="col col-100">
-		  		<img ng-src="{{img[0].src}}">
-		  	</div>
-		</div>
-		<div class="row">
-	  		<div class="col col-100">
-	  			<div class="card">
-		  			<div class="item item-text-wrap item-energized">
-		  				I'm Ionic! Hahahha!!
-		  			</div>
-		  		</div>
-	  		</div>
-	  	</div>
+		   <img ng-src="{{img[0].src}}" width="100%">
 	  </ion-slide>
 	  <ion-slide>
-	    <div class="box blue"><h1>BLUE</h1></div>
+			<img ng-src="{{img[1].src}}" width="100%">
 	  </ion-slide>
 	  <ion-slide>
-	     <div class="box yellow"><h1>YELLOW</h1></div>
+			<img ng-src="{{img[2].src}}" width="100%">
 	  </ion-slide>
 	</ion-slide-box>
 

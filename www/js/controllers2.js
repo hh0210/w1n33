@@ -6,7 +6,13 @@ angular.module('starter.controllers2', [])
   	$ionicSlideBoxDelegate.enableSlide(true);
 
   	$scope.img = [{
-    	src: 'img/ionic.png'
+    	src: 'img/wine1.jpg'
+   	}, 
+   	{
+   		src: 'img/wine2.jpg'
+   	},
+   	{
+   		src: 'img/wine3.jpg'
    	}];
 
 	// $scope.nextSlide = function() {

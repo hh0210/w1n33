@@ -1,7 +1,7 @@
 <ion-view view-title="Member Profile">
   <ion-content ng-controller="user">
     
-  		<form>
+  			<form>
 		    	<!-- Shipping information of guest info  -->
 				<div class="card">
 					<div class="item item-divider font-medium">
@@ -9,10 +9,12 @@
 					</div>
 					<div class="item item-text-wrap">
 						<div class="row">
-							<input type="text" class="ml5" placeholder="Username">
-						</div>
-						<div class="row">
-							<input type="text" class="ml5"  placeholder="Email">
+							<div class="col col-50">
+								<input type="text" placeholder="Username">
+							</div>
+							<div class="col col-50">
+								<input type="text" placeholder="Email">
+							</div>
 						</div>
 						<div class="row">
 							<div class="col col-50">
@@ -44,12 +46,6 @@
 				<!-- End of shipping detail -->
 
 				<div class="row">
-					<div class="col">
-						<a class="button btn-block btnContinue font-medium">
-						  Cancel
-						</a>
-					</div>
-					
 					<div class="col">
 						<a class="button btn-block btnCheckOut font-medium">
 						  Save
