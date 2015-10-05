@@ -4,8 +4,7 @@ angular.module('starter.productlist', [])
 .controller("productlist", function($scope, $http, $stateParams) {
 
     //GET PRODUCT LIST
-    console.log('aaa',$stateParams.type_name);
-    $http.get('http://staging.wine-enterprise.com:8011/apis/productlist?type_name='+$stateParams.type_name)
+    $http.get('http://staging.wine-enterprise.com:8011/apis/productlist?code='+$stateParams.code)
 	    .then(function(response) {
 		    $scope.productList = response.data;
 		    $scope.img = "http://shared.wine-enterprise.com/upload/product/";
