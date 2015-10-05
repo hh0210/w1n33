@@ -1,7 +1,9 @@
 <ion-view view-title="Home">
   <ion-content ng-controller="HomeController">
 
-	<ion-slide-box auto-play="true" does-continue="true" slide-interval="2000">
+	<ion-slide-box active-slide="1" 
+     on-slide-changed="slideHasChanged($index)"
+       does-continue="true" auto-play="true" slide-interval="3000">
 	  <ion-slide>
 	  	<!-- First slide -->
 	  	<div class="row">

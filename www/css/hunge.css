@@ -7,8 +7,12 @@
 	margin-top: 50px !important;
 }
 
+.pt80 {
+	padding-top: 80px !important;
+}
+
 i.icon.ion-locked, i.icon.ion-android-person  {
-	font-size: 25px;
+	font-size: 20px;
 }
 
 /*========= PRODUCT DETAIL ======*/
@@ -70,13 +74,14 @@ i.icon.ion-locked, i.icon.ion-android-person  {
 	background-color: #F39C12; 
 	color: #fff; 
 	font-weight: 500;
-	 width: 100%;
+	width: 100%;
 	border: 1px solid transparent;
 }
 
 .btnContinue {
 	background-color: #7F8C8D; 
 	color: #fff; 
+	width: 100%;
 }
 
 .total-color {
@@ -113,3 +118,7 @@ i.icon.ion-locked, i.icon.ion-android-person  {
 .row:last-child .col {
     border-bottom: solid 1px #444;
 }*/
+/*====== GUEST INFORMATION ========*/
+.pt75 {
+	padding-top: 75px !important;
+}

@@ -11,9 +11,9 @@
   <ion-tabs class="tabs-royal tabs-icon-only">
     <ion-tab title="Login">
       <!-- Tab 1 content -->
-      <form ng-submit="doLogin()">
+      <form ng-submit="doLogin()" ng-controller="user">
         <!-- Login form -->
-        <div class="list pt100 mt20">
+        <div class="list pt80 mt20">
             <div class="center">
               <img class="cartImg mb20 mt20" ng-src="{{loginData.src}}">
             </div>
@@ -29,24 +29,20 @@
             <input type="password" ng-model="loginData.password">
           </label>
           <label class="item">
-            <button class="button button-block button-positive font-medium" type="submit">Log in</button>
+            <button class="button button-block button-positive font-medium">Log in</button>
           </label>
-
-          <!-- Register and Forgot password -->
-          <div class="row">
-              <div class="col">
-                <button class="button button-clear font-small">
-                      Forgot password?
-                  </button>
-              </div>
-<!--               <div class="col col-33">
-                  <button class="button button-block button-balanced pull-right">
-                      Sign Up
-                  </button>
-              </div> -->
-          </div>
         </div>
+
+        <div class="row">
+              <div class="col">
+                <a class="button button-clear font-small" ng-click="showPopup()">
+                      Forgot password?
+                  </a>
+              </div>
+          </div>
       </form>
+      <!-- Place forgot password outside form -->
+          
     </ion-tab>
 
     <ion-tab title="Sign Up">
@@ -54,7 +50,9 @@
         <ion-view view-title="Sign Up">
           <ion-content ng-controller="user">
           
+
           <form ng-submit="signup(userdata)">
+          
             <div class="list">
               <label class="item item-input item-floating-label">
                 <span class="input-label font-small">Username</span>

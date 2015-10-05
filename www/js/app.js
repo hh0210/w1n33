@@ -74,7 +74,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       }
     })
 
-  .state('app.user.profile', {
+  .state('app.user-profile', {
       url: '/profile',
       views: {
         'menuContent': {
