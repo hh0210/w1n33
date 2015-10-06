@@ -11,7 +11,8 @@
   <ion-tabs class="tabs-royal tabs-icon-only">
     <ion-tab title="Login">
       <!-- Tab 1 content -->
-      <form ng-submit="doLogin()" ng-controller="user">
+      <!-- ng-submit="doLogin()" -->
+      <form ng-submit="login(userdata)" ng-controller="user">
         <!-- Login form -->
         <div class="list pt80 mt20">
             <!-- Remove Picture  -->
@@ -22,26 +23,25 @@
           <label class="item item-input item-icon-left">
             <i class="icon ion-android-person"></i>
             <span class="input-label ml30 font-small">Username</span>
-            <input type="text" ng-model="loginData.username">
+            <input type="text" ng-model="userdata.username">
           </label>
           <label class="item item-input item-icon-left">
             <i class="icon ion-locked"></i>
             <span class="input-label ml30 font-small">Password</span>
-            <input type="password" ng-model="loginData.password">
+            <input type="password" ng-model="userdata.password">
+            <input type="text" ng-model="name">
           </label>
           <label class="item">
-            <button class="button button-block button-positive font-medium">Log in</button>
+            <button type="submit" class="button button-block button-positive font-medium">Log in</button>
+            {{abc.id}}
           </label>
         </div>
-
-        <div class="row">
-              <div class="col">
-                <a class="button button-clear font-small" ng-click="showPopup()">
-                      Forgot password?
-                  </a>
-              </div>
-          </div>
       </form>
+        <div class="row">
+            <div class="col">
+              <a class="button button-clear font-small" ng-click="showPopup()">Forgot password?</a>
+            </div>
+        </div>
       <!-- Place forgot password outside form -->
           
     </ion-tab>
