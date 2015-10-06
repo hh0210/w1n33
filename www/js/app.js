@@ -6,7 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.controllers2','starter.categories',
                                             'starter.productdetails','starter.productlist','starter.cartlist',
-                                            'starter.ordersummary', 'starter.user', 'starter.payment', 'starter.guest'])
+                                            'starter.ordersummary', 'starter.user', 'starter.payment', 'starter.billing',
+                                            'starter.shipping'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -164,15 +165,25 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       }
     })
 
-    .state('app.guest', {
-      url: '/guest',
+    .state('app.billing', {
+      url: '/billing',
       views: {
         'menuContent': {
-          templateUrl: 'templates/guest.html',
-          controller: 'guest'
+          templateUrl: 'templates/billing.html',
+          controller: 'billing'
         }
       }
     })
+
+    .state('app.shipping', {
+    url: '/shipping',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/shipping.html',
+        controller: 'shipping'
+      }
+    }
+  })
 
     .state('app.payment', {
       url: '/payment',

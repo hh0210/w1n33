@@ -1,7 +1,7 @@
 angular.module('starter.productdetails', [])
 
  // Product Details
-.controller('productdetails', function($scope, $http, $stateParams) {
+.controller('productdetails', function($scope, $http, $stateParams, $ionicPopup, $timeout) {
 
 	//GET PRODUCT DETAILS
     $http.get('http://staging.wine-enterprise.com:8011/apis/productdetails?sku_code='+$stateParams.sku_code)
@@ -17,7 +17,7 @@ angular.module('starter.productdetails', [])
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/cart/list',
-		    data: 'id_UserMaster=' + '1' + '&id_ProductMaster=' + '68' +
+		    data: 'id_UserMaster=' + '0' + '&id_ProductMaster=' + productDetails.id +
 		    	  '&price=' + productDetails.price + '&qty=' + productDetails.qty,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
@@ -30,28 +30,20 @@ angular.module('starter.productdetails', [])
 		});
 	}
 
-
-	// $scope.img = {
-	//     src: 'img/ionic.png'
-	// };
-
-	// $scope.productData = [
-	// 	{"id": "18",
-	// 	 "sku_code": "BW002",
-	// 	 "name": "JOHNNIE WALKER BLACK LABEL 12 Y",
-	// 	 "id_productType": "4",
-	// 	 "status": "Active",
-	// 	 "created_on": "2015-06-24 02:18:13",
-	// 	 "type": "BLENDED WHISKEY",
-	// 	 "price": "168.00",
-	// 	 "year": "12",
-	// 	 "id_countryMaster": "2",
-	// 	 "origin": "scotland",
-	// 	 "note": "It comprises some 40 different malts and grains, R ...",
-	// 	 "alcohol": "40.00",
-	// 	 "size": "70CL",
-	// 	 "photo": "12345.png",
-	// 	 "balance": "0.00"
-	// 	}];
-	
+	//  Popup Function
+	   $scope.showPopup = function() {
+	   var alertPopup = $ionicPopup.alert({
+	     title: 'Message',
+	     template: 'Item successfully added to cart.'
+	   });
+	   alertPopup.then(function(res) {
+			
+	   		// Pass in state parameter that defined in app, then can go to different state.
+	   		// $state.go('app.home');
+	   });
+		$timeout(function() {
+			//close the popup after 2 seconds 
+			alertPopup.close(); 
+		}, 2000);
+	 };
 });
