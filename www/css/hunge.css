@@ -21,6 +21,15 @@ i.icon.ion-locked, i.icon.ion-android-person  {
 }
 
 /*========= PRODUCT DETAIL ======*/
+.lightbg {
+	background-color:#F0F0F0;
+}
+.item > p >.description {
+	text-align: justify;
+	font-size: 14px;
+	font-weight: 500;
+}
+
 .font-small {
 	font-size: 12px;
 	font-weight: 500;

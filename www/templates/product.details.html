@@ -9,101 +9,157 @@
         </div>
         <div class="row mt5">
           <div class="col col-50 sbox">
-              <img ng-src="{{img}}{{productDetails.photo}}">      
+              <img ng-src="{{img}}{{productDetails.photo}}" width="100%">      
           </div>
           <div class="col col-50 center">
             <form ng-submit="cart(productDetails)">
               <!-- <input type="text" ng-model="productDetails.id">
               <input type="text" ng-model="productDetails.id"> -->
-              <label class="item item-input font-small">
-                <span class="input-label">Price: MYR</span>
-                <input type="text" ng-model="productDetails.price" />
+              <label class="item item-input">
+                <span class="input-label font-small royal">Price:</span> MYR {{productDetails.price}}
+                <!-- <input type="text" class="font-medium" ng-model="productDetails.price"/> -->
                 <!--  <span class="input-label" ng-model="productData.price">MYR {{productDetails.price}}</span> -->
               </label>
-              <label class="item item-input font-small">
-                <span class="input-label">Qty:</span>
-                <input type="text" ng-model="productDetails.qty">
+              <label class="item item-input">
+                <span class="input-label font-small royal">Qty:</span>
+                  <input type="text" ng-model="productDetails.qty">
               </label>
               <!--  ng-href="#/app/cart/list" -->
-              <button type="submit" class="button button-balanced font-medium"><i class="ion-android-cart"></i> Add to Cart</button>
+              <button type="submit" class="button button-block button-balanced font-medium" 
+                 ng-click="showPopup()">
+                  <i class="ion-android-cart font-big"></i>&nbsp;&nbsp;Add to Cart
+              </button>
             </form>
           </div>
         </div>
         <!-- follow sample above to print dynamic data ex: productDetails.name -->
-        <!-- Start of the other details -->
-          <div class="row mt5 mb5">
-            <div class="col col-33 table-header">
-              <label class="font-small">SKU Code</label>
-            </div>
-            <div class="col col-67 table-content">
-              <label>{{productData[0].sku_code}}</label>
-            </div>
-          </div>
-        
-          <div class="row mb5">
-            <div class="col col-33 table-header">
-              <label class="font-small">Type</label>
-            </div>
-            <div class="col col-67 table-content">
-              <label>{{productData[0].type}}</label>
-            </div>
-          </div>
 
-          <div class="row mb5">
-            <div class="col col-33 table-header">
-              <label class="font-small">Alcohol</label>
-            </div>
-            <div class="col col-67 table-content">
-              <label>{{productData[0].alcohol}}</label>
-            </div>
-          </div>
+        <div class="card">
+         <!--  <div class="item item-text-wrap"> -->
+              <ul class="list">
+                <div class="row item font-small lightbg">
+                    <div class="col">
+                     <span class="royal">SKU Code:</span> <div>{{productDetails.sku_code}}</div>
+                    </div>
+                    <div class="col">
+                     <span class="royal">Type:</span> <div>{{productDetails.type_name}}</div>
+                    </div>
+                </div>
+                <div class="row item font-small" >
+                    <div class="col">
+                      <span class="royal">Alcohol:</span> <div>{{productDetails.alcohol}}%</div>
+                    </div>
+                    <div class="col">
+                       <span class="royal">Size:</span> <div>{{productDetails.size}}</div>
+                    </div>
+                </div>
+                <div class="row item font-small lightbg">
+                    <div class="col">
+                        <span class="royal">Year:</span> <div>{{productDetails.year}}</div>
+                    </div>
+                    <div class="col">
+                        <span class="royal">Origin:</span> <div>{{productDetails.country_name}}</div>
+                    </div>
+                </div>
+                <div class="row item font-small">
+                    <div class="col">
+                       <span class="royal">Status:</span> <div>{{productDetails.status}}</div>
+                    </div>
+                </div>
+                <!-- <div class="row item item-text-wrap font-small">
+                    <div class="col">
+                       Description:{{productDetails.note}}
+                    </div>
+                </div> -->
+              </ul>
+          <!-- </div> -->
+        </div>
 
-          <div class="row mb5">
-            <div class="col col-33 table-header">
-              <label class="font-small">Size</label>
-            </div>
-            <div class="col col-67 table-content">
-              <label>{{productData[0].size}}</label>
-            </div>
+        <div class="card">
+          <div class="item item-divider font-small">
+             Description:
           </div>
-
-           <div class="row mb5">
-            <div class="col col-33 table-header">
-              <label class="font-small">Year</label>
-            </div>
-            <div class="col col-67 table-content">
-              <label>{{productData[0].year}}</label>
-            </div>
+          <div class="item item-text-wrap">
+            <p class="description">{{productDetails.note}}</p>
           </div>
-
-          <div class="row mb5">
-            <div class="col col-33 table-header">
-              <label class="font-small">Origin</label>
-            </div>
-            <div class="col col-67 table-content">
-              <label>{{productData[0].origin}}</label>
-            </div>
-          </div>
-
-          <div class="row mb5">
-            <div class="col col-33 table-header">
-              <label class="font-small">Status</label>
-            </div>
-            <div class="col col-67 table-content">
-              <label>{{productData[0].status}}</label>
-            </div>
-          </div>
-
-           <div class="row">
-              <div class="col col-33 table-header">
-                <label class="font-small">Description</label>
-              </div>
-              <div class="col col col-67 table-content">
-                <label>{{productData[0].note}}</label>
-              </div>
-          </div> 
+        </div>
   
     </div> <!-- end of container-->
   
   </ion-content>
 </ion-view>
+
+
+
+<!-- Start of the other details -->
+  <!-- <div class="row mt5 mb5">
+    <div class="col col-33 table-header">
+      <label class="font-small">SKU Code</label>
+    </div>
+    <div class="col col-67 table-content">
+      <label>{{productData[0].sku_code}}</label>
+    </div>
+  </div>
+
+  <div class="row mb5">
+    <div class="col col-33 table-header">
+      <label class="font-small">Type</label>
+    </div>
+    <div class="col col-67 table-content">
+      <label>{{productData[0].type}}</label>
+    </div>
+  </div>
+
+  <div class="row mb5">
+    <div class="col col-33 table-header">
+      <label class="font-small">Alcohol</label>
+    </div>
+    <div class="col col-67 table-content">
+      <label>{{productData[0].alcohol}}</label>
+    </div>
+  </div>
+
+  <div class="row mb5">
+    <div class="col col-33 table-header">
+      <label class="font-small">Size</label>
+    </div>
+    <div class="col col-67 table-content">
+      <label>{{productData[0].size}}</label>
+    </div>
+  </div>
+
+   <div class="row mb5">
+    <div class="col col-33 table-header">
+      <label class="font-small">Year</label>
+    </div>
+    <div class="col col-67 table-content">
+      <label>{{productData[0].year}}</label>
+    </div>
+  </div>
+
+  <div class="row mb5">
+    <div class="col col-33 table-header">
+      <label class="font-small">Origin</label>
+    </div>
+    <div class="col col-67 table-content">
+      <label>{{productData[0].origin}}</label>
+    </div>
+  </div>
+
+  <div class="row mb5">
+    <div class="col col-33 table-header">
+      <label class="font-small">Status</label>
+    </div>
+    <div class="col col-67 table-content">
+      <label>{{productData[0].status}}</label>
+    </div>
+  </div>
+
+   <div class="row">
+      <div class="col col-33 table-header">
+        <label class="font-small">Description</label>
+      </div>
+      <div class="col col col-67 table-content">
+        <label>{{productData[0].note}}</label>
+      </div>
+  </div>  -->
