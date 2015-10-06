@@ -3,22 +3,21 @@
   <ion-content ng-controller="ordersummary">
 
         <div class="row col-header center font-small">
-          <div class="col">Id</div>
           <div class="col">Name</div>
           <div class="col">Quantity</div>
           <div class="col">Price</div>
           <div class="col">Subtotal</div>
         </div>
 
-        <div class="row col-bg center col-line font-small" ng-repeat="data in cartData">
-        	<div class="col">{{data.id}}</div>
-			<div class="col">{{data.name}}</div>
-			<div class="col">{{data.quantity}}</div>
-			<div class="col">{{data.price}}</div>
-			<div class="col">{{data.subtotal}}</div>
+        <div class="row col-bg center col-line font-small" ng-repeat="cartInfo in cartList">
+			<div class="col">{{cartInfo.product_name}}</div>
+			<div class="col">{{cartInfo.qty}}</div>
+			<div class="col">{{cartInfo.unit_price}}</div>
+			<div class="col">{{cartInfo.price}}</div>
         </div>
        
-       	<form> 
+       	<form ng-submit="salesorder(cartList)">
+       	<!-- <input type="text" ng-model="cartList[0].id"> -->
        	<!-- Submit promo code data -->
 		  <div class="item item-input">
 		    <span class="input-label font-medium">Promo Code:</span>
@@ -31,7 +30,7 @@
 				<p class="ml5 font-medium input-label ">Total:</p>
 			</div>
 			<div class="col col-67">
-				<span class="font-big" style="color:#3498DB;">RM {{cartData[0].total}}
+				<span class="font-big" style="color:#3498DB;">RM {{cartList[0].total_price}}
 				</span>
 			</div>
 		</div>
@@ -39,7 +38,7 @@
 		<!-- Row for confirm button -->
 		<div class="row">
 			<div class="col">
-				<a class="button button-block btnCheckOut" ng-href="#/app/billing">Confirm</a>
+				<button type="submit" class="button button-block btnCheckOut">Confirm</button>
 			</div>
 		</div>	
 		</form>

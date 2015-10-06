@@ -1,58 +1,37 @@
 angular.module('starter.ordersummary', [])
 
 //ORDER SUMMARY
-.controller("ordersummary", function($scope, $http) {
+.controller("ordersummary", function($scope, $http, $state) {
 
-    //GET PRODUCT TYPE
-    // $http.get('http://staging.wine-enterprise.com:8011/apis/productlist')
-    //   .then(function(response) {
-    //     $scope.productList = response.data;
-    //     $scope.img = "http://shared.wine-enterprise.com/upload/product/";
-    //   }, function(err){
-    //       console.error('ERR', err);
-    //   })
+    //GET CART ITEM
+     $http.get('http://staging.wine-enterprise.com:8011/apis/cart/list')
+      .then(function(response) {
+        $scope.cartList = response.data;
+        $scope.img = "http://shared.wine-enterprise.com/upload/product/";
+        console.log(response);
+      }, function(err){
+          console.error('ERR', err);
+      })
 
+    //Add Sales Order
+	$scope.salesorder = function(cartList){
+		$http({
+		    method: 'POST',
+		    url: 'http://staging.wine-enterprise.com:8011/apis/sales/order',
+		    data: 'cart_id=1',
+		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+		    responseType :'json',
+		})
 
-	 $scope.cartData = [
-		{"id": "18",
-		 "sku_code": "BW002",
-		 "name": "JOHNNIE WALKER BLACK LABEL 12 Y",
-		 "id_productType": "4",
-		 "status": "Active",
-		 "created_on": "2015-06-24 02:18:13",
-		 "type": "BLENDED WHISKEY",
-		 "price": "168.00",
-		 "year": "12",
-		 "id_countryMaster": "2",
-		 "origin": "scotland",
-		 "note": "It comprises some 40 different malts and grains, R ...",
-		 "alcohol": "40.00",
-		 "size": "70CL",
-		 "photo": "12345.png",
-		 "balance": "0.00",
-		 "quantity": "10",
-		 "subtotal": "1680.00",
-		 "total": "3360.00"
-	},
-		{"id": "20",
-		 "sku_code": "MW004",
-		 "name": "SCOTCH WHISKEY",
-		 "id_productType": "5",
-		 "status": "Active",
-		 "created_on": "2015-07-25 02:18:13",
-		 "type": "GRAINED WHISKEY",
-		 "price": "228.00",
-		 "year": "20",
-		 "id_countryMaster": "3",
-		 "origin": "usa",
-		 "note": "It comprises some 50 different grains.",
-		 "alcohol": "35.00",
-		 "size": "50CL",
-		 "photo": "1444.png",
-		 "balance": "0.00",
-		 "quantity": "5",
-		 "subtotal": "1140.00",
-		 "total": "2280.00"
+		$state.go('app.billing');
+		// }).then(function successCallback(response) {
+		// 	console.log('INFO', response);
+		// 	console.log('INFO', response.data.status);
+	 //        $scope.test = response.data;
+		// }, function errorCallback(response) {
+		// 	console.log('ERROR', response);
+
+		// });
 	}
-	];
+
 });
