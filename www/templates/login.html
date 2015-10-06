@@ -8,11 +8,11 @@
   </ion-header-bar>
 
   <!-- Tabs -->
-  <ion-tabs class="tabs-royal tabs-icon-only">
+  <ion-tabs class="tabs-icon-only tabs-calm">
     <ion-tab title="Login">
       <!-- Tab 1 content -->
       <!-- ng-submit="doLogin()" -->
-      <form ng-submit="login(userdata)" ng-controller="user">
+      <form name="loginForm" ng-submit="login(userdata)" ng-controller="user" novalidate="">
         <!-- Login form -->
         <div class="list pt80 mt20">
             <!-- Remove Picture  -->
@@ -20,24 +20,40 @@
               <img class="cartImg mb20 mt20" ng-src="{{loginData.src}}">
             </div> -->
 
-          <label class="item item-input item-icon-left">
+          <label class="item item-input item-icon-left" ng-class="{ 'has-errors' : loginForm.username.$invalid, 'no-errors' : loginForm.username.$valid}">
             <i class="icon ion-android-person"></i>
             <span class="input-label ml30 font-small">Username</span>
-            <input type="text" ng-model="userdata.username">
+            <input type="text" name="username" ng-model="userdata.username" required>
           </label>
-          <label class="item item-input item-icon-left">
+
+          <!-- Error message for username -->
+          <div class="error-container" ng-show="loginForm.username.$error" 
+              ng-messages="loginForm.username.$error">
+              <div ng-messages-include="error-list.html"></div>
+          </div>
+
+
+          <label class="item item-input item-icon-left" ng-class="{ 'has-errors' : loginForm.password.$invalid, 'no-errors' : loginForm.password.$valid}">
             <i class="icon ion-locked"></i>
             <span class="input-label ml30 font-small">Password</span>
-            <input type="password" ng-model="userdata.password">
-            <input type="text" ng-model="name">
+            <input type="password" name="password" ng-model="userdata.password" ng-minlength='5' ng-maxlength='20' required >
+            <!-- <input type="text" ng-model="name"> -->
           </label>
+
+          <!-- Error message for password -->
+          <div class="error-container" ng-show="loginForm.password.$error" 
+              ng-messages="loginForm.password.$error">
+              <div ng-messages-include="error-list.html"></div>
+          </div>
+
           <label class="item">
-            <button type="submit" class="button button-block button-positive font-medium">Log in</button>
+            <button type="submit" class="button button-block button-positive font-medium"
+            ng-disabled="loginForm.$invalid">Log in</button>
             {{abc.id}}
           </label>
         </div>
       </form>
-        <div class="row">
+        <div class="row" ng-controller="user">
             <div class="col">
               <a class="button button-clear font-small" ng-click="showPopup()">Forgot password?</a>
             </div>
@@ -52,28 +68,58 @@
           <ion-content ng-controller="user">
           
 
-          <form ng-submit="signup(userdata)">
+          <form name="signUpForm" ng-submit="signup(userdata)">
           
             <div class="list">
-              <label class="item item-input item-floating-label">
+              <label class="item item-input item-floating-label" ng-class="{ 'has-errors' : signUpForm.username.$invalid, 'no-errors' : signUpForm.username.$valid}">
                 <span class="input-label font-small">Username</span>
-                <input type="text" ng-model="userdata.username" placeholder="Username">
+                <input type="text" name="username" ng-model="userdata.username" placeholder="Username" required>
               </label>
-              <label class="item item-input item-floating-label">
+
+              <!-- Error message for username -->
+              <div class="error-container" ng-show="signUpForm.username.$error" 
+                  ng-messages="signUpForm.username.$error">
+                  <div ng-messages-include="error-list.html"></div>
+              </div>
+
+              <label class="item item-input item-floating-label" ng-class="{ 'has-errors' : signUpForm.email.$invalid, 'no-errors' : signUpForm.email.$valid}">
                 <span class="input-label font-small">Email</span>
-                <input type="text" ng-model="userdata.email" placeholder="Email">
+                <input type="text" name="email" ng-model="userdata.email" placeholder="Email" required>
               </label>
-              <label class="item item-input item-floating-label">
+
+               <!-- Error message for email -->
+              <div class="error-container" ng-show="signUpForm.email.$error" 
+                  ng-messages="signUpForm.email.$error">
+                  <div ng-messages-include="error-list.html"></div>
+              </div>
+
+              <label class="item item-input item-floating-label" ng-class="{ 'has-errors' : signUpForm.password.$invalid, 'no-errors' : signUpForm.password.$valid}">
                 <span class="input-label font-small">Password</span>
-                <input type="password" ng-model="userdata.password" placeholder="Password">
+                <input type="password" name="password" ng-model="userdata.password" placeholder="Password" ng-minlength='5' ng-maxlength='20' required>
               </label>
-              <label class="item item-input item-floating-label">
+
+              <!-- Error message for password -->
+              <div class="error-container" ng-show="signUpForm.password.$error" 
+                  ng-messages="signUpForm.password.$error">
+                  <div ng-messages-include="error-list.html"></div>
+              </div>
+
+              <label class="item item-input item-floating-label" ng-class="{ 'has-errors' : signUpForm.confpassword.$invalid, 'no-errors' : signUpForm.confpassword.$valid}">
                 <span class="input-label font-small">Confirm Password</span>
-                <input type="password" ng-model="userdata.confpwd" placeholder="Confirm Password">
+                <input type="password" name="confpassword" ng-model="userdata.confpassword" placeholder="Confirm Password" compare-to="userdata.password" required>
               </label>
+
+              <!-- Error message for  confirm password -->
+              <!-- ng-show="signUpForm.confpassword.$error" -->
+              <div class="error-container" ng-show="signUpForm.confpassword.$error"
+                  ng-messages="signUpForm.confpassword.$error">
+                  <div ng-messages-include="error-list.html"></div>
+              </div>
             </div>
+
+            <!-- Button submit -->
             <div class="row ro-center" class="col col-75 col-offset-25">
-              <button type="submit" class="button button-block button-positive">Submit</button>
+              <button ng-disabled="signUpForm.$invalid" type="submit" class="button button-block button-positive">Submit</button>
             </div>
           </form>
 

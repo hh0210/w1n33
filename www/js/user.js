@@ -49,19 +49,6 @@ angular.module('starter.user', [])
   $scope.abc = JSON.parse(localStorage.getItem('loginInfo'));
   console.log('testing',$scope.abc);
 
-	// $scope.loginData = {
- //    	username: '',
- //    	password: '',
- //      src: 'img/ionic.png'
- //    };
-
- //    $scope.signIn = function(form) {
- //    	if (form.$valid) {
- //        // Redirect to another path, name home.
- //    		$state.go('home');
- //    	}
- //    };
-
 //FORGOT PASSWORD
  $scope.showPopup = function() {
     $scope.data = {}

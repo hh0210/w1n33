@@ -1,6 +1,6 @@
 angular.module('starter.controllers2', [])
 
-.controller('HomeController', function($scope, $ionicSlideBoxDelegate) {
+.controller('HomeController', function($scope, $ionicSlideBoxDelegate, $ionicGesture) {
   
   	// Enable the manual slide.
   	$ionicSlideBoxDelegate.enableSlide(true);
@@ -15,13 +15,17 @@ angular.module('starter.controllers2', [])
    		src: 'img/wine3.jpg'
    	}];
 
-	// $scope.nextSlide = function() {
-    //   $ionicSlideBoxDelegate.next();
-  	// };	
+   	// $scope.onSwipeRight = function(index) {
+   	// 	$ionicSlideBoxDelegate.slide(index, 1000);
+   	// }
 
-  	// $scope.slideChanged = function(index) {
-    //     $scope.slideIndex = index;
-    //  };
+	// $scope.nextSlide = function() {
+ //      $ionicSlideBoxDelegate.next();
+ //  	};	
+
+ //  	$scope.slideChanged = function(index) {
+ //        $scope.slideIndex = index;
+ //     };
 
 	// $scope.swipeRight = function() {
 	// 	$scope.indicator='turned right';
