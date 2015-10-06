@@ -60,6 +60,9 @@ angular.module('starter.user', [])
  $scope.showPopup = function() {
     $scope.data = {}
 
+    console.log("#########");
+    console.log("calling pop out now");
+
     // An elaborate, custom popup
     var myPopup = $ionicPopup.show({
       template: '<input type="text">',

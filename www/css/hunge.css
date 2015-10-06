@@ -24,10 +24,16 @@ i.icon.ion-locked, i.icon.ion-android-person  {
 .lightbg {
 	background-color:#F0F0F0;
 }
-.item > p >.description {
+/*.item > p >.description {
 	text-align: justify;
 	font-size: 14px;
 	font-weight: 500;
+}*/
+.item p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 2px;
+  text-align: justify;
 }
 
 .font-small {
