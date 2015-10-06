@@ -43,25 +43,9 @@ angular.module('starter.user', [])
   $scope.abc = window.localStorage['loginInfo'];
   console.log('testing',$scope.abc);
 
-	// $scope.loginData = {
- //    	username: '',
- //    	password: '',
- //      src: 'img/ionic.png'
- //    };
-
- //    $scope.signIn = function(form) {
- //    	if (form.$valid) {
- //        // Redirect to another path, name home.
- //    		$state.go('home');
- //    	}
- //    };
-
 //FORGOT PASSWORD
  $scope.showPopup = function() {
     $scope.data = {}
-
-    console.log("#########");
-    console.log("calling pop out now");
 
     // An elaborate, custom popup
     var myPopup = $ionicPopup.show({

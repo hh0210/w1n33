@@ -2,7 +2,7 @@
   <ion-content ng-controller="HomeController">
 
 	<ion-slide-box active-slide="1" 
-     on-slide-changed="slideHasChanged($index)"
+       on-slide-changed="slideHasChanged(index)"
        does-continue="true" auto-play="true" slide-interval="2000">
 	  <ion-slide>
 		   <img ng-src="{{img[0].src}}" width="100%">
