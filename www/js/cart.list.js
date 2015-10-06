@@ -4,13 +4,14 @@ angular.module('starter.cartlist', [])
 .controller("cartlist", function($scope, $http) {
 
     //GET CART ITEM
-    // $http.get('http://staging.wine-enterprise.com:8011/apis/productlist')
-    //   .then(function(response) {
-    //     $scope.cartlist = response.data;
-    //     $scope.img = "http://shared.wine-enterprise.com/upload/product/";
-    //   }, function(err){
-    //       console.error('ERR', err);
-    //   })
+     $http.get('http://staging.wine-enterprise.com:8011/apis/cart/list')
+      .then(function(response) {
+        $scope.cartList = response.data;
+        $scope.img = "http://shared.wine-enterprise.com/upload/product/";
+        console.log(response);
+      }, function(err){
+          console.error('ERR', err);
+      })
 
 	$scope.img = {
 	    src: 'img/ionic.png'

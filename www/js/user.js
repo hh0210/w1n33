@@ -9,7 +9,8 @@ angular.module('starter.user', [])
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/user/registration',
-		    data: "username=" + userdata.username + '&password=' + userdata.password,
+		    data: 'username=' + userdata.username + '&email=' + userdata.email +
+              '&password=' + userdata.password,
 		    // data: {"username=":'username1','password=':'passwod1'},
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    // headers: {'Content-Type': 'application/json'}
@@ -24,18 +25,36 @@ angular.module('starter.user', [])
 	}
 
 //LOGIN
-	$scope.loginData = {
-    	username: '',
-    	password: '',
-      src: 'img/ionic.png'
-    };
+  $scope.login = function(userdata){
+    $http({
+      method: 'POST',
+      url: 'http://staging.wine-enterprise.com:8011/apis/user/login',
+      data: 'username=' + userdata.username + '&password=' + userdata.password,
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      responseType :'json',
+    }).then(function(response) {
+        window.localStorage['loginInfo'] = response.data;
+        //console.log(JSON.stringify(response.data));
+      }, function(err){
+          console.error('ERR', err);
+      })
+  }
+  $scope.abc = [];
+  $scope.abc = window.localStorage['loginInfo'];
+  console.log('testing',$scope.abc);
 
-    $scope.signIn = function(form) {
-    	if (form.$valid) {
-        // Redirect to another path, name home.
-    		$state.go('home');
-    	}
-    };
+	// $scope.loginData = {
+ //    	username: '',
+ //    	password: '',
+ //      src: 'img/ionic.png'
+ //    };
+
+ //    $scope.signIn = function(form) {
+ //    	if (form.$valid) {
+ //        // Redirect to another path, name home.
+ //    		$state.go('home');
+ //    	}
+ //    };
 
 //FORGOT PASSWORD
  $scope.showPopup = function() {
