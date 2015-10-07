@@ -10,7 +10,7 @@ angular.module('starter.shipping', [])
 		    url: 'http://staging.wine-enterprise.com:8011/apis/sales/order/shipment',
 		    data: 'salesorder_id='+ '12345' + '&given_name=' + shipping.firstName + '&family_name=' + shipping.lastName
 		          + '&email=' + shipping.email + '&phone=' + shipping.phone +
-		           '&address=' + shipping.address,
+		           '&address=' + shipping.address + '&price=' + shipping.price + '&type=' + '1',
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
 		}).then(function successCallback(response) {
@@ -18,16 +18,14 @@ angular.module('starter.shipping', [])
 			console.log('INFO', response.data.status);
 			console.log("###################################");
 	        $scope.test = response.data;
+
+			$scope.toPayment = function() {
+				$state.go('app.payment');
+			}
 	        
 		}, function errorCallback(response) {
 			console.log('ERROR', response);
 			console.log('############# Error');
 		});
 	}
-
-	$scope.toPayment = function() {
-		console.log("### calling to payment");
-		$state.go('app.payment');
-	}
-
 });

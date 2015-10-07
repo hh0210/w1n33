@@ -18,16 +18,14 @@ angular.module('starter.billing', [])
 			console.log('INFO', response.data.status);
 			console.log("###################################");
 	        $scope.test = response.data;
+
+			$scope.toShipping = function() {
+				$state.go('app.shipping');
+			}
 	        
 		}, function errorCallback(response) {
 			console.log('ERROR', response);
 			console.log('############# Error');
 		});
 	}
-
-	$scope.toShipping = function() {
-		console.log("### calling next page");
-		$state.go('app.shipping');
-	}
-
 });
