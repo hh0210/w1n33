@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state, $ionicLoading, $ionicHistory) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -42,6 +42,33 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
+
+  //Localstorage LoginInfo
+  if (localStorage.getItem('loginInfo') != null) {
+    $scope.loginInfo = [];
+    $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
+    //$scope.functionlogin = 'login()';
+    $scope.functionuser = 'logout()';
+    console.log('LoginInfo',$scope.loginInfo);
+  }else{
+    $scope.loginInfo = {'username':'Login'};
+    $scope.functionuser = 'login()';
+  };
+
+  //logout
+  $scope.logout = function() {
+    localStorage.removeItem('loginInfo');
+
+    //not working, reload page
+    $timeout(function () {
+    $ionicLoading.hide();
+    $ionicHistory.clearCache();
+    $ionicHistory.clearHistory();
+    $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
+    $state.go('app.home');
+    }, 30);
+  };
+
 })
 
 //PRODUCTS
@@ -77,7 +104,6 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
-
 
 .controller('SearchController', function($scope){
     $scope.details = [
