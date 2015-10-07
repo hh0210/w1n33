@@ -146,7 +146,8 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     })
 
     .state('app.cartlist', {
-      url: '/cart/list',
+      cache:false,
+      url: '/cart/list/:cart_id',
       views: {
         'menuContent': {
           templateUrl: 'templates/cart.list.html',
@@ -156,6 +157,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     })
 
     .state('app.ordersummary', {
+      cache:false,
       url: '/order/summary',
       views: {
         'menuContent': {
