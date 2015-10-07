@@ -19,7 +19,9 @@
 			<div class="col col-100">
 				<ul class="list">
 				    <!-- <li class="item" ng-repeat="productInfo in productList | filter:query"> -->
-				      	<div class="row" ng-repeat="productInfo in productList" ng-if="$index % 2 == 0">
+				    
+				      	<div class="row" ng-repeat="productInfo in productList|filter:query" ng-if="$index % 2 == 0">
+
 					    	<a class="col col-50" ng-if="$index < productList.length" 
 					    	ng-href="#/app/product/details/{{productList[$index].sku_code}}">
 							  	<div class="sbox center">
