@@ -17,7 +17,7 @@ angular.module('starter.billing', [])
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/sales/order/person',
-		    data: 'cart_id='+ cart_id + '&given_name=' + billing.firstName + '&family_name=' + billing.lastName
+		    data: 'cart_id='+ cart_id + '&given_name=' + billing.given_name + '&family_name=' + billing.family_name
 		          + '&email=' + billing.email + '&phone=' + billing.phone +
 		           '&address=' + billing.address,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -26,13 +26,15 @@ angular.module('starter.billing', [])
 			console.log('INFO', response);
 			console.log('INFO', response.data.status);
 	        console.log('INFO', response.data.billingInfo);
-			$scope.toShipping = function() {
-				$state.go('app.shipping');
-			}
+	        localStorage.setItem('billingInfo',JSON.stringify(response.data.billingInfo));
+
+			$state.go('app.shipping');
 	        
 		}, function errorCallback(response) {
 			console.log('ERROR', response);
-
 		});
 	}
+
+	//billing info
+	$scope.billing = JSON.parse(localStorage.getItem('billingInfo'));
 });
