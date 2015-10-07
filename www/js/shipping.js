@@ -1,14 +1,33 @@
 angular.module('starter.shipping', [])
 
-//CATEGORIES
-.controller("shipping", function($scope, $http, $stateParams) {
+//SHIPPING
+.controller("shipping", function($scope, $http, $stateParams, $state) {
 
-    //GET PRODUCT LIST
-    // $http.get('http://staging.wine-enterprise.com:8011/apis/productlist?code='+$stateParams.code)
-	   //  .then(function(response) {
-		  //   $scope.productList = response.data;
-		  //   $scope.img = "http://shared.wine-enterprise.com/upload/product/";
-		  // }, function(err){
-		  //     console.error('ERR', err);
-		  // })
+     //Send shipping form data
+	$scope.shippingForm = function(shipping){
+		$http({
+		    method: 'POST',
+		    url: 'http://staging.wine-enterprise.com:8011/apis/sales/order/shipment',
+		    data: 'salesorder_id='+ '12345' + '&given_name=' + shipping.firstName + '&family_name=' + shipping.lastName
+		          + '&email=' + shipping.email + '&phone=' + shipping.phone +
+		           '&address=' + shipping.address,
+		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+		    responseType :'json',
+		}).then(function successCallback(response) {
+			console.log('INFO', response);
+			console.log('INFO', response.data.status);
+			console.log("###################################");
+	        $scope.test = response.data;
+	        
+		}, function errorCallback(response) {
+			console.log('ERROR', response);
+			console.log('############# Error');
+		});
+	}
+
+	$scope.toPayment = function() {
+		console.log("### calling to payment");
+		$state.go('app.payment');
+	}
+
 });

@@ -1,4 +1,4 @@
-angular.module('starter.user', [])
+angular.module('starter.user', ['ngMessages'])
 
 //REGISTRATION
 .controller("user", function($scope, $http, $ionicPopup, $state) {
