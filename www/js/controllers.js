@@ -69,7 +69,19 @@ angular.module('starter.controllers', [])
     }, 30);
   };
 
+
+
+  //local storage cart id
+  if(localStorage.getItem('cart_id') != null){
+    $scope.cart_id = JSON.parse(localStorage.getItem('cart_id'));
+    console.log('current cart_id',$scope.cart_id);
+  }else{
+    $scope.cart_id = '';
+    console.log('current cart_id',$scope.cart_id);
+  };
+
 })
+  
 
 //PRODUCTS
 .controller("ProductController", function($scope, $http) {
