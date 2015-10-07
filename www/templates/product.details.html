@@ -21,16 +21,22 @@
                 <!--  <span class="input-label" ng-model="productData.price">MYR {{productDetails.price}}</span> -->
               </label>
 
-              <button type="submit" ng-click="minusQty(productDetails.qty)"><i class="ion-minus-circled"></i></button>
+              <!-- <button type="submit" ng-click="minusQty(productDetails.qty)">
+                <i class="ion-minus-circled"></i>
+              </button> -->
+
               <label class="item item-input">
                 <span class="input-label font-small royal">Qty:</span>
-                  <span><input type="text" ng-model="productDetails.qty" size="30"></span>
+                  <span><input type="number" min="0" ng-model="productDetails.qty"></span>
               </label>
-              <button type="submit" ng-click="addQty(productDetails.qty)"><i class="ion-plus-circled"></i></button>
+
+<!--               <button type="submit" ng-click="addQty(productDetails.qty)">
+                <i class="ion-plus-circled"></i>
+              </button> -->
 
               <!--  ng-href="#/app/cart/list" -->
               <button type="submit" class="button button-block button-balanced font-medium" 
-                 ng-click="showPopup()">
+                 ng-click="showPopup(productDetails.qty)">
                   <i class="ion-android-cart font-big"></i>&nbsp;&nbsp;Add to Cart
               </button>
             </form>
