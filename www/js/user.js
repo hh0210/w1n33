@@ -1,7 +1,7 @@
 angular.module('starter.user', [])
 
 //REGISTRATION
-.controller("user", function($scope, $http, $ionicPopup, $state) {
+.controller("user", function($scope, $http, $ionicPopup, $state, $timeout, $ionicLoading, $ionicHistory) {
 
 	//SIGN UP
 	// console.error('INFO', 'A');
@@ -26,7 +26,6 @@ angular.module('starter.user', [])
 
 //LOGIN
   $scope.login = function(userdata){
-    console.log('aaaaa');
     $http({
       method: 'POST',
       url: 'http://staging.wine-enterprise.com:8011/apis/user/login',
@@ -34,20 +33,26 @@ angular.module('starter.user', [])
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       responseType :'json',
     }).then(function(response) {
-        //window.localStorage['loginInfo'] = response.data;
         localStorage.setItem('loginInfo',JSON.stringify(response.data));
-        var a = JSON.parse(localStorage.getItem('loginInfo'));
-        console.log(a.id);
-        // console.log(window.localStorage['loginInfo'].id);
-        // console.log(response.data);
-        // console.log(JSON.stringify(response.data));
-      }, function(err){
-          console.error('ERR', err);
+
+        //not working, reload page
+        $timeout(function () {
+        $ionicLoading.hide();
+        $ionicHistory.clearCache();
+        $ionicHistory.clearHistory();
+        $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
+        $state.go('app.home');
+        }, 30);
+
+        console.log(JSON.parse(localStorage.getItem('loginInfo')));
       })
+      // }, function(err){
+      //     console.error('ERR', err);
+      // })
   }
-  $scope.abc = [];
-  $scope.abc = JSON.parse(localStorage.getItem('loginInfo'));
-  console.log('testing',$scope.abc);
+  $scope.loginInfo = [];
+  $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
+  console.log('testing',$scope.loginInfo);
 
 //FORGOT PASSWORD
  $scope.showPopup = function() {
