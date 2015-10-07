@@ -7,7 +7,7 @@
 var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.controllers2','starter.categories',
                                             'starter.productdetails','starter.productlist','starter.cartlist',
                                             'starter.ordersummary', 'starter.user', 'starter.payment', 'starter.billing',
-                                            'starter.shipping'])
+                                            'starter.shipping', 'starter.search'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -50,7 +50,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     views: {
       'menuContent': {
         templateUrl: 'templates/search.html',
-        controller: 'SearchController'
+        controller: 'search'
       }
     }
   })

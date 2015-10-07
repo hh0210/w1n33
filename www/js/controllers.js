@@ -11,9 +11,9 @@ angular.module('starter.controllers', [])
   //});
 
   // Form data for the login modal
-  $scope.loginData = {
-    'src': 'img/ionic.png'
-  };
+  // $scope.loginData = {
+  //   'src': 'img/ionic.png'
+  // };
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {

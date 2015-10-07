@@ -10,7 +10,7 @@
       </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
-  </ion-side-menu-content>
+</ion-side-menu-content>
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
@@ -19,7 +19,6 @@
       </ion-view>
     </ion-header-bar>
     <ion-content>
-
       <ion-list>
 
         <ion-item menu-close href="#/app/home">
@@ -42,10 +41,12 @@
           Products
         </ion-item>
 
+        
         <ion-item menu-close ng-click="{{functionuser}}">
           <i class="ion-log-in"></i>
           {{loginInfo.username}}
         </ion-item>
+        
 
         <ion-item menu-close href="#/app/order/history">
           <i class="ion-social-buffer"></i>
@@ -78,7 +79,6 @@
         </ion-item>  --> 
                
       </ion-list>
-      
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>
