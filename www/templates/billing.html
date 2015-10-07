@@ -10,10 +10,10 @@
 				<div class="item item-text-wrap">
 					<div class="row">
 						<div class="col col-50">
-							<input type="text" placeholder="First Name" ng-model="billing.firstName">
+							<input type="text" placeholder="First Name" ng-model="billing.given_name">
 						</div>
 						<div class="col col-50">
-							<input type="text" placeholder="Last Name" ng-model="billing.lastName">
+							<input type="text" placeholder="Last Name" ng-model="billing.family_name">
 						</div>
 					</div>
 					<div class="row">
@@ -46,10 +46,7 @@
 			<div class="row">
 				<div class="col">
 				<!-- ng-href="#/app/shipping" -->
-					<button  type="submit" class="button button-block btnCheckOut font-medium" 
-					ng-click="toShipping()">
-				  Proceed to Shipping
-				</button>
+				<button  type="submit" class="button button-block btnCheckOut font-medium">Proceed to Shipping</button>
 				</div>
 			</div>
 		</form>
