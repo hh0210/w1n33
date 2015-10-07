@@ -32,7 +32,39 @@ angular.module('starter.productdetails', [])
 		console.log('localstorage USER ID',user_id);
 	}
 
-	//POST CART LIST
+	//  Popup Function for validation checking
+	   $scope.showPopup = function(qty) {
+	   		console.log(qty);
+	   		console.log("#####");
+	   		if((qty === 0)||(qty === undefined)||(qty === null)) {
+	   			console.log("wrong quantity");
+	   		    var alertPopup = $ionicPopup.alert({
+			     title: 'Message',
+			     template: 'Please type quantity of product.'
+			   });
+			   alertPopup.then(function(res) {
+			   	 var form = document.getElementsByName('contact-form');
+			   });
+	   		}
+	   		else{
+	   			console.log("got quantity");
+	   			var alertPopup = $ionicPopup.alert({
+			     title: 'Message',
+			     template: 'Item successfully added to cart.'
+			   });
+			   alertPopup.then(function(res) {
+					
+			   		// Pass in state parameter that defined in app, then can go to different state.
+			   		// $state.go('app.home');
+			   });
+	   		}
+
+	   		$timeout(function() {
+				alertPopup.close(); 
+			}, 2000);
+	 };
+
+	 //POST CART LIST
 	$scope.cart = function(productDetails){
 		console.log('CART ID',cart_id);
 		console.log('USER ID',user_id);
@@ -55,42 +87,19 @@ angular.module('starter.productdetails', [])
 		});
 	}
 
-	//  Popup Function
-	   $scope.showPopup = function() {
-	   var alertPopup = $ionicPopup.alert({
-	     title: 'Message',
-	     template: 'Item successfully added to cart.'
-	   });
-	   alertPopup.then(function(res) {
-			
-	   		// Pass in state parameter that defined in app, then can go to different state.
-	   		// $state.go('app.home');
-	   });
-		$timeout(function() {
-			//close the popup after 2 seconds 
-			alertPopup.close(); 
-		}, 2000);
-	 };
-
 	 $scope.addQty = function(qty) {
-	 	console.log(qty);
-	 	console.log('### qty in add');
-
 	 	var add = 0;
-	 	add = qty + 1;
+	 	add = parseInt(qty) + 1;
 	 	console.log(add);
 	 	console.log("add value is #######");
-	 	return add;
-	 }
+
+	 	productDetails.qty.$setViewValue(add);
+	 };
 
 	 $scope.minusQty = function(qty) {
-	 	console.log(qty);
-	 	console.log('### qty in minus');
-
 	 	var minus = 0;
-	 	minus = qty + 1;
+	 	minus = parseInt(qty) - 1;
 	 	console.log(minus);
 	 	console.log("minus value is #######");
-	 	return minus;
-	 }
+	 };
 });
