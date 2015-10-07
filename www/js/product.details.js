@@ -71,4 +71,26 @@ angular.module('starter.productdetails', [])
 			alertPopup.close(); 
 		}, 2000);
 	 };
+
+	 $scope.addQty = function(qty) {
+	 	console.log(qty);
+	 	console.log('### qty in add');
+
+	 	var add = 0;
+	 	add = qty + 1;
+	 	console.log(add);
+	 	console.log("add value is #######");
+	 	return add;
+	 }
+
+	 $scope.minusQty = function(qty) {
+	 	console.log(qty);
+	 	console.log('### qty in minus');
+
+	 	var minus = 0;
+	 	minus = qty + 1;
+	 	console.log(minus);
+	 	console.log("minus value is #######");
+	 	return minus;
+	 }
 });
