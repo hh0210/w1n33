@@ -4,37 +4,36 @@
 	  <div class="item item-text-wrap p0">
 
 	    <div class="row col-header center font-small">
-          <div class="col">Order id</div>
-          <div class="col">Status</div>
-          <div class="col">Product name</div>
-          <div class="col">Quantity</div>
-          <div class="col">Price</div>
+          <div class="col col-20">Product id</div>
+          <div class="col col-20">Product name</div>
+          <div class="col col-20">Quantity</div>
+          <div class="col col-20">Price</div>
+          <div class="col col-20">Status</div>
         </div>
 
         <ul class="list">
-	         <div class="row col-bg center col-line font-small" ng-repeat="order in orderhistory">
-				<div class="col">{{order.id}}</div>
-				<div class="col">{{order.status}}</div>
-				<div class="col">{{order.name}}</div>
-				<div class="col">{{order.qty}}</div>
-				<div class="col">{{order.price}}</div>
-	        </div>
-		    <!-- <div class="row item font-small center">
-		      	<div class="col">2332</div>
-				<div class="col">Order Approved</div>
-				<div class="col">Whisky</div>
-				<div class="col">3</div>
-				<div class="col">RM 107.50</div>
-		    </div>
-		    <div class="row item font-small center">
-		      	<div class="col">22342</div>
-				<div class="col">Order Approved</div>
-				<div class="col">Red Wine</div>
-				<div class="col">5</div>
-				<div class="col">RM 55.50</div>
-		    </div> -->
+			<a ng-href="#/app/order/history/details">
+				<div class="row col-bg center col-line font-small" ng-repeat="order in orderhistory">
+					<div class="col col-20">{{order.id_ProductMaster}}</div>
+					<div class="col col-20">{{order.name}}</div>
+					<div class="col col-20">{{order.qty}}</div>
+					<div class="col col-20">MYR {{order.price}}</div>
+					<div class="col col-20">{{order.status}}</div>
+		        </div>
+			</a> 	        
 		</ul>
 
+		 <!--  <ion-list>
+		  <ion-item href="#/app/order/summary">
+		    <div class="row col-bg center col-line font-small" ng-repeat="order in orderhistory">
+				<div class="col col-10">{{order.id}}</div>
+				<div class="col col-33">{{order.name}}</div>
+				<div class="col col-20">{{order.qty}}</div>
+				<div class="col col-20">{{order.price}}</div>
+				<div class="col col-20">{{order.status}}</div>
+	        </div>
+		  </ion-item>
+		</ion-list> -->
 	  </div>
 	
 
