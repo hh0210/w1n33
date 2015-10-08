@@ -44,17 +44,27 @@
           Categories
         </ion-item>
 
-        <ion-item menu-close href="#/app/product/list/"> 
+        <!-- <ion-item menu-close href="#/app/product/list/"> 
           <i class="ion-wineglass"></i>
           Products
-        </ion-item>
+        </ion-item> -->
 
         
-        <ion-item menu-close ng-click="{{functionuser}}">
+        <!-- <ion-item menu-close ng-click="{{functionuser}}">
+          <i class="ion-log-in"></i>
+          {{loginInfo.username}}
+        </ion-item> -->
+
+        <!-- testing -->
+        <ion-item menu-close ng-click="login()" ng-if="noUser" style="display:{{userlogin}}">
+          <i class="ion-log-in"></i>
+          Login
+        </ion-item>
+        <ion-item menu-close ng-click="logout()" ng-if="haveUser" style="display:{{userName}}">
           <i class="ion-log-in"></i>
           {{loginInfo.username}}
         </ion-item>
-        
+        <!-- testing -->
 
         <ion-item menu-close href="#/app/order/history">
           <i class="ion-social-buffer"></i>
@@ -67,9 +77,9 @@
           <span class="badge badge-assertive">{{cartList[0].cart_count}}</span>
         </ion-item>
 
-        <ion-item menu-close href="#/app/profile">
+        <!-- <ion-item menu-close href="#/app/profile">
           Profile - temp
-        </ion-item>
+        </ion-item> -->
 
         <!--  <ion-item menu-close href="#/app/promotion">
           <i class="ion-film-marker"></i>

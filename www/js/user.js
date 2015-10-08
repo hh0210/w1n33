@@ -34,15 +34,14 @@ angular.module('starter.user', ['ngMessages'])
       responseType :'json',
     }).then(function(response) {
         localStorage.setItem('loginInfo',JSON.stringify(response.data));
-
-        $state.go('app.home', {}, {reload: true});
-
         console.log(JSON.parse(localStorage.getItem('loginInfo')));
+        //$state.go($state.current, {}, {reload: true});
+      //})
+      }, function(err){
+          console.error('ERR', err);
       })
-      // }, function(err){
-      //     console.error('ERR', err);
-      // })
   }
+
   $scope.loginInfo = [];
   $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
   console.log('testing',$scope.loginInfo);
@@ -81,4 +80,5 @@ angular.module('starter.user', ['ngMessages'])
     //    myPopup.close(); //close the popup after 3 seconds for some reason
     // }, 3000);
    };
+
 });

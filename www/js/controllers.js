@@ -47,19 +47,26 @@ angular.module('starter.controllers', [])
   if (localStorage.getItem('loginInfo') != null) {
     $scope.loginInfo = [];
     $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
-    //$scope.functionlogin = 'login()';
-    $scope.functionuser = 'logout()';
     console.log('LoginInfo',$scope.loginInfo);
+
+    $scope.haveUser = true;
+    $scope.userName = 'block';
+    $scope.noUser = false;
+    $scope.userlogin = 'none';
   }else{
-    $scope.loginInfo = {'username':'Login'};
-    $scope.functionuser = 'login()';
+    $scope.haveUser = false;
+    $scope.userName = 'none';
+    $scope.noUser = true;
+    $scope.userlogin = 'block';
   };
 
   //logout
   $scope.logout = function() {
     localStorage.removeItem('loginInfo');
-    localStorage.removeItem('cart_id');
-    $state.go('app.home', {}, {reload: true});
+    // if(localStorage.getItem('cart_id') != null){
+    //   localStorage.removeItem('cart_id');
+    // };
+    //$state.go($state.current, {}, {reload: true});
   };
 
 
