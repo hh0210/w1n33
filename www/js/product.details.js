@@ -33,7 +33,6 @@ angular.module('starter.productdetails', [])
 			     template: 'Please type quantity of product.'
 			   });
 			   alertPopup.then(function(res) {
-			   	 var form = document.getElementsByName('contact-form');
 			   });
 	   		}
 	   		else{

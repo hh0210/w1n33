@@ -7,7 +7,8 @@
 var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.controllers2','starter.categories',
                                             'starter.productdetails','starter.productlist','starter.cartlist',
                                             'starter.ordersummary', 'starter.user', 'starter.payment', 'starter.billing',
-                                            'starter.shipping', 'starter.search', 'starter.orderhistory'])
+                                            'starter.shipping', 'starter.search', 'starter.orderhistory',
+                                            'starter.orderhistorydetails'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -106,14 +107,15 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       }
     })
 
-  // .state('app.promotion', {
-  //     url: '/promotion',
-  //     views: {
-  //       'menuContent': {
-  //         templateUrl: 'templates/promotion.html'
-  //       }
-  //     }
-  //   })
+  .state('app.orderhistorydetails', {
+      url: '/order/history/details',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/order.history.details.html',
+          controller: 'orderhistorydetails'
+        }
+      }
+    })
 
     .state('app.products', {
       url: '/products',
