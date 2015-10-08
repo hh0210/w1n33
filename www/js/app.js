@@ -6,7 +6,9 @@
 // 'starter.controllers' is found in controllers.js
 var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.controllers2','starter.categories',
                                             'starter.productdetails','starter.productlist','starter.cartlist',
-                                            'starter.ordersummary', 'starter.user'])
+                                            'starter.ordersummary', 'starter.user', 'starter.payment', 'starter.billing',
+                                            'starter.shipping', 'starter.search', 'starter.orderhistory',
+                                            'starter.orderhistorydetails'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -28,105 +30,117 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
   $stateProvider
 
     .state('app', {
+      cache: false,
       url: '/app',
       abstract: true,
       templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
     })
-
-  .state('app.home', {
-    url: '/home',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/home.html',
-        controller: 'HomeController'
-      }
-    }
-  })
-
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html',
-        controller: 'SearchController'
-      }
-    }
-  })
-
-  .state('app.categories', {
-    url: '/categories',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/categories.html',
-        controller: 'categories'
-      }
-    }
-  })
-
-  .state('app.user', {
-      url: '/register',
+      
+    .state('app.home', {
+      url: '/home',
       views: {
         'menuContent': {
-          templateUrl: 'templates/register.html',
-          controller: 'user'
+          templateUrl: 'templates/home.html',
+          controller: 'HomeController'
         }
       }
     })
 
-  .state('app.orderhistory', {
-      url: '/order/history',
+    .state('app.search', {
+      url: '/search',
       views: {
         'menuContent': {
-          templateUrl: 'templates/order.history.html'
+          templateUrl: 'templates/search.html',
+          controller: 'search'
         }
       }
     })
 
-  .state('app.promotion', {
-      url: '/promotion',
+    .state('app.categories', {
+      url: '/categories',
       views: {
         'menuContent': {
-          templateUrl: 'templates/promotion.html'
+          templateUrl: 'templates/categories.html',
+          controller: 'categories'
         }
       }
     })
 
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+    .state('app.user.register', {
+        url: '/register',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/register.html',
+            controller: 'user'
+          }
         }
-      }
-    })
+      })
 
-
-    .state('app.products', {
-      url: '/products',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/products.html',
-          controller: 'ProductController'
+    .state('app.user-profile', {
+        url: '/profile',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/profile.html',
+            controller: 'user'
+          }
         }
-      }
-    })
+      })
 
-
-    .state('app.productlist', {
-      url: '/product/list',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/product.list.html',
-          controller: 'productlist'
+    .state('app.user.forgotpassword', {
+        url: '/forgotpassword',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/forgotpassword.html',
+            controller: 'user'
+          }
         }
-      }
-    })
+      })
+
+    .state('app.orderhistory', {
+        url: '/order/history',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/order.history.html',
+            controller: 'orderhistory'
+          }
+        }
+      })
+
+    .state('app.orderhistorydetails', {
+        url: '/order/history/details',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/order.history.details.html',
+            controller: 'orderhistorydetails'
+          }
+        }
+      })
+
+      .state('app.products', {
+        url: '/products',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/products.html',
+            controller: 'ProductController'
+          }
+        }
+      })
+
+
+      .state('app.productlist', {
+        url: '/product/list/:code',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/product.list.html',
+            controller: 'productlist'
+          }
+        }
+      })
 
 
     .state('app.productdetails', {
-      url: '/product/details',
+      url: '/product/details/:sku_code',
       views: {
         'menuContent': {
           templateUrl: 'templates/product.details.html',
@@ -136,7 +150,8 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     })
 
     .state('app.cartlist', {
-      url: '/cart/list',
+      cache:false,
+      url: '/cart/list/:cart_id',
       views: {
         'menuContent': {
           templateUrl: 'templates/cart.list.html',
@@ -146,6 +161,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     })
 
     .state('app.ordersummary', {
+      cache:false,
       url: '/order/summary',
       views: {
         'menuContent': {
@@ -155,26 +171,37 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       }
     })
 
-    .state('app.checkout', {
-      url: '/checkout',
+    .state('app.billing', {
+      url: '/billing',
       views: {
         'menuContent': {
-          templateUrl: 'templates/checkout.html',
+          templateUrl: 'templates/billing.html',
+          controller: 'billing'
         }
       }
     })
 
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+    .state('app.shipping', {
+    url: '/shipping',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/shipping.html',
+        controller: 'shipping'
       }
     }
-  });
+  })
+
+    .state('app.payment', {
+      url: '/payment',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/payment.html',
+          controller: 'payment'
+        }
+      }
+    });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/products');
+  $urlRouterProvider.otherwise('/app/home');
+
 });

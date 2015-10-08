@@ -1,5 +1,5 @@
 <ion-view view-title="Search">
-  <ion-content ng-controller="SearchController">
+  <ion-content ng-controller="search">
 	
 	<div class="container-fluid">
 		<!-- First row for search -->
@@ -11,11 +11,6 @@
 						<i class="icon ion-search placeholder-icon"></i>
 						<input type="text" placeholder="Search" ng-model="query">
 					</label>
-					<!-- Filter option need to check again -->
-					<!-- <select ng-model="orderProp">
-						<option value="name">Name</option>
-						<option value="age">Age</option>
-					</select> -->
 				</div>		
 			</div>	
 		</div>
@@ -23,25 +18,31 @@
 		<div class="row">
 			<div class="col col-100">
 				<ul class="list">
-				    <li class="item" ng-repeat="phone in details | filter:query | filter:orderProp">
-				      <!-- <div class=""> -->
-				      	<span>{{phone.name}}</span>
-				      	<p>{{phone.snippet}}</p>
-				      <!-- </div> -->
-				    </li>
+				    <!-- <li class="item" ng-repeat="productInfo in productList | filter:query"> -->
+				    
+				      	<div class="row" ng-repeat="productInfo in productList|filter:query" ng-if="$index % 2 == 0">
+
+					    	<a class="col col-50" ng-if="$index < productList.length" 
+					    	ng-href="#/app/product/details/{{productList[$index].sku_code}}">
+							  	<div class="sbox center">
+								  	<img ng-src="{{img}}{{productList[$index].photo}}" width="100%">
+								  	<p class="ellipsis p10">{{productList[$index].name}}</p>
+								  	<p class="default-bg p10">MYR {{productList[$index].price}}</p>
+							  	</div>
+						  	</a>
+						  	<a class="col col-50" ng-if="$index < productList.length" 
+						  	ng-href="#/app/product/details/{{productList[$index+1].sku_code}}">
+							  	<div class="sbox center">
+								  	<img ng-src="{{img}}{{productList[$index+1].photo}}" width="100%">
+								  	<p class="ellipsis p10">{{productList[$index+1].name}}</p>
+								  	<p class="default-bg p10">MYR {{productList[$index+1].price}}</p>
+							  	</div>
+						  	</a>
+						</div>
+				    <!-- </li> -->
 		  		</ul>
 			</div>
 		</div>
-
-		<!-- test radio button only -->
-		<!-- <div>
-		<label class="toggle toggle-royal">
-			<input type="checkbox">
-			<div class="track">
-				<div class="handle"></div>
-			</div>
-		</label>
-		</div> -->
 	</div> <!-- End of container-->
 
   </ion-content>

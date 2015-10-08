@@ -3,18 +3,20 @@
   <ion-content ng-controller="categories">
 	
     <div class="row" ng-repeat="productTypeInfo in productTypeList" ng-if="$index % 2 == 0">
-    	<a class="col col-50" ng-if="$index < productTypeList.length" ng-href="#/app/product/list" style="cursor: pointer">
+    	<a class="col col-50" ng-if="$index < productTypeList.length" 
+    	ng-href="#/app/product/list/{{productTypeList[$index].code}}" style="cursor: pointer">
 		  	<div class="sbox center">
-			  	<img ng-src="{{img}}" width="100%">
+			  	<img ng-src="{{img}}{{productTypeList[$index].photo}}" width="100%">
 			  	<p>
 			  		{{productTypeList[$index].name}}
 			  		<span class="badge badge-assertive">{{productTypeList[$index].type_count}}</span>
 			  	</p>
 		  	</div>
 	  	</a>
-	  	<a class="col col-50" ng-if="$index < productTypeList.length" ng-href="#/app/product/list" style="cursor: pointer">
+	  	<a class="col col-50" ng-if="$index < productTypeList.length" 
+	  	ng-href="#/app/product/list/{{productTypeList[$index+1].code}}" style="cursor: pointer">
 		  	<div class="sbox center">
-			  	<img ng-src="{{img}}" width="100%">
+			  	<img ng-src="{{img}}{{productTypeList[$index+1].photo}}" width="100%">
 			  	<p>
 			  		{{productTypeList[$index+1].name}}
 			  		<span class="badge badge-assertive">{{productTypeList[$index+1].type_count}}</span>

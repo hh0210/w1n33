@@ -1,0 +1,127 @@
+<ion-view view-title="Shipping Methods">
+
+<!-- For place the header in centre -->
+<ion-header-bar>
+     <div class="title center"></div>
+</ion-header-bar>
+
+  <!-- Tabs -->
+  <ion-tabs class="tabs-calm tabs-icon-only">
+    <ion-tab title="Delivery">
+	    <ion-content>
+	      <!-- Tab 1 content -->
+		    <form ng-submit="shipment(shipmentInfo)">
+		    	<!-- Shipping information of guest info  -->
+				<div class="card pt75">
+					<div class="item item-divider font-medium">
+						Shipping Information
+					</div>
+					<div class="item item-text-wrap">
+						<div class="row">
+							<div class="col col-50">
+								<input type="text" ng.model="shipmentInfo.given_name" placeholder="Given Name">
+							</div>
+							<div class="col col-50">
+								<input type="text" ng-model="shipmentInfo.family_name" placeholder="Family Name">
+							</div>
+						</div>
+						<div class="row">
+							<input type="text" class="ml5" ng-model="shipmentInfo.phone" placeholder="Phone Number">
+						</div>
+						<div class="row">
+							<input type="text" class="ml5" ng-model="shipmentInfo.address"  placeholder="Street Address 1">
+						</div>
+						<div class="row">
+							<input type="text" class="ml5"  placeholder="Street Address 2">
+						</div>
+						<div class="row">
+							<div class="col col-50">
+								<input type="text" placeholder="City">
+							</div>
+							<div class="col col-50">
+								<input type="text" placeholder="Zip">
+							</div>
+						</div>
+						<div class="row">
+						<div class="col">
+							<label class="item item-input item-select">
+							    <div class="input-label font-medium" style="color:#999;">
+							      Shipping Method
+							    </div>
+							    <select ng-model="mySelect" ng-change="showSelectValue(mySelect)">
+							      <option ng-repeat="shipmentInfo in shipmentList" value="{{shipmentInfo.id}}">{{shipmentInfo.name}}</option>
+							    </select>
+							 </label>
+						</div>	
+					</div> 
+					</div>
+				</div>
+				<!-- End of shipping detail -->
+
+				<div class="row">
+					<div class="col">
+						<button type="submit" class="button button-block btnCheckOut font-medium">
+				  		Pay Now
+					</button>
+					</div>
+				</div>
+			</form>
+		</ion-content>
+    </ion-tab>
+
+    <ion-tab title="Self Pickup">
+      <!-- Tab 2 content -->
+      <ion-content>
+ 		<form ng-submit="selfpickup(locationInfo)">
+	    	<!-- Pickup information of guest info  -->
+			<div class="card pt75">
+				<div class="item item-divider font-medium">
+					Self Pick Up
+				</div>
+				<div class="item item-text-wrap">
+					<!-- <div class="row">
+						<div class="col col-50">
+							<input type="text" placeholder="First Name">
+						</div>
+						<div class="col col-50">
+							<input type="text" placeholder="Last Name">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-50">
+							<input type="text" placeholder="Phone Number">
+						</div>
+						<div class="col col-50">
+							<input type="text" placeholder="Venue">
+						</div>
+					</div> -->
+					<div class="row">
+						<div class="col">
+							<label class="item item-input item-select">
+							    <div class="input-label" style="color:#C0C0C0;">
+							      Location
+							    </div>
+							    <select ng-model="mySelect" ng-change="showSelectValue(mySelect)">
+							      <option ng-repeat="locationInfo in locationList" value="{{locationInfo.id}}">{{locationInfo.name}}</option>
+							    </select>
+							 </label>
+						</div>	
+					</div>
+				</div>
+			</div>
+			<!-- End of shipping detail -->
+
+			<div class="row">
+				<div class="col">
+					<button type="submit" class="button button-block btnCheckOut font-medium">
+				  		Pay Now
+					</button>
+				</div>
+			</div>
+		</form>
+      </ion-content>
+    </ion-tab>
+    <!-- End of two tabs -->
+  </ion-tabs>
+
+</ion-view>

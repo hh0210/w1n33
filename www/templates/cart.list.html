@@ -2,22 +2,69 @@
 
   <ion-content ng-controller="cartlist">
 
-    <div class="row" ng-repeat="productInfo in productList" ng-if="$index % 2 == 0">
-    	<a class="col col-50" ng-if="$index < productList.length" ng-href="#/app/product/details">
-		  	<div class="sbox center">
-			  	<img ng-src="{{img}}{{productList[$index].photo}}" width="100%">
-			  	<p class="ellipsis p10">{{productList[$index].name}}</p>
-			  	<p class="default-bg p10">MYR {{productList[$index].price}}</p>
-		  	</div>
-	  	</a>
-	  	<a class="col col-50" ng-if="$index < productList.length" ng-href="#/app/product/details">
-		  	<div class="sbox center">
-			  	<img ng-src="{{img}}{{productList[$index+1].photo}}" width="100%">
-			  	<p class="ellipsis p10">{{productList[$index+1].name}}</p>
-			  	<p class="default-bg p10">MYR {{productList[$index+1].price}}</p>
-		  	</div>
-	  	</a>
+ <div class="list">
+ 	<!-- Content -->
+ 	<!-- Items -->
+    <div class="item item-thumbnail-left" ng-repeat="cartInfo in cartList">
+	    <div class="row">
+		  <div class="col">
+
+		  <!-- form -->
+		  <form ng-submit="delete(cartInfo)">
+		  	<input type="hidden" ng-model="cartInfo.product_id">
+			  <button type="submit">
+			  <i class="ion-close-round"></i>
+			  </button>
+		  </form>
+		  <!-- end form -->
+
+		  	<img class="cartImg" ng-src="{{img}}{{cartInfo.photo}}">
+		  		<br><br>
+		  	<span class="greenbox mt10">Subtotal</span>
+		  	<span class="subtotal">MYR {{cartInfo.price|number:2}}
+		  	</span>
+		  </div>
+		  <div class="col font-small">
+		  	<span class="pl5" style="color:#9B59B6;">{{cartInfo.product_name}}</span>
+		  	<br>
+		  	<span class="pl5">Quantity:</span><span style="color:#F1C40F;"> {{cartInfo.qty}}</span>
+		  	<br>
+		  	<span class="pl5">Price:</span><span style="color:#7F8C8D;"> MYR {{cartInfo.unit_price|number:2}}</span>
+		  </div>
+		  <div class="col"></div>
+		</div>
 	</div>
+
+	<!-- Start of total -->
+	<div class="item item-thumbnail-left">
+		<div class="row">
+			<div class="col col-offset-33 col-33">
+				<p align="right">Total:</p>
+			  	
+			</div>
+			<div class="col col-33">
+				<span class="font-big" style="color:#3498DB;">MYR {{cartList[0].total_price|number:2}}	
+			  	</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<a class="button btn-block btnContinue font-medium" ng-href="#/app/categories">
+				  Continue Shopping
+				</a>
+			</div>
+			
+			<form ng-submit="salesorder(cartList)">
+				<div class="col">
+					<button type="submit" data-ng-disabled="checkOrder()" class="button btn-block btnCheckOut font-medium">
+					  Check Out
+					</button>
+				</div>
+			</form>
+		</div>	
+	</div>
+
+</div>
 
   </ion-content>
 

@@ -1,0 +1,55 @@
+<ion-view view-title="Billing">
+	<ion-content ng-controller="billing">
+
+	    <form ng-submit="billingForm(billing)">
+	    	<!-- Billing information of payer info  -->
+			<div class="card">
+				<div class="item item-divider font-medium">
+					Billing Information
+				</div>
+				<div class="item item-text-wrap">
+					<div class="row">
+						<div class="col col-50">
+							<input type="text" placeholder="First Name" ng-model="billing.given_name">
+						</div>
+						<div class="col col-50">
+							<input type="text" placeholder="Last Name" ng-model="billing.family_name">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-50">
+							<input type="text" placeholder="Email" ng-model="billing.email">
+						</div>
+						<div class="col col-50">
+							<input type="text" placeholder="Phone Number" ng-model="billing.phone">
+						</div>
+					</div>
+					<div class="row">
+						<input type="text" class="ml5"  placeholder="Street Address 1" 
+						ng-model="billing.address">
+					</div>
+					<div class="row">
+						<input type="text" class="ml5"  placeholder="Street Address 2">
+					</div>
+					<div class="row">
+						<div class="col col-50">
+							<input type="text" placeholder="City">
+						</div>
+						<div class="col col-50">
+							<input type="text" placeholder="Zip">
+						</div>
+					</div> 
+				</div>
+			</div>
+			<!-- End of billing detail -->
+			
+			<div class="row">
+				<div class="col">
+				<!-- ng-href="#/app/shipping" -->
+				<button  type="submit" class="button button-block btnCheckOut font-medium">Proceed to Shipping</button>
+				</div>
+			</div>
+		</form>
+
+	</ion-content>
+</ion-view>

@@ -1,29 +1,17 @@
-<ion-view view-title="Home">
+<ion-view view-title="Vega Beverages">
   <ion-content ng-controller="HomeController">
 
-	<ion-slide-box auto-play="true" does-continue="true" slide-interval="2000">
+	<ion-slide-box active-slide="1" 
+       on-slide-changed="slideHasChanged(index)"
+       does-continue="true" auto-play="true" slide-interval="2000">
 	  <ion-slide>
-	  	<!-- First slide -->
-	  	<div class="row">
-		  	<div class="col col-100">
-		  		<img ng-src="{{img[0].src}}">
-		  	</div>
-		</div>
-		<div class="row">
-	  		<div class="col col-100">
-	  			<div class="card">
-		  			<div class="item item-text-wrap item-energized">
-		  				I'm Ionic! Hahahha!!
-		  			</div>
-		  		</div>
-	  		</div>
-	  	</div>
+		   <img ng-src="{{img[0].src}}" width="100%">
 	  </ion-slide>
 	  <ion-slide>
-	    <div class="box blue"><h1>BLUE</h1></div>
+			<img ng-src="{{img[1].src}}" width="100%">
 	  </ion-slide>
 	  <ion-slide>
-	     <div class="box yellow"><h1>YELLOW</h1></div>
+			<img ng-src="{{img[2].src}}" width="100%">
 	  </ion-slide>
 	</ion-slide-box>
 

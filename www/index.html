@@ -8,7 +8,7 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/alignment.css" rel="stylesheet">
-    <link href="css/login.css" rel="stylesheet">
+    <link href="css/hunge.css" rel="stylesheet">
     <link href="css/paul.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
@@ -30,12 +30,38 @@
     <script src="js/product.details.js"></script>
     <script src="js/cart.list.js"></script>
     <script src="js/order.summary.js"></script>
-    <script src="js/user.js"></script>   
+    <script src="js/user.js"></script>
+    <script src="js/billing.js"></script>   
+    <script src="js/payment.js"></script> 
+    <script src="js/shipping.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/order.history.js"></script> 
+    <script src="js/order.history.details.js"></script> 
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-messages.js"></script>    
   </head>
 
   <body ng-app="starter">
 
     <ion-nav-view></ion-nav-view>
+
+    <script id="error-list.html" type="text/ng-template">  
+    <div class="error" ng-message="required">
+      <i class="ion-information-circled"></i> 
+      This field is required!
+    </div>
+    <div class="error" ng-message="minlength">
+      <i class="ion-information-circled"></i> 
+      Minimum length of this field is 5 characters!
+    </div>
+    <div class="error" ng-message="maxlength">
+      <i class="ion-information-circled"></i> 
+      Maximum length of this field is 20 characters!
+    </div>
+    <div class="error" ng-message="signUpForm.confpassword.$error">
+      <i class="ion-information-circled"></i> 
+      The password is not match!
+    </div>
+  </script>   
 
   </body>
   

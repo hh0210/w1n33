@@ -1,6 +1,6 @@
-<ion-side-menus enable-menu-with-back-views="false">
+<ion-side-menus enable-menu-with-back-views="true">
   <ion-side-menu-content>
-    <ion-nav-bar class="bar-stable">
+    <ion-nav-bar>
       <ion-nav-back-button>
       </ion-nav-back-button>
 
@@ -8,21 +8,30 @@
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
+
+      <ion-nav-buttons side="right">
+        <a class="button" ng-href="#/app/cart/list/{{cart_id}}">
+         <i class="ion-android-cart" width="25" style="font-size:20px;"></i>
+        </a>
+      </ion-nav-buttons>
+
+
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
-  </ion-side-menu-content>
+</ion-side-menu-content>
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
-      <h1 class="title">Menu</h1>
+      <ion-view>
+        <img class="title-image" src="http://wine-enterprise.com/images/whiskyweb1_02.gif" width="100%"/>
+      </ion-view>
     </ion-header-bar>
     <ion-content>
-
       <ion-list>
 
         <ion-item menu-close href="#/app/home">
           <i class="ion-home"></i>
-          Home
+          Vega Beverages
         </ion-item>
 
         <ion-item menu-close href="#/app/search">
@@ -35,40 +44,47 @@
           Categories
         </ion-item>
 
-        <ion-item menu-close href="#/app/product/list"> 
+        <!-- <ion-item menu-close href="#/app/product/list/"> 
           <i class="ion-wineglass"></i>
           Products
-        </ion-item>
+        </ion-item> -->
 
-        <ion-item menu-close ng-click="login()">
+        
+        <!-- <ion-item menu-close ng-click="{{functionuser}}">
+          <i class="ion-log-in"></i>
+          {{loginInfo.username}}
+        </ion-item> -->
+
+        <!-- testing -->
+        <ion-item menu-close ng-click="login()" ng-if="noUser" style="display:{{userlogin}}">
           <i class="ion-log-in"></i>
           Login
         </ion-item>
-
-        <ion-item menu-close href="#/app/register">
-          <i class="ion-arrow-up-a"></i>
-          Register
+        <ion-item menu-close ng-click="logout()" ng-if="haveUser" style="display:{{userName}}">
+          <i class="ion-log-in"></i>
+          {{loginInfo.username}}
         </ion-item>
+        <!-- testing -->
 
         <ion-item menu-close href="#/app/order/history">
           <i class="ion-social-buffer"></i>
           Order History
         </ion-item>
 
-        <ion-item menu-close href="#/app/cart">
+        <ion-item menu-close href="#/app/cart/list/{{cart_id}}">
           <i class="ion-android-cart"></i>
           Cart List
-          <span class="badge badge-assertive">0</span>
+          <span class="badge badge-assertive">{{cartList[0].cart_count}}</span>
         </ion-item>
 
-        <ion-item menu-close href="#/app/promotion">
+        <!-- <ion-item menu-close href="#/app/profile">
+          Profile - temp
+        </ion-item> -->
+
+        <!--  <ion-item menu-close href="#/app/promotion">
           <i class="ion-film-marker"></i>
           Promotion
-        </ion-item>
-
-        <ion-item menu-close href="#/app/product/details">
-          Product Details - temp
-        </ion-item> 
+        </ion-item> --> 
 
         <!-- <ion-item menu-close href="#/app/cart/list">
           <i class="ion-film-marker"></i>
@@ -81,7 +97,6 @@
         </ion-item>  --> 
                
       </ion-list>
-      
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>

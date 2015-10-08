@@ -1,5 +1,32 @@
 <ion-view view-title="Order History">
-  <ion-content>
-    <h1>Order History</h1>
+  <ion-content ng-controller="orderhistory">
+
+	  <div class="list">
+	  	<a href="#/app/order/history/details">
+		    <div class="item font-small" ng-repeat="order in orderhistory">
+		    	<div class="row">
+			    	<div class="col col-50">Order Status</div>
+			    	<div class="col col-50">{{order.status}}</div>
+			    </div>
+			    <div class="row">
+			    	<div class="col col-50">Order Date</div>
+			    	<div class="col col-50">{{order.created_on}}</div>
+			    </div>
+			     <div class="row">
+			    	<div class="col col-50">Recipient</div>
+			    	<div class="col col-50">{{order.given_name}} {{order.family_name}}</div>
+			    </div>
+			     <div class="row">
+			    	<div class="col col-33">Items</div>
+			    	<div class="col-67">
+			    		<br>
+			    		<li class="m0 p0">{{order.name}}</li>
+			    	</div>
+			    </div>
+		    </div>
+	    </a>
+	    <!-- End of list item -->
+	</div>
+
   </ion-content>
 </ion-view>

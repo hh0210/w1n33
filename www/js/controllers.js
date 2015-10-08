@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state, $http) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -11,7 +11,9 @@ angular.module('starter.controllers', [])
   //});
 
   // Form data for the login modal
-  $scope.loginData = {};
+  // $scope.loginData = {
+  //   'src': 'img/ionic.png'
+  // };
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -40,7 +42,65 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
+
+  //Localstorage LoginInfo
+  if (localStorage.getItem('loginInfo') != null) {
+    $scope.loginInfo = [];
+    $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
+    console.log('LoginInfo',$scope.loginInfo);
+
+    $scope.haveUser = true;
+    $scope.userName = 'block';
+    $scope.noUser = false;
+    $scope.userlogin = 'none';
+  }else{
+    $scope.haveUser = false;
+    $scope.userName = 'none';
+    $scope.noUser = true;
+    $scope.userlogin = 'block';
+  };
+
+  //logout
+  $scope.logout = function() {
+    localStorage.removeItem('loginInfo');
+    // if(localStorage.getItem('cart_id') != null){
+    //   localStorage.removeItem('cart_id');
+    // };
+    //$state.go($state.current, {}, {reload: true});
+  };
+
+
+
+  //local storage cart id
+  if(localStorage.getItem('cart_id') != null){
+    $scope.cart_id = JSON.parse(localStorage.getItem('cart_id'));
+    console.log('current cart_id',$scope.cart_id);
+  }else{
+    $scope.cart_id = '';
+    console.log('current cart_id',$scope.cart_id);
+  };
+
+  //user id
+  if(localStorage.getItem('loginInfo') != null){
+    $scope.user = JSON.parse(localStorage.getItem('loginInfo'));
+    var user_id = $scope.user.id;
+    console.log('localstorage USER ID',user_id);
+  }else{
+    var user_id = '0';
+    console.log('localstorage USER ID',user_id);
+  };
+
+  //GET CART ITEM
+   $http.get('http://staging.wine-enterprise.com:8011/apis/cart/list?cart_id='+$scope.cart_id+'&user_id='+user_id)
+    .then(function(response) {
+      $scope.cartList = response.data;
+      console.log(response);
+    }, function(err){
+        console.error('ERR', err);
+    })
+
 })
+  
 
 //PRODUCTS
 .controller("ProductController", function($scope, $http) {
@@ -75,7 +135,6 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
-
 
 .controller('SearchController', function($scope){
     $scope.details = [

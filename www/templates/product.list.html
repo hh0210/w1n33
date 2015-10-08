@@ -1,16 +1,18 @@
-<ion-view view-title="Product List">
+<ion-view view-title="Product List" class="bg">
 
   <ion-content ng-controller="productlist">
 
     <div class="row" ng-repeat="productInfo in productList" ng-if="$index % 2 == 0">
-    	<a class="col col-50" ng-if="$index < productList.length" ng-href="#/app/product/details">
+    	<a class="col col-50" ng-if="$index < productList.length" 
+    	ng-href="#/app/product/details/{{productList[$index].sku_code}}">
 		  	<div class="sbox center">
 			  	<img ng-src="{{img}}{{productList[$index].photo}}" width="100%">
 			  	<p class="ellipsis p10">{{productList[$index].name}}</p>
 			  	<p class="default-bg p10">MYR {{productList[$index].price}}</p>
 		  	</div>
 	  	</a>
-	  	<a class="col col-50" ng-if="$index < productList.length" ng-href="#/app/product/details">
+	  	<a class="col col-50" ng-if="$index < productList.length" 
+	  	ng-href="#/app/product/details/{{productList[$index+1].sku_code}}">
 		  	<div class="sbox center">
 			  	<img ng-src="{{img}}{{productList[$index+1].photo}}" width="100%">
 			  	<p class="ellipsis p10">{{productList[$index+1].name}}</p>
