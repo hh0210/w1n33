@@ -44,7 +44,7 @@ angular.module('starter.ordersummary', [])
 			console.log('INFO', response);
 			console.log('INFO', response.data.status);
 			console.log('INFO', response.data.salesorder_id);
-			$state.go('app.billing');
+			$state.go('app.payment');
 		})
 		// }, function errorCallback(response) {
 		// 	console.log('ERROR', response);

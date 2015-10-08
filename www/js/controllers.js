@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state, $ionicLoading, $ionicHistory) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state, $http) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -59,14 +59,7 @@ angular.module('starter.controllers', [])
   $scope.logout = function() {
     localStorage.removeItem('loginInfo');
 
-    //not working, reload page
-    $timeout(function () {
-    $ionicLoading.hide();
-    $ionicHistory.clearCache();
-    $ionicHistory.clearHistory();
-    $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
-    $state.go('app.home');
-    }, 30);
+    $state.go('app.home', {}, {reload: true});
   };
 
 
@@ -79,6 +72,25 @@ angular.module('starter.controllers', [])
     $scope.cart_id = '';
     console.log('current cart_id',$scope.cart_id);
   };
+
+  //user id
+  if(localStorage.getItem('loginInfo') != null){
+    $scope.user = JSON.parse(localStorage.getItem('loginInfo'));
+    var user_id = $scope.user.id;
+    console.log('localstorage USER ID',user_id);
+  }else{
+    var user_id = '0';
+    console.log('localstorage USER ID',user_id);
+  };
+
+  //GET CART ITEM
+   $http.get('http://staging.wine-enterprise.com:8011/apis/cart/list?cart_id='+$scope.cart_id+'&user_id='+user_id)
+    .then(function(response) {
+      $scope.cartList = response.data;
+      console.log(response);
+    }, function(err){
+        console.error('ERR', err);
+    })
 
 })
   

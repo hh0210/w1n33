@@ -8,13 +8,22 @@
     <div class="item item-thumbnail-left" ng-repeat="cartInfo in cartList">
 	    <div class="row">
 		  <div class="col">
+
+		  <!-- form -->
+		  <form ng-submit="delete(cartInfo)">
+		  	<input type="hidden" ng-model="cartInfo.product_id">
+			  <button type="submit">
+			  <i class="ion-close-round"></i>
+			  </button>
+		  </form>
+		  <!-- end form -->
+
 		  	<img class="cartImg" ng-src="{{img}}{{cartInfo.photo}}">
 		  		<br><br>
 		  	<span class="greenbox mt10">Subtotal</span>
 		  	<span class="subtotal">MYR {{cartInfo.price}}
 		  	</span>
 		  </div>
-		  
 		  <div class="col font-small">
 		  	<span class="pl5" style="color:#9B59B6;">{{cartInfo.product_name}}</span>
 		  	<br>
@@ -45,11 +54,13 @@
 				</a>
 			</div>
 			
-			<div class="col">
-				<a class="button btn-block btnCheckOut font-medium" ng-href="#/app/order/summary">
-				  Check Out
-				</a>
-			</div>
+			<form ng-submit="salesorder(cartList)">
+				<div class="col">
+					<button type="submit" class="button btn-block btnCheckOut font-medium">
+					  Check Out
+					</button>
+				</div>
+			</form>
 		</div>	
 	</div>
 
