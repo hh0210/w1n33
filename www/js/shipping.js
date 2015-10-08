@@ -52,7 +52,7 @@ angular.module('starter.shipping', [])
 			console.log('INFO', response);
 			console.log('INFO', response.data.status);
 
-			$state.go('app.payment');
+			$state.go('app.ordersummary');
 	        
 		}, function errorCallback(response) {
 			console.log('ERROR', response);
@@ -71,7 +71,7 @@ angular.module('starter.shipping', [])
 			console.log('INFO', response);
 			console.log('INFO', response.data.status);
 
-			$state.go('app.payment');
+			$state.go('app.ordersummary');
 	        
 		}, function errorCallback(response) {
 			console.log('ERROR', response);

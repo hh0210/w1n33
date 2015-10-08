@@ -1,7 +1,7 @@
 angular.module('starter.user', ['ngMessages'])
 
 //REGISTRATION
-.controller("user", function($scope, $http, $ionicPopup, $state, $timeout, $ionicLoading, $ionicHistory) {
+.controller("user", function($scope, $http, $ionicPopup, $state) {
 
 	//SIGN UP
 	// console.error('INFO', 'A');
@@ -35,14 +35,7 @@ angular.module('starter.user', ['ngMessages'])
     }).then(function(response) {
         localStorage.setItem('loginInfo',JSON.stringify(response.data));
 
-        //not working, reload page
-        $timeout(function () {
-        $ionicLoading.hide();
-        $ionicHistory.clearCache();
-        $ionicHistory.clearHistory();
-        $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
-        $state.go('app.home');
-        }, 30);
+        $state.go('app.home', {}, {reload: true});
 
         console.log(JSON.parse(localStorage.getItem('loginInfo')));
       })
