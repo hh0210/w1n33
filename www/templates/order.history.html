@@ -1,5 +1,5 @@
 <ion-view view-title="Order History">
-  <ion-content>
+  <ion-content ng-controller="orderhistory">
 
 	  <div class="item item-text-wrap p0">
 
@@ -10,25 +10,16 @@
           <div class="col">Quantity</div>
           <div class="col">Price</div>
         </div>
-<!-- 
-        <div class="row col-bg center col-line font-small">
-        	<div class="col">56456</div>
-			<div class="col">Make Payment</div>
-			<div class="col">Red Wine</div>
-			<div class="col">5</div>
-			<div class="col">RM 45.00</div>
-        </div>
-
-        <div class="row col-bg center col-line font-small">
-        	<div class="col">23412</div>
-			<div class="col">Make Payment</div>
-			<div class="col">Whisky</div>
-			<div class="col">2</div>
-			<div class="col">RM 243.50</div>
-        </div> -->
 
         <ul class="list">
-		    <div class="row item font-small center">
+	         <div class="row col-bg center col-line font-small" ng-repeat="order in orderhistory">
+				<div class="col">{{order.id}}</div>
+				<div class="col">{{order.status}}</div>
+				<div class="col">{{order.name}}</div>
+				<div class="col">{{order.qty}}</div>
+				<div class="col">{{order.price}}</div>
+	        </div>
+		    <!-- <div class="row item font-small center">
 		      	<div class="col">2332</div>
 				<div class="col">Order Approved</div>
 				<div class="col">Whisky</div>
@@ -41,14 +32,7 @@
 				<div class="col">Red Wine</div>
 				<div class="col">5</div>
 				<div class="col">RM 55.50</div>
-		    </div>
-		    <div class="row item font-small center">
-		      	<div class="col">6742</div>
-				<div class="col">Pending Order</div>
-				<div class="col">Whisky</div>
-				<div class="col">7</div>
-				<div class="col">RM 243.50</div>
-		    </div>
+		    </div> -->
 		</ul>
 
 	  </div>

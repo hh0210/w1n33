@@ -87,19 +87,19 @@ angular.module('starter.productdetails', [])
 		});
 	}
 
-	 $scope.addQty = function(qty) {
-	 	var add = 0;
-	 	add = parseInt(qty) + 1;
-	 	console.log(add);
-	 	console.log("add value is #######");
+	 // $scope.addQty = function(qty) {
+	 // 	var add = 0;
+	 // 	add = parseInt(qty) + 1;
+	 // 	console.log(add);
+	 // 	console.log("add value is #######");
 
-	 	productDetails.qty.$setViewValue(add);
-	 };
+	 // 	productDetails.qty.$setViewValue(add);
+	 // };
 
-	 $scope.minusQty = function(qty) {
-	 	var minus = 0;
-	 	minus = parseInt(qty) - 1;
-	 	console.log(minus);
-	 	console.log("minus value is #######");
-	 };
+	 // $scope.minusQty = function(qty) {
+	 // 	var minus = 0;
+	 // 	minus = parseInt(qty) - 1;
+	 // 	console.log(minus);
+	 // 	console.log("minus value is #######");
+	 // };
 });

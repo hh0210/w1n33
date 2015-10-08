@@ -7,7 +7,7 @@
 var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.controllers2','starter.categories',
                                             'starter.productdetails','starter.productlist','starter.cartlist',
                                             'starter.ordersummary', 'starter.user', 'starter.payment', 'starter.billing',
-                                            'starter.shipping', 'starter.search'])
+                                            'starter.shipping', 'starter.search', 'starter.orderhistory'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -100,7 +100,8 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       url: '/order/history',
       views: {
         'menuContent': {
-          templateUrl: 'templates/order.history.html'
+          templateUrl: 'templates/order.history.html',
+          controller: 'orderhistory'
         }
       }
     })
