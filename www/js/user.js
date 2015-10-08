@@ -1,7 +1,7 @@
 angular.module('starter.user', ['ngMessages'])
 
 //REGISTRATION
-.controller("user", function($scope, $http, $ionicPopup, $state, $window) {
+.controller("user", function($scope, $http, $ionicPopup, $state) {
 
 	//SIGN UP
 	// console.error('INFO', 'A');
@@ -25,7 +25,7 @@ angular.module('starter.user', ['ngMessages'])
 
 //LOGIN
   $scope.login = function(userdata){
-    $window.localStorage.clear('cart_id');
+    localStorage.removeItem('cart_id');
     $http({
       method: 'POST',
       url: 'http://staging.wine-enterprise.com:8011/apis/user/login',
