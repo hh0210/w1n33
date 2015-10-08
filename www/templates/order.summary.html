@@ -9,14 +9,14 @@
           <div class="col">Subtotal</div>
         </div>
 
-        <div class="row col-bg center col-line font-small" ng-repeat="cartInfo in cartList">
-			<div class="col">{{cartInfo.product_name}}</div>
-			<div class="col">{{cartInfo.qty}}</div>
-			<div class="col">{{cartInfo.unit_price}}</div>
-			<div class="col">{{cartInfo.price}}</div>
+        <div class="row col-bg center col-line font-small" ng-repeat="salesorderInfo in salesorderList">
+			<div class="col">{{salesorderInfo.product_name}}</div>
+			<div class="col">{{salesorderInfo.qty}}</div>
+			<div class="col">{{salesorderInfo.unit_price}}</div>
+			<div class="col">{{salesorderInfo.price}}</div>
         </div>
        
-       	<form ng-submit="salesorder(cartList)">
+       	<form ng-submit="invoice(salesorderList)">
        	<!-- <input type="text" ng-model="cartList[0].id"> -->
        	<!-- Submit promo code data -->
 		  <div class="item item-input">
@@ -25,12 +25,23 @@
 		  </div>
 
 		<!-- Row for total  -->
+		<div class="row">
+			<div class="col col-33">
+				<p class="ml5 font-medium input-label ">{{shipment_method}}</p>
+			</div>
+			<div class="col col-67">
+				<p style="color:#3498DB;">{{location_name}}</p>
+				<p style="color:#3498DB;">{{address}}</p>
+				<p style="color:#3498DB;">{{type}}</p>
+			</div>
+		</div>
+
         <div class="row">
 			<div class="col col-33">
 				<p class="ml5 font-medium input-label ">Total:</p>
 			</div>
 			<div class="col col-67">
-				<span class="font-big" style="color:#3498DB;">RM {{cartList[0].total_price}}
+				<span class="font-big" style="color:#3498DB;">RM {{salesorderList[0].total_price}}
 				</span>
 			</div>
 		</div>

@@ -58,7 +58,7 @@ angular.module('starter.controllers', [])
   //logout
   $scope.logout = function() {
     localStorage.removeItem('loginInfo');
-
+    localStorage.removeItem('cart_id');
     $state.go('app.home', {}, {reload: true});
   };
 

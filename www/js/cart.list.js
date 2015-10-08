@@ -16,9 +16,9 @@ angular.module('starter.cartlist', [])
     //GET CART ITEM
      $http.get('http://staging.wine-enterprise.com:8011/apis/cart/list?cart_id='+$stateParams.cart_id+'&user_id='+user_id)
       .then(function(response) {
-        if(response.data[0].product_id == null){
-        	$state.go('app.categories');
-        };
+        // if(response.data[0].product_id == null){
+        // 	$state.go('app.categories');
+        // };
         $scope.cartList = response.data;
         $scope.img = "http://shared.wine-enterprise.com/upload/product/";
         console.log(response);
