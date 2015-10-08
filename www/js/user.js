@@ -1,7 +1,7 @@
 angular.module('starter.user', ['ngMessages'])
 
 //REGISTRATION
-.controller("user", function($scope, $http, $ionicPopup, $state) {
+.controller("user", function($scope, $http, $ionicPopup, $state, $window) {
 
 	//SIGN UP
 	// console.error('INFO', 'A');
@@ -18,7 +18,6 @@ angular.module('starter.user', ['ngMessages'])
 		}).then(function successCallback(response) {
 			console.log('INFO', response);
 			console.log('INFO', response.data.status);
-	        $scope.test = response.data;
 		}, function errorCallback(response) {
 			console.log('ERROR', response);
 		});
@@ -26,6 +25,7 @@ angular.module('starter.user', ['ngMessages'])
 
 //LOGIN
   $scope.login = function(userdata){
+    $window.localStorage.clear('cart_id');
     $http({
       method: 'POST',
       url: 'http://staging.wine-enterprise.com:8011/apis/user/login',
