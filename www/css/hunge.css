@@ -1,9 +1,15 @@
+/*=========== Header Bar ==========*/
+.bar-header {
+	background: #731115;
+	color: #fff;
+}
+
 /*============== HOME ===============*/
 .slider-slide {
 	padding: 0px;
 }
 
-/*=====FORM VALIDADTION========*/
+/*=====FORM VALIDATION========*/
 .error-container {
   margin: 5px 0;
 }
