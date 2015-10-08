@@ -1,58 +1,55 @@
 <ion-view view-title="Order History Details">
   <ion-content ng-controller="orderhistorydetails">
 
-  	 <div class="row col-header center font-small">
-          <div class="col">Name</div>
-          <div class="col">Quantity</div>
-          <div class="col">Price</div>
-          <div class="col">Subtotal</div>
+    <div class="item item-text-wrap p0">
+
+    	<!-- Table header name -->
+	    <div class="row col-header center font-small">
+          <div class="col col-20">Product<br> id</div>
+          <div class="col col-20">Product name</div>
+          <div class="col col-20">Quantity</div>
+          <div class="col col-20">Price (MYR)</div>
+          <div class="col col-20">Status</div>
         </div>
 
-        <div class="row col-bg center col-line font-small" ng-repeat="salesorderInfo in salesorderList">
-			<div class="col">{{salesorderInfo.product_name}}</div>
-			<div class="col">{{salesorderInfo.qty}}</div>
-			<div class="col">{{salesorderInfo.unit_price}}</div>
-			<div class="col">{{salesorderInfo.price}}</div>
-        </div>
-       
-       	<form ng-submit="invoice(salesorderList)">
-       	<!-- <input type="text" ng-model="cartList[0].id"> -->
-       	<!-- Submit promo code data -->
-		  <div class="item item-input">
-		    <span class="input-label font-medium">Promo Code:</span>
-		    <input type="text">
-		  </div>
+        <!-- Table data -->
+        <ul class="list">
+			<div class="row col-bg center col-line font-small" ng-repeat="order in orderhistorydetails">
+				<div class="col col-20">{{order.id_ProductMaster}}</div>
+				<div class="col col-20">{{order.name}}</div>
+				<div class="col col-20">{{order.qty}}</div>
+				<div class="col col-20">{{order.price|number:2}}</div>
+				<div class="col col-20">{{order.status}}</div>
+	        </div>	        
+		</ul>
 
-		<!-- Row for total  -->
+		<!-- Total price -->
 		<div class="row">
-			<div class="col col-33">
-				<p class="ml5 font-medium input-label ">{{shipment_method}}</p>
-			</div>
-			<div class="col col-67">
-				<p style="color:#3498DB;">{{location_name}}</p>
-				<p style="color:#3498DB;">{{address}}</p>
-				<p style="color:#3498DB;">{{type}}</p>
-			</div>
-		</div>
-
-        <div class="row">
 			<div class="col col-33">
 				<p class="ml5 font-medium input-label ">Total:</p>
 			</div>
 			<div class="col col-67">
-				<span class="font-big" style="color:#3498DB;">RM {{salesorderList[0].total_price}}
+				<span class="font-big" style="color:#3498DB;">MYR {{order.price|number:2}}
 				</span>
 			</div>
 		</div>
-
-		<!-- Row for confirm button -->
-		<div class="row">
-			<div class="col">
-				<button type="submit" class="button button-block btnCheckOut">Confirm</button>
-			</div>
-		</div>	
-		</form>
-
+	</div>
+	<!-- End of listing -->
+	
+	 <!-- Shipping Info of recipient -->
+	 <div class="card">
+		<div class="item item-divider font-medium">
+			Deliver to
+		</div>
+		<div class="item item-text-wrap">
+			 <label class="item item-input font-medium royal">
+        		<span>{{orderhistorydetails[0].given_name}} {{orderhistorydetails[0].family_name}} <br>
+        		{{orderhistorydetails[0].phone}} <br>
+        		{{orderhistorydetails[0].address}}
+        		</span>
+      		</label>
+		</div>
+	</div>
 
   </ion-content>
 </ion-view>

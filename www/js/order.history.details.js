@@ -11,10 +11,10 @@ angular.module('starter.orderhistorydetails', [])
 	// Get order history and proceed to order history details.
     $http.get('http://staging.wine-enterprise.com:8011/apis/orderhistory?user_id='+user_id)
 	    .then(function(response) {
-		    $scope.orderhistory = response.data;
+		    $scope.orderhistorydetails = response.data;
 
-		    console.log($scope.orderhistory);
-		    console.log("##############");
+		    console.log($scope.orderhistorydetails);
+		    console.log("#######order odrer#######");
 		  }, function(err){
 		      console.error('ERR', err);
 		  })

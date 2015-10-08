@@ -5,15 +5,15 @@
         <div class="row col-header center font-small">
           <div class="col">Name</div>
           <div class="col">Quantity</div>
-          <div class="col">Price</div>
-          <div class="col">Subtotal</div>
+          <div class="col">Price<br>(MYR)</div>
+          <div class="col">Subtotal (MYR)</div>
         </div>
 
         <div class="row col-bg center col-line font-small" ng-repeat="salesorderInfo in salesorderList">
 			<div class="col">{{salesorderInfo.product_name}}</div>
 			<div class="col">{{salesorderInfo.qty}}</div>
-			<div class="col">{{salesorderInfo.unit_price}}</div>
-			<div class="col">{{salesorderInfo.price}}</div>
+			<div class="col">{{salesorderInfo.unit_price|number:2}}</div>
+			<div class="col">{{salesorderInfo.price|number:2}}</div>
         </div>
        
        	<form ng-submit="invoice(salesorderList)">
@@ -41,7 +41,7 @@
 				<p class="ml5 font-medium input-label ">Total:</p>
 			</div>
 			<div class="col col-67">
-				<span class="font-big" style="color:#3498DB;">RM {{salesorderList[0].total_price}}
+				<span class="font-big" style="color:#3498DB;">MYR {{salesorderList[0].total_price|number:2}}
 				</span>
 			</div>
 		</div>

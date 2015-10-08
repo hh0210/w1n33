@@ -1,41 +1,32 @@
 <ion-view view-title="Order History">
   <ion-content ng-controller="orderhistory">
 
-	  <div class="item item-text-wrap p0">
-
-	    <div class="row col-header center font-small">
-          <div class="col col-20">Product id</div>
-          <div class="col col-20">Product name</div>
-          <div class="col col-20">Quantity</div>
-          <div class="col col-20">Price</div>
-          <div class="col col-20">Status</div>
-        </div>
-
-        <ul class="list">
-			<a ng-href="#/app/order/history/details">
-				<div class="row col-bg center col-line font-small" ng-repeat="order in orderhistory">
-					<div class="col col-20">{{order.id_ProductMaster}}</div>
-					<div class="col col-20">{{order.name}}</div>
-					<div class="col col-20">{{order.qty}}</div>
-					<div class="col col-20">MYR {{order.price}}</div>
-					<div class="col col-20">{{order.status}}</div>
-		        </div>
-			</a> 	        
-		</ul>
-
-		 <!--  <ion-list>
-		  <ion-item href="#/app/order/summary">
-		    <div class="row col-bg center col-line font-small" ng-repeat="order in orderhistory">
-				<div class="col col-10">{{order.id}}</div>
-				<div class="col col-33">{{order.name}}</div>
-				<div class="col col-20">{{order.qty}}</div>
-				<div class="col col-20">{{order.price}}</div>
-				<div class="col col-20">{{order.status}}</div>
-	        </div>
-		  </ion-item>
-		</ion-list> -->
-	  </div>
-	
+	  <div class="list">
+	  	<a href="#/app/order/history/details">
+		    <div class="item font-small" ng-repeat="order in orderhistory">
+		    	<div class="row">
+			    	<div class="col col-50">Order Status</div>
+			    	<div class="col col-50">{{order.status}}</div>
+			    </div>
+			    <div class="row">
+			    	<div class="col col-50">Order Date</div>
+			    	<div class="col col-50">{{order.created_on}}</div>
+			    </div>
+			     <div class="row">
+			    	<div class="col col-50">Recipient</div>
+			    	<div class="col col-50">{{order.given_name}} {{order.family_name}}</div>
+			    </div>
+			     <div class="row">
+			    	<div class="col col-33">Items</div>
+			    	<div class="col-67">
+			    		<br>
+			    		<li class="m0 p0">{{order.name}}</li>
+			    	</div>
+			    </div>
+		    </div>
+	    </a>
+	    <!-- End of list item -->
+	</div>
 
   </ion-content>
 </ion-view>
