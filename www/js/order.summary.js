@@ -23,7 +23,7 @@ angular.module('starter.ordersummary', [])
 	}
 
     //GET SALES ORDER ITEM
-     $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order?cart_id='+cart_id+'&user_id='+user_id)
+    $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order?cart_id='+cart_id+'&user_id='+user_id)
       .then(function(response) {
         $scope.salesorderList = response.data;
         console.log(response);
@@ -39,8 +39,9 @@ angular.module('starter.ordersummary', [])
           console.error('ERR', err);
       })
 
-    //Create Sales Order
+    //Create invoice
 	$scope.invoice = function(salesorderList){
+		localStorage.removeItem('cart_id');
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/invoice',

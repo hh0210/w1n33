@@ -12,16 +12,6 @@ angular.module('starter.productdetails', [])
 			console.error('ERR', err);
 		});
 
-
-	//cart id
-	if(localStorage.getItem('cart_id') != null){
-		var cart_id = JSON.parse(localStorage.getItem('cart_id'));
-		console.log('current cart_id',cart_id);
-	}else{
-		var cart_id = '';
-		console.log('current cart_id',cart_id);
-	};
-
 	//user id
 	if(localStorage.getItem('loginInfo') != null){
 		$scope.user = JSON.parse(localStorage.getItem('loginInfo'));
@@ -85,6 +75,16 @@ angular.module('starter.productdetails', [])
 			console.log(cart_id);
 		});
 	}
+
+
+	//cart id - temp
+	if(localStorage.getItem('cart_id') != null){
+		var cart_id = JSON.parse(localStorage.getItem('cart_id'));
+		console.log('current cart_id',cart_id);
+	}else{
+		var cart_id = '';
+		console.log('current cart_id',cart_id);
+	};
 
 	 // $scope.addQty = function(qty) {
 	 // 	var add = 0;
