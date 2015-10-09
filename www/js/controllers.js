@@ -48,7 +48,7 @@ angular.module('starter.controllers', [])
   if (localStorage.getItem('loginInfo') != null) {
     $scope.loginInfo = [];
     $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
-    console.log('LoginInfo',$scope.loginInfo);
+    console.log('INFO',$scope.loginInfo);
 
     $scope.noUser = false;
     $scope.haveUser = true;
@@ -60,7 +60,7 @@ angular.module('starter.controllers', [])
   //logout
   $scope.logout = function() {
     localStorage.clear('loginInfo');
-    console.log('INFO',JSON.parse(localStorage.getItem('loginInfo')))
+    console.log('INFO',JSON.parse(localStorage.getItem('loginInfo')));
     $scope.noUser = true;
     $scope.haveUser = false;
     if(localStorage.getItem('cart_id') != null){
@@ -72,6 +72,9 @@ angular.module('starter.controllers', [])
     $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
     console.log($scope.loginInfo.username);
 
+    $timeout(function() {
+            $scope.closeLogin();
+          }, 100);
     $state.go('app.home');
   };
 
@@ -95,7 +98,7 @@ angular.module('starter.controllers', [])
           $scope.haveUser = true;
           $scope.loginInfo = [];
           $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
-          console.log('INFO',$scope.loginInfo.username);
+          console.log('username',$scope.loginInfo.username);
 
           //close the login modal
           $timeout(function() {
@@ -115,6 +118,15 @@ angular.module('starter.controllers', [])
     if(JSON.parse(localStorage.getItem('cart_id')) != null){
       $scope.cart_id = JSON.parse(localStorage.getItem('cart_id'));
       console.log('current cart_id',$scope.cart_id);
+
+      //get cart count
+      $http.get('http://staging.wine-enterprise.com:8011/apis/cart/list?cart_id='+$scope.cart_id+'&user_id='+user_id)
+        .then(function(response) {
+          $scope.cartList = response.data;
+          console.log(response);
+        }, function(err){
+            console.error('ERR', err);
+        })
     }else{
       $scope.cart_id = '';
       console.log('current cart_id',$scope.cart_id);
@@ -123,10 +135,10 @@ angular.module('starter.controllers', [])
   
   $scope.loginInfo = [];
   $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
-  console.log('testing',$scope.loginInfo);
+  console.log('INFO',$scope.loginInfo);
 
   //local storage cart id
-  console.log('INFO',JSON.parse(localStorage.getItem('cart_id')));
+  console.log('current cart_id',JSON.parse(localStorage.getItem('cart_id')));
   if(JSON.parse(localStorage.getItem('cart_id')) != null){
     $scope.cart_id = JSON.parse(localStorage.getItem('cart_id'));
     console.log('current cart_id',$scope.cart_id);
@@ -139,10 +151,10 @@ angular.module('starter.controllers', [])
   if(localStorage.getItem('loginInfo') != null){
     $scope.user = JSON.parse(localStorage.getItem('loginInfo'));
     var user_id = $scope.user.id;
-    console.log('localstorage USER ID',user_id);
+    console.log('current USER ID',user_id);
   }else{
     var user_id = '0';
-    console.log('localstorage USER ID',user_id);
+    console.log('current USER ID',user_id);
   };
 
   //GET CART ITEM
