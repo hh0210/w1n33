@@ -2,7 +2,7 @@ angular.module('starter.productdetails', [])
 
  // Product Details
 .controller('productdetails', function($scope, $http, $stateParams, $ionicPopup, $timeout) {
-
+console.log('some',JSON.parse(localStorage.getItem('cart_id')));
 	//GET PRODUCT DETAILS
     $http.get('http://staging.wine-enterprise.com:8011/apis/productdetails?sku_code='+$stateParams.sku_code)
 		.then(function(response) {
@@ -81,6 +81,7 @@ angular.module('starter.productdetails', [])
 	if(localStorage.getItem('cart_id') != null){
 		var cart_id = JSON.parse(localStorage.getItem('cart_id'));
 		console.log('current cart_id',cart_id);
+	//}
 	}else{
 		var cart_id = '';
 		console.log('current cart_id',cart_id);

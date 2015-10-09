@@ -49,22 +49,17 @@
           Products
         </ion-item> -->
 
-        
-        <!-- <ion-item menu-close ng-click="{{functionuser}}">
-          <i class="ion-log-in"></i>
-          {{loginInfo.username}}
-        </ion-item> -->
-
-        <!-- testing -->
-        <ion-item menu-close ng-click="login()" ng-if="noUser" style="display:{{userlogin}}">
+        <!-- Login -->
+        <ion-item menu-close ng-click="login()" ng-show="noUser">
           <i class="ion-log-in"></i>
           Login
         </ion-item>
-        <ion-item menu-close ng-click="logout()" ng-if="haveUser" style="display:{{userName}}">
+
+        <ion-item menu-close href="#/app/profile" ng-show="haveUser">
           <i class="ion-log-in"></i>
           {{loginInfo.username}}
         </ion-item>
-        <!-- testing -->
+        <!-- End Login -->
 
         <ion-item menu-close href="#/app/order/history">
           <i class="ion-social-buffer"></i>
@@ -75,6 +70,11 @@
           <i class="ion-android-cart"></i>
           Cart List
           <span class="badge badge-assertive">{{cartList[0].cart_count}}</span>
+        </ion-item>
+
+        <ion-item menu-close ng-click="logout()" ng-show="haveUser" class="default-bg">
+          <i class="ion-log-out"></i>
+          Logout
         </ion-item>
 
         <!-- <ion-item menu-close href="#/app/profile">
