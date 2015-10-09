@@ -104,6 +104,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
 
     .state('app.orderhistory', {
         url: '/order/history',
+        cache: false,
         views: {
           'menuContent': {
             templateUrl: 'templates/order.history.html',
@@ -113,7 +114,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       })
 
     .state('app.orderhistorydetails', {
-        url: '/order/history/details',
+        url: '/order/history/details/:code',
         views: {
           'menuContent': {
             templateUrl: 'templates/order.history.details.html',
@@ -155,7 +156,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     })
 
     .state('app.cartlist', {
-      cache:false,
+      cache: false,
       url: '/cart/list/:cart_id',
       views: {
         'menuContent': {
@@ -166,7 +167,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     })
 
     .state('app.ordersummary', {
-      cache:false,
+      cache: false,
       url: '/order/summary',
       views: {
         'menuContent': {
