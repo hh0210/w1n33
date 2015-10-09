@@ -1,7 +1,7 @@
 angular.module('starter.user', ['ngMessages'])
 
 //REGISTRATION
-.controller("user", function($scope, $http, $ionicPopup, $state) {
+.controller("user", function($scope, $http, $ionicPopup, $state, $timeout) {
 
 	//SIGN UP
 	// console.error('INFO', 'A');
@@ -21,30 +21,9 @@ angular.module('starter.user', ['ngMessages'])
 		}, function errorCallback(response) {
 			console.log('ERROR', response);
 		});
-	}
-
-//LOGIN
-  $scope.login = function(userdata){
-    localStorage.removeItem('cart_id');
-    $http({
-      method: 'POST',
-      url: 'http://staging.wine-enterprise.com:8011/apis/user/login',
-      data: 'username=' + userdata.username + '&password=' + userdata.password,
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      responseType :'json',
-    }).then(function(response) {
-        localStorage.setItem('loginInfo',JSON.stringify(response.data));
-        console.log(JSON.parse(localStorage.getItem('loginInfo')));
-        //$state.go($state.current, {}, {reload: true});
-      //})
-      }, function(err){
-          console.error('ERR', err);
-      })
-  }
-
-  $scope.loginInfo = [];
-  $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
-  console.log('testing',$scope.loginInfo);
+	};
+  
+//login in controller.js
 
 //FORGOT PASSWORD
  $scope.showPopup = function() {

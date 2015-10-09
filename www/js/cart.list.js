@@ -2,7 +2,7 @@ angular.module('starter.cartlist', [])
 
 //CART LIST
 .controller("cartlist", function($scope, $http, $stateParams, $state) {
-
+// localStorage.removeItem('cart_id');
 	//user id
 	if(localStorage.getItem('loginInfo') != null){
 		$scope.user = JSON.parse(localStorage.getItem('loginInfo'));

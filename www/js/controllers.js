@@ -43,33 +43,76 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
 
-  //Localstorage LoginInfo
+
+  //Localstorage LoginInfo for if app closed
   if (localStorage.getItem('loginInfo') != null) {
     $scope.loginInfo = [];
     $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
     console.log('LoginInfo',$scope.loginInfo);
 
-    $scope.haveUser = true;
-    $scope.userName = 'block';
     $scope.noUser = false;
-    $scope.userlogin = 'none';
+    $scope.haveUser = true;
   }else{
-    $scope.haveUser = false;
-    $scope.userName = 'none';
     $scope.noUser = true;
-    $scope.userlogin = 'block';
+    $scope.haveUser = false;
   };
 
   //logout
   $scope.logout = function() {
     localStorage.removeItem('loginInfo');
-    // if(localStorage.getItem('cart_id') != null){
-    //   localStorage.removeItem('cart_id');
-    // };
-    //$state.go($state.current, {}, {reload: true});
+    console.log('INFO',JSON.parse(localStorage.getItem('loginInfo')))
+    $scope.noUser = true;
+    $scope.haveUser = false;
+    if(localStorage.getItem('cart_id') != null){
+      localStorage.clear('cart_id');
+    };
+
+    //force font-end hidden username gone by printing it out
+    $scope.loginInfo = [];
+    $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
+    console.log($scope.loginInfo.username);
+
+    $state.go('app.home');
   };
 
+  //LOGIN
+  $scope.loginUser = function(userdata){
+    localStorage.clear('cart_id');
+    $http({
+      method: 'POST',
+      url: 'http://staging.wine-enterprise.com:8011/apis/user/login',
+      data: 'username=' + userdata.username + '&password=' + userdata.password,
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      responseType :'json',
+    }).then(function(response) {
+      
+        if(response.data != false){
 
+          localStorage.setItem('loginInfo',JSON.stringify(response.data));
+          console.log('INFO',JSON.parse(localStorage.getItem('loginInfo')));
+          //test
+          $scope.noUser = false;
+          $scope.haveUser = true;
+          $scope.loginInfo = [];
+          $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
+          console.log('INFO',$scope.loginInfo.username);
+
+          //close the login modal
+          $timeout(function() {
+            $scope.closeLogin();
+          }, 100);
+          $state.go('app.home');
+        }else{
+          console.error('Invalid');
+        };
+      }, function(err){
+          console.error('ERR', err);
+      })
+  };
+  
+  $scope.loginInfo = [];
+  $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
+  console.log('testing',$scope.loginInfo);
 
   //local storage cart id
   if(localStorage.getItem('cart_id') != null){

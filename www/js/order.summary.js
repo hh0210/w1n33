@@ -41,7 +41,6 @@ angular.module('starter.ordersummary', [])
 
     //Create invoice
 	$scope.invoice = function(salesorderList){
-		localStorage.removeItem('cart_id');
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/invoice',
@@ -52,6 +51,10 @@ angular.module('starter.ordersummary', [])
 			console.log('INFO', response);
 			console.log('INFO', response.data.status);
 			console.log('INFO', response.data.invoice_id);
+
+			// localStorage.removeItem('cart_id');
+			localStorage.clear('cart_id');
+			
 			$state.go('app.payment');
 		//})
 		}, function errorCallback(response) {
