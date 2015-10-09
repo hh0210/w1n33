@@ -13,7 +13,7 @@
 
         <!-- Table data -->
         <ul class="list">
-			<div class="row col-bg center col-line font-small" ng-repeat="order in orderhistorydetails">
+			<div class="row col-bg center col-line font-small" style="word-wrap: normal;" ng-repeat="order in orderhistorydetails">
 				<div class="col">{{order.id_ProductMaster}}</div>
 				<div class="col">{{order.name}}</div>
 				<div class="col">{{order.qty}}</div>
@@ -24,10 +24,11 @@
 		<!-- Total price -->
 		<div class="row">
 			<div class="col col-33">
-				<p class="ml5 font-medium input-label ">Total:</p>
+				<span class="ml5 pt0 font-medium input-label ">Total:</span>
 			</div>
 			<div class="col col-67">
-				<span class="font-big" style="color:#3498DB;">MYR {{orderhistorydetails[0].total_price|number:2}}
+				<span class="font-big" style="color:#3498DB;">MYR {{orderhistorydetails[0].total_price|number:2}} </span>
+				<span  class="font-medium ml10" style="color:red;">{{orderhistorydetails[0].status}}
 				</span>
 			</div>
 		</div>
