@@ -22,13 +22,14 @@ angular.module('starter.cartlist', [])
         // };
         $scope.cartList = response.data;
         $scope.img = "http://shared.wine-enterprise.com/upload/product/";
-        console.log(response);
+
+       	console.log('CART_INFO',$scope.cartList);
       }, function(err){
           console.error('ERR', err);
       })
 
 	//Delete Cart ITEM
-	$scope.delete = function(cartInfo){
+	$scope.delete = function(cartInfo) {
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/cart/list/delete',
@@ -63,6 +64,18 @@ angular.module('starter.cartlist', [])
 			console.log('ERROR', response);
 
 		});
+	}
+
+	$scope.plus = function(qty) {
+		console.log('QTY',qty);
+		var newQty = 0;
+		newQty = parseInt(qty) + 1;
+		console.log('QTY',$scope.cartList[0].qty);
+		return $scope.cartList.qty;
+	}
+
+	$scope.minus = function() {
+		
 	}
 
 });
