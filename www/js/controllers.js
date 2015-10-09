@@ -59,7 +59,7 @@ angular.module('starter.controllers', [])
 
   //logout
   $scope.logout = function() {
-    localStorage.removeItem('loginInfo');
+    localStorage.clear('loginInfo');
     console.log('INFO',JSON.parse(localStorage.getItem('loginInfo')))
     $scope.noUser = true;
     $scope.haveUser = false;
@@ -109,13 +109,25 @@ angular.module('starter.controllers', [])
           console.error('ERR', err);
       })
   };
+
+  //force get cart id
+  $scope.getCartId = function(){
+    if(JSON.parse(localStorage.getItem('cart_id')) != null){
+      $scope.cart_id = JSON.parse(localStorage.getItem('cart_id'));
+      console.log('current cart_id',$scope.cart_id);
+    }else{
+      $scope.cart_id = '';
+      console.log('current cart_id',$scope.cart_id);
+    };
+  };
   
   $scope.loginInfo = [];
   $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
   console.log('testing',$scope.loginInfo);
 
   //local storage cart id
-  if(localStorage.getItem('cart_id') != null){
+  console.log('INFO',JSON.parse(localStorage.getItem('cart_id')));
+  if(JSON.parse(localStorage.getItem('cart_id')) != null){
     $scope.cart_id = JSON.parse(localStorage.getItem('cart_id'));
     console.log('current cart_id',$scope.cart_id);
   }else{
