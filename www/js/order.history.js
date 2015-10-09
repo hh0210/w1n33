@@ -13,8 +13,6 @@ angular.module('starter.orderhistory', [])
 	    .then(function(response) {
 		    $scope.orderhistory = response.data;
 
-		    console.log($scope.orderhistory);
-		    console.log("##############");
 		  }, function(err){
 		      console.error('ERR', err);
 		  })

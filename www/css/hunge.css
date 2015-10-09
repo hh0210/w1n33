@@ -40,6 +40,7 @@
 .has-errors {
   border-left: 3px solid #B83E2C;
   border-right: 3px solid #B83E2C;
+   /*border-bottom: 2px solid green;*/
 }
  
 .no-errors {
