@@ -70,11 +70,8 @@ angular.module('starter.controllers', [])
     //force font-end hidden username gone by printing it out
     $scope.loginInfo = [];
     $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
-    console.log($scope.loginInfo.username);
+    // console.log($scope.loginInfo.username); //will block state.go
 
-    $timeout(function() {
-            $scope.closeLogin();
-          }, 100);
     $state.go('app.home');
   };
 
