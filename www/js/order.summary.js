@@ -16,16 +16,17 @@ angular.module('starter.ordersummary', [])
 	if(localStorage.getItem('loginInfo') != null){
 		$scope.user = JSON.parse(localStorage.getItem('loginInfo'));
 		var user_id = $scope.user.id;
-		console.log('localstorage USER ID',user_id);
+		console.log('current USER ID',user_id);
 	}else{
 		var user_id = '0';
-		console.log('localstorage USER ID',user_id);
+		console.log('current USER ID',user_id);
 	}
 
     //GET SALES ORDER ITEM
     $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order?cart_id='+cart_id+'&user_id='+user_id)
       .then(function(response) {
         $scope.salesorderList = response.data;
+        $scope.total_price = $scope.salesorderList[0].total_price;
         console.log(response);
         if($scope.salesorderList[0].shipment_type == null){
         	$scope.shipment_method = 'Self Pick Up';
@@ -33,27 +34,40 @@ angular.module('starter.ordersummary', [])
         	$scope.address = $scope.salesorderList[0].address;
         }else{
 			$scope.shipment_method = 'Shipping';
-			$scope.type = $scope.salesorderList[0].shipment_type+': RM'+$scope.salesorderList[0].price;
+			$scope.type = $scope.salesorderList[0].shipment_type+': RM'+parseInt($scope.salesorderList[0].shipment_price).toFixed(2);
+			$scope.total_price = parseInt($scope.salesorderList[0].total_price) + parseInt($scope.salesorderList[0].shipment_price);
         };
+      }, function(err){
+          console.error('ERR', err);
+      });
+
+    //billing info
+    $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/person?cart_id='+cart_id)
+      .then(function(response) {
+
+      	console.log('EMAIL', response.data.email);
+      	localStorage.setItem('email',JSON.stringify(response.data.email));
+
       }, function(err){
           console.error('ERR', err);
       })
 
     //Create invoice
+    $scope.email = JSON.parse(localStorage.getItem('email'));
 	$scope.invoice = function(salesorderList){
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/invoice',
-		    data: 'cart_id=' + cart_id + '&user_id=' + user_id,
+		    data: 'cart_id=' + cart_id + '&user_id=' + user_id + '&email=' + $scope.email,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
 		}).then(function successCallback(response) {
 			console.log('INFO', response);
-			console.log('INFO', response.data.status);
-			console.log('INFO', response.data.invoice_id);
+			//console.log('STATUS', response.data.status);
+			//console.log('invoice_id', response.data.invoice_id);
 
 			// localStorage.removeItem('cart_id');
-			localStorage.clear('cart_id');
+			localStorage.removeItem('cart_id');
 			
 			$state.go('app.payment');
 		//})

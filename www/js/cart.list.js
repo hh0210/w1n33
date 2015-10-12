@@ -7,20 +7,26 @@ angular.module('starter.cartlist', [])
 	if(localStorage.getItem('loginInfo') != null){
 		$scope.user = JSON.parse(localStorage.getItem('loginInfo'));
 		var user_id = $scope.user.id;
-		console.log('localstorage USER ID',user_id);
+		console.log('current USER ID',user_id);
 	}else{
 		var user_id = '0';
-		console.log('localstorage USER ID',user_id);
+		console.log('current USER ID',user_id);
 	}
 
     //GET CART ITEM
-    console.log('cart_id', $stateParams.cart_id);
+    console.log('state cart_id', $stateParams.cart_id);
      $http.get('http://staging.wine-enterprise.com:8011/apis/cart/list?cart_id='+$stateParams.cart_id+'&user_id='+user_id)
       .then(function(response) {
         // if(response.data[0].product_id == null){
         // 	$state.go('app.categories');
         // };
         $scope.cartList = response.data;
+
+        $stateParams.cart_id = $scope.cartList[0].id;
+        
+        localStorage.setItem('cart_id',JSON.stringify($stateParams.cart_id));
+        console.log('current cart_id', JSON.parse(localStorage.getItem('cart_id')));
+        
         $scope.img = "http://shared.wine-enterprise.com/upload/product/";
 
        	console.log('CART_INFO',$scope.cartList);
@@ -38,7 +44,7 @@ angular.module('starter.cartlist', [])
 		    responseType :'json',
 		}).then(function successCallback(response) {
 			console.log('INFO', response);
-			console.log('INFO', response.data.status);
+			console.log('STATUS', response.data.status);
 			$state.go('app.cartlist', {}, {reload: true});
 		}, function errorCallback(response) {
 			console.log('ERROR', response);
@@ -56,8 +62,8 @@ angular.module('starter.cartlist', [])
 		    responseType :'json',
 		}).then(function successCallback(response) {
 			console.log('INFO', response);
-			console.log('INFO', response.data.status);
-			console.log('INFO', response.data.salesorder_id);
+			console.log('STATUS', response.data.status);
+			console.log('current salesorder_id', response.data.salesorder_id);
 			$state.go('app.billing');
 		//})
 		}, function errorCallback(response) {

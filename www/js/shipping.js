@@ -45,12 +45,14 @@ angular.module('starter.shipping', [])
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/sales/order/shipment',
 		    data: 'cart_id='+ cart_id + '&given_name=' + shipmentInfo.given_name + '&family_name=' + shipmentInfo.family_name +
-		          '&phone=' + shipmentInfo.phone + '&address=' + shipmentInfo.address + '&id_SalesOrderShipmentType=' + $scope.item_id,
+		          '&phone=' + shipmentInfo.phone + 
+		          '&address=' + shipmentInfo.address1 + '\n' + shipmentInfo.address2 + '\n' + shipmentInfo.city + '\n' + shipmentInfo.codes +
+		          '&id_SalesOrderShipmentType=' + $scope.item_id,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
 		}).then(function successCallback(response) {
 			console.log('INFO', response);
-			console.log('INFO', response.data.status);
+			console.log('STATUS', response.data.status);
 
 			$state.go('app.ordersummary');
 	        
@@ -69,7 +71,7 @@ angular.module('starter.shipping', [])
 		    responseType :'json',
 		}).then(function successCallback(response) {
 			console.log('INFO', response);
-			console.log('INFO', response.data.status);
+			console.log('STATUS', response.data.status);
 
 			$state.go('app.ordersummary');
 	        
