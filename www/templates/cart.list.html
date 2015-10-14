@@ -30,7 +30,11 @@
 				  		Quantity:
 				  	</span>
 				  
-				  	<span style="color:#F1C40F;"> {{cartInfo.qty}}</span>
+				  	<div class="row" style="color:#F1C40F;"> 
+				  	<button type="submit" ng-click="plus(cartInfo)"><i class="ion-plus"></i></button>
+      				<div class="ml10 mr10 font-medium">{{cartInfo.qty}}</div>
+      				<button type="submit" ng-click="minus(cartInfo)"><i class="ion-minus"></i></button>
+				  	</div>
 	
 				  	<br>
 				  	<span class="pl5">Price:</span><span style="color:#7F8C8D;"> MYR {{cartInfo.unit_price|number:2}}</span>
