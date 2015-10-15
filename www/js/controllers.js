@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state, $http) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state, $http, $ionicPopup) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -72,7 +72,20 @@ angular.module('starter.controllers', [])
     $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
     // console.log($scope.loginInfo.username); //will block state.go
 
-    $state.go('app.home');
+    // Popup message for logout sucessfully.
+     var alertPopup = $ionicPopup.alert({
+        title: 'Message',
+        template: 'You have successfully logout!'
+     });
+     alertPopup.then(function(res) {
+         
+     });
+
+     // Close the popup message and go to home page.
+     $timeout(function(){
+        alertPopup.close();
+     }, 1000);
+     $state.go('app.home');
   };
 
   //LOGIN
@@ -97,12 +110,37 @@ angular.module('starter.controllers', [])
           $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
           console.log('username',$scope.loginInfo.username);
 
-          //close the login modal
-          $timeout(function() {
+           // Popup message for login sucessfully.
+           var alertPopup = $ionicPopup.alert({
+              title: 'Message',
+              template: 'You have successfully login!'
+           });
+           alertPopup.then(function(res) {
+               
+           });
+
+           //Close the popup message, modal and go to home page.
+            $timeout(function() {
+              alertPopup.close();
+            }, 1500);
+
             $scope.closeLogin();
-          }, 100);
-          $state.go('app.home');
+            $state.go('app.home');
+
         }else{
+          // Popup message for fail to login.
+           var alertPopup = $ionicPopup.alert({
+              title: 'Message',
+              template: 'Username or password is invalid!'
+           });
+           alertPopup.then(function(res) {
+
+           });
+           $timeout(function() {
+              alertPopup.close();
+            }, 2000);
+
+
           console.error('Invalid');
         };
       }, function(err){

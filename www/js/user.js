@@ -4,7 +4,6 @@ angular.module('starter.user', ['ngMessages'])
 .controller("user", function($scope, $http, $ionicPopup, $state, $timeout) {
 
 	//SIGN UP
-	// console.error('INFO', 'A');
 	$scope.signup = function(userdata){
 		$http({
 		    method: 'POST',

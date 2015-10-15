@@ -52,17 +52,17 @@ angular.module('starter.ordersummary', [])
       	console.log('EMAIL', response.data.email);
       	localStorage.setItem('email',JSON.stringify(response.data.email));
       	$scope.email = JSON.parse(localStorage.getItem('email'));
-      	console.log("############### inside one", $scope.email);
+      	// console.log("############### inside one", $scope.email);
       }, function(err){
           console.error('ERR', err);
       })
 
     //Create invoice
     $scope.email = JSON.parse(localStorage.getItem('email'));
-    console.log(JSON.parse(localStorage.getItem('email')));
-    console.log("############## scope email111 outside1");
-    console.log($scope.email);
-    console.log("############## scope email222 outside2");
+    // console.log(JSON.parse(localStorage.getItem('email')));
+    // console.log("############## scope email111 outside1");
+    // console.log($scope.email);
+    // console.log("############## scope email222 outside2");
 
 
 	$scope.invoice = function(salesorderList){
