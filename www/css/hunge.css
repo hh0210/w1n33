@@ -192,7 +192,7 @@ i.icon.ion-locked, i.icon.ion-android-person  {
 }
 
 /*========= MEMBER PROFILE, GUEST INFO form =============*/
-div > input[type="text"] {
+div > input[type="text"], input[type="email"] {
   border: none;
   border-bottom: 1px solid #F1C40F;
 }

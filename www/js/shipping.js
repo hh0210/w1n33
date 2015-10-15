@@ -79,4 +79,40 @@ angular.module('starter.shipping', [])
 			console.log('ERROR', response);
 		});
 	}
+
+	// Retrieve billing user data to display at shipping page
+	$scope.identifyUser = function(checkboxData) {
+
+		// If user selected ship to himself, get all billing data.
+		if (checkboxData === true) {
+		$http({
+			 url: 'http://staging.wine-enterprise.com:8011/apis/sales/order/person',
+			 method: "GET",
+			 params: {cart_id: cart_id}
+		   })
+	      .then(function(response) {
+	        $scope.shipmentInfo = response.data;
+
+	        // Split address by newline
+	      	$scope.addressInfo = $scope.shipmentInfo.address.split("\n");
+	      	$scope.shipmentInfo.address1 = $scope.addressInfo[0];
+	      	$scope.shipmentInfo.address2 = $scope.addressInfo[1];
+	      	$scope.shipmentInfo.city = $scope.addressInfo[2];
+	      	$scope.shipmentInfo.codes = $scope.addressInfo[3];
+	     
+	      }, function(err){
+	          console.error('ERR', err);
+	      });
+		} else{
+			
+			// Set all form fields to null.
+			$scope.shipmentInfo.given_name = null;
+			$scope.shipmentInfo.family_name = null;
+			$scope.shipmentInfo.phone = null;
+			$scope.shipmentInfo.address1 = null;
+			$scope.shipmentInfo.address2 = null;
+			$scope.shipmentInfo.city = null;
+			$scope.shipmentInfo.codes = null;
+		}
+	} 
 });

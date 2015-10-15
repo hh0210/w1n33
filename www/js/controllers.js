@@ -139,9 +139,7 @@ angular.module('starter.controllers', [])
            $timeout(function() {
               alertPopup.close();
             }, 2000);
-
-
-          console.error('Invalid');
+           return;
         };
       }, function(err){
           console.error('ERR', err);
