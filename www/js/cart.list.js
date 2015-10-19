@@ -21,7 +21,6 @@ angular.module('starter.cartlist', [])
         // 	$state.go('app.categories');
         // };
         $scope.cartList = response.data;
-
         $stateParams.cart_id = $scope.cartList[0].id;
         
         localStorage.setItem('cart_id',JSON.stringify($stateParams.cart_id));
@@ -72,16 +71,60 @@ angular.module('starter.cartlist', [])
 		});
 	}
 
-	$scope.plus = function(qty) {
-		console.log('QTY',qty);
-		var newQty = 0;
-		newQty = parseInt(qty) + 1;
-		console.log('QTY',$scope.cartList[0].qty);
-		return $scope.cartList.qty;
-	}
+	// Add and minus function for product quantity.
+	$scope.plus = function(item) {
+		 // Add the quantity by 1.
+		 item.qty = parseInt(item.qty);
+		 item.qty++;
 
-	$scope.minus = function() {
-		
-	}
+		 // Each click '+' button, add the unit price with total price.
+		 var price = parseInt(item.unit_price);
+
+		 $http({
+		    method: 'POST',
+		    url: 'http://staging.wine-enterprise.com:8011/apis/cart/list/manageQty',
+		    data: 'cart_id='+$stateParams.cart_id + '&id_ProductMaster=' + item.product_id + '&qty='+ item.qty
+		          + '&price='+ price,
+		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+		    responseType :'json',
+		}).then(function successCallback(response) {
+			console.log('INFO', response);
+			console.log('STATUS', response.data.status);
+			$state.go('app.cartlist', {}, {reload: true});
+			console.log("INFO Manage Qty");
+		}, function errorCallback(response) {
+			console.log('ERROR', response);
+		});
+
+  	};
+  	
+  	$scope.minus = function(item) {
+  		item.qty = parseInt(item.qty);
+    	if (item.qty > 0) {
+
+		     // Minus the quantity by 1.
+		     item.qty--;
+
+			 // Each click '+' button, add the unit price with total price.
+			 var price = parseInt(item.unit_price);
+
+			 $http({
+			    method: 'POST',
+			    url: 'http://staging.wine-enterprise.com:8011/apis/cart/list/manageQty',
+			    data: 'cart_id='+$stateParams.cart_id + '&id_ProductMaster=' + item.product_id + '&qty='+ item.qty
+			          + '&price='+ price,
+			    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			    responseType :'json',
+			}).then(function successCallback(response) {
+				console.log('INFO', response);
+				console.log('STATUS', response.data.status);
+				
+				$state.go('app.cartlist', {}, {reload: true});
+
+			}, function errorCallback(response) {
+				console.log('ERROR', response);
+			});
+    	}
+  	};
 
 });

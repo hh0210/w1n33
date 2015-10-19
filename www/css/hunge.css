@@ -124,10 +124,10 @@ i.icon.ion-locked, i.icon.ion-android-person  {
 	border: 1px solid transparent;
     background: #33CD5F;
     color: #fff;
- 	padding: 25px;
- 	padding-top: 0px;
- 	padding-bottom: 3px;
+    margin-left: 0px;
+ 	padding: 2px 20px;
     font-weight: 400;
+    
 }
 
 .cartImg {
@@ -157,8 +157,9 @@ i.icon.ion-locked, i.icon.ion-android-person  {
 
 .subtotal {
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 16px;
 	color: #000;
+	margin-left:12px;
 }
 
 /*========= ORDER SUMMARY ==============*/
@@ -191,7 +192,7 @@ i.icon.ion-locked, i.icon.ion-android-person  {
 }
 
 /*========= MEMBER PROFILE, GUEST INFO form =============*/
-div > input[type="text"] {
+div > input[type="text"], input[type="email"] {
   border: none;
   border-bottom: 1px solid #F1C40F;
 }

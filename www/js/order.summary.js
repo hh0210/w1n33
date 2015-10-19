@@ -27,14 +27,18 @@ angular.module('starter.ordersummary', [])
       .then(function(response) {
         $scope.salesorderList = response.data;
         $scope.total_price = $scope.salesorderList[0].total_price;
+        $scope.img = "http://shared.wine-enterprise.com/upload/product/";
+        // This is total price of all product, without shipping fee.
+        $scope.subtotal = $scope.salesorderList[0].total_price;
+
         console.log(response);
         if($scope.salesorderList[0].shipment_type == null){
-        	$scope.shipment_method = 'Self Pick Up';
+        	$scope.shipment_method = 'Self Pickup';
         	$scope.location_name = $scope.salesorderList[0].location_name;
         	$scope.address = $scope.salesorderList[0].address;
         }else{
 			$scope.shipment_method = 'Shipping';
-			$scope.type = $scope.salesorderList[0].shipment_type+': RM'+parseInt($scope.salesorderList[0].shipment_price).toFixed(2);
+			$scope.type = $scope.salesorderList[0].shipment_type+': MYR '+parseInt($scope.salesorderList[0].shipment_price).toFixed(2);
 			$scope.total_price = parseInt($scope.salesorderList[0].total_price) + parseInt($scope.salesorderList[0].shipment_price);
         };
       }, function(err){
@@ -47,13 +51,20 @@ angular.module('starter.ordersummary', [])
 
       	console.log('EMAIL', response.data.email);
       	localStorage.setItem('email',JSON.stringify(response.data.email));
-
+      	$scope.email = JSON.parse(localStorage.getItem('email'));
+      	// console.log("############### inside one", $scope.email);
       }, function(err){
           console.error('ERR', err);
       })
 
     //Create invoice
     $scope.email = JSON.parse(localStorage.getItem('email'));
+    // console.log(JSON.parse(localStorage.getItem('email')));
+    // console.log("############## scope email111 outside1");
+    // console.log($scope.email);
+    // console.log("############## scope email222 outside2");
+
+
 	$scope.invoice = function(salesorderList){
 		$http({
 		    method: 'POST',

@@ -4,7 +4,6 @@ angular.module('starter.user', ['ngMessages'])
 .controller("user", function($scope, $http, $ionicPopup, $state, $timeout) {
 
 	//SIGN UP
-	// console.error('INFO', 'A');
 	$scope.signup = function(userdata){
 		$http({
 		    method: 'POST',
@@ -18,6 +17,24 @@ angular.module('starter.user', ['ngMessages'])
 		}).then(function successCallback(response) {
 			console.log('INFO', response);
 			console.log('INFO', response.data.status);
+      
+       // Popup message for logout sucessfully.
+       var alertPopup = $ionicPopup.alert({
+          title: 'Message',
+          template: 'You have successfully register!'
+       });
+       alertPopup.then(function(res) {
+           
+       });
+
+       // Close the popup message and modal and go to home page.
+       $timeout(function(){
+          alertPopup.close();
+       }, 1000);
+
+       $scope.closeLogin();
+       $state.go('app.home');
+
 		}, function errorCallback(response) {
 			console.log('ERROR', response);
 		});

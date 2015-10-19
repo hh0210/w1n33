@@ -3,44 +3,55 @@
   <ion-content ng-controller="ordersummary">
 
         <div class="row col-header center font-small">
-          <div class="col">Name</div>
+          <div class="col">Product</div>
           <div class="col">Quantity</div>
           <div class="col">Price<br>(MYR)</div>
           <div class="col">Subtotal (MYR)</div>
         </div>
 
         <div class="row col-bg center col-line font-small" ng-repeat="salesorderInfo in salesorderList">
-			<div class="col">{{salesorderInfo.product_name}}</div>
+			<div class="col">
+				<div>{{salesorderInfo.product_name}}</div>
+				<img class="img-responsive" ng-src="{{img}}{{salesorderInfo.photo}}" width="100%">
+			</div>
 			<div class="col">{{salesorderInfo.qty}}</div>
 			<div class="col">{{salesorderInfo.unit_price|number:2}}</div>
 			<div class="col">{{salesorderInfo.price|number:2}}</div>
         </div>
        
-       	<form ng-submit="invoice(salesorderList)">
-       	<!-- <input type="text" ng-model="cartList[0].id"> -->
-       	<!-- Submit promo code data -->
-		  <div class="item item-input">
-		    <span class="input-label font-medium">Promo Code:</span>
-		    <input type="text">
-		  </div>
+       	<div class="row mt10" style="border-width: 1px;border-bottom-style: solid;border-color: #ddd;">
+		    <p class="col col-50 ml5 input-label font-medium">Subtotal:</p>
+			<div class="col col-50 font-medium" style="color:#3498DB;">MYR {{subtotal|number:2}}</div>
+        </div>
 
+       	<form ng-submit="invoice(salesorderList)"> 
+		  
 		<!-- Row for total  -->
 		<div class="row">
-			<div class="col col-33">
+			<div class="col col-50">
 				<p class="ml5 font-medium input-label ">{{shipment_method}}</p>
 			</div>
-			<div class="col col-67">
+			<div class="col col-50 font-medium">
 				<p style="color:#3498DB;">{{location_name}}</p>
 				<p style="color:#3498DB;">{{address}}</p>
 				<p style="color:#3498DB;">{{type}}</p>
 			</div>
 		</div>
 
-        <div class="row">
-			<div class="col col-33">
+		<!-- Submit promo code data -->
+		<div class="item item-input">
+		    <span class="input-label font-medium">Promo Code:</span>
+		    <span>
+		    	<input type="text">
+		    </span>
+		  </div>
+
+
+        <div class="row mt5">
+			<div class="col col-50">
 				<p class="ml5 font-medium input-label ">Total:</p>
 			</div>
-			<div class="col col-67">
+			<div class="col col-50">
 				<span class="font-big" style="color:#3498DB;">MYR {{total_price|number:2}}
 				</span>
 			</div>
