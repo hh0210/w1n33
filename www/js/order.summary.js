@@ -26,6 +26,10 @@ angular.module('starter.ordersummary', [])
     $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order?cart_id='+cart_id+'&user_id='+user_id)
       .then(function(response) {
         $scope.salesorderList = response.data;
+
+        console.log('INFO',response.data);
+
+
         $scope.total_price = $scope.salesorderList[0].total_price;
         $scope.img = "http://shared.wine-enterprise.com/upload/product/";
         // This is total price of all product, without shipping fee.

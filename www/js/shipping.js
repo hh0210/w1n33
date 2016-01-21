@@ -52,7 +52,7 @@ angular.module('starter.shipping', [])
 		    responseType :'json',
 		}).then(function successCallback(response) {
 			console.log('INFO', response);
-			console.log('STATUS', response.data.status);
+			// console.log('STATUS', response.data.status);
 
 			$state.go('app.ordersummary');
 	        
