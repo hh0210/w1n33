@@ -79,7 +79,7 @@ angular.module('starter.user', ['ngMessages'])
 
   //profile
 
-  // Only registered user can view order history.
+  // login user info
   if (localStorage.getItem('loginInfo') != null) {
     $scope.user = JSON.parse(localStorage.getItem('loginInfo'));
     var user_id = $scope.user.id;

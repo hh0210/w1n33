@@ -1,6 +1,6 @@
 <ion-view view-title="Billing">
 	<ion-content ng-controller="billing">
-	    <form name="bilForm" ng-submit="billingForm(billing)" novalidate>
+	    <form ng-submit="billingForm(billing)" novalidate>
 	    	<!-- Billing information of payer info  -->
 			<div class="card">
 				<div class="item item-divider font-medium">
@@ -9,55 +9,54 @@
 				<div class="item item-text-wrap">
 					<div class="row">
 						<div class="col col-50">
-							<input type="text" placeholder="First Name" name="firstName" 
-							ng-model="billing.given_name" required>
-							<span class="assertive font-small" ng-show="bilForm.firstName.$dirty && bilForm.firstName.$invalid">
-							<span ng-show="bilForm.firstName.$error.required">First name is required.</span>
+							<input type="text" placeholder="First Name" ng-model="billing.given_name" required>
+							<span class="assertive font-small" ng-show="billing.given_name.$dirty && billing.given_name.$invalid">
+							<span ng-show="billing.given_name.$error.required">First name is required.</span>
 							</span>
 						</div>
 						<div class="col col-50">
-							<input type="text" placeholder="Last Name" name="lastName" ng-model="billing.family_name" required>
-							<span class="assertive font-small" ng-show="bilForm.lastName.$dirty && bilForm.lastName.$invalid">
-							<span ng-show="bilForm.lastName.$error.required">Last name is required.</span>
-							</span>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col col-50">
-							<input type="email" name="email" placeholder="Email" ng-model="billing.email" required>
-							<span class="assertive font-small" ng-show="bilForm.email.$dirty && bilForm.email.$invalid">
-						    <span ng-show="bilForm.email.$error.required">Email is required.</span>
-						    <span ng-show="bilForm.email.$error.email">Invalid email address.</span>
-						</div>
-						<div class="col col-50">
-							<input type="text" name="phone" placeholder="Phone Number" ng-model="billing.phone" required>
-							<span class="assertive font-small" ng-show="bilForm.phone.$dirty && bilForm.phone.$invalid">
-							<span ng-show="bilForm.phone.$error.required">Phone is required.</span>
+							<input type="text" placeholder="Last Name" ng-model="billing.family_name" required>
+							<span class="assertive font-small" ng-show="billing.family_name.$dirty && billing.family_name.$invalid">
+							<span ng-show="billing.family_name.$error.required">Last name is required.</span>
 							</span>
 						</div>
 					</div>
 					<div class="row">
-						<input type="text" class="ml5" name="address1" placeholder="Street Address 1" 
+						<div class="col col-50">
+							<input type="email" placeholder="Email" ng-model="billing.email" required>
+							<span class="assertive font-small" ng-show="billing.email.$dirty && billing.email.$invalid">
+						    <span ng-show="billing.email.$error.required">Email is required.</span>
+						    <span ng-show="billing.email.$error.email">Invalid email address.</span>
+						</div>
+						<div class="col col-50">
+							<input type="text" placeholder="Phone Number" ng-model="billing.phone" required>
+							<span class="assertive font-small" ng-show="billing.phone.$dirty && billing.phone.$invalid">
+							<span ng-show="billing.phone.$error.required">Phone is required.</span>
+							</span>
+						</div>
+					</div>
+					<div class="row">
+						<input type="text" class="ml5" placeholder="Street Address 1" 
 						ng-model="billing.address1" required>
-						<span class="assertive font-small mt15 ml5" ng-show="bilForm.address1.$dirty && bilForm.address1.$invalid">
-						<span ng-show="bilForm.address1.$error.required">Street address 1 is required.</span>
+						<span class="assertive font-small mt15 ml5" ng-show="billing.address1.$dirty && billing.address1.$invalid">
+						<span ng-show="billing.address1.$error.required">Street address 1 is required.</span>
 						</span>
 					</div>
 					<div class="row">
-						<input type="text" class="ml5" name="address2" ng-model="billing.address2"  placeholder="Street Address 2" required>
-						<span class="assertive font-small mt15 ml5" ng-show="bilForm.address2.$dirty && bilForm.address2.$invalid">
-						<span ng-show="bilForm.address2.$error.required">Street address 2 is required.</span>
+						<input type="text" class="ml5" ng-model="billing.address2"  placeholder="Street Address 2" required>
+						<span class="assertive font-small mt15 ml5" ng-show="billing.address2.$dirty && billing.address2.$invalid">
+						<span ng-show="billing.address2.$error.required">Street address 2 is required.</span>
 					</div>
 					<div class="row">
 						<div class="col col-50">
-							<input type="text" name="city" ng-model="billing.city"  placeholder="City" required>
-							<span class="assertive font-small" ng-show="bilForm.city.$dirty && bilForm.city.$invalid">
-							<span ng-show="bilForm.city.$error.required">City is required.</span>
+							<input type="text" ng-model="billing.city"  placeholder="City" required>
+							<span class="assertive font-small" ng-show="billing.city.$dirty && billing.city.$invalid">
+							<span ng-show="billing.city.$error.required">City is required.</span>
 						</div>
 						<div class="col col-50">
-							<input type="text" name="code" ng-model="billing.codes" placeholder="Postal Code" required>
-							<span class="assertive font-small" ng-show="bilForm.code.$dirty && bilForm.code.$invalid">
-							<span ng-show="bilForm.code.$error.required">Postal code is required.</span>
+							<input type="text" ng-model="billing.postcode" placeholder="Postcode/zip" required>
+							<span class="assertive font-small" ng-show="billing.postcode.$dirty && billing.postcode.$invalid">
+							<span ng-show="billing.postcode.$error.required">Postal postcode is required.</span>
 						</div>
 					</div> 
 				</div>
@@ -67,8 +66,7 @@
 			<div class="row">
 				<div class="col">
 				<!-- ng-href="#/app/shipping" -->
-				<button  type="submit" class="button button-block btnCheckOut font-medium"
-				ng-disabled="bilForm.$invalid">Proceed to Shipping</button>
+				<button type="submit" class="button button-block btnCheckOut font-medium" ng-disabled="billing.$invalid">Proceed to Shipping</button>
 				</div>
 			</div>
 		</form>

@@ -46,7 +46,7 @@ angular.module('starter.shipping', [])
 		    url: 'http://staging.wine-enterprise.com:8011/apis/sales/order/shipment',
 		    data: 'cart_id='+ cart_id + '&given_name=' + shipmentInfo.given_name + '&family_name=' + shipmentInfo.family_name +
 		          '&phone=' + shipmentInfo.phone + 
-		          '&address=' + shipmentInfo.address1 + '\n' + shipmentInfo.address2 + '\n' + shipmentInfo.city + '\n' + shipmentInfo.codes +
+		          '&address=' + shipmentInfo.address1 + '\n' + shipmentInfo.address2 + '\n' + shipmentInfo.city + '\n' + shipmentInfo.postcode +
 		          '&id_SalesOrderShipmentType=' + $scope.item_id,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
@@ -98,7 +98,7 @@ angular.module('starter.shipping', [])
 	      	$scope.shipmentInfo.address1 = $scope.addressInfo[0];
 	      	$scope.shipmentInfo.address2 = $scope.addressInfo[1];
 	      	$scope.shipmentInfo.city = $scope.addressInfo[2];
-	      	$scope.shipmentInfo.codes = $scope.addressInfo[3];
+	      	$scope.shipmentInfo.postcode = $scope.addressInfo[3];
 	     
 	      }, function(err){
 	          console.error('ERR', err);
@@ -112,7 +112,7 @@ angular.module('starter.shipping', [])
 			$scope.shipmentInfo.address1 = null;
 			$scope.shipmentInfo.address2 = null;
 			$scope.shipmentInfo.city = null;
-			$scope.shipmentInfo.codes = null;
+			$scope.shipmentInfo.postcode = null;
 		}
 	} 
 });
