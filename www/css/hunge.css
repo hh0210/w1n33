@@ -123,7 +123,7 @@ i.icon.ion-locked, i.icon.ion-android-person  {
 .greenbox {
 	border: 1px solid transparent;
     background: #33CD5F;
-    color: #fff;
+    color: #fff !important;
     margin-left: 0px;
  	padding: 2px 20px;
     font-weight: 400;
