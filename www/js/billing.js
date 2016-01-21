@@ -24,7 +24,7 @@ angular.module('starter.billing', [])
 		    responseType :'json',
 		}).then(function successCallback(response) {
 			console.log('INFO', response);
-			console.log('STATUS', response.data.status);
+			// console.log('STATUS', response.data.status);
 	        //console.log('INFO', response.data.billingInfo);
 	        // localStorage.setItem('billingInfo',JSON.stringify(response.data.billingInfo));
 

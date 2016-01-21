@@ -87,19 +87,4 @@ console.log('cart_id',JSON.parse(localStorage.getItem('cart_id')));
 		console.log('current cart_id',cart_id);
 	};
 
-	 // $scope.addQty = function(qty) {
-	 // 	var add = 0;
-	 // 	add = parseInt(qty) + 1;
-	 // 	console.log(add);
-	 // 	console.log("add value is #######");
-
-	 // 	productDetails.qty.$setViewValue(add);
-	 // };
-
-	 // $scope.minusQty = function(qty) {
-	 // 	var minus = 0;
-	 // 	minus = parseInt(qty) - 1;
-	 // 	console.log(minus);
-	 // 	console.log("minus value is #######");
-	 // };
 });

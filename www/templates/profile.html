@@ -1,7 +1,7 @@
 <ion-view view-title="Member Profile">
   <ion-content ng-controller="user">
     
-  			<form>
+  			<form name="profileForm" ng-submit="profile(profileInfo)" novalidate>
 		    	<!-- Shipping information of guest info  -->
 				<div class="card">
 					<div class="item item-divider font-medium">
@@ -10,18 +10,31 @@
 					<div class="item item-text-wrap">
 						<div class="row">
 							<div class="col col-50">
-								<input type="text" placeholder="Username">
+								<input type="text" name="username" placeholder="Username" ng-model="profileInfo.username" required>
+								<span class="assertive font-small" ng-show="profileForm.username.$dirty && profileForm.username.$invalid">
+								<span ng-show="profileForm.username.$error.required">Username is required.
+								 </span>
+								</span>
 							</div>
 							<div class="col col-50">
-								<input type="text" placeholder="Email">
+								<input type="email" name="email" placeholder="Email" ng-model="billing.email" required>
+							<span class="assertive font-small" ng-show="bilForm.email.$dirty && bilForm.email.$invalid">
+						    <span ng-show="bilForm.email.$error.required">Email is required.</span>
+						    <span ng-show="bilForm.email.$error.email">Invalid email address.</span>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col col-50">
-								<input type="text" placeholder="First Name">
+								<input type="text" name="firstName" placeholder="First Name"  ng-model="profileInfo.firstName" required>
+								<span class="assertive font-small" ng-show="profileForm.firstName.$dirty && profileForm.firstName.$invalid">
+								<span ng-show="profileForm.firstName.$error.required">First name is required.</span>
+								</span>
 							</div>
 							<div class="col col-50">
-								<input type="text" placeholder="Last Name">
+								<input type="text" name="lastName" placeholder="Last Name" ng-model="profileInfo.lastName" required>
+								<span class="assertive font-small" ng-show="profileForm.lastName.$dirty && profileForm.lastName.$invalid">
+								<span ng-show="profileForm.lastName.$error.required">Last name is required.</span>
+								</span>
 							</div>
 						</div>
 						<div class="row">
