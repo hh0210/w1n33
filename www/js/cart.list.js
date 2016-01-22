@@ -100,7 +100,7 @@ angular.module('starter.cartlist', [])
   	
   	$scope.minus = function(item) {
   		item.qty = parseInt(item.qty);
-    	if (item.qty > 0) {
+    	if (item.qty > 1) {
 
 		     // Minus the quantity by 1.
 		     item.qty--;

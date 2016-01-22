@@ -16,10 +16,10 @@
 			</div>
 			<div class="col">{{salesorderInfo.qty}}</div>
 			<div class="col">{{salesorderInfo.unit_price|number:2}}</div>
-			<div class="col">{{salesorderInfo.price|number:2}}</div>
+			<div class="col text-right">{{salesorderInfo.price|number:2}}</div>
         </div>
        
-       	<div class="row mt10" style="border-width: 1px;border-bottom-style: solid;border-color: #ddd;">
+       	<div class="row mt10 text-right" style="border-width: 1px;border-bottom-style: solid;border-color: #ddd;">
 		    <p class="col col-50 ml5 input-label font-medium">Subtotal:</p>
 			<div class="col col-50 font-medium" style="color:#3498DB;">MYR {{subtotal|number:2}}</div>
         </div>
@@ -27,9 +27,9 @@
        	<form ng-submit="invoice(salesorderList)"> 
 		  
 		<!-- Row for total  -->
-		<div class="row">
+		<div class="row text-right">
 			<div class="col col-50">
-				<p class="ml5 font-medium input-label ">{{shipment_method}}</p>
+				<p class="ml5 font-medium">{{shipment_method}}</p>
 			</div>
 			<div class="col col-50 font-medium">
 				<p style="color:#3498DB;">{{location_name}}</p>
@@ -39,17 +39,17 @@
 		</div>
 
 		<!-- Submit promo code data -->
-		<div class="item item-input">
+		<!-- <div class="item item-input">
 		    <span class="input-label font-medium">Promo Code:</span>
 		    <span>
 		    	<input type="text">
 		    </span>
-		  </div>
+		</div>	 -->
 
 
-        <div class="row mt5">
+        <div class="row mt5 text-right">
 			<div class="col col-50">
-				<p class="ml5 font-medium input-label ">Total:</p>
+				<p class="ml5 font-big">Total:</p>
 			</div>
 			<div class="col col-50">
 				<span class="font-big" style="color:#3498DB;">MYR {{total_price|number:2}}

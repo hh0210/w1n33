@@ -1,82 +1,67 @@
 <ion-view view-title="Cart List">
   <ion-content ng-controller="cartlist">
-
- <div class="list">
- 	<!-- Content -->
- 	<!-- Items -->
-    <div class="item item-thumbnail-left" ng-repeat="cartInfo in cartList">
-	    <div class="row">
-		  <div class="col">
-
-		  <!-- form -->
-		  <form ng-submit="delete(cartInfo)">
-		  	<input type="hidden" ng-model="cartInfo.product_id">
-			  <button type="submit">
-			  <i class="ion-close-round"></i>
-			  </button>
-		  </form>
-		  <!-- end form -->
-
-		  	<img class="cartImg" ng-src="{{img}}{{cartInfo.photo}}">
-		  		<br><br>
-		  	<span class="greenbox">Subtotal</span>
-		  	<span class="subtotal">MYR {{cartInfo.price|number:2}}
-		  	</span>
-		  </div>
-			 <div class="col font-small">
-				  	<span class="pl5" style="color:#9B59B6;">{{cartInfo.product_name}}</span>
-				  	<br>
-				  	<span class="pl5">
-				  		Quantity:
-				  	</span>
-				  
-				  	<!-- Button for add and minus cart. -->
-				  	<div class="row mt5" style="color:#F1C40F;"> 
-					  		<button type="submit" ng-click="plus(cartInfo)"><i class="ion-plus"></i>
-					  		</button>
-	      					<div class="ml10 mr10 font-medium">{{cartInfo.qty}}</div>
-	      					<button type="submit" ng-click="minus(cartInfo)"><i class="ion-minus"></i>
-	      					</button>
-				  	</div>
-					<div class="mt5">
-				  		<span class="pl5">Unit Price:</span>
-				  		<span style="color:#7F8C8D;"> MYR {{cartInfo.unit_price|number:2}}</span>
-				  	</div>
-			  </div> 
-		  <div class="col"></div>
-		</div>
-	</div>
-
-	<!-- Start of total -->
-	<div class="item item-thumbnail-left">
-		<div class="row">
-			<div class="col col-offset-25 col-33">
-				<p align="right">Total:</p>
-			</div>
-			<div class="col col-50">
-				<span class="font-big" style="color:#3498DB;">MYR {{cartList[0].total_price|number:2}}	
-			  	</span>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<a class="button btn-block btnContinue font-medium" ng-href="#/app/categories">
-				  Continue Shopping
-				</a>
-			</div>
-			
-			<form ng-submit="salesorder(cartList)">
+  	<!-- list -->
+	<div class="list">
+	 	<!-- Items -->
+	    <div class="item item-thumbnail-left" ng-repeat="cartInfo in cartList">
+		    <!-- row 1 -->
+		    <div class="row">
+		    	<!-- col-left -->
 				<div class="col">
-					<!-- If no item selected, then disable checkout button -->
-					<button ng-disabled="cartList[0].cart_count <= 0 || cartList[0].cart_count == undefined" 
-					type="submit" class="button btn-block btnCheckOut font-medium">
-					  Check Out
-					</button>
+					<img class="cartImg" ng-src="{{img}}{{cartInfo.photo}}">
+					<p class="grey">{{cartInfo.product_name}}</p>
+					<small>Unit Price:</small>
+				  	<span style="color:#7F8C8D;"> MYR {{cartInfo.unit_price|number:2}}</span>
 				</div>
-			</form>
-		</div>	
-	</div>
-</div>
+				<!-- col-right -->
+				<div class="col">
+					<form ng-submit="delete(cartInfo)" class="pull-right top-right p10">
+						<input type="hidden" ng-model="cartInfo.product_id">
+					 	<button type="submit"><i class="ion-close-round"></i></button>
+					</form>
+					<div class="row mt20"></div>
+					<div class="row">
+				  		<small class="mr10">Quantity:</small>
+				  		<button type="submit" ng-click="plus(cartInfo)"><i class="ion-plus"></i></button>
+						<p class="ml10 mr10" style="color:#F1C40F;">{{cartInfo.qty}}</p>
+						<button type="submit" ng-click="minus(cartInfo)"><i class="ion-minus"></i></button>
+					</div>
 
+					<p class="greenbox text-right">Subtotal</p>
+					<p class="subtotal text-right">MYR {{cartInfo.price|number:2}}</p>
+				</div>
+			</div>
+			<!-- end row 1 -->
+		</div>
+		<!-- end items -->
+
+		<!-- total -->
+		<div class="item item-thumbnail-left">
+			<!-- row 1 -->
+			<div class="row">
+				<div class="col col-offset-25 col-33">
+					<p align="right">Total:</p>
+				</div>
+				<div class="col col-50">
+					<span class="font-big" style="color:#3498DB;">MYR {{cartList[0].total_price|number:2}}</span>
+				</div>
+			</div>
+			<!-- row 2 -->
+			<div class="row">
+				<div class="col">
+					<a class="button btn-block btnContinue font-medium" ng-href="#/app/categories">Continue Shopping</a>
+				</div>
+				<form ng-submit="salesorder(cartList)">
+					<div class="col">
+						<!-- If no item selected, then disable checkout button -->
+						<button ng-disabled="cartList[0].cart_count <= 0 || cartList[0].cart_count == undefined" 
+						type="submit" class="button btn-block btnCheckOut font-medium">Check Out</button>
+					</div>
+				</form>
+			</div>	
+		</div>
+		<!-- end total -->
+	</div>
+	<!-- end list -->
   </ion-content>
 </ion-view>
