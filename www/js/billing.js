@@ -7,14 +7,14 @@ angular.module('starter.billing', [])
 	console.log('cart_id',cart_id);
 
 	// user id
-	var user_id = (localStorage.getItem('loginInfo'))?JSON.parse(localStorage.getItem('loginInfo')):'0';
+	var user_id = (localStorage.getItem('loginInfo'))?JSON.parse(localStorage.getItem('loginInfo')).id:'0';
 	console.log('user_id',user_id);
 
 
 	// billing info
 	$http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/person?cart_id='+cart_id+'&user_id='+user_id)
 	.then(function(response) {
-		$scope.billing = response.data;
+		if(response.data.id) $scope.billing = response.data;
 		console.log('billing info', $scope.billing);
 	}, function(err){
 		console.error('error', err);
