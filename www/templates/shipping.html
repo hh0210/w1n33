@@ -10,61 +10,64 @@
     <ion-tab title="Delivery">
 	    <ion-content>
 	      <!-- Tab 1 content -->
-		    <form name="shipmentForm" ng-submit="shipment(shipmentInfo)" novalidate>
+		    <form name="shipmentform" ng-submit="ShipmentForm(shipment)">
 		    	<!-- Shipping information of guest info  -->
 				<div class="card pt75">
-					<div class="item item-divider font-medium">
-						Shipping Information
-					</div>
+					<div class="item item-divider font-medium">Shipping Information</div>
 					<div class="item item-text-wrap">
-						
-							<input type="checkbox" ng-model="checkboxData" ng-change="identifyUser(checkboxData)"/>
-							Ship to me
-						
+						<input type="checkbox" ng-model="checkboxData" ng-change="identifyUser(checkboxData)"/> Ship to me
 						<div class="row">
 							<div class="col col-50">
-								<input type="text" placeholder="First Name" name="firstName" 
-								ng-model="shipmentInfo.given_name" required>
-								<span class="assertive font-small" ng-show="shipmentForm.firstName.$dirty && shipmentForm.firstName.$invalid">
-								<span ng-show="shipmentForm.firstName.$error.required">First name is required.</span>
-								</span>
+								<input type="text" placeholder="Given Name" ng-model="shipment.given_name" name="given_name" required>
+								<div class="assertive font-small" ng-messages="shipmentform.given_name.$error">
+									<div ng-message="required">field required*</div>
+								</div>
 							</div>
 							<div class="col col-50">
-								<input type="text" name="lastName" ng-model="shipmentInfo.family_name" placeholder="Last Name" required>
-								<span class="assertive font-small" ng-show="shipmentForm.lastName.$dirty && shipmentForm.lastName.$invalid">
-								<span ng-show="shipmentForm.lastName.$error.required">Last name is required.</span>
-								</span>
+								<input type="text" placeholder="Family Name" ng-model="shipment.family_name" name="family_name" required>
+								<div class="assertive font-small" ng-messages="shipmentform.family_name.$error">
+									<div ng-message="required">field required*</div>
+								</div>
 							</div>
 						</div>
 						<div class="row">
-							<input type="text" name="phone" class="ml5" ng-model="shipmentInfo.phone" placeholder="Phone Number" required>
-							<span class="assertive font-small mt15 ml5" ng-show="shipmentForm.phone.$dirty && shipmentForm.phone.$invalid">
-							<span ng-show="shipmentForm.phone.$error.required">Phone is required.</span>
-							</span>
-						</div>
-						<div class="row">
-							<input type="text" name="address1" class="ml5" ng-model="shipmentInfo.address1"  placeholder="Street Address 1" required>
-							<span class="assertive font-small mt15 ml5" ng-show="shipmentForm.address1.$dirty && shipmentForm.address1.$invalid">
-							<span ng-show="shipmentForm.address1.$error.required">Street address 1 is required.</span>
-							</span>
-						</div>
-						<div class="row">
-							<input type="text" name="address2" class="ml5" ng-model="shipmentInfo.address2"  placeholder="Street Address 2" required>
-							<span class="assertive font-small mt15 ml5" ng-show="shipmentForm.address2.$dirty && shipmentForm.address2.$invalid">
-							<span ng-show="shipmentForm.address2.$error.required">Street address 2 is required.</span>
+							<div class="col">
+								<input type="text" placeholder="Phone" ng-model="shipment.phone" name="phone" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
+								<div class="assertive font-small" ng-messages="shipmentform.phone.$error">
+									<div ng-message="required">field required*</div>
+									<div ng-message="pattern">invalid phone number</div>
+								</div>
+							</div>
 						</div>
 						<div class="row">
 							<div class="col col-50">
-								<input type="text" name="city" ng-model="shipmentInfo.city" placeholder="City" required>
-								<span class="assertive font-small" ng-show="shipmentForm.city.$dirty && shipmentForm.city.$invalid">
-								<span ng-show="shipmentForm.city.$error.required">City is required.</span>
+								<input type="text" placeholder="Address 1" ng-model="shipment.address1" name="address1" required>
+								<div class="assertive font-small" ng-messages="shipmentform.address1.$error">
+									<div ng-message="required">field required*</div>
+								</div>
 							</div>
 							<div class="col col-50">
-								<input type="text" name="postcode" ng-model="shipmentInfo.postcode" placeholder="Postal postcode" required>
-								<span class="assertive font-small" ng-show="shipmentForm.postcode.$dirty && shipmentForm.postcode.$invalid">
-								<span ng-show="shipmentForm.postcode.$error.required">Postal postcode is required.</span>
+								<input type="text" placeholder="Address 2" ng-model="shipment.address2" name="address2" required>
+								<div class="assertive font-small" ng-messages="shipmentform.address2.$error">
+									<div ng-message="required">field required*</div>
+								</div>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col col-50">
+								<input type="text" placeholder="Postcode/Zip" ng-model="shipment.postcode" name="postcode" required>
+								<div class="assertive font-small" ng-messages="shipmentform.postcode.$error">
+									<div ng-message="required">field required*</div>
+								</div>
+							</div>
+							<div class="col col-50">
+								<input type="text" placeholder="City" ng-model="shipment.city" name="city" required>
+								<div class="assertive font-small" ng-messages="shipmentform.city.$error">
+									<div ng-message="required">field required*</div>
+								</div>
+							</div>
+						</div>
+
 						<div class="row">
 						<div class="col">
 							<label class="item-input item-select">
@@ -73,11 +76,12 @@
 							    </div>
 							    <select name="dropDownShipment" ng-model="mySelect" ng-change="showSelectValue(mySelect)" required>
 							      <option value="" selected>--Select--</option>
-							      <option ng-repeat="shipmentInfo in shipmentList" value="{{shipmentInfo.id}}">{{shipmentInfo.name}} = MYR {{shipmentInfo.price}}</option>
+							      <option ng-repeat="ShipmentInfo in ShipmentList" value="{{ShipmentInfo.id}}" ng-selected="ShipmentInfo.id == shipment.id_SalesOrderShipmentType">{{ShipmentInfo.name}} = MYR {{ShipmentInfo.price}}</option>
 							    </select>
-							 </label>
-							 <span class="assertive font-small" ng-show="shipmentForm.dropDownShipment.$dirty && shipmentForm.dropDownShipment.$invalid">
-							 <span ng-show="shipmentForm.dropDownShipment.$error.required">Shipping method is required.</span>
+								<div class="assertive font-small" ng-messages="shipmentform.dropDownShipment.$error">
+									<div ng-message="required">require select*</div>
+								</div>
+							</label>
 						</div>	
 					</div> 
 					</div>
@@ -87,9 +91,7 @@
 				<div class="row">
 					<div class="col">
 						<button type="submit" class="button button-block btnCheckOut font-medium"
-						ng-disabled="shipmentForm.$invalid">
-				  		Pay Now
-					</button>
+						ng-disabled="shipmentform.$invalid">Pay Now</button>
 					</div>
 				</div>
 			</form>
@@ -99,7 +101,7 @@
     <ion-tab title="Self Pickup">
       <!-- Tab 2 content -->
       <ion-content>
- 		<form name="pickupForm" ng-submit="selfpickup(locationInfo)" novalidate>
+ 		<form name="pickupForm" ng-submit="selfpickup(locationInfo)">
 	    	<!-- Pickup information of guest info  -->
 			<div class="card pt75">
 				<div class="item item-divider font-medium">
@@ -114,11 +116,12 @@
 							    </div>
 							    <select name="location" ng-model="mySelect" ng-change="showSelectValue(mySelect)" required>
 							      <option value="" selected>--Select--</option>
-							      <option ng-repeat="locationInfo in locationList" value="{{locationInfo.id}}">{{locationInfo.name}}</option>
+							      <option ng-repeat="locationInfo in locationList" value="{{locationInfo.id}}" ng-selected="locationInfo.id == selfpickupinfo.id_SelfPickUpLocation">{{locationInfo.name}}</option>
 							    </select>
-							 </label>
-							 <span class="assertive font-small" ng-show="pickupForm.location.$dirty && pickupForm.location.$invalid">
-							 <span ng-show="pickupForm.location.$error.required">Location is required.</span>
+							</label>
+							<div class="assertive font-small" ng-messages="pickupForm.location.$error">
+								<div ng-message="required">require select*</div>
+							</div>
 						</div>	
 					</div>
 				</div>
@@ -128,9 +131,7 @@
 			<div class="row">
 				<div class="col">
 					<button type="submit" class="button button-block btnCheckOut font-medium"
-					ng-disabled="pickupForm.$invalid">
-				  		Pay Now
-					</button>
+					ng-disabled="pickupForm.$invalid">Pay Now</button>
 				</div>
 			</div>
 		</form>

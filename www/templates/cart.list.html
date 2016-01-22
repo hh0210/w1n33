@@ -3,32 +3,32 @@
   	<!-- list -->
 	<div class="list">
 	 	<!-- Items -->
-	    <div class="item item-thumbnail-left" ng-repeat="cartInfo in cartList">
+	    <div class="item item-thumbnail-left" ng-repeat="Item in CartInfo.Items">
 		    <!-- row 1 -->
 		    <div class="row">
 		    	<!-- col-left -->
 				<div class="col">
-					<img class="cartImg" ng-src="{{img}}{{cartInfo.photo}}">
-					<p class="grey">{{cartInfo.product_name}}</p>
+					<img class="cartImg" ng-src="{{img}}{{Item.photo}}">
+					<p class="grey">{{Item.product_name}}</p>
 					<small>Unit Price:</small>
-				  	<span style="color:#7F8C8D;"> MYR {{cartInfo.unit_price|number:2}}</span>
+				  	<span style="color:#7F8C8D;"> MYR {{Item.unit_price|number:2}}</span>
 				</div>
 				<!-- col-right -->
 				<div class="col">
-					<form ng-submit="delete(cartInfo)" class="pull-right top-right p10">
-						<input type="hidden" ng-model="cartInfo.product_id">
+					<form ng-submit="delete(Item)" class="pull-right top-right p10">
+						<input type="hidden" ng-model="Item.id">
 					 	<button type="submit"><i class="ion-close-round"></i></button>
 					</form>
 					<div class="row mt20"></div>
 					<div class="row">
 				  		<small class="mr10">Quantity:</small>
-				  		<button type="submit" ng-click="plus(cartInfo)"><i class="ion-plus"></i></button>
-						<p class="ml10 mr10" style="color:#F1C40F;">{{cartInfo.qty}}</p>
-						<button type="submit" ng-click="minus(cartInfo)"><i class="ion-minus"></i></button>
+						<button type="submit" ng-click="minus(Item)"><i class="ion-minus"></i></button>
+						<p class="ml10 mr10" style="color:#F1C40F;">{{Item.qty}}</p>
+				  		<button type="submit" ng-click="plus(Item)"><i class="ion-plus"></i></button>
 					</div>
 
 					<p class="greenbox text-right">Subtotal</p>
-					<p class="subtotal text-right">MYR {{cartInfo.price|number:2}}</p>
+					<p class="subtotal text-right">MYR {{Item.price}}</p>
 				</div>
 			</div>
 			<!-- end row 1 -->
@@ -43,7 +43,7 @@
 					<p align="right">Total:</p>
 				</div>
 				<div class="col col-50">
-					<span class="font-big" style="color:#3498DB;">MYR {{cartList[0].total_price|number:2}}</span>
+					<span class="font-big" style="color:#3498DB;">MYR {{CartInfo.total_price}}</span>
 				</div>
 			</div>
 			<!-- row 2 -->
@@ -51,11 +51,10 @@
 				<div class="col">
 					<a class="button btn-block btnContinue font-medium" ng-href="#/app/categories">Continue Shopping</a>
 				</div>
-				<form ng-submit="salesorder(cartList)">
+				<form ng-submit="salesorder(cartInfo)">
 					<div class="col">
 						<!-- If no item selected, then disable checkout button -->
-						<button ng-disabled="cartList[0].cart_count <= 0 || cartList[0].cart_count == undefined" 
-						type="submit" class="button btn-block btnCheckOut font-medium">Check Out</button>
+						<button ng-disabled="CartInfo.cart_count <= 0" type="submit" class="button btn-block btnCheckOut font-medium">Check Out</button>
 					</div>
 				</form>
 			</div>	
