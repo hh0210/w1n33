@@ -1,43 +1,27 @@
 angular.module('starter.billing', [])
 
-//BILLING
 .controller("billing", function($scope, $http, $state) {
 
-	//cart id
-	if(localStorage.getItem('cart_id') != null){
-		var cart_id = JSON.parse(localStorage.getItem('cart_id'));
-		console.log('current cart_id',cart_id);
-	}else{
-		var cart_id = '';
-		console.log('current cart_id',cart_id);
-	};
+	// cart id
+	var cart_id = (localStorage.getItem('cart_id'))?JSON.parse(localStorage.getItem('cart_id')):'';
+	console.log('cart_id',cart_id);
 
-	// login user info
-	if (localStorage.getItem('loginInfo') != null) {
-		$scope.user = JSON.parse(localStorage.getItem('loginInfo'));
-		var user_id = $scope.user.id;
-		console.log('localstorage USER ID',user_id);
-	}	
+	// user id
+	var user_id = (localStorage.getItem('loginInfo'))?JSON.parse(localStorage.getItem('loginInfo')).id:'0';
+	console.log('user_id',user_id);
 
 
-	//billing info
-    $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/person?cart_id='+cart_id+'&user_id='+user_id)
-      .then(function(response) {
-      	console.log('INFO', response.data);
-      	$scope.billing = response.data;
-      	//address split
-      	// $scope.addressInfo = $scope.billing.address.split("\n");
-      	// $scope.billing.address1 = $scope.addressInfo[0];
-      	// $scope.billing.address2 = $scope.addressInfo[1];
-      	// $scope.billing.city = $scope.addressInfo[2];
-      	// $scope.billing.codes = $scope.addressInfo[3];
-      	console.log(response, 'billinginfohere');
-      }, function(err){
-          console.error('ERR', err);
-    })
+	// billing info
+	$http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/person?cart_id='+cart_id+'&user_id='+user_id)
+	.then(function(response) {
+		if(response.data.id) $scope.billing = response.data;
+		console.log('billing info', $scope.billing);
+	}, function(err){
+		console.error('error', err);
+	})
 
-    //Send Billing form data
-	$scope.billingForm = function(billing){
+    // submit billing info
+	$scope.BillingForm = function(billing){
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/sales/order/person',
@@ -48,15 +32,10 @@ angular.module('starter.billing', [])
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
 		}).then(function successCallback(response) {
-			console.log('INFO', response);
-			// console.log('STATUS', response.data.status);
-	        //console.log('INFO', response.data.billingInfo);
-	        // localStorage.setItem('billingInfo',JSON.stringify(response.data.billingInfo));
-
+			console.log('success: ', response);
 			$state.go('app.shipping');
-	        
 		}, function errorCallback(response) {
-			console.log('ERROR', response);
+			console.log('error', response);
 		});
 	}
 

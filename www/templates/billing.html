@@ -1,6 +1,6 @@
 <ion-view view-title="Billing">
 	<ion-content ng-controller="billing">
-	    <form ng-submit="billingForm(billing)" novalidate>
+	    <form ng-submit="BillingForm(billing)" name="billingform">
 	    	<!-- Billing information of payer info  -->
 			<div class="card">
 				<div class="item item-divider font-medium">
@@ -9,56 +9,62 @@
 				<div class="item item-text-wrap">
 					<div class="row">
 						<div class="col col-50">
-							<input type="text" placeholder="First Name" ng-model="billing.given_name" required>
-							<span class="assertive font-small" ng-show="billing.given_name.$dirty && billing.given_name.$invalid">
-							<span ng-show="billing.given_name.$error.required">First name is required.</span>
-							</span>
+							<input type="text" placeholder="Given Name" ng-model="billing.given_name" name="given_name" required>
+							<div class="assertive font-small" ng-messages="billingform.given_name.$error">
+								<div ng-message="required">field required*</div>
+							</div>
 						</div>
 						<div class="col col-50">
-							<input type="text" placeholder="Last Name" ng-model="billing.family_name" required>
-							<span class="assertive font-small" ng-show="billing.family_name.$dirty && billing.family_name.$invalid">
-							<span ng-show="billing.family_name.$error.required">Last name is required.</span>
-							</span>
+							<input type="text" placeholder="Family Name" ng-model="billing.family_name" name="family_name" required>
+							<div class="assertive font-small" ng-messages="billingform.family_name.$error">
+								<div ng-message="required">field required*</div>
+							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col col-50">
-							<input type="email" placeholder="Email" ng-model="billing.email" required>
-							<span class="assertive font-small" ng-show="billing.email.$dirty && billing.email.$invalid">
-						    <span ng-show="billing.email.$error.required">Email is required.</span>
-						    <span ng-show="billing.email.$error.email">Invalid email address.</span>
+							<input type="email" placeholder="Email" ng-model="billing.email" name="email" required>
+							<div class="assertive font-small" ng-messages="billingform.email.$error">
+								<div ng-message="required">field required*</div>
+								<div ng-message="email">invalid email</div>
+							</div>
 						</div>
 						<div class="col col-50">
-							<input type="text" placeholder="Phone Number" ng-model="billing.phone" required>
-							<span class="assertive font-small" ng-show="billing.phone.$dirty && billing.phone.$invalid">
-							<span ng-show="billing.phone.$error.required">Phone is required.</span>
-							</span>
+							<input type="text" placeholder="Phone" ng-model="billing.phone" name="phone" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
+							<div class="assertive font-small" ng-messages="billingform.phone.$error">
+								<div ng-message="required">field required*</div>
+								<div ng-message="pattern">invalid phone number</div>
+							</div>
 						</div>
 					</div>
 					<div class="row">
-						<input type="text" class="ml5" placeholder="Street Address 1" 
-						ng-model="billing.address1" required>
-						<span class="assertive font-small mt15 ml5" ng-show="billing.address1.$dirty && billing.address1.$invalid">
-						<span ng-show="billing.address1.$error.required">Street address 1 is required.</span>
-						</span>
-					</div>
-					<div class="row">
-						<input type="text" class="ml5" ng-model="billing.address2"  placeholder="Street Address 2" required>
-						<span class="assertive font-small mt15 ml5" ng-show="billing.address2.$dirty && billing.address2.$invalid">
-						<span ng-show="billing.address2.$error.required">Street address 2 is required.</span>
+						<div class="col col-50">
+							<input type="text" placeholder="Address 1" ng-model="billing.address1" name="address1" required>
+							<div class="assertive font-small" ng-messages="billingform.address1.$error">
+								<div ng-message="required">field required*</div>
+							</div>
+						</div>
+						<div class="col col-50">
+							<input type="text" placeholder="Address 2" ng-model="billing.address2" name="address2" required>
+							<div class="assertive font-small" ng-messages="billingform.address2.$error">
+								<div ng-message="required">field required*</div>
+							</div>
+						</div>
 					</div>
 					<div class="row">
 						<div class="col col-50">
-							<input type="text" ng-model="billing.city"  placeholder="City" required>
-							<span class="assertive font-small" ng-show="billing.city.$dirty && billing.city.$invalid">
-							<span ng-show="billing.city.$error.required">City is required.</span>
+							<input type="text" placeholder="Postcode/Zip" ng-model="billing.postcode" name="postcode" required>
+							<div class="assertive font-small" ng-messages="billingform.postcode.$error">
+								<div ng-message="required">field required*</div>
+							</div>
 						</div>
 						<div class="col col-50">
-							<input type="text" ng-model="billing.postcode" placeholder="Postcode/zip" required>
-							<span class="assertive font-small" ng-show="billing.postcode.$dirty && billing.postcode.$invalid">
-							<span ng-show="billing.postcode.$error.required">Postal postcode is required.</span>
+							<input type="text" placeholder="City" ng-model="billing.city" name="city" required>
+							<div class="assertive font-small" ng-messages="billingform.city.$error">
+								<div ng-message="required">field required*</div>
+							</div>
 						</div>
-					</div> 
+					</div>
 				</div>
 			</div>
 			<!-- End of billing detail -->
