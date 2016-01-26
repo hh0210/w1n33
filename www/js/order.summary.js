@@ -39,8 +39,6 @@ angular.module('starter.ordersummary', [])
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
 		}).then(function successCallback(response) {
-			localStorage.removeItem('cart_id'); //remove session
-			console.log('testing123',cart_id);
 			console.log('success: ', response);
 			$state.go('app.payment');
 		
