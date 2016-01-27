@@ -54,6 +54,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
 
     .state('app.search', {
       url: '/search',
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: 'templates/search.html',

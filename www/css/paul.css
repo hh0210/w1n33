@@ -16,6 +16,9 @@ a{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.pull-left{
+    float:left !important;
+}
 .pull-right{
     float:right !important;
 }
@@ -39,4 +42,7 @@ a{
     -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
     -moz-box-shadow: 0 0 5px rgba(0,0,0,0.3);
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+.b1{
+    border: 1px solid #ddd;
 }
