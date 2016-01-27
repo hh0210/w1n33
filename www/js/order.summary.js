@@ -43,7 +43,7 @@ angular.module('starter.ordersummary', [])
 			localStorage.removeItem('cart_id'); //remove session
 		  	var cart_id = (localStorage.getItem('cart_id'))?JSON.parse(localStorage.getItem('cart_id')):'';
 		  	console.log('cart_id',cart_id);
-			$state.go('app.payment');
+			$state.go('app.payment', {}, {reload: true});
 		}, function errorCallback(response) {
 			console.log('error', response);
 		});

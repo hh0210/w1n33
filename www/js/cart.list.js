@@ -9,7 +9,6 @@ angular.module('starter.cartlist', [])
     $http.get('http://staging.wine-enterprise.com:8011/apis/cart/list?cart_id='+$stateParams.cart_id)
 		.then(function(response) {
 			$scope.CartInfo = response.data;
-			// $stateParams.cart_id = $scope.cartList[0].id; delete if no use
 			$scope.img = "http://shared.wine-enterprise.com/upload/product/";
 
 			//session
@@ -18,22 +17,21 @@ angular.module('starter.cartlist', [])
 
 		}, function(err){
 			console.error('error', err);
-	})
+	});
 
 	/*========== Delete ==========*/
-	$scope.delete = function(cartInfo) {
+	$scope.delete = function(item) {
 		$http({
 			method: 'POST',
 			url: 'http://staging.wine-enterprise.com:8011/apis/cart/list/delete',
-			data: 'cart_id='+$stateParams.cart_id + '&id_ProductMaster=' +cartInfo.product_id,
+			data: 'cartdetails_id='+item.id,
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 			responseType :'json',
 		}).then(function successCallback(response) {
-			console.log('INFO', response);
-			console.log('STATUS', response.data.status);
+			console.log('status', response.data.status);
 			$state.go('app.cartlist', {}, {reload: true});
 		}, function errorCallback(response) {
-			console.log('ERROR', response);
+			console.log('error', response);
 
 		});
 	}
@@ -51,9 +49,8 @@ angular.module('starter.cartlist', [])
 			console.log('STATUS', response.data.status);
 			console.log('current salesorder_id', response.data.salesorder_id);
 			$state.go('app.billing');
-		//})
 		}, function errorCallback(response) {
-			console.log('ERROR', response);
+			console.log('error', response);
 
 		});
 	}
@@ -70,17 +67,15 @@ angular.module('starter.cartlist', [])
 		 $http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/cart/list/manageQty',
-		    data: 'cart_id='+$stateParams.cart_id + '&id_ProductMaster=' + item.product_id + '&qty='+ item.qty
-		          + '&price='+ price,
+		    data: 'cartdetails_id='+item.id + '&product_id=' + item.product_id + '&qty='+ item.qty,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
 		}).then(function successCallback(response) {
-			console.log('INFO', response);
-			console.log('STATUS', response.data.status);
+			console.log('status', response.data.status);
 			$state.go('app.cartlist', {}, {reload: true});
 			console.log("INFO Manage Qty");
 		}, function errorCallback(response) {
-			console.log('ERROR', response);
+			console.log('error', response);
 		});
 
   	};
@@ -98,18 +93,14 @@ angular.module('starter.cartlist', [])
 			 $http({
 			    method: 'POST',
 			    url: 'http://staging.wine-enterprise.com:8011/apis/cart/list/manageQty',
-			    data: 'cart_id='+$stateParams.cart_id + '&id_ProductMaster=' + item.product_id + '&qty='+ item.qty
-			          + '&price='+ price,
+			    data: 'cartdetails_id='+item.id + '&product_id=' + item.product_id + '&qty='+ item.qty,
 			    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 			    responseType :'json',
 			}).then(function successCallback(response) {
-				console.log('INFO', response);
-				console.log('STATUS', response.data.status);
-				
+				console.log('status', response.data.status);
 				$state.go('app.cartlist', {}, {reload: true});
-
 			}, function errorCallback(response) {
-				console.log('ERROR', response);
+				console.log('error', response);
 			});
     	}
   	};

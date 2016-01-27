@@ -102,7 +102,7 @@ angular.module('starter.controllers', [])
         if(response.data != false){
 
           localStorage.setItem('loginInfo',JSON.stringify(response.data));
-          console.log('INFO',JSON.parse(localStorage.getItem('loginInfo')));
+          console.log('login info: ',JSON.parse(localStorage.getItem('loginInfo')));
           //test
           $scope.noUser = false;
           $scope.haveUser = true;
@@ -170,25 +170,13 @@ angular.module('starter.controllers', [])
   $scope.loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
   console.log('INFO',$scope.loginInfo);
 
-  //local storage cart id
-  console.log('current cart_id',JSON.parse(localStorage.getItem('cart_id')));
-  if(JSON.parse(localStorage.getItem('cart_id')) != null){
-    $scope.cart_id = JSON.parse(localStorage.getItem('cart_id'));
-    console.log('current cart_id',$scope.cart_id);
-  }else{
-    $scope.cart_id = '';
-    console.log('current cart_id',$scope.cart_id);
-  };
+  // cart id
+  var cart_id = (localStorage.getItem('cart_id'))?JSON.parse(localStorage.getItem('cart_id')):'';
+  console.log('cart_id',cart_id);
 
-  //user id
-  if(localStorage.getItem('loginInfo') != null){
-    $scope.user = JSON.parse(localStorage.getItem('loginInfo'));
-    var user_id = $scope.user.id;
-    console.log('current USER ID',user_id);
-  }else{
-    var user_id = '0';
-    console.log('current USER ID',user_id);
-  };
+  // user id
+  var user_id = (localStorage.getItem('loginInfo'))?JSON.parse(localStorage.getItem('loginInfo')).id:'0';
+  console.log('user_id',user_id);
 
   //GET CART ITEM
    $http.get('http://staging.wine-enterprise.com:8011/apis/cart/list?cart_id='+$scope.cart_id+'&user_id='+user_id)

@@ -83,7 +83,7 @@ angular.module('starter.user', ['ngMessages'])
   if (localStorage.getItem('loginInfo') != null) {
     $scope.user = JSON.parse(localStorage.getItem('loginInfo'));
     var user_id = $scope.user.id;
-    console.log('localstorage USER ID',user_id);
+    console.log('user_id',user_id);
   }
 
   $http.get('http://staging.wine-enterprise.com:8011/apis/user/profile?user_id='+user_id)
@@ -113,8 +113,9 @@ angular.module('starter.user', ['ngMessages'])
        // Popup message for logout sucessfully.
        var alertPopup = $ionicPopup.alert({
           title: 'Message',
-          template: 'You have successfully save!'
+          template: 'You have successfully save!',
        });
+
        alertPopup.then(function(res) {
            
        });
@@ -125,7 +126,7 @@ angular.module('starter.user', ['ngMessages'])
        }, 1000);
 
        $scope.closeLogin();
-       $state.go('app.user-profile');
+       $state.go('app.home');
 
     }, function errorCallback(response) {
       console.log('ERROR', response);

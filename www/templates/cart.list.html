@@ -11,12 +11,11 @@
 					<img class="cartImg" ng-src="{{img}}{{Item.photo}}">
 					<p class="grey">{{Item.product_name}}</p>
 					<small>Unit Price:</small>
-				  	<span style="color:#7F8C8D;"> MYR {{Item.unit_price|number:2}}</span>
+				  	<span style="color:#7F8C8D;"> MYR {{Item.unit_price}}</span>
 				</div>
 				<!-- col-right -->
 				<div class="col">
 					<form ng-submit="delete(Item)" class="pull-right top-right p10">
-						<input type="hidden" ng-model="Item.id">
 					 	<button type="submit"><i class="ion-close-round"></i></button>
 					</form>
 					<div class="row mt20"></div>

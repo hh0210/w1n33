@@ -70,7 +70,7 @@
         <ion-item menu-close href="#/app/cart/list/{{cart_id}}" ng-click="getCartId()">
           <i class="ion-android-cart"></i>
           Cart List
-          <span class="badge badge-assertive">{{cartList[0].cart_count}}</span>
+          <span class="badge badge-assertive">{{cartList.cart_count}}</span>
         </ion-item>
 
         <ion-item menu-close ng-click="logout()" ng-show="haveUser" class="default-bg">
