@@ -1,48 +1,28 @@
 <ion-view view-title="Order History">
   <ion-content ng-controller="orderhistory">
 
-	  <!-- <div class="list"> -->
-
-		    <div class="item font-small" ng-repeat="order in orderhistory">
-		    	<a href="#/app/order/history/details/{{order.code}}">
-			    	<div class="card m0" style="background:#F1F1F1;">
-				     	<div class="row">
-					    	<div class="col col-50">Order Id</div>
-					    	<div class="col col-50"><span class="text-color">{{order.code}}</span></div>
-					    </div>
-					    <div class="row">
-					    	<div class="col col-50">Order Date</div>
-					    	<div class="col col-50"><span class="text-color">{{order.created_on}}</span></div>
-					    </div>
-				    	<div class="row">
-					    	<div class="col col-50">Order Status</div>
-					    	<div class="col col-50"><span class="text-color">{{order.status}}</span></div>
-					    </div>
-					     <div class="row">
-					    	<div class="col col-50">Recipient</div>
-					    	<div class="col col-50"><span class="text-color">{{order.given_name}} {{order.family_name}}</span></div>
-					    </div>
-					</div>
-			    </a>
-		    </div>
-	 
-	    <!-- End of list item -->
-	 <!-- </div>  -->
-
-	<!-- <div class="card">
-		 <div class="item font-small" ng-repeat="order in orderhistory">
-		    	<a href="#/app/order/history/details/{{order.code}}">
-			     	<div class="row">
-		     		 	<div class="col col-33">{{order.code}}</div>
-						<div class="col col-33 col-offset-33">{{order.created_on}}</div>
-			     	</div>
-			     	<div class="row">
-			     		<div class="col col-33">{{order.given_name}} {{order.family_name}}</div>
-						<div class="col col-33 col-offset-33">{{order.status}}</div>
-			     	</div>
-			    </a>
-		    </div>
-	</div> -->
+    <div class="item font-small" ng-repeat="OrderInfo in OrderList">
+    	<a href="#/app/order/history/details/{{OrderInfo.code}}">
+	    	<div class="card m0" style="background:#F1F1F1;">
+		     	<div class="row">
+			    	<div class="col col-50">Invoice #</div>
+			    	<div class="col col-50"><span class="text-color">{{OrderInfo.code}}</span></div>
+			    </div>
+			    <div class="row">
+			    	<div class="col col-50">Order Date</div>
+			    	<div class="col col-50"><span class="text-color">{{OrderInfo.created_on}}</span></div>
+			    </div>
+		    	<div class="row">
+			    	<div class="col col-50">Payment Status</div>
+			    	<div class="col col-50"><span class="text-color">{{OrderInfo.status}}</span></div>
+			    </div>
+			     <div class="row">
+			    	<div class="col col-50">Recipient</div>
+			    	<div class="col col-50"><span class="text-color">{{OrderInfo.BillingInfo.given_name}} {{OrderInfo.BillingInfo.family_name}}</span></div>
+			    </div>
+			</div>
+	    </a>
+    </div>
 
   </ion-content>
 </ion-view>
