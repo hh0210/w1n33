@@ -37,12 +37,14 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     })
 
     .state('app.login', {
+      cache: false,
       url: '/app/login',
       templateUrl: 'templates/login.html',
       controller: 'AppCtrl'
     })
       
     .state('app.home', {
+      cache: false,
       url: '/home',
       views: {
         'menuContent': {
@@ -64,6 +66,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     })
 
     .state('app.categories', {
+      cache: false,
       url: '/categories',
       views: {
         'menuContent': {
@@ -74,121 +77,130 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     })
 
     .state('app.user.register', {
-        url: '/register',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/register.html',
-            controller: 'user'
-          }
+      cache: false,
+      url: '/register',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/register.html',
+          controller: 'user'
         }
-      })
+      }
+    })
 
     .state('app.user-profile', {
-        url: '/profile',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/profile.html',
-            controller: 'user'
-          }
+      cache: false,
+      url: '/profile',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/profile.html',
+          controller: 'user'
         }
-      })
+      }
+    })
 
     .state('app.user.forgotpassword', {
-        url: '/forgotpassword',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/forgotpassword.html',
-            controller: 'user'
-          }
+      cache: false,
+      url: '/forgotpassword',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/forgotpassword.html',
+          controller: 'user'
         }
-      })
+      }
+    })
 
     .state('app.orderhistory', {
-        url: '/order/history',
-        cache: false,
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/order.history.html',
-            controller: 'orderhistory'
-          }
+      cache: false,
+      url: '/order/history',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/order.history.html',
+          controller: 'orderhistory'
         }
-      })
+      }
+    })
 
     .state('app.orderhistorydetails', {
-        url: '/order/history/details/:code',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/order.history.details.html',
-            controller: 'orderhistorydetails'
-          }
-        }
-      })
-
-      .state('app.products', {
-        url: '/products',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/products.html',
-            controller: 'ProductController'
-          }
-        }
-      })
-
-
-      .state('app.productlist', {
-        url: '/product/list/:code',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/product.list.html',
-            controller: 'productlist'
-          }
-        }
-      })
-
-
-    .state('app.productdetails', {
-      url: '/product/details/:sku_code',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/product.details.html',
-          controller: 'productdetails'
-        }
-      }
-    })
-
-    .state('app.cartlist', {
       cache: false,
-      url: '/cart/list/:cart_id',
+      url: '/order/history/details/:code',
       views: {
         'menuContent': {
-          templateUrl: 'templates/cart.list.html',
-          controller: 'cartlist'
+          templateUrl: 'templates/order.history.details.html',
+          controller: 'orderhistorydetails'
         }
       }
     })
 
-    .state('app.ordersummary', {
+    .state('app.products', {
       cache: false,
-      url: '/order/summary',
+      url: '/products',
       views: {
         'menuContent': {
-          templateUrl: 'templates/order.summary.html',
-          controller: 'ordersummary'
+          templateUrl: 'templates/products.html',
+          controller: 'ProductController'
         }
       }
     })
 
-    .state('app.billing', {
-      url: '/billing',
+
+    .state('app.productlist', {
+      cache: false,
+      url: '/product/list/:code',
       views: {
         'menuContent': {
-          templateUrl: 'templates/billing.html',
-          controller: 'billing'
+          templateUrl: 'templates/product.list.html',
+          controller: 'productlist'
         }
       }
     })
 
-    .state('app.shipping', {
+
+  .state('app.productdetails', {
+    cache: false,
+    url: '/product/details/:sku_code',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/product.details.html',
+        controller: 'productdetails'
+      }
+    }
+  })
+
+  .state('app.cartlist', {
+    cache: false,
+    url: '/cart/list',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/cart.list.html',
+        controller: 'cartlist'
+      }
+    }
+  })
+
+  .state('app.ordersummary', {
+    cache: false,
+    url: '/order/summary',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/order.summary.html',
+        controller: 'ordersummary'
+      }
+    }
+  })
+
+  .state('app.billing', {
+    cache: false,
+    url: '/billing',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/billing.html',
+        controller: 'billing'
+      }
+    }
+  })
+
+  .state('app.shipping', {
+    cache: false,
     url: '/shipping',
     views: {
       'menuContent': {
@@ -198,15 +210,16 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     }
   })
 
-    .state('app.payment', {
-      url: '/payment',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/payment.html',
-          controller: 'payment'
-        }
+  .state('app.payment', {
+    cache: false,
+    url: '/payment',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/payment.html',
+        controller: 'payment'
       }
-    });
+    }
+  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');

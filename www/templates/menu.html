@@ -10,7 +10,7 @@
       </ion-nav-buttons>
 
       <ion-nav-buttons side="right">
-        <a class="button" ng-href="#/app/cart/list/{{cart_id}}" ng-click="getCartId()">
+        <a class="button" ng-href="#/app/cart/list" ng-click="getCartId()">
          <i class="ion-android-cart" width="25" style="font-size:20px;"></i>
         </a>
       </ion-nav-buttons>
@@ -67,7 +67,7 @@
           Order History
         </ion-item>
 
-        <ion-item menu-close href="#/app/cart/list/{{cart_id}}" ng-click="getCartId()">
+        <ion-item menu-close href="#/app/cart/list" ng-click="getCartId()">
           <i class="ion-android-cart"></i>
           Cart List
           <span class="badge badge-assertive">{{cartList.cart_count}}</span>

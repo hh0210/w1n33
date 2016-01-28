@@ -1,9 +1,9 @@
 angular.module('starter.shipping', [])
 
-.controller("shipping", function($scope, $http, $stateParams, $state) {
+.controller("shipping", function($scope, $http, $state) {
 
 	// cart id
-	var cart_id = (localStorage.getItem('cart_id'))?JSON.parse(localStorage.getItem('cart_id')):'';
+	var cart_id = (localStorage.getItem('cart_id') != 'undefined')?JSON.parse(localStorage.getItem('cart_id')):'';
 	console.log('cart_id',cart_id);
 
 	//shipment type list
@@ -101,6 +101,8 @@ angular.module('starter.shipping', [])
 			}, function(err){
 				console.error('error', err);
 			});
+		}else{
+			$scope.shipment = '';
 		}
 	} 
 });

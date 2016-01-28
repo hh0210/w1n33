@@ -35,7 +35,7 @@ angular.module('starter.ordersummary', [])
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/invoice',
-		    data: 'sales_id=' + $scope.SalesInfo.id + '&user_id=' + $scope.SalesInfo.id_UserMaster + '&email=' + $scope.email,
+		    data: 'sales_id=' + $scope.SalesInfo.id,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
 		}).then(function successCallback(response) {

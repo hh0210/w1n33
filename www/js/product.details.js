@@ -1,8 +1,8 @@
 angular.module('starter.productdetails', [])
 
  // Product Details
-.controller('productdetails', function($scope, $http, $stateParams, $ionicPopup, $timeout) {
-console.log('cart_id',JSON.parse(localStorage.getItem('cart_id')));
+.controller('productdetails', function($scope, $state, $http, $stateParams, $ionicPopup, $timeout) {
+
 	//GET PRODUCT DETAILS
     $http.get('http://staging.wine-enterprise.com:8011/apis/productdetails?sku_code='+$stateParams.sku_code)
 		.then(function(response) {
@@ -19,32 +19,51 @@ console.log('cart_id',JSON.parse(localStorage.getItem('cart_id')));
 
 	//  Popup Function for validation checking
    	$scope.showPopup = function(qty) {
-   		if(qty > 0) {
+   		var balance = $scope.productDetails.balance-qty;
+   		if(balance >= 0) {
 			var alertPopup = $ionicPopup.alert({
 				title: 'Message',
 				template: 'Item successfully added to cart.'
 	   		});
-	   		alertPopup.then(function(res) {
-			
-	   		// Pass in state parameter that defined in app, then can go to different state.
-	   		// $state.go('app.home');
-	   		});
+	   		alertPopup;
+	   		$timeout(function() {
+				alertPopup.close(); 
+			}, 1000);
+	   		return true;
+   		}else if(qty > $scope.productDetails.balance){
+   			var alertPopup = $ionicPopup.alert({
+				title: 'Message',
+				template: 'Insufficient Balance'
+			});
+			alertPopup;
+	   		$timeout(function() {
+				alertPopup.close(); 
+			}, 1000);
+			return false;
    		}else{
    		    var alertPopup = $ionicPopup.alert({
 				title: 'Message',
 				template: 'Please type quantity of product.'
 			});
-				alertPopup.then(function(res) {
-			});
+			alertPopup;
+	   		$timeout(function() {
+				alertPopup.close(); 
+			}, 1000);
+			return false;
    		}
-
-   		$timeout(function() {
-			alertPopup.close(); 
-		}, 2000);
 	 };
+
+	var cart_id = (localStorage.getItem('cart_id') != 'undefined')?JSON.parse(localStorage.getItem('cart_id')):'';
+	console.log('cart_id', cart_id);
+
 
 	//add cart items
 	$scope.cart = function(productDetails){
+		var status = $scope.showPopup(productDetails.qty);
+		if(status == true) $scope.addcart(productDetails);
+	}
+
+	$scope.addcart = function(productDetails){
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/cart/list',
@@ -55,14 +74,10 @@ console.log('cart_id',JSON.parse(localStorage.getItem('cart_id')));
 		}).then(function successCallback(response) {
 	        localStorage.setItem('cart_id',JSON.stringify(response.data.cart_id));
 			console.log('cart response: ', response.data);
+			$state.go('app.productdetails',{},{reload: true});
 		}, function errorCallback(response) {
 			console.log('error', response);
 		});
 	}
-
-
-	// cart id
-	var cart_id = (localStorage.getItem('cart_id'))?JSON.parse(localStorage.getItem('cart_id')):'';
-	console.log('cart_id',cart_id);
 
 });

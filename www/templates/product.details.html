@@ -21,9 +21,11 @@
                 <span class="input-label font-small royal">Qty:</span>
                 <input type="number" min="1" ng-model="productDetails.qty" />
               </label>
-
-              <button type="submit" class="button button-block button-balanced font-medium" 
-                 ng-click="showPopup(productDetails.qty)">
+              <label class="item item-input">
+                <span class="input-label font-small royal">Balance:</span>
+                <span>{{productDetails.balance}}</span>
+              </label>
+              <button type="submit" class="button button-block button-balanced font-medium">
                   <i class="ion-android-cart font-big"></i> Add to Cart
               </button>
             </form>
