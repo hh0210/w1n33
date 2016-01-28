@@ -50,7 +50,7 @@ angular.module('starter.cartlist', [])
 		}).then(function successCallback(response) {
 			console.log('status', response.data.status);
 			console.log('sales_id: ', response.data.salesorder_id);
-			$state.go('app.billing');
+			$state.go('app.billing', {}, {reload: true});
 		}, function errorCallback(response) {
 			console.log('error', response);
 
@@ -70,10 +70,13 @@ angular.module('starter.cartlist', [])
 
 	// Add and minus function for product quantity.
 	$scope.plus = function(item) {
-	
+
+		item.balance = parseInt(item.balance);
+		item.qty = parseInt(item.qty);
+		
 		if(item.balance > item.qty){
 			// Add the quantity by 1.
-			item.qty = parseInt(item.qty);
+			
 			item.qty++;
 
 			// Each click '+' button, add the unit price with total price.

@@ -33,7 +33,7 @@ angular.module('starter.billing', [])
 		    responseType :'json',
 		}).then(function successCallback(response) {
 			console.log('success: ', response);
-			$state.go('app.shipping');
+			$state.go('app.shipping', {}, {reload: true});
 		}, function errorCallback(response) {
 			console.log('error', response);
 		});
