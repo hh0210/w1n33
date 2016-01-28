@@ -41,12 +41,16 @@
 		<div class="item item-text-wrap">
 			 <label class="item item-input font-medium royal">
         		<ul class="list-unstyled">
+        			<!-- shipping -->
 	        		<li>{{OrderInfo.Method.given_name}} {{OrderInfo.Method.family_name}}</li>
 	        		<li>{{OrderInfo.Method.phone}}</li>
 	        		<li>{{OrderInfo.Method.address1}}</li>
 	        		<li>{{OrderInfo.Method.address2}}</li>
 	        		<li>{{OrderInfo.Method.city}}</li>
 	        		<li>{{OrderInfo.Method.postcode}}</li>
+	        		<!-- selfpickup -->
+	        		<li>{{OrderInfo.Method.name}}</li>
+	        		<li>{{OrderInfo.Method.address}}</li>
         		</ul>
       		</label>
 		</div>

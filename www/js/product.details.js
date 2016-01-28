@@ -8,7 +8,7 @@ angular.module('starter.productdetails', [])
 		.then(function(response) {
 		$scope.productDetails = response.data;
 		$scope.productDetails.qty = 1;
-		$scope.img = "http://shared.wine-enterprise.com/upload/product/";
+		$scope.img = "http://shared.wine-enterprise.com/upload/product/320x320_";
 		}, function(err){
 			console.error('ERR', err);
 		});

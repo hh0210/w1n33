@@ -62,7 +62,7 @@ angular.module('starter.shipping', [])
 		    responseType :'json',
 		}).then(function successCallback(response) {
 			console.log('success: ', response);
-			$state.go('app.ordersummary', {}, {reload: true});
+			$state.go('app.ordersummary');
 		}, function errorCallback(response) {
 			console.log('error', response);
 		});
@@ -78,7 +78,7 @@ angular.module('starter.shipping', [])
 		    responseType :'json',
 		}).then(function successCallback(response) {
 			console.log('success: ', response);
-			$state.go('app.ordersummary', {}, {reload: true});
+			$state.go('app.ordersummary');
 	        
 		}, function errorCallback(response) {
 			console.log('error', response);

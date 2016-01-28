@@ -13,21 +13,26 @@
           </div>
           <div class="col col-50 center">
             <form ng-submit="cart(productDetails)">
-              <label class="item item-input">
-                <span class="input-label font-small royal">Price:</span> MYR {{productDetails.price}}
-              </label>
+              <div class="col">
+                <label class="item item-input">
+                  <span class="input-label font-small royal">Price:</span> MYR {{productDetails.price}}
+                </label>
 
-              <label class="item item-input">
-                <span class="input-label font-small royal">Qty:</span>
-                <input type="number" min="1" ng-model="productDetails.qty" />
-              </label>
-              <label class="item item-input">
-                <span class="input-label font-small royal">Balance:</span>
-                <span>{{productDetails.balance}}</span>
-              </label>
-              <button type="submit" class="button button-block button-balanced font-medium">
+                <label class="item item-input">
+                  <span class="input-label font-small royal">Qty:</span>
+                  <input type="number" min="1" ng-model="productDetails.qty" />
+                </label>
+                <label class="item item-input">
+                  <span class="input-label font-small royal">Balance:</span>
+                  <span>{{productDetails.balance}}</span>
+                </label>
+              </div>
+              <div class="col">
+                <button type="submit" ng-show="productDetails.balance > 0" class="button button-block button-balanced font-medium">
                   <i class="ion-android-cart font-big"></i> Add to Cart
-              </button>
+                </button>
+                <label class="default-bg p10" ng-show="productDetails.balance <= 0">Out of Stock</label>
+              </div>
             </form>
           </div>
         </div>

@@ -16,7 +16,7 @@ angular.module('starter.ordersummary', [])
         $scope.SalesInfo = response.data;
         console.log('sales info', $scope.SalesInfo);
 
-        $scope.img = "http://shared.wine-enterprise.com/upload/product/";
+        $scope.img = "http://shared.wine-enterprise.com/upload/product/100x100_";
 
 		}, function(err){
 		  console.error('error', err);
@@ -43,7 +43,7 @@ angular.module('starter.ordersummary', [])
 			localStorage.removeItem('cart_id'); //remove session
 		  	var cart_id = (localStorage.getItem('cart_id') != 'undefined')?JSON.parse(localStorage.getItem('cart_id')):'';
 			console.log('cart_id',cart_id);
-		  	$state.go('app.payment', {}, {reload: true});
+		  	$state.go('app.payment');
 		}, function errorCallback(response) {
 			console.log('error', response);
 		});

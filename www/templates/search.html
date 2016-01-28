@@ -21,17 +21,19 @@
 					    	<a class="col col-50" ng-show="productList[$index] != null" ng-if="$index < productList.length" 
 					    	ng-href="#/app/product/details/{{productList[$index].sku_code}}">
 							  	<div class="sbox center">
-								  	<img ng-src="{{img}}{{productList[$index].photo}}" height="160px" width="100%">
-								  	<p class="ellipsis p10">{{productList[$index].name}}</p>
-								  	<p class="default-bg p10">MYR {{productList[$index].price}}</p>
+								  	<img ng-src="{{img}}{{productList[$index].photo}}" width="100%">
+								  	<p class="ellipsis p10 m0">{{productList[$index].name}}</p>
+								  	<p class="default-bg p10 m0">MYR {{productList[$index].price}}</p>
+								  	<label class="grey" ng-show="productList[$index].balance <= 0">Out of Stock</label>
 							  	</div>
 						  	</a>
 						  	<a class="col col-50" ng-show="productList[$index+1] != null" ng-if="$index < productList.length" 
 						  	ng-href="#/app/product/details/{{productList[$index+1].sku_code}}">
 							  	<div class="sbox center">
-								  	<img ng-src="{{img}}{{productList[$index+1].photo}}" height="160px" width="100%">
-								  	<p class="ellipsis p10">{{productList[$index+1].name}}</p>
-								  	<p class="default-bg p10">MYR {{productList[$index+1].price}}</p>
+								  	<img ng-src="{{img}}{{productList[$index+1].photo}}" width="100%">
+								  	<p class="ellipsis p10 m0">{{productList[$index+1].name}}</p>
+								  	<p class="default-bg p10 m0">MYR {{productList[$index+1].price}}</p>
+								  	<label class="grey" ng-show="productList[$index+1].balance <= 0">Out of Stock</label>
 							  	</div>
 						  	</a>
 						</div>
