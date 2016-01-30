@@ -8,7 +8,7 @@ angular.module('starter.search', [])
 		$state.go('app.search', {}, {reload: true});
 	}
 
-	var keyword = (localStorage.getItem('keyword') != 'undefined')?JSON.parse(localStorage.getItem('keyword')):'';
+	var keyword = (localStorage.getItem('keyword'))?JSON.parse(localStorage.getItem('keyword')):'';
 	console.log('keyword: ', keyword);
 
 	//SEARCH PRODUCT LIST

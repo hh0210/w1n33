@@ -7,7 +7,7 @@ angular.module('starter.ordersummary', [])
 	console.log('cart_id',cart_id);
 
 	// user id
-	var user_id = (localStorage.getItem('loginInfo') != 'undefined')?JSON.parse(localStorage.getItem('loginInfo')):'0';
+	var user_id = (localStorage.getItem('loginInfo'))?JSON.parse(localStorage.getItem('loginInfo')):'0';
 	console.log('user_id',user_id);
 
     //get sales order

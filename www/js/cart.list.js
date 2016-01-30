@@ -5,7 +5,7 @@ angular.module('starter.cartlist', [])
 	var cart_id = (localStorage.getItem('cart_id') != 'undefined')?JSON.parse(localStorage.getItem('cart_id')):'';
 	console.log('cart_id', cart_id);
 
-	var user_id = (localStorage.getItem('loginInfo') != 'undefined')?JSON.parse(localStorage.getItem('loginInfo')).id:'0';
+	var user_id = (localStorage.getItem('loginInfo'))?JSON.parse(localStorage.getItem('loginInfo')).id:'0';
 	console.log('user_id',user_id);
 
 	/*========== Listing ==========*/
