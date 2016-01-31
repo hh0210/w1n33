@@ -4,36 +4,46 @@ angular.module('starter.user', ['ngMessages'])
 .controller("user", function($scope, $http, $ionicPopup, $state, $timeout) {
 
 	//SIGN UP
-	$scope.signup = function(userdata){
+	$scope.signup = function(register){
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/user/registration',
-		    data: 'username=' + userdata.username + '&email=' + userdata.email +
-              '&password=' + userdata.password,
+		    data: 'username=' + register.username + '&email=' + register.email +
+              '&password=' + register.password,
 		    // data: {"username=":'username1','password=':'passwod1'},
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    // headers: {'Content-Type': 'application/json'}
 		    responseType :'json',
 		}).then(function successCallback(response) {
-			console.log('INFO', response);
-			console.log('INFO', response.data.status);
-      
-       // Popup message for logout sucessfully.
-       var alertPopup = $ionicPopup.alert({
-          title: 'Message',
-          template: 'You have successfully register!'
-       });
-       alertPopup.then(function(res) {
-           
-       });
+			console.log('status', response.data.status);
+        
+        if(response.data.status == true){
+         // Popup message for logout sucessfully.
+         var alertPopup = $ionicPopup.alert({
+            title: 'Message',
+            template: 'You have successfully register!'
+         });
+         alertPopup.then(function(res) {});
 
-       // Close the popup message and modal and go to home page.
-       $timeout(function(){
-          alertPopup.close();
-       }, 1000);
+         // Close the popup message and modal and go to home page.
+         $timeout(function(){
+            alertPopup.close();
+         }, 1000);
 
-       $scope.closeLogin();
-       $state.go('app.home');
+         $scope.closeLogin();
+         $state.go('app.home', {}, {reload:true});
+        }else{
+          var alertPopup = $ionicPopup.alert({
+            title: 'Message',
+            template: 'This email has already been used.'
+           });
+           alertPopup.then(function(res) {});
+
+           // Close the popup message and modal and go to home page.
+           $timeout(function(){
+              alertPopup.close();
+           }, 1000);
+        }
 
 		}, function errorCallback(response) {
 			console.log('ERROR', response);
@@ -110,7 +120,6 @@ angular.module('starter.user', ['ngMessages'])
       console.log('INFO', response);
       // console.log('INFO', response.data.status);
       
-       // Popup message for logout sucessfully.
        var alertPopup = $ionicPopup.alert({
           title: 'Message',
           template: 'You have successfully save!',

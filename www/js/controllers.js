@@ -121,7 +121,7 @@ angular.module('starter.controllers', [])
             }, 1500);
 
             $scope.closeLogin();
-            $state.go('app.home');
+            $state.go('app.home', {}, {reload:true});
 
         }else{
           // Popup message for fail to login.
@@ -134,7 +134,7 @@ angular.module('starter.controllers', [])
            });
            $timeout(function() {
               alertPopup.close();
-            }, 2000);
+            }, 1000);
            return;
         }
       }, function(err){

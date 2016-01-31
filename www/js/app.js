@@ -30,6 +30,7 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
   $stateProvider
 
     .state('app', {
+      // cache: false,
       url: '/app',
       abstract: true,
       templateUrl: 'templates/menu.html',

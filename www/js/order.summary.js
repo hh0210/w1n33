@@ -39,7 +39,7 @@ angular.module('starter.ordersummary', [])
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
 		}).then(function successCallback(response) {
-			console.log('success: ', response.data.status);
+			console.log('success: ', response);
 			localStorage.removeItem('cart_id'); //remove session
 		  	var cart_id = (localStorage.getItem('cart_id') != 'undefined')?JSON.parse(localStorage.getItem('cart_id')):'';
 			console.log('cart_id',cart_id);
