@@ -1,5 +1,5 @@
 <ion-side-menus enable-menu-with-back-views="true">
-  <ion-side-menu-content>
+  <ion-side-menu-content ng-click="updateSideMenuInfo()">
     <ion-nav-bar>
       <ion-nav-back-button>
       </ion-nav-back-button>
@@ -10,7 +10,7 @@
       </ion-nav-buttons>
 
       <ion-nav-buttons side="right">
-        <a class="button" ng-href="#/app/cart/list" ng-click="getCartId()">
+        <a class="button" ng-href="#/app/cart/list">
          <i class="ion-android-cart" width="25" style="font-size:20px;"></i>
         </a>
       </ion-nav-buttons>
@@ -18,7 +18,7 @@
 
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
-</ion-side-menu-content>
+  </ion-side-menu-content>
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
@@ -51,29 +51,30 @@
         </ion-item> -->
 
         <!-- Login -->
-        <ion-item menu-close ng-click="login()" ng-show="noUser">
+        <ion-item menu-close ng-click="login()" ng-if="userinfo.id == null">
           <i class="ion-log-in"></i>
           Login
         </ion-item>
 
-        <ion-item menu-close href="#/app/profile" ng-show="haveUser">
+        <ion-item menu-close href="#/app/profile" ng-if="userinfo.id != null">
           <i class="ion-log-in"></i>
-          {{loginInfo.username}}
+          <!-- {{userinfo.given_name}} {{userinfo.family_name}} -->
+          {{userinfo.email}}
         </ion-item>
         <!-- End Login -->
 
-        <ion-item menu-close href="#/app/order/history" ng-show="loginInfo != null">
+        <ion-item menu-close href="#/app/order/history" ng-show="userinfo.id != null">
           <i class="ion-social-buffer"></i>
           Order History
         </ion-item>
 
-        <ion-item menu-close href="#/app/cart/list" ng-click="getCartId()">
+        <ion-item menu-close href="#/app/cart/list">
           <i class="ion-android-cart"></i>
           Cart List
           <span class="badge badge-assertive">{{cartList.cart_count}}</span>
         </ion-item>
 
-        <ion-item menu-close ng-click="logout()" ng-show="haveUser" class="default-bg">
+        <ion-item menu-close ng-click="logout()" ng-if="userinfo.id != null" class="default-bg">
           <i class="ion-log-out"></i>
           Logout
         </ion-item>

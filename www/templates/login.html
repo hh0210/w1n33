@@ -22,14 +22,15 @@
 
           <label class="item item-input item-icon-left" ng-class="{ 'has-errors' : loginForm.username.$invalid, 'no-errors' : loginForm.username.$valid}">
             <i class="icon ion-android-person"></i>
-            <span class="input-label ml30 font-small">Username</span>
-            <input type="text" name="username" ng-model="userdata.username" required>
+            <span class="input-label ml30 font-small">Email</span>
+            <input type="email" name="username" ng-model="userdata.username" required style="border:0px;">
           </label>
 
           <!-- Error message for username -->
           <div class="error-container" ng-show="loginForm.username.$error" 
               ng-messages="loginForm.username.$error">
               <div ng-messages-include="error-list.html"></div>
+              <div ng-message="email" style="color:red;">invalid email*</div>
           </div>
 
 
@@ -69,26 +70,17 @@
           <form name="signUpForm" ng-submit="signup(register)">
           
             <div class="list">
-              <label class="item item-input item-floating-label" ng-class="{ 'has-errors' : signUpForm.username.$invalid, 'no-errors' : signUpForm.username.$valid}">
-                <span class="input-label font-small">Username</span>
-                <input type="text" name="username" ng-model="register.username" placeholder="Username" required>
-              </label>
-
-              <!-- Error message for username -->
-              <div class="error-container" ng-show="signUpForm.username.$error" 
-                  ng-messages="signUpForm.username.$error">
-                  <div ng-messages-include="error-list.html"></div>
-              </div>
-
+             
               <label class="item item-input item-floating-label" ng-class="{ 'has-errors' : signUpForm.email.$invalid, 'no-errors' : signUpForm.email.$valid}">
                 <span class="input-label font-small">Email</span>
-                <input type="email" name="email" ng-model="register.email" placeholder="Email" required>
+                <input type="email" name="email" ng-model="register.email" placeholder="Email" required style="border:0px;">
               </label>
 
                <!-- Error message for email -->
               <div class="error-container" ng-show="signUpForm.email.$error" 
                   ng-messages="signUpForm.email.$error">
                   <div ng-messages-include="error-list.html"></div>
+                  <div ng-message="email" style="color:red;">invalid email*</div>
               </div>
 
               <label class="item item-input item-floating-label" ng-class="{ 'has-errors' : signUpForm.password.$invalid, 'no-errors' : signUpForm.password.$valid}">

@@ -8,7 +8,8 @@ angular.module('starter.user', ['ngMessages'])
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/user/registration',
-		    data: 'username=' + register.username + '&email=' + register.email +
+		    // data: 'username=' + register.username + '&email=' + register.email +
+        data: 'email=' + register.email +
               '&password=' + register.password,
 		    // data: {"username=":'username1','password=':'passwod1'},
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -104,7 +105,7 @@ angular.module('starter.user', ['ngMessages'])
           console.error('ERR', err);
   })
 
-  $scope.profileform = function(userdata){
+  $scope.ProfileForm = function(userdata){
     $http({
         method: 'POST',
         url: 'http://staging.wine-enterprise.com:8011/apis/user/profile',
@@ -135,7 +136,9 @@ angular.module('starter.user', ['ngMessages'])
        }, 1000);
 
        $scope.closeLogin();
-       $state.go('app.home');
+       // $state.go('app.user-profile');
+       $state.go($state.current);
+       // localStorage.setItem('loginInfo',JSON.stringify(response.data));
 
     }, function errorCallback(response) {
       console.log('ERROR', response);

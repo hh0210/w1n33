@@ -2,6 +2,7 @@
   <ion-content ng-controller="orderhistory">
 
     <div class="item font-small" ng-repeat="OrderInfo in OrderList">
+    	<p ng-show="OrderList == null">No order yet.</p>
     	<a href="#/app/order/history/details/{{OrderInfo.code}}">
 	    	<div class="card m0" style="background:#F1F1F1;">
 		     	<div class="row">
