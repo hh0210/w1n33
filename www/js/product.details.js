@@ -1,90 +1,83 @@
 angular.module('starter.productdetails', [])
 
  // Product Details
-.controller('productdetails', function($scope, $http, $stateParams, $ionicPopup, $timeout) {
-console.log('cart_id',JSON.parse(localStorage.getItem('cart_id')));
+.controller('productdetails', function($scope, $state, $http, $stateParams, $ionicPopup, $timeout) {
+
 	//GET PRODUCT DETAILS
     $http.get('http://staging.wine-enterprise.com:8011/apis/productdetails?sku_code='+$stateParams.sku_code)
 		.then(function(response) {
 		$scope.productDetails = response.data;
-		$scope.img = "http://shared.wine-enterprise.com/upload/product/";
+		$scope.productDetails.qty = 1;
+		$scope.img = "http://shared.wine-enterprise.com/upload/product/320x320_";
 		}, function(err){
 			console.error('ERR', err);
 		});
 
 	//user id
-	if(localStorage.getItem('loginInfo') != null){
-		$scope.user = JSON.parse(localStorage.getItem('loginInfo'));
-		var user_id = $scope.user.id;
-		console.log('localstorage USER ID',user_id);
-	}else{
-		var user_id = '0';
-		console.log('localstorage USER ID',user_id);
-	}
+	var user_id = (localStorage.getItem('loginInfo'))?JSON.parse(localStorage.getItem('loginInfo')).id:'0';
+	console.log('user_id',user_id);
 
 	//  Popup Function for validation checking
-	   $scope.showPopup = function(qty) {
-	   		console.log(qty);
-	   		console.log("#####");
-	   		if((qty === 0)||(qty === undefined)||(qty === null)) {
-	   			console.log("wrong quantity");
-	   		    var alertPopup = $ionicPopup.alert({
-			     title: 'Message',
-			     template: 'Please type quantity of product.'
-			   });
-			   alertPopup.then(function(res) {
-			   });
-	   		}
-	   		else{
-	   			console.log("got quantity");
-	   			var alertPopup = $ionicPopup.alert({
-			     title: 'Message',
-			     template: 'Item successfully added to cart.'
-			   });
-			   alertPopup.then(function(res) {
-					
-			   		// Pass in state parameter that defined in app, then can go to different state.
-			   		// $state.go('app.home');
-			   });
-	   		}
-
+   	$scope.showPopup = function(qty) {
+   		var balance = $scope.productDetails.balance-qty;
+   		if(balance >= 0) {
+			var alertPopup = $ionicPopup.alert({
+				title: 'Message',
+				template: 'Item successfully added to cart.'
+	   		});
+	   		alertPopup;
 	   		$timeout(function() {
 				alertPopup.close(); 
-			}, 2000);
+			}, 1000);
+	   		return true;
+   		}else if(qty > $scope.productDetails.balance){
+   			var alertPopup = $ionicPopup.alert({
+				title: 'Message',
+				template: 'Insufficient Balance'
+			});
+			alertPopup;
+	   		$timeout(function() {
+				alertPopup.close(); 
+			}, 1000);
+			return false;
+   		}else{
+   		    var alertPopup = $ionicPopup.alert({
+				title: 'Message',
+				template: 'Please type quantity of product.'
+			});
+			alertPopup;
+	   		$timeout(function() {
+				alertPopup.close(); 
+			}, 1000);
+			return false;
+   		}
 	 };
 
-	 //POST CART LIST
+	var cart_id = (localStorage.getItem('cart_id') != 'undefined')?JSON.parse(localStorage.getItem('cart_id')):'';
+	console.log('cart_id', cart_id);
+
+
+	//add cart items
 	$scope.cart = function(productDetails){
-		console.log('CART ID',cart_id);
-		console.log('USER ID',user_id);
+		var status = $scope.showPopup(productDetails.qty);
+		if(status == true) $scope.addcart(productDetails);
+	}
+
+	$scope.addcart = function(productDetails){
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/cart/list',
-		    data: 'id_UserMaster=' + user_id + '&id_ProductMaster=' + productDetails.id +
-		    	  '&price=' + productDetails.price + '&qty=' + productDetails.qty + 
-		    	  '&cart_id=' + cart_id,
+		    data: 'user_id=' + user_id + '&cart_id=' + cart_id +
+		    	  '&product_id=' + productDetails.id + '&qty=' + productDetails.qty,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
 		}).then(function successCallback(response) {
 	        localStorage.setItem('cart_id',JSON.stringify(response.data.cart_id));
-			console.log('INFO', response);
-			console.log('INFO', response.data.status);
-			console.log('INFO', response.data.cart_id);
+			console.log('cart response: ', response.data);
+			$state.go('app.productdetails',{},{reload: true});
 		}, function errorCallback(response) {
-			console.log('ERROR', response);
-			console.log(cart_id);
+			console.log('error', response);
 		});
 	}
-
-
-	//cart id - temp
-	if(localStorage.getItem('cart_id') != null){
-		var cart_id = JSON.parse(localStorage.getItem('cart_id'));
-		console.log('current cart_id',cart_id);
-	//}
-	}else{
-		var cart_id = '';
-		console.log('current cart_id',cart_id);
-	};
 
 });

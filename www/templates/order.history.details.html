@@ -13,39 +13,45 @@
 
         <!-- Table data -->
         <ul class="list">
-			<div class="row col-bg center col-line font-small" style="word-wrap: normal;" ng-repeat="order in orderhistorydetails">
-				<div class="col">{{order.id_ProductMaster}}</div>
-				<div class="col">{{order.name}}</div>
-				<div class="col">{{order.qty}}</div>
-				<div class="col">{{order.price|number:2}}</div>
+			<div class="row col-bg center col-line font-small" style="word-wrap: normal;" ng-repeat="Item in OrderInfo.Items">
+				<div class="col">{{Item.id_ProductMaster}}</div>
+				<div class="col">{{Item.product_name}}</div>
+				<div class="col">{{Item.qty}}</div>
+				<div class="col text-right">{{Item.price}}</div>
 	        </div>	        
 		</ul>
 
 		<!-- Total price -->
 		<div class="row">
-			<div class="col col-33">
-				<span class="ml5 pt0 font-medium input-label ">Total:</span>
+			<div class="col-50">
+				<p class="font-medium text-right">Total:</p>
 			</div>
-			<div class="col col-67">
-				<span class="font-big" style="color:#3498DB;">MYR {{orderhistorydetails[0].total_price|number:2}} </span>
-				<span  class="font-medium ml10" style="color:red;">{{orderhistorydetails[0].status}}
-				</span>
+			<div class="col-50">
+				<p class="font-big text-right" style="color:#3498DB;">{{OrderInfo.total_price}}</p>
 			</div>
 		</div>
 	</div>
 	<!-- End of listing -->
 	
-	 <!-- Shipping Info of recipient -->
-	 <div class="card">
+	<!-- Shipping Info of recipient -->
+	<div class="card">
 		<div class="item item-divider font-medium">
 			Deliver to
 		</div>
 		<div class="item item-text-wrap">
 			 <label class="item item-input font-medium royal">
-        		<span>{{orderhistorydetails[0].given_name}} {{orderhistorydetails[0].family_name}} <br>
-        		{{orderhistorydetails[0].phone}} <br>
-        		{{orderhistorydetails[0].address}}
-        		</span>
+        		<ul class="list-unstyled">
+        			<!-- shipping -->
+	        		<li>{{OrderInfo.Method.given_name}} {{OrderInfo.Method.family_name}}</li>
+	        		<li>{{OrderInfo.Method.phone}}</li>
+	        		<li>{{OrderInfo.Method.address1}}</li>
+	        		<li>{{OrderInfo.Method.address2}}</li>
+	        		<li>{{OrderInfo.Method.city}}</li>
+	        		<li>{{OrderInfo.Method.postcode}}</li>
+	        		<!-- selfpickup -->
+	        		<li>{{OrderInfo.Method.name}}</li>
+	        		<li>{{OrderInfo.Method.address}}</li>
+        		</ul>
       		</label>
 		</div>
 	</div>

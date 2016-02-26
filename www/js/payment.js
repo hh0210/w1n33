@@ -2,8 +2,10 @@ angular.module('starter.payment', [])
 
 //PAYMENT
 .controller("payment", function($scope, $ionicPopup, $state) {
+ 
 
-   $scope.showPopup = function() {
+  
+  $scope.showPopup = function() {
 
    var alertPopup = $ionicPopup.alert({
      title: 'Thanks for your order!',

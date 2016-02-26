@@ -3,12 +3,12 @@ angular.module('starter.ordersummary', [])
 .controller("ordersummary", function($scope, $http, $state) {
 
 	// cart id
-	var cart_id = (localStorage.getItem('cart_id'))?JSON.parse(localStorage.getItem('cart_id')):'';
+	var cart_id = (localStorage.getItem('cart_id') != 'undefined')?JSON.parse(localStorage.getItem('cart_id')):'';
 	console.log('cart_id',cart_id);
 
 	// user id
-	// var user_id = (localStorage.getItem('loginInfo'))?JSON.parse(localStorage.getItem('loginInfo')):'0';
-	// console.log('user_id',user_id);
+	var user_id = (localStorage.getItem('loginInfo'))?JSON.parse(localStorage.getItem('loginInfo')):'0';
+	console.log('user_id',user_id);
 
     //get sales order
     $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order?cart_id='+cart_id)
@@ -16,7 +16,7 @@ angular.module('starter.ordersummary', [])
         $scope.SalesInfo = response.data;
         console.log('sales info', $scope.SalesInfo);
 
-        $scope.img = "http://shared.wine-enterprise.com/upload/product/";
+        $scope.img = "http://shared.wine-enterprise.com/upload/product/100x100_";
 
 		}, function(err){
 		  console.error('error', err);
@@ -35,15 +35,15 @@ angular.module('starter.ordersummary', [])
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/invoice',
-		    data: 'sales_id=' + $scope.SalesInfo.id + '&user_id=' + $scope.SalesInfo.id_UserMaster + '&email=' + $scope.email,
+		    data: 'sales_id=' + $scope.SalesInfo.id + '&user_id='+$scope.SalesInfo.id_UserMaster,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
 		}).then(function successCallback(response) {
-			localStorage.removeItem('cart_id'); //remove session
-			console.log('testing123',cart_id);
 			console.log('success: ', response);
-			$state.go('app.payment');
-		
+			localStorage.removeItem('cart_id'); //remove session
+		  	var cart_id = (localStorage.getItem('cart_id') != 'undefined')?JSON.parse(localStorage.getItem('cart_id')):'';
+			console.log('cart_id',cart_id);
+		  	$state.go('app.payment');
 		}, function errorCallback(response) {
 			console.log('error', response);
 		});

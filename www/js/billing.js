@@ -2,14 +2,11 @@ angular.module('starter.billing', [])
 
 .controller("billing", function($scope, $http, $state) {
 
-	// cart id
-	var cart_id = (localStorage.getItem('cart_id'))?JSON.parse(localStorage.getItem('cart_id')):'';
-	console.log('cart_id',cart_id);
+	var cart_id = (localStorage.getItem('cart_id') != 'undefined')?JSON.parse(localStorage.getItem('cart_id')):'';
+	console.log('cart_id', cart_id);
 
-	// user id
 	var user_id = (localStorage.getItem('loginInfo'))?JSON.parse(localStorage.getItem('loginInfo')).id:'0';
 	console.log('user_id',user_id);
-
 
 	// billing info
 	$http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/person?cart_id='+cart_id+'&user_id='+user_id)
