@@ -50,7 +50,7 @@ angular.module('starter.controllers', [])
     $timeout(function(){
       alertPopup.close();
     }, 1000);
-    $state.go('app.home',{},{reload:true});
+    //$state.go('app.home',{},{reload:true});
   };
 
   //LOGIN
