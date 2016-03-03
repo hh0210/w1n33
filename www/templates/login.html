@@ -96,7 +96,8 @@
 
               <label class="item item-input item-floating-label" ng-class="{ 'has-errors' : signUpForm.confpassword.$invalid, 'no-errors' : signUpForm.confpassword.$valid}">
                 <span class="input-label font-small">Confirm Password</span>
-                <input type="password" name="confpassword" ng-model="register.confpassword" placeholder="Confirm Password" compare-to="register.password" required>
+                <input type="password" name="confpassword" ng-pattern="register.password" ng-model="register.confpassword" placeholder="Confirm Password" required>
+              <!-- compare-to="register.password"  -->
               </label>
 
               <!-- Error message for  confirm password -->
@@ -104,7 +105,9 @@
               <div class="error-container" ng-show="signUpForm.confpassword.$error"
                   ng-messages="signUpForm.confpassword.$error">
                   <div ng-messages-include="error-list.html"></div>
+                  <div ng-message="pattern" style="color:red;">Password not match!</div>
               </div>
+
             </div>
 
             <!-- Button submit -->

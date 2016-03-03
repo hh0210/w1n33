@@ -69,21 +69,29 @@
 						</div>
 
 						<div class="row">
-						<div class="col">
-							<label class="item-input item-select">
-							    <div class="input-label font-medium" style="color:#999;">
-							      Shipping Method
+							<div class="col-50">
+								<div class="font-medium" style="color:#999;">
+							      Shipping Fee
 							    </div>
-							    <select name="dropDownShipment" ng-model="mySelect" ng-change="showSelectValue(mySelect)" required>
-							      <option value="" selected>--Select--</option>
-							      <option ng-repeat="ShipmentInfo in ShipmentList" value="{{ShipmentInfo.id}}" ng-selected="ShipmentInfo.id == shipment.id_SalesOrderShipmentType">{{ShipmentInfo.name}} = MYR {{ShipmentInfo.price}}</option>
-							    </select>
-								<div class="assertive font-small" ng-messages="shipmentform.dropDownShipment.$error">
-									<div ng-message="required">require select*</div>
+								<!-- <label class="item-input item-select">
+								    <div class="input-label font-medium" style="color:#999;">
+								      Shipping Method
+								    </div>
+								    <select name="dropDownShipment" ng-model="mySelect" ng-change="showSelectValue(mySelect)" required>
+								      <option value="" selected>Select</option>
+								      <option ng-repeat="ShipmentInfo in ShipmentList" value="{{ShipmentInfo.id}}" ng-selected="ShipmentInfo.id == shipment.id_SalesOrderShipmentType">{{ShipmentInfo.name}} = MYR {{ShipmentInfo.price}}</option>
+								    </select>
+									<div class="assertive font-small" ng-messages="shipmentform.dropDownShipment.$error">
+										<div ng-message="required">require select*</div>
+									</div>
+								</label> -->
+							</div>
+							<div class="col-50">
+								<div class="font-medium" style="color:#999;">
+								{{SalesInfo.shipping_price}}
 								</div>
-							</label>
-						</div>	
-					</div> 
+							</div>	
+						</div> 
 					</div>
 				</div>
 				<!-- End of shipping detail -->

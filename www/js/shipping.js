@@ -7,12 +7,22 @@ angular.module('starter.shipping', [])
 	console.log('cart_id',cart_id);
 
 	//shipment type list
-    $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/shipment/type')
+	// $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/shipment/type')
+	//   .then(function(response) {
+	//     $scope.ShipmentList = response.data;
+	//     console.log('shipment list',$scope.ShipmentList);
+	// }, function(err){
+	//   console.error('error', err);
+	// });
+
+	//get sales order - shipping fee
+    $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order?cart_id='+cart_id)
       .then(function(response) {
-        $scope.ShipmentList = response.data;
-        console.log('shipment list',$scope.ShipmentList);
-	}, function(err){
-	  console.error('error', err);
+      	console.log('here',response);
+        $scope.SalesInfo = response.data;
+        console.log('sales info', $scope.SalesInfo);
+		}, function(err){
+		  console.error('error', err);
 	});
 
     //location list
@@ -44,8 +54,8 @@ angular.module('starter.shipping', [])
 
     //selection
 	$scope.showSelectValue = function(mySelect) {
-    	$scope.item_id = mySelect;
-    	console.log('shipment_id', $scope.item_id);
+		$scope.item_id = mySelect;
+		console.log('shipment_id', $scope.item_id);
 	}
 
     //post shipping data
@@ -57,7 +67,7 @@ angular.module('starter.shipping', [])
 		          '&phone=' + shipment.phone + 
 		          '&address1=' + shipment.address1 + '&address2=' + shipment.address2 +
               	  '&postcode=' + shipment.postcode + '&city=' + shipment.city +
-              	  '&shipment_id=' + $scope.item_id,
+              	  '&shipment_id=0',
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
 		}).then(function successCallback(response) {
