@@ -65,8 +65,7 @@ angular.module('starter.controllers', [])
       responseType :'json',
     }).then(function(response) {
 
-        if(response.data != false){
-
+        if(response.data.MemberInfo){
           localStorage.setItem('loginInfo',JSON.stringify(response.data));
           console.log('login info: ',JSON.parse(localStorage.getItem('loginInfo')));
 
@@ -84,19 +83,18 @@ angular.module('starter.controllers', [])
 
             $scope.closeLogin();
             $state.go('app.home',{},{reload:true});
-
         }else{
           // Popup message for fail to login.
-           var alertPopup = $ionicPopup.alert({
-              title: 'Message',
-              template: 'Email or password is invalid!'
-           });
-           alertPopup.then(function(res) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Message',
+            template: 'Email or password is invalid!'
+          });
+          alertPopup.then(function(res) {
 
-           });
-           $timeout(function() {
-              alertPopup.close();
-            }, 1500);
+          });
+          $timeout(function() {
+            alertPopup.close();
+          }, 1500);
         }
 
       }, function(err){
