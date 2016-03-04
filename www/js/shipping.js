@@ -56,6 +56,13 @@ angular.module('starter.shipping', [])
 	$scope.showSelectValue = function(mySelect) {
 		$scope.item_id = mySelect;
 		console.log('shipment_id', $scope.item_id);
+		$http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/selfpickup/location?id='+$scope.item_id)
+	      .then(function(response) {
+	        $scope.selfpickupinfo = response.data;
+	        console.log('address', $scope.selfpickupinfo);
+	  	}, function(err){
+	        console.error('error', err);
+		});
 	}
 
     //post shipping data

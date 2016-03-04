@@ -117,20 +117,31 @@
 				</div>
 				<div class="item item-text-wrap">
 					<div class="row">
-						<div class="col">
-							<label class="item-input item-select">
-							    <div class="input-label" style="color:#C0C0C0;">
-							      Location
-							    </div>
-							    <select name="location" ng-model="mySelect" ng-change="showSelectValue(mySelect)" required>
+						<div class="col-50">
+						    <div class="input-label" style="color:#C0C0C0;">
+						      Location
+						    </div>
+						</div>
+						<div class="col-50">
+							<label class="item-input">
+								<select ng-model="mySelect" ng-change="showSelectValue(mySelect)">
 							      <option value="" selected>--Select--</option>
 							      <option ng-repeat="locationInfo in locationList" value="{{locationInfo.id}}" ng-selected="locationInfo.id == selfpickupinfo.id_SelfPickUpLocation">{{locationInfo.name}}</option>
 							    </select>
 							</label>
+							<input type="hidden" name="location" ng-model="selfpickupinfo.id" required />
 							<div class="assertive font-small" ng-messages="pickupForm.location.$error">
 								<div ng-message="required">require select*</div>
 							</div>
 						</div>	
+					</div>
+					<div class="row">
+						<div class="col-50">
+							<div class="input-label" style="color:#C0C0C0;">Address</div>
+						</div>
+						<div class="col-50">
+							<p>{{selfpickupinfo.address}}</p>
+						</div>
 					</div>
 				</div>
 			</div>
