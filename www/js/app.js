@@ -77,16 +77,16 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
       }
     })
 
-    .state('app.user.register', {
-      cache: false,
-      url: '/register',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/register.html',
-          controller: 'user'
-        }
-      }
-    })
+    // .state('app.user.register', {
+    //   cache: false,
+    //   url: '/register',
+    //   views: {
+    //     'menuContent': {
+    //       templateUrl: 'templates/register.html',
+    //       controller: 'user'
+    //     }
+    //   }
+    // })
 
     .state('app.user-profile', {
       cache: false,

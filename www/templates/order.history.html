@@ -2,6 +2,7 @@
   <ion-content ng-controller="orderhistory">
 
     <div class="item font-small" ng-repeat="OrderInfo in OrderList">
+    	<p ng-show="OrderList == null">No order yet.</p>
     	<a href="#/app/order/history/details/{{OrderInfo.code}}">
 	    	<div class="card m0" style="background:#F1F1F1;">
 		     	<div class="row">
@@ -16,9 +17,17 @@
 			    	<div class="col col-50">Payment Status</div>
 			    	<div class="col col-50"><span class="text-color">{{OrderInfo.status}}</span></div>
 			    </div>
-			     <div class="row">
+			    <div class="row">
 			    	<div class="col col-50">Recipient</div>
 			    	<div class="col col-50"><span class="text-color">{{OrderInfo.BillingInfo.given_name}} {{OrderInfo.BillingInfo.family_name}}</span></div>
+			    </div>
+			    <div class="row">
+			    	<div class="col col-50">Shipment Status</div>
+			    	<div class="col col-50">
+			    		<span class="text-color">{{OrderInfo.Shipment.trx_type}}
+			    		<span ng-if="OrderInfo.Shipment.trx_type == null">N/A</span>
+			    		</span>
+			    	</div>
 			    </div>
 			</div>
 	    </a>

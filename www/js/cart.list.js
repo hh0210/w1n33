@@ -9,19 +9,22 @@ angular.module('starter.cartlist', [])
 	console.log('user_id',user_id);
 
 	/*========== Listing ==========*/
-    $http.get('http://staging.wine-enterprise.com:8011/apis/cart/list?cart_id='+cart_id)
-		.then(function(response) {
-			$scope.CartInfo = response.data;
-			$scope.img = "http://shared.wine-enterprise.com/upload/product/100x100_";
 
-			//session
-			// localStorage.setItem('cart_id',JSON.stringify($stateParams.cart_id));
-			// console.log('cartInfo', $scope.cartList);
+	if(cart_id){
+	    $http.get('http://staging.wine-enterprise.com:8011/apis/cart/list?cart_id='+cart_id)
+			.then(function(response) {
+				$scope.CartInfo = response.data;
+				$scope.img = "http://shared.wine-enterprise.com/upload/product/100x100_";
 
-		}, function(err){
-			console.error('error', err);
-	});
+				//session
+				// localStorage.setItem('cart_id',JSON.stringify($stateParams.cart_id));
+				// console.log('cartInfo', $scope.cartList);
 
+			}, function(err){
+				console.error('error', err);
+		});
+	}
+	
 	/*========== Delete ==========*/
 	$scope.delete = function(item) {
 		$http({

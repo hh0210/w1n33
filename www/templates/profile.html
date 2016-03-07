@@ -1,7 +1,7 @@
 <ion-view view-title="Member Profile">
   	<ion-content ng-controller="user">
     
-		<form ng-submit="profileform(userdata)">
+		<form ng-submit="ProfileForm(userdata)" name="profileform">
 			<input type="hidden" ng-model="userdata.id_UserMaster"/>
 			<div class="card">
 				<div class="item item-divider font-medium">
@@ -18,10 +18,13 @@
 					</div>
 					<div class="row">
 						<div class="col col-50">
-							<input type="text" ng-model="userdata.email" placeholder="Email">
+							<input type="text" ng-model="userdata.email" placeholder="Email" disabled>
 						</div>
 						<div class="col col-50">
-							<input type="text" ng-model="userdata.phone" placeholder="Phone Number">
+							<input type="text" ng-model="userdata.phone" placeholder="Phone Number" name="phone" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
+							<div class="assertive font-small" ng-messages="profileform.phone.$error">
+								<div ng-message="pattern">invalid phone number</div>
+							</div>
 						</div>
 					</div>
 					<div class="row">
