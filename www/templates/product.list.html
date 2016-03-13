@@ -1,28 +1,29 @@
-<ion-view view-title="Product List" class="bg">
+<ion-view view-title="Product List" class="bg-default">
 	<ion-content ng-controller="productlist">
+	
 	<!-- row -->
     <div class="row" ng-repeat="productInfo in productList" ng-if="$index % 2 == 0">
     	<!-- col-left -->
     	<a class="col col-50" ng-show="productList[$index] != null" ng-if="$index < productList.length" 
     	ng-href="#/app/product/details/{{productList[$index].sku_code}}">
-		  	<div class="sbox center">
-			  	<img ng-src="{{img}}{{productList[$index].photo}}" width="100%">
-			  	<p class="ellipsis p10 m0">{{productList[$index].name}}</p>
-			  	<p class="default-bg p10 m0">MYR {{productList[$index].price}}</p>
-			  	<label class="grey" ng-show="productList[$index].balance <= 0">Out of Stock</label>
+		  	<div class="border curve-box text-center bg-white">
+			  	<img ng-src="{{img}}{{productList[$index].photo}}" class="width100">
+			  	<p class="ellipsis p5 m0">{{productList[$index].name}}</p>
+			  	<p class="bg-info text-white m0" ng-show="productList[$index].balance > 0">MYR {{productList[$index].price}}</p>
+			  	<p class="bg-danger text-white m0" ng-show="productList[$index].balance <= 0">Out of Stock</p>
 		  	</div>
 	  	</a>
 	  	<!-- col-right -->
 	  	<a class="col col-50" ng-show="productList[$index+1] != null" ng-if="$index < productList.length" 
 	  	ng-href="#/app/product/details/{{productList[$index+1].sku_code}}">
-		  	<div class="sbox center">
-			  	<img ng-src="{{img}}{{productList[$index+1].photo}}" width="100%">
-			  	<p class="ellipsis p10 m0">{{productList[$index+1].name}}</p>
-			  	<p class="default-bg p10 m0">MYR {{productList[$index+1].price}}</p>
-			  	<label class="grey" ng-show="productList[$index+1].balance <= 0">Out of Stock</label>
+		  	<div class="border curve-box text-center bg-white">
+			  	<img ng-src="{{img}}{{productList[$index+1].photo}}" class="width100">
+			  	<p class="ellipsis p5 m0">{{productList[$index+1].name}}</p>
+			  	<p class="bg-info text-white m0" ng-show="productList[$index+1].balance > 0">MYR {{productList[$index+1].price}}</p>
+			  	<p class="bg-danger text-white m0" ng-show="productList[$index+1].balance <= 0">Out of Stock</p>
 		  	</div>
 	  	</a>
 	</div>
-	<!-- end row -->
+
   </ion-content>
 </ion-view>

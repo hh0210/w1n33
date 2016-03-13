@@ -7,12 +7,16 @@
 .font20{ font-size: 20px !important; }
 .font35{ font-size: 35px !important; }
 
+.text-left{ text-align: left !important; }
+.text-center{ text-align: center !important; }
+.text-right{ text-align: right !important; }
+.text-justify{ text-align: justify !important; }
+
+p, a{
+    color: #666;
+}
 .ellipsis{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
-.text-left{ text-align: left !important; }
-.text-center{ text-align: center !important; }
-.text-right{ text-align: right !important; }

@@ -1,12 +1,12 @@
-<ion-view view-title="Categories">
+<ion-view view-title="Categories" class="bg-default">
 	<ion-content ng-controller="categories">
+	
 	<!-- row -->
     <div class="row" ng-repeat="productTypeInfo in productTypeList" ng-show="productTypeList[$index] != null" ng-if="$index % 2 == 0">
     	<!-- col left -->
-    	<a class="col col-50" ng-if="$index < productTypeList.length" 
-    	ng-href="#/app/product/list/{{productTypeList[$index].code}}" style="cursor: pointer">
-		  	<div class="sbox center">
-			  	<img ng-src="{{productTypeList[$index].photo}}" width="100%">
+    	<a class="col col-50" ng-if="$index < productTypeList.length" ng-href="#/app/product/list/{{productTypeList[$index].code}}">
+		  	<div class="border curve-box text-center bg-white">
+			  	<img ng-src="{{productTypeList[$index].photo}}" class="width100">
 			  	<p>
 			  		{{productTypeList[$index].name}}
 			  		<span class="badge badge-assertive">{{productTypeList[$index].type_count}}</span>
@@ -15,9 +15,9 @@
 	  	</a>
 	  	<!-- col right -->
 	  	<a class="col col-50" ng-show="productTypeList[$index+1] != null" ng-if="$index < productTypeList.length" 
-	  	ng-href="#/app/product/list/{{productTypeList[$index+1].code}}" style="cursor: pointer">
-		  	<div class="sbox center">
-			  	<img ng-src="{{productTypeList[$index+1].photo}}" width="100%">
+	  	ng-href="#/app/product/list/{{productTypeList[$index+1].code}}">
+		  	<div class="border curve-box text-center bg-white">
+			  	<img ng-src="{{productTypeList[$index+1].photo}}" class="width100">
 			  	<p>
 			  		{{productTypeList[$index+1].name}}
 			  		<span class="badge badge-assertive">{{productTypeList[$index+1].type_count}}</span>
@@ -25,6 +25,6 @@
 		  	</div>
 	  	</a>
 	</div>
-	<!-- end row -->
+
   </ion-content>
 </ion-view>
