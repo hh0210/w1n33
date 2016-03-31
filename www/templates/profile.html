@@ -1,13 +1,23 @@
 <ion-view view-title="Member Profile">
   	<ion-content ng-controller="user">
     
-		<form ng-submit="ProfileForm(userdata)" name="profileform">
+		<form ng-submit="ProfileForm(userdata)" name="profileform" class="form">
 			<input type="hidden" ng-model="userdata.id_UserMaster"/>
-			<div class="card">
+			<div class="card border m0">
 				<div class="item item-divider font-medium">
 					Profile Details
 				</div>
 				<div class="item item-text-wrap">
+					<div class="row">
+						<label class="item item-input">
+							<span class="input-label font14">Referral Code:</span>
+							<input type="text" ng-keyup="promotion(userdata.referral_code)" ng-model="userdata.referral_code" placeholder="Referral Code">
+							<div class="font-small">
+								<div class="assertive" ng-if="details.code == null"><i class="ion-close"></i></div>
+								<div class="balanced" ng-if="details.code != null"><i class="ion-checkmark"></i></div>
+							</div> 
+						</label>
+					</div>
 					<div class="row">
 						<div class="col col-50">
 							<input type="text" ng-model="userdata.given_name" placeholder="First Name">
@@ -42,11 +52,11 @@
 						<div class="col col-50">
 							<input type="text" ng-model="userdata.postcode" placeholder="Postcode/Zip">
 						</div>
-					</div> 
+					</div>
 				</div>
 			</div>
 			<div class="row">
-				<button type="submit" class="button btn-block btnCheckOut font-medium">Save</button>
+				<button type="submit" class="button button-full button-positive">Save</button>
 			</div>
 		</form>
 

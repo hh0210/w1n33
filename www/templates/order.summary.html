@@ -1,67 +1,50 @@
 <ion-view view-title="Order Summary">
-  <ion-content ng-controller="ordersummary">
+  <ion-content ng-controller="ordersummary" class="text-center">
 
-    <div class="row col-header center font-small">
+  	<!-- table -->
+  	<div class="row bg-default border-bottom">
       <div class="col">Product</div>
-      <div class="col">Quantity</div>
-      <div class="col">Price<br>(MYR)</div>
-      <div class="col">Subtotal (MYR)</div>
+      <div class="col col-20">Price <span class="font10">(MYR)</span></div>
+      <div class="col col-20">Qty</div>
+      <div class="col col-30 text-right">Subtotal <span class="font10">(MYR)</span></div>
     </div>
-
-    <div class="row col-bg center col-line font-small" ng-repeat="Item in SalesInfo.Items">
+    <!-- row -->
+    <div class="row border-bottom mt10" ng-repeat="Item in SalesInfo.Items">
+    	<div class="col">
+    		<img ng-src="{{img}}{{Item.photo}}" style="height:30px;">
+    		<p class="font10 m0">{{Item.product_name}}</p>
+    	</div>
+		<div class="col col-20">{{Item.unit_price}}</div>
+		<div class="col col-20">{{Item.qty}}</div>
+		<div class="col col-30 text-right">{{Item.price}}</div>
+    </div>
+    <!-- subtotal -->
+	<div class="row text-right pt5">
+		<div class="col col-75">SubTotal:</div>
+		<div class="col">{{SalesInfo.PriceInfo.sub_total}}</div>
+	</div>
+	<!-- discount -->
+	<div class="row text-right bg-default pt5">
+		<div class="col col-75">Discount ({{SalesInfo.PriceInfo.discount}}):</div>
+		<div class="col">{{SalesInfo.PriceInfo.after_discount}}</div>
+	</div>
+    <!-- shipping -->
+    <div class="row text-right pt5">
+		<div class="col col-75">{{SalesInfo.Method.name}}</div>
 		<div class="col">
-			<div>{{Item.product_name}}</div>
-			<img class="img-responsive" ng-src="{{img}}{{Item.photo}}" width="100%">
+			{{SalesInfo.Method.price}}
+			{{SalesInfo.Method.address}}
 		</div>
-		<div class="col">{{Item.qty}}</div>
-		<div class="col">{{Item.unit_price}}</div>
-		<div class="col text-right">{{Item.price}}</div>
-    </div>
-   
-   	<div class="row mt10 text-right" style="border-width: 1px;border-bottom-style: solid;border-color: #ddd;">
-	    <p class="col col-50 ml5 input-label font-medium">Subtotal:</p>
-		<div class="col col-50 font-medium" style="color:#3498DB;">{{SalesInfo.sub_total}}</div>
-    </div>
+	</div>
+	<!-- total -->
+	<div class="row text-right font20 pt5 bg-default">
+		<div class="col col-75">Total:</div>
+		<div class="col"><b>{{SalesInfo.PriceInfo.total_price}}</b></div>
+	</div>
 
-   	<form ng-submit="invoice(salesinfo)"> 
-		  
-		<!-- Row for total  -->
-		<div class="row text-right">
-			<div class="col col-50">
-				<p class="ml5 font-medium">{{SalesInfo.Method.name}}</p>
-			</div>
-			<div class="col col-50 font-medium">
-				<p style="color:#3498DB;">{{SalesInfo.Method.price}}</p>
-				<p style="color:#3498DB;">{{SalesInfo.Method.address}}</p>
-				<!-- <p style="color:#3498DB;">{{type}}</p> -->
-			</div>
-		</div>
-
-		<!-- Submit promo code data -->
-		<!-- <div class="item item-input">
-		    <span class="input-label font-medium">Promo Code:</span>
-		    <span>
-		    	<input type="text">
-		    </span>
-		</div>	 -->
-
-
-        <div class="row mt5 text-right">
-			<div class="col col-50">
-				<p class="ml5 font-big">Total:</p>
-			</div>
-			<div class="col col-50">
-				<span class="font-big" style="color:#3498DB;">{{SalesInfo.total_price}}
-				</span>
-			</div>
-		</div>
-
-		<!-- Row for confirm button -->
-		<div class="row">
-			<div class="col">
-				<button type="submit" class="button button-block btnCheckOut">Confirm Purchase</button>
-			</div>
-		</div>	
+	<!-- submit -->
+	<form ng-submit="invoice(salesinfo)"> 
+	<button type="submit" class="button button-positive width100">Confirm Purchase</button>
 	</form>
 
   </ion-content>

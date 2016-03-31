@@ -1,68 +1,66 @@
 <ion-view view-title="Billing">
 	<ion-content ng-controller="billing">
-	    <form ng-submit="BillingForm(billing)" name="billingform">
+	    <form ng-submit="BillingForm(billing)" name="billingform" class="form">
 	    	<!-- Billing information of payer info  -->
-			<div class="card">
-				<div class="item item-divider font-medium">
+			<div class="card border mb0">
+				<div class="item item-divider bg-default">
 					Billing Information
 				</div>
-				<div class="item item-text-wrap">
-					<div class="row">
-						<div class="col col-50">
-							<input type="text" placeholder="Given Name" ng-model="billing.given_name" name="given_name" required>
-							<div class="assertive font-small" ng-messages="billingform.given_name.$error">
-								<div ng-message="required">field required*</div>
-							</div>
-						</div>
-						<div class="col col-50">
-							<input type="text" placeholder="Family Name" ng-model="billing.family_name" name="family_name" required>
-							<div class="assertive font-small" ng-messages="billingform.family_name.$error">
-								<div ng-message="required">field required*</div>
-							</div>
+				<div class="row">
+					<div class="col col-50">
+						<input type="text" class="border-bottom" placeholder="Given Name" ng-model="billing.given_name" name="given_name" required>
+						<div class="assertive font-small" ng-messages="billingform.given_name.$error">
+							<div ng-message="required">field required*</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col col-50">
-							<input type="email" placeholder="Email" ng-model="billing.email" name="email" required>
-							<div class="assertive font-small" ng-messages="billingform.email.$error">
-								<div ng-message="required">field required*</div>
-								<div ng-message="email">invalid email</div>
-							</div>
-						</div>
-						<div class="col col-50">
-							<input type="text" placeholder="Phone" ng-model="billing.phone" name="phone" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
-							<div class="assertive font-small" ng-messages="billingform.phone.$error">
-								<div ng-message="required">field required*</div>
-								<div ng-message="pattern">invalid phone number</div>
-							</div>
+					<div class="col col-50">
+						<input type="text" placeholder="Family Name" ng-model="billing.family_name" name="family_name" required>
+						<div class="assertive font-small" ng-messages="billingform.family_name.$error">
+							<div ng-message="required">field required*</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col col-50">
-							<input type="text" placeholder="Address 1" ng-model="billing.address1" name="address1" required>
-							<div class="assertive font-small" ng-messages="billingform.address1.$error">
-								<div ng-message="required">field required*</div>
-							</div>
-						</div>
-						<div class="col col-50">
-							<input type="text" placeholder="Address 2" ng-model="billing.address2" name="address2" required>
-							<div class="assertive font-small" ng-messages="billingform.address2.$error">
-								<div ng-message="required">field required*</div>
-							</div>
+				</div>
+				<div class="row">
+					<div class="col col-50">
+						<input type="email" placeholder="Email" ng-model="billing.email" name="email" required>
+						<div class="assertive font-small" ng-messages="billingform.email.$error">
+							<div ng-message="required">field required*</div>
+							<div ng-message="email">invalid email</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col col-50">
-							<input type="text" placeholder="Postcode/Zip" ng-model="billing.postcode" name="postcode" required>
-							<div class="assertive font-small" ng-messages="billingform.postcode.$error">
-								<div ng-message="required">field required*</div>
-							</div>
+					<div class="col col-50">
+						<input type="text" placeholder="Phone" ng-model="billing.phone" name="phone" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
+						<div class="assertive font-small" ng-messages="billingform.phone.$error">
+							<div ng-message="required">field required*</div>
+							<div ng-message="pattern">invalid phone number</div>
 						</div>
-						<div class="col col-50">
-							<input type="text" placeholder="City" ng-model="billing.city" name="city" required>
-							<div class="assertive font-small" ng-messages="billingform.city.$error">
-								<div ng-message="required">field required*</div>
-							</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-50">
+						<input type="text" placeholder="Address 1" ng-model="billing.address1" name="address1" required>
+						<div class="assertive font-small" ng-messages="billingform.address1.$error">
+							<div ng-message="required">field required*</div>
+						</div>
+					</div>
+					<div class="col col-50">
+						<input type="text" placeholder="Address 2" ng-model="billing.address2" name="address2" required>
+						<div class="assertive font-small" ng-messages="billingform.address2.$error">
+							<div ng-message="required">field required*</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-50">
+						<input type="text" placeholder="Postcode/Zip" ng-model="billing.postcode" name="postcode" required>
+						<div class="assertive font-small" ng-messages="billingform.postcode.$error">
+							<div ng-message="required">field required*</div>
+						</div>
+					</div>
+					<div class="col col-50">
+						<input type="text" placeholder="City" ng-model="billing.city" name="city" required>
+						<div class="assertive font-small" ng-messages="billingform.city.$error">
+							<div ng-message="required">field required*</div>
 						</div>
 					</div>
 				</div>
@@ -70,10 +68,8 @@
 			<!-- End of billing detail -->
 			
 			<div class="row">
-				<div class="col">
 				<!-- ng-href="#/app/shipping" -->
-				<button type="submit" class="button button-block btnCheckOut font-medium" ng-disabled="billing.$invalid">Proceed to Shipping</button>
-				</div>
+				<button type="submit" class="button btn-info width100" ng-disabled="billing.$invalid">Proceed to Shipping</button>
 			</div>
 		</form>
 

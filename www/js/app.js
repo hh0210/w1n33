@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.controllers2','starter.categories',
                                             'starter.productdetails','starter.productlist','starter.cartlist',
-                                            'starter.ordersummary', 'starter.user', 'starter.payment', 'starter.billing',
+                                            'starter.ordersummary', 'starter.user', 'starter.billing',
                                             'starter.shipping', 'starter.search', 'starter.orderhistory',
                                             'starter.orderhistorydetails'])
 
@@ -217,7 +217,6 @@ var appStarter = angular.module('starter', ['ionic', 'starter.controllers', 'sta
     views: {
       'menuContent': {
         templateUrl: 'templates/payment.html',
-        controller: 'payment'
       }
     }
   });

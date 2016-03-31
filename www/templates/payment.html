@@ -1,73 +1,45 @@
 <ion-view view-title="Payment">
-  <ion-content ng-controller="payment">
-  
-  	<div class="list card">
-  		<div class="item item-divider">
-		   Banking Details
+  <ion-content>
+  	
+  	<!-- info -->
+  	<div class="row bg-default text-center border-bottom">
+  		<div class="col"><b>Banking Details</b></div>
+  	</div>
+  	<div class="border-bottom">
+	  	<div class="row">
+			<div class="col">Please make your payment to following bank:</div>
 		</div>
-
-	  <div class="item">
-	    	<div class="row">
-	    		<div class="col col-100 font-medium">
-	    			 Please make your payment to following bank:
-	    		</div>
-	    	</div>
-	    	<div class="row font-medium balanced">
-				<div class="col col-50">
-					1. Maybank
-				</div>
-				<div class="col col-50">
-					131136288888
-				</div>
-	    	</div>
-	    	<div class="row font-medium calm">
-				<div class="col col-50">
-					2. Public Bank
-				</div>
-				<div class="col col-50">
-					131136288888
-				</div>
-	    	</div>
-	    	<div class="row font-medium royal">
-				<div class="col col-50">
-					3. RHB Bank
-				</div>
-				<div class="col col-50">
-					131136288888
-				</div>
-	    	</div>
-	  </div>
+		<div class="row font-medium balanced">
+			<div class="col col-50">1. Maybank</div>
+			<div class="col col-50">131136288888</div>
+		</div>
+		<div class="row font-medium calm">
+			<div class="col col-50">2. Public Bank</div>
+			<div class="col col-50">131136288888</div>
+		</div>
+		<div class="row font-medium royal">
+			<div class="col col-50">3. RHB Bank</div>
+			<div class="col col-50">131136288888</div>
+	  	</div>
 	</div>
 
-	<div class="card">
-	  <div class="item item-divider font-medium">
-	    Notice
-	  </div>
-	  <div class="item item-text-wrap font-small">
-	    You will received a confirmation email shortly. Once you clear your payment, kindly 
-	    <span style="color:#F39C12;">attach a screenshot or copy of your transaction slip</span>
-	     and mail to us at 
-	    <span class="positive">endytas@wine-enterprise.com</span>. 
-	    We will <span style="color:#2ECC71;">either ship to you</span> 
-	    as soon as we received your payment
-	    <span class="royal"> or you can pickup your goods</span> at the location selected.
-	  </div>
-	</div>
-	
-		<!-- Remove the button currently -->
-    	<!-- <div class="row">
-			<div class="col">
-				<a class="button btn-block btnContinue font-medium" ng-href="#/app/categories">
-				  Pay Later
-				</a>
-			</div>
-			
-			<div class="col">
-				<a class="button btn-block btnCheckOut font-medium" ng-click="showPopup()">
-				  Pay Now
-				</a>
-			</div>
-		</div> -->
+	<!-- info 2 -->
+	<div class="row bg-default text-center border-bottom">
+  		<div class="col"><b>Notice</b></div>
+  	</div>
+  	<div class="row">
+	  	<p class="p10 font-medium">
+		  	You will received a confirmation email shortly. Once you clear your payment, kindly 
+		    <span style="color:#F39C12;">attach a screenshot or copy of your transaction slip</span>
+		     and mail to us at 
+		    <span class="positive">endytas@wine-enterprise.com</span>. 
+		    We will <span style="color:#2ECC71;">either ship to you</span> 
+		    as soon as we received your payment
+		    <span class="royal"> or you can pickup your goods</span> at the location selected.
+	    </p>
+  	</div>
+
+  	<a href="#/app/category" class="button button-positive width100">Continue Shopping</a>
 
   </ion-content>
 </ion-view>

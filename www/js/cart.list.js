@@ -8,12 +8,32 @@ angular.module('starter.cartlist', [])
 	var user_id = (localStorage.getItem('loginInfo'))?JSON.parse(localStorage.getItem('loginInfo')).id:'0';
 	console.log('user_id',user_id);
 
+	//promotion
+	$scope.promotion = function(promo_code){
+	    $http.get('http://staging.wine-enterprise.com:8011/apis/verify/promotion?promo_code='+promo_code)
+		  	.then(function(response) {
+		      if(response.data != false) $scope.details = response.data;
+		    }, function(err){
+		      console.error('ERR', err);
+		});
+	};
+
+	$http.get('http://staging.wine-enterprise.com:8011/apis/user/profile?user_id='+user_id)
+		.then(function(response) {
+			$scope.userdata = response.data;
+			console.log($scope.userdata);
+		}, function(err){
+			console.error('ERR', err);
+	});
+
 	/*========== Listing ==========*/
 
 	if(cart_id){
 	    $http.get('http://staging.wine-enterprise.com:8011/apis/cart/list?cart_id='+cart_id)
 			.then(function(response) {
 				$scope.CartInfo = response.data;
+				$scope.CartInfo.promo_code = ($scope.CartInfo.promo_code)?$scope.CartInfo.promo_code:$scope.userdata.referral_code;
+				$scope.promotion($scope.CartInfo.promo_code);
 				$scope.img = "http://shared.wine-enterprise.com/upload/product/100x100_";
 
 				//session
@@ -43,11 +63,11 @@ angular.module('starter.cartlist', [])
 	};
 
     //Create Sales Order
-	$scope.salesorder = function(cartList){
+	$scope.salesorder = function(CartInfo){
 		$http({
 		    method: 'POST',
 		    url: 'http://staging.wine-enterprise.com:8011/apis/sales/order',
-		    data: 'cart_id='+cart_id+'&user_id='+user_id,
+		    data: 'cart_id='+cart_id+'&user_id='+user_id+'&promo_code='+CartInfo.promo_code,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
 		}).then(function successCallback(response) {

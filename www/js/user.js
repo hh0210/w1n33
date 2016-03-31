@@ -100,17 +100,35 @@ angular.module('starter.user', ['ngMessages'])
   $http.get('http://staging.wine-enterprise.com:8011/apis/user/profile?user_id='+user_id)
     .then(function(response) {
         $scope.userdata = response.data;
+        $scope.promotion($scope.userdata.referral_code);
         console.log($scope.userdata);
       }, function(err){
           console.error('ERR', err);
-  })
+  });
+
+  //reuse pop up
+  var alert = function(title, message, timeout){
+    var popup = $ionicPopup.alert({ title: title, template: message, });
+    popup;
+    timeout = timeout * 1000;
+    $timeout(function(){ popup.close(); }, timeout);
+  };
+
+  $scope.promotion = function(promo_code){
+    $http.get('http://staging.wine-enterprise.com:8011/apis/verify/promotion?promo_code='+promo_code)
+      .then(function(response) {
+          if(response.data != false) $scope.details = response.data;
+        }, function(err){
+          console.error('ERR', err);
+    });
+  };
 
   $scope.ProfileForm = function(userdata){
     $http({
         method: 'POST',
         url: 'http://staging.wine-enterprise.com:8011/apis/user/profile',
-        data: 'user_id=' + userdata.id_UserMaster + '&given_name=' + userdata.given_name + '&family_name=' + userdata.family_name +
-              '&email=' + userdata.email + '&phone=' + userdata.phone +
+        data: 'user_id=' + userdata.id_UserMaster + '&promo_code=' + userdata.promo_code + '&given_name=' + userdata.given_name + 
+              '&family_name=' + userdata.family_name + '&email=' + userdata.email + '&phone=' + userdata.phone +
               '&address1=' + userdata.address1 + '&address2=' + userdata.address2 +
               '&postcode=' + userdata.postcode + '&city=' + userdata.city,
         // data: {"username=":'username1','password=':'passwod1'},

@@ -7,7 +7,7 @@
 			<!-- Search -->
 			<form ng-submit="searchform(search)">
 				<input type="text" ng-model="keyword" placeholder="Search" class="pull-left" style="width:90%">
-				<button type="submit" class="curve-box b0 bg-info pull-right text-white p10"><i class="icon ion-search"></i></button>
+				<button type="submit" class="btn-info pull-right p10"><i class="icon ion-search"></i></button>
 			</form>
 		</div>
 	</div>
@@ -20,8 +20,8 @@
 		  	<div class="border curve-box text-center bg-white">
 			  	<img ng-src="{{img}}{{productList[$index].photo}}" class="width100">
 			  	<p class="ellipsis p5 m0">{{productList[$index].name}}</p>
-			  	<p class="bg-info text-white m0" ng-show="productList[$index].balance > 0">MYR {{productList[$index].price}}</p>
-			  	<p class="bg-danger text-white m0" ng-show="productList[$index].balance <= 0">Out of Stock</p>
+			  	<p class="bg-info text-white p10 m0" ng-show="productList[$index].balance > 0">MYR {{productList[$index].price}}</p>
+			  	<p class="bg-danger text-white p10 m0" ng-show="productList[$index].balance <= 0">Out of Stock</p>
 		  	</div>
 	  	</a>
 	  	<!-- col-right -->
@@ -30,8 +30,8 @@
 		  	<div class="border curve-box text-center bg-white">
 			  	<img ng-src="{{img}}{{productList[$index+1].photo}}" class="width100">
 			  	<p class="ellipsis p5 m0">{{productList[$index+1].name}}</p>
-			  	<p class="bg-info text-white m0" ng-show="productList[$index+1].balance > 0">MYR {{productList[$index+1].price}}</p>
-			  	<p class="bg-danger text-white m0" ng-show="productList[$index+1].balance <= 0">Out of Stock</p>
+			  	<p class="bg-info text-white p10 m0" ng-show="productList[$index+1].balance > 0">MYR {{productList[$index+1].price}}</p>
+			  	<p class="bg-danger text-white p10 m0" ng-show="productList[$index+1].balance <= 0">Out of Stock</p>
 		  	</div>
 	  	</a>
 	</div>

@@ -9,7 +9,7 @@
       </ion-nav-buttons>
 
       <ion-nav-buttons side="right">
-        <a class="button curve-box bg-white text-danger font20 b0" ng-href="#/app/cart/list">
+        <a class="button btn-white text-danger font20 b0" ng-href="#/app/cart/list">
          <i class="ion-android-cart"></i>
         </a>
       </ion-nav-buttons>
@@ -73,7 +73,7 @@
           <span class="badge badge-assertive">{{cartList.cart_count}}</span>
         </ion-item>
 
-        <ion-item menu-close ng-click="logout()" ng-if="userinfo.id != null" class="default-bg">
+        <ion-item menu-close ng-click="logout()" ng-if="userinfo.id != null" class="bg-danger">
           <i class="ion-log-out"></i>
           Logout
         </ion-item>
