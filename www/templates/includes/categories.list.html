@@ -1,0 +1,6 @@
+<div ng-repeat="productTypeInfo in productTypeList" ng-show="productTypeList != null">
+	<a ng-href="#/app/product/list/{{ productTypeInfo.code }}" title="{{ productTypeInfo.name }}">
+		<span class="text-overlay text-ultra">{{ productTypeInfo.name }}</span>
+		<img ng-src="{{ productTypeInfo.photo }}" class="width100">
+  	</a>
+</div>

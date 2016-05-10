@@ -1,53 +1,72 @@
 <ion-view view-title="Product Details">
   <ion-content ng-controller="productdetails">
     
-    <!-- row 1 -->
-    <div class="row p0">
-        <div class="col-50 border-right">
-          <img ng-src="{{img}}{{productDetails.photo}}" class="width100" />
-          <p class="text-overlay m0">{{productDetails.name}}</p>
-        </div>
-        <div class="col-50">
-          <form ng-submit="cart(productDetails)">
-            <label class="item-input border-bottom">
-              <span class="input-label font-15 text-right text-info">Price:</span>
-              MYR {{productDetails.price}}
-            </label>
-            <label class="item-input border-bottom">
-              <span class="input-label font-15 text-right text-info">Qty:</span>
-              <input type="number" min="1" ng-model="productDetails.qty" />
-            </label>
-            <label class="item-input border-bottom">
-              <span class="input-label font-15 text-right text-info">Balance:</span>
-              {{productDetails.balance}}
-            </label>
+    <div class="row mt20">
+      <h2 class="text-main m0auto">{{productDetails.name}}</h2>
+    </div>
 
-            <button type="submit" ng-show="productDetails.balance > 0" class="width100 bg-success b0 text-white p10" style="height: 48px;">
-              <i class="ion-android-cart font18"></i> Add to Cart
-            </button>
-            <div class="bg-danger text-white text-center p10" ng-show="productDetails.balance <= 0">Out of Stock</div>
-          </form>
-        </div>
+    <div class="row mt20">
+      <div class="m0auto text-center text-big">
+        <label>PRICE</label>
+        <p>MYR {{productDetails.price}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <img ng-src="{{img}}{{productDetails.photo}}" class="m0auto" style="height: 200px;" />
     </div>
     
-    <!-- infomation -->
-    <h4 class="width100 bg-default m0 p10 text-center">Specification</h4>
-    <div class="row p10 border-bottom">
-      <div class="col-50"><b>SKU Code:</b> {{productDetails.sku_code}}</div>
-      <div class="col-50"><b>Type:</b> {{productDetails.type_name}}</div>
+    <form ng-submit="cart(productDetails)">
+      <div class="row row-center p0">
+        <div class="col p0">
+          <div class="row bg-default">
+            <label class="col text-right">Quantity:</label>
+            <input class="col" type="number" min="1" ng-model="productDetails.qty" />
+          </div>
+          <div class="row bg-default">
+            <label class="col text-right">Balance:</label>
+            <label class="col">{{productDetails.balance}}</label>
+          </div>
+        </div>
+        <div class="col p0 bg-danger">
+          <button type="submit" ng-show="productDetails.balance > 0" class="width100 bg-danger b0" style="padding:24px;">
+            <i class="ion-android-cart font18"></i> ADD TO CART
+          </button>
+          <div class="bg-grey text-center" style="padding:24px;" ng-show="productDetails.balance <= 0">OUT OF STOCK</div>
+        </div>
+      </div>
+    </form>
+
+    <div class="row detail-page mt20">
+      <div class="col">
+        <img src="img/default/red_bottle.png"/>
+        <span class="text-detail">YEAR</span>
+        <span class="text-detail2">{{productDetails.year}}</span>
+        <img src="img/default/red_bottle.png"/>
+        <span class="text-detail">ALCOHOL</span>
+        <span class="text-detail2">{{productDetails.alcohol}}%</span>
+        <img src="img/default/red_bottle.png"/>
+        <span class="text-detail">SIZE</span>
+        <span class="text-detail2">{{productDetails.size}}</span>
+      </div>
+      <div class="col">
+        <img src="img/default/red_bottle.png"/>
+        <span class="text-detail">TYPE</span>
+        <span class="text-detail2">{{productDetails.type_name}}</span>
+        <img src="img/default/red_bottle.png"/>
+        <span class="text-detail">ORIGIN</span>
+        <span class="text-detail2">{{productDetails.country_name}}</span>
+        <img src="img/default/red_bottle.png"/>
+        <span class="text-detail">SKU CODE</span>
+        <span class="text-detail2">{{productDetails.sku_code}}</span>
+      </div>
     </div>
-    <div class="row p10 border-bottom">
-      <div class="col-50"><b>Alcohol:</b> {{productDetails.alcohol}}%</div>
-      <div class="col-50"><b>Size:</b> {{productDetails.size}}</div>
-    </div>
-    <div class="row p10">
-      <div class="col-50"><b>Year:</b> {{productDetails.year}}</div>
-      <div class="col-50"><b>Origin:</b> {{productDetails.country_name}}</div>
-    </div>
-    <h4 class="bg-default m0 p10 text-center">Description</h4>
+
+    <h4 class="bg-default m0 mt20 p10 text-center">DESCRIPTION</h4>
     <div class="row text-justify p10">
       <div ng-bind-html="productDetails.note"></div>
     </div>
-    
+
+
   </ion-content>
 </ion-view>

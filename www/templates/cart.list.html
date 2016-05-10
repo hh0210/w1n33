@@ -1,58 +1,70 @@
-<ion-view view-title="Cart List">
-  <ion-content ng-controller="cartlist">
+<ion-view view-title="CART">
+  <ion-content ng-controller="cartlist" class="bg" style="background-image: url('img/bg/billing.png')">
   	<!-- list -->
 	<div class="list">
 	    <!-- row 1 -->
 	    <div class="row border-bottom mb10" ng-repeat="Item in CartInfo.Items">
-			<div class="col-50">
-				<img class="widthauto" ng-src="{{img}}{{Item.photo}}">
-			</div>
-			<div class="col-50">
-				<form ng-submit="delete(Item)" class="text-right">
-				 	<button type="submit" class="btn-danger"><i class="ion-close-round"></i></button>
-				</form>
-				<label class="item-input p0 mb5 text-right font-15">
-	            	<span class="width50 text-info">Price:</span>
-	            	<span class="width50">MYR {{Item.unit_price}}</span>
-	            </label>
-	            <div class="text-right font-15 mb5">
-	            	<span class="width50 text-info">Quantity:</span>
-		            <span class="width50 inline">
-		            	<button type="submit" ng-click="minus(Item)" class="btn-warning" id="item"><i class="ion-minus"></i></button>
-						<p class="pl5 pr5 m0" id="item">{{Item.qty}}</p>
-						<button type="submit" ng-click="plus(Item)" class="btn-warning" id="item"><i class="ion-plus"></i></button>
-					</span>
+			<div class="col">
+				<div class="row row-center">
+					<div class="col col-20">
+						<form ng-submit="delete(Item)" class="text-right">
+					 		<button type="submit" class="btn-blank"><i class="ion-close-round"></i></button>
+						</form>
+					</div>
+					<div class="col">
+						<img class="width100" ng-src="{{img}}{{Item.photo}}">
+					</div>
+					<div class="col">
+						<labe>{{Item.product_name}}</label>
+					</div>
 				</div>
-	            <label class="item-input p5 mb5 text-right bg-success text-white font-15">
-	            	<span class="width50">Subtotal:</span>
-	            	<span class="width50">MYR {{Item.price}}</span>
-	            </label>
+			</div>
+			<div class="col text-right">
+				<div class="row">
+					<p class="col text-danger">PRICE:</p>
+					<p class="col text-danger">MYR {{Item.unit_price}}</p>
+				</div>
+				<div class="row">
+					<p class="col text-danger">QTY:</p>
+					<input type="number" class="col text-danger input-box" value="{{Item.qty}}" />
+				</div>
+				<div class="row bg-grey p0">
+					<p class="col text-white m0">SUBTOTAL:</p>
+					<p class="col text-white m0">MYR {{Item.price}}</p>
+				</div>
 			</div>
 		</div>
 		<!-- row 2 -->
-		<div class="row text-right font20 pt10 pb20 border-bottom">
-        	<span class="col-50">Total:</span>
-        	<span class="col-50 text-info"><b>MYR {{CartInfo.total_price}}</b></span>
-		</div>
-		<!-- row -->
-		<div class="row text-right mt20 mb20">
-			<span class="col-50 pt10 pr10">Have Referral?</span>
-			<span class="col col-50 b1">
-				<input type="text" class="pull-left" ng-keyup="promotion(CartInfo.promo_code)" ng-model="CartInfo.promo_code" placeholder="Referral Code">
-				<div class="font-small mt5">
-					<div class="assertive" ng-if="details.code == null"><i class="ion-close"></i></div>
-					<div class="balanced" ng-if="details.code != null"><i class="ion-checkmark"></i></div>
-				</div> 
-			</span>
+		<div class="row border-bottom border-color">
+			<div class="col">
+				<div class="row">
+					<label class="text-center">HAVE REFERRAL?</label>
+				</div>
+				<div class="row">
+					<label class="b1">
+						<input type="text" class="pull-left col-80 p10" ng-keyup="promotion(CartInfo.promo_code)" ng-model="CartInfo.promo_code" placeholder="Referral Code">
+						<div class="font-small p10 bg-white">
+							<div class="assertive" ng-if="details.code == null"><i class="ion-close"></i></div>
+							<div class="balanced" ng-if="details.code != null"><i class="ion-checkmark"></i></div>
+						</div> 
+					</label>
+				</div>
+			</div>
+			<div class="col text-right text-big">
+				<div class="row">
+					<p class="col">Total:</p>
+	        		<p class="col text-danger"><b>MYR {{CartInfo.total_price}}</b></p>
+	        	</div>
+			</div>
 		</div>
 		<!-- row 3 -->
 		<div class="row p0">
         	<div class="col-50">
-        		<a class="button button-full button-energized m0" ng-href="#/app/categories">Continue Shopping</a>
+        		<a class="button button-full btn-main m0" ng-href="#/app/categories">Continue Shopping</a>
         	</div>
         	<div class="col-50">
         		<form ng-submit="salesorder(CartInfo)">
-					<button ng-disabled="CartInfo.cart_count <= 0" type="submit" class="button button-full button-positive m0">Check Out</button>
+					<button ng-disabled="CartInfo.cart_count <= 0" type="submit" class="button button-full btn-sub m0">Check Out</button>
 				</form>
         	</div>
 		</div>

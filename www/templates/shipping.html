@@ -1,132 +1,20 @@
 <ion-view view-title="Shipping Methods">
+	<!-- tabs -->
+	<ion-tabs class="tabs-icon-only tabs-main">
+		
+		<!-- tab -->
+		<ion-tab title="DELIVERY" class="bg" style="background-image: url('img/bg/billing.png')">
+			<ion-content>
+                <div ng-include src="'templates/includes/delivery.html'"></div>
+			</ion-content>
+		</ion-tab>
 
-	<!-- For place the header in centre -->
-	<ion-header-bar>
-	     <div class="title center"></div>
-	</ion-header-bar>
+		<!-- tab -->
+		<ion-tab title="SELF PICKUP">
+			<ion-content class="bg" style="background-image: url('img/bg/billing.png')">
+		  		<div ng-include src="'templates/includes/selfpickup.html'"></div>
+			</ion-content>
+		</ion-tab>
 
-	<!-- Tabs -->
-	<ion-tabs class="tabs-calm tabs-icon-only">
-		<ion-tab title="Delivery">
-	    	<ion-content class="pt75">
-	      	<!-- Tab 1 content -->
-		    <form name="shipmentform" ng-submit="ShipmentForm(shipment)" class="form">
-		    	<!-- Shipping information of guest info  -->
-				<div class="card border mb0">
-					<div class="item item-divider bg-default">Shipping Information</div>
-					<div class="item item-text-wrap border-bottom">
-						<div class="btn-default p10">
-							<input type="checkbox" ng-model="checkboxData" ng-change="identifyUser(checkboxData)"/> Ship to me
-						</div>
-						<div class="row">
-							<div class="col col-50">
-								<input type="text" placeholder="Given Name" ng-model="shipment.given_name" name="given_name" required>
-								<div class="assertive font-small" ng-messages="shipmentform.given_name.$error">
-									<div ng-message="required">field required*</div>
-								</div>
-							</div>
-							<div class="col col-50">
-								<input type="text" placeholder="Family Name" ng-model="shipment.family_name" name="family_name" required>
-								<div class="assertive font-small" ng-messages="shipmentform.family_name.$error">
-									<div ng-message="required">field required*</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col">
-								<input type="text" placeholder="Phone" ng-model="shipment.phone" name="phone" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
-								<div class="assertive font-small" ng-messages="shipmentform.phone.$error">
-									<div ng-message="required">field required*</div>
-									<div ng-message="pattern">invalid phone number</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col col-50">
-								<input type="text" placeholder="Address 1" ng-model="shipment.address1" name="address1" required>
-								<div class="assertive font-small" ng-messages="shipmentform.address1.$error">
-									<div ng-message="required">field required*</div>
-								</div>
-							</div>
-							<div class="col col-50">
-								<input type="text" placeholder="Address 2" ng-model="shipment.address2" name="address2" required>
-								<div class="assertive font-small" ng-messages="shipmentform.address2.$error">
-									<div ng-message="required">field required*</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col col-50">
-								<input type="text" placeholder="Postcode/Zip" ng-model="shipment.postcode" name="postcode" required>
-								<div class="assertive font-small" ng-messages="shipmentform.postcode.$error">
-									<div ng-message="required">field required*</div>
-								</div>
-							</div>
-							<div class="col col-50">
-								<input type="text" placeholder="City" ng-model="shipment.city" name="city" required>
-								<div class="assertive font-small" ng-messages="shipmentform.city.$error">
-									<div ng-message="required">field required*</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row text-center p10 bg-default font30">
-		            	<span class="width50"><b>Shipping Fee:</b></span>
-		            	<span class="width50"><b>{{SalesInfo.shipping_price}}</b></span>
-					</div>
-				</div>
-				<div class="row">
-					<button type="submit" class="button button-full button-positive" ng-disabled="shipmentform.$invalid">Next</button>
-				</div>
-			</form>
-		</ion-content>
-	</ion-tab>
-	<!-- <label class="item-input item-select">
-	    <div class="input-label font-medium" style="color:#999;">
-	      Shipping Method
-	    </div>
-	    <select name="dropDownShipment" ng-model="mySelect" ng-change="showSelectValue(mySelect)" required>
-	      <option value="" selected>Select</option>
-	      <option ng-repeat="ShipmentInfo in ShipmentList" value="{{ShipmentInfo.id}}" ng-selected="ShipmentInfo.id == shipment.id_SalesOrderShipmentType">{{ShipmentInfo.name}} = MYR {{ShipmentInfo.price}}</option>
-	    </select>
-		<div class="assertive font-small" ng-messages="shipmentform.dropDownShipment.$error">
-			<div ng-message="required">require select*</div>
-		</div>
-	</label> -->	
-
-	<ion-tab title="Self Pickup">
-	  <!-- Tab 2 content -->
-	  <ion-content class="pt75">
-			<form name="pickupForm" ng-submit="selfpickup(locationInfo)">
-	    	<!-- Pickup information of guest info  -->
-			<div class="card border mb0">
-				<div class="item item-divider bg-default">Self Pick Up</div>
-				<div class="item item-text-wrap">
-					<label class="item item-input item-select">
-						<div class="input-label">Location</div>
-						<select ng-model="mySelect" ng-change="showSelectValue(mySelect)">
-							<option value="" selected>--Select--</option>
-							<option ng-repeat="locationInfo in locationList" value="{{locationInfo.id}}" ng-selected="locationInfo.id == selfpickupinfo.id_SelfPickUpLocation">{{locationInfo.name}}</option>
-					    </select>
-					    <input type="hidden" name="location" ng-model="selfpickupinfo.id" required />
-						<div class="assertive font-small" ng-messages="pickupForm.location.$error">
-							<div ng-message="required">require select*</div>
-						</div>
-					</label>
-					<label class="item item-input">
-						<div class="input-label">Address</div>
-						<div class="col">{{selfpickupinfo.address}}</div>
-					</label>
-				</div>
-			</div>
-			<!-- End of shipping detail -->
-			<div class="row">
-				<button type="submit" class="button button-full button-positive" ng-disabled="pickupForm.$invalid">Next</button>
-			</div>
-			</form>
-		</ion-content>
-	</ion-tab>
-	<!-- End of two tabs -->
 	</ion-tabs>
-
 </ion-view>

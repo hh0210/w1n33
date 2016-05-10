@@ -1,40 +1,7 @@
-<ion-view view-title="Search">
-  <ion-content ng-controller="search">
+<ion-view view-title="SEARCH">
+  <ion-content ng-controller="search" class="bg" style="background-image: url('/img/bg/search.png')">
 	
-	<!-- First row for search -->
-	<div class="row">
-		<div class="col curve-box border">
-			<!-- Search -->
-			<form ng-submit="searchform(search)">
-				<input type="text" ng-model="keyword" placeholder="Search" class="pull-left" style="width:90%">
-				<button type="submit" class="btn-info pull-right p10"><i class="icon ion-search"></i></button>
-			</form>
-		</div>
-	</div>
-
-	<!-- row -->
-    <div class="row" ng-repeat="productInfo in productList" ng-if="$index % 2 == 0">
-    	<!-- col-left -->
-    	<a class="col col-50" ng-show="productList[$index] != null" ng-if="$index < productList.length" 
-    	ng-href="#/app/product/details/{{productList[$index].sku_code}}">
-		  	<div class="border curve-box text-center bg-white">
-			  	<img ng-src="{{img}}{{productList[$index].photo}}" class="width100">
-			  	<p class="ellipsis p5 m0">{{productList[$index].name}}</p>
-			  	<p class="bg-info text-white p10 m0" ng-show="productList[$index].balance > 0">MYR {{productList[$index].price}}</p>
-			  	<p class="bg-danger text-white p10 m0" ng-show="productList[$index].balance <= 0">Out of Stock</p>
-		  	</div>
-	  	</a>
-	  	<!-- col-right -->
-	  	<a class="col col-50" ng-show="productList[$index+1] != null" ng-if="$index < productList.length" 
-	  	ng-href="#/app/product/details/{{productList[$index+1].sku_code}}">
-		  	<div class="border curve-box text-center bg-white">
-			  	<img ng-src="{{img}}{{productList[$index+1].photo}}" class="width100">
-			  	<p class="ellipsis p5 m0">{{productList[$index+1].name}}</p>
-			  	<p class="bg-info text-white p10 m0" ng-show="productList[$index+1].balance > 0">MYR {{productList[$index+1].price}}</p>
-			  	<p class="bg-danger text-white p10 m0" ng-show="productList[$index+1].balance <= 0">Out of Stock</p>
-		  	</div>
-	  	</a>
-	</div>
+	<div ng-include src="'/templates/includes/search.list.html'"></div>
 
   </ion-content>
 </ion-view>

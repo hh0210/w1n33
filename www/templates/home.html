@@ -1,19 +1,20 @@
-<ion-view view-title="Vega Beverages">
-  <ion-content ng-controller="HomeController">
+<ion-view title="{{ TitleImg }}">
+	<!-- tabs -->
+	<ion-tabs class="tabs-icon-only tabs-main" delegate-handle="home-tab">
+		
+		<!-- tab -->
+		<ion-tab title="HOME">
+			<ion-content>
+                <div ng-include src="'templates/includes/categories.list.html'"></div>
+			</ion-content>
+		</ion-tab>
 
-	<ion-slide-box active-slide="1" 
-       on-slide-changed="slideHasChanged(index)"
-       does-continue="true" auto-play="true" slide-interval="2000">
-	  <ion-slide>
-		   <img ng-src="{{img[1].src}}" width="100%">
-	  </ion-slide>
-	  <ion-slide>
-			<img ng-src="{{img[0].src}}" width="100%">
-	  </ion-slide>
-	  <ion-slide>
-			<img ng-src="{{img[2].src}}" width="100%">
-	  </ion-slide>
-	</ion-slide-box>
+		<!-- tab -->
+		<ion-tab title="SEARCH">
+			<ion-content class="bg" style="background-image: url('img/bg/search.png')">
+		  		<div ng-include src="'templates/includes/search.list.html'"></div>
+			</ion-content>
+		</ion-tab>
 
-  </ion-content>
+	</ion-tabs>
 </ion-view>

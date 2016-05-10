@@ -1,9 +1,9 @@
 <ion-view view-title="Billing">
-	<ion-content ng-controller="billing">
+	<ion-content ng-controller="billing" class="bg" style="background-image: url('img/bg/billing.png')">
 	    <form ng-submit="BillingForm(billing)" name="billingform" class="form">
 	    	<!-- Billing information of payer info  -->
 			<div class="card border mb0">
-				<div class="item item-divider bg-default">
+				<div class="item item-divider bg-grey">
 					Billing Information
 				</div>
 				<div class="row">
@@ -69,7 +69,7 @@
 			
 			<div class="row">
 				<!-- ng-href="#/app/shipping" -->
-				<button type="submit" class="button btn-info width100" ng-disabled="billing.$invalid">Proceed to Shipping</button>
+				<button type="submit" class="button btn-main m0auto" ng-disabled="billing.$invalid">Proceed to Shipping</button>
 			</div>
 		</form>
 

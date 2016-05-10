@@ -1,0 +1,69 @@
+<form name="shipmentform" ng-submit="ShipmentForm(shipment)" class="form">
+	<!-- Shipping information of guest info  -->
+	<div class="card border mb0">
+		<div class="item item-divider bg-grey">Shipping Information</div>
+		<div class="item item-text-wrap border-bottom">
+			<div class="btn-default p10">
+				<input type="checkbox" ng-model="checkboxData" ng-change="identifyUser(checkboxData)"/> Ship to me
+			</div>
+			<div class="row">
+				<div class="col col-50">
+					<input type="text" placeholder="Given Name" ng-model="shipment.given_name" name="given_name" required>
+					<div class="assertive font-small" ng-messages="shipmentform.given_name.$error">
+						<div ng-message="required">field required*</div>
+					</div>
+				</div>
+				<div class="col col-50">
+					<input type="text" placeholder="Family Name" ng-model="shipment.family_name" name="family_name" required>
+					<div class="assertive font-small" ng-messages="shipmentform.family_name.$error">
+						<div ng-message="required">field required*</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<input type="text" placeholder="Phone" ng-model="shipment.phone" name="phone" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
+					<div class="assertive font-small" ng-messages="shipmentform.phone.$error">
+						<div ng-message="required">field required*</div>
+						<div ng-message="pattern">invalid phone number</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-50">
+					<input type="text" placeholder="Address 1" ng-model="shipment.address1" name="address1" required>
+					<div class="assertive font-small" ng-messages="shipmentform.address1.$error">
+						<div ng-message="required">field required*</div>
+					</div>
+				</div>
+				<div class="col col-50">
+					<input type="text" placeholder="Address 2" ng-model="shipment.address2" name="address2" required>
+					<div class="assertive font-small" ng-messages="shipmentform.address2.$error">
+						<div ng-message="required">field required*</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-50">
+					<input type="text" placeholder="Postcode/Zip" ng-model="shipment.postcode" name="postcode" required>
+					<div class="assertive font-small" ng-messages="shipmentform.postcode.$error">
+						<div ng-message="required">field required*</div>
+					</div>
+				</div>
+				<div class="col col-50">
+					<input type="text" placeholder="City" ng-model="shipment.city" name="city" required>
+					<div class="assertive font-small" ng-messages="shipmentform.city.$error">
+						<div ng-message="required">field required*</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row text-center p10 bg-default font30">
+        	<span class="width50"><b>Shipping Fee:</b></span>
+        	<span class="width50"><b>{{SalesInfo.shipping_price}}</b></span>
+		</div>
+	</div>
+	<div class="row">
+		<button type="submit" class="button width50 btn-main m0auto" ng-disabled="shipmentform.$invalid">Next</button>
+	</div>
+</form>

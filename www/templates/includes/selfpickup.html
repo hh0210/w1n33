@@ -1,0 +1,27 @@
+<form name="pickupForm" ng-submit="selfpickup(locationInfo)">
+	<!-- Pickup information of guest info  -->
+	<div class="card border mb0">
+		<div class="item item-divider bg-grey">Self Pick Up</div>
+		<div class="item item-text-wrap">
+			<label class="item item-input item-select">
+				<div class="input-label">Location</div>
+				<select ng-model="mySelect" ng-change="showSelectValue(mySelect)">
+					<option value="" selected>--Select--</option>
+					<option ng-repeat="locationInfo in locationList" value="{{locationInfo.id}}" ng-selected="locationInfo.id == selfpickupinfo.id_SelfPickUpLocation">{{locationInfo.name}}</option>
+			    </select>
+			    <input type="hidden" name="location" ng-model="selfpickupinfo.id" required />
+				<div class="assertive font-small" ng-messages="pickupForm.location.$error">
+					<div ng-message="required">require select*</div>
+				</div>
+			</label>
+			<label class="item item-input">
+				<div class="input-label">Address</div>
+				<div class="col">{{selfpickupinfo.address}}</div>
+			</label>
+		</div>
+	</div>
+	<!-- End of shipping detail -->
+	<div class="row">
+		<button type="submit" class="button width50 btn-main m0auto" ng-disabled="pickupForm.$invalid">Next</button>
+	</div>
+</form>

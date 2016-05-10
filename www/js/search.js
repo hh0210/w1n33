@@ -4,7 +4,7 @@ angular.module('starter.search', [])
 
 	// keyword
 	$scope.searchform = function(search){
-		localStorage.setItem('keyword',JSON.stringify($scope.keyword));
+		localStorage.setItem('keyword',JSON.stringify(this.keyword));
 		$state.go('app.search', {}, {reload: true});
 	}
 

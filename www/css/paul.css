@@ -1,4 +1,25 @@
-/* common */
+/***
+
+main:
+#770a18
+
+sub:
+#f4b4bd
+
+***/
+/*--------------------- ionic ---------------------*/
+.bar-header{
+    background: #770a18 !important;
+}
+.header-item, button{
+    text-transform: uppercase;
+}
+
+/*--------------------- common ---------------------*/
+body, div, h1, h2, h3, h4, a, p, button{
+    font-family: Footlight MT Light !important;
+}
+
 a, p{ 
     text-decoration: none;
     color: #666;
@@ -6,9 +27,156 @@ a, p{
 .pull-left{ float:left !important; }
 .pull-right{ float:right !important; }
 
+/*--------------------- tabs ---------------------*/
+.tabs-main .tabs{
+    background: #770a18;
+    color: white;
+    border: 0px;
+}
+.tabs-main .tabs span{
+    font-size: 20px;
+}
+.tabs-main .tabs .tab-item.tab-item-active{
+    border-width: 0 0 5px 0 !important;
+    border-color: #f4b4bd;
+}
+.tabs-main ion-content{
+    margin-top: 87px;
+}
+
+
+/*--------------------- image ---------------------*/
+.img-small{
+    height: 50px;
+}
+
+/*--------------------- text ---------------------*/
+.text-big{
+    font-size: 20px;
+}
+
+.text-ultra{
+    font-size: 30px;
+}
+
+.text-main{
+    color: #770a18 !important;
+}
+.text-sub{
+    color: #f4b4bd !important;
+}
+
+/*.text-center{
+    text-align: center;
+} font css have le*/ 
+
+.text-overlay{
+    position: absolute;
+    margin-top: 18%;
+    padding: 20px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    text-transform: lowercase;
+}
+.text-overlay:first-letter{
+    text-transform: uppercase;
+}
+
+
+/*--------------------- background ---------------------*/
+.bg{
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.bg-grey{
+    background: #2c2c2c;
+    color: white !important;
+}
+
+.bg-sub{
+    background: #f4b4bd;
+    color: #770a18;
+}
+
+/*--------------------- input ---------------------*/
+.input-line{
+    border-bottom: 2px solid white !important;
+    background: transparent;
+}
+
+.input-search{
+    margin: 0 auto;
+    width: 60%;
+    color: white !important;
+    text-align: center;
+}
+
+.input-box{
+    border: 1px solid #666 !important;
+    background-color: white !important;
+    text-align: center !important;
+}
+
+/*--------------------- button ---------------------*/
+.btn-blank{
+    border: 0px !important;
+    background: transparent !important;
+    color: #666;
+}
+.btn-white{
+    background: white;
+    border: 1px solid white;
+    color: #770a18;
+}
+.btn-search{
+    margin: 0 auto;
+    width: 60%;
+}
+
+.btn-main{
+    border-radius: 0px;
+    border: 0px;
+    background: #770a18;
+    color: #f4b4bd;
+}
+
+.btn-sub{
+    border-radius: 0px;
+    border: 0px;
+    background: #f4b4bd;
+    color: #770a18;
+}
+
+/*--------------------- Page ---------------------*/
+.detail-page img{
+    width: 100%;
+    padding: 10px;
+}
+.text-detail{
+    position: absolute;
+    margin-top: -22%;
+    margin-left: 7%;
+    font-size: 18px;
+    color: #f4b4bd;
+}
+.text-detail2{
+    position: absolute;
+    margin-top: -13%;
+    margin-left: 10%;
+    font-size: 15px;
+    color: white;
+}
+
+
+
+/*--------------------- Unconfirm ---------------------*/
 /* background */
 .bg-danger{ 
-    background: #e74c3c; 
+    background: #770a18; 
     color: #fff;
 }
 .bg-info{ 
@@ -37,7 +205,7 @@ a, p{
 }
 
 /* text */
-.text-danger{ color: #e74c3c !important; }
+.text-danger{ color: #770a18 !important; }
 .text-info{ color: #3498db !important; }
 .text-success{ color: #2ecc71 !important; }
 .text-warning{ color: #f1c40f !important; }
@@ -45,7 +213,10 @@ a, p{
 .text-white{ color: #fff !important; }
 
 /* border */
-.b0{ border: 0px !important; }
+.border-color{ border-color: #770a18 !important; }
+.border-grey{ border-color: #2c2c2c !important;  }
+.border-white{ border-color: white !important; }
+.b0{ border: 0px !important;}
 .border{ border: 1px solid #34495e !important; }
 .border-top{ border-top: 1px solid #ddd; }
 .border-bottom{ border-bottom: 1px solid #ddd; }
@@ -54,12 +225,12 @@ a, p{
 
 /* button */
 .curve-box{
-    border-radius: 5px !important;
+    border-radius: 10px !important;
     overflow: hidden;
 }
 .btn-danger{
-    background: #e74c3c;
-    border: 1px solid #e74c3c;
+    background: #770a18;
+    border: 1px solid #770a18;
     color: white;
     border-radius: 5px;
 }
@@ -87,12 +258,7 @@ a, p{
     color: #34495e;
     border-radius: 5px;
 }
-.btn-white{
-    background: white;
-    border: 1px solid white;
-    color: #34495e;
-    border-radius: 5px;
-}
+
 
 /* size control */
 .width100{ width: 100% !important; }
@@ -114,7 +280,7 @@ a, p{
 }
 
 /* layer */
-.text-overlay{
+/*.text-overlay{
     position: absolute;
     top: 144px;
     width: 50%;
@@ -122,12 +288,10 @@ a, p{
     color: white !important;
     padding: 5px;
     text-align: center;
-}
+}*/
 
 /* ionic original edited*/
-.bar-header{
-    background: #e74c3c !important;
-}
+
 .form input[type="text"], .form input[type="email"] {
   border-bottom: 1px solid #ddd;
 }

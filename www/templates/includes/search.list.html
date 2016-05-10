@@ -1,12 +1,18 @@
-<ion-view view-title="Product List">
-	<ion-content ng-controller="productlist">
-	
+<div class="text-center mt20">
+	<h1 class="text-white">Wine Search</h1>
+	<p class="text-white text-big">in Vega Bevarages Catalogue</p>
+	<form ng-submit="searchform(search)">
+		<input type="text" ng-model="keyword" placeholder="Search" class="input-line input-search">
+		<br/>
+		<button type="submit" class="btn-white btn-search p10 text-big">SEARCH</button>
+	</form>
+
 	<!-- row -->
     <div class="row" ng-repeat="productInfo in productList" ng-if="$index % 2 == 0">
     	<!-- col-left -->
-    	<a class="col col-50" ng-show="productList[$index] != null" ng-if="$index < productList.length" 
+    	<a class="col col-50 p10" ng-show="productList[$index] != null" ng-if="$index < productList.length" 
     	ng-href="#/app/product/details/{{productList[$index].sku_code}}">
-		  	<div class="b1 border-color curve-box text-center bg-white">
+		  	<div class="b1 border-white curve-box text-center bg-white">
 			  	<img ng-src="{{img}}{{productList[$index].photo}}" class="width100">
 			  	<p class="ellipsis p5 m0 text-main">{{productList[$index].name}}</p>
 			  	<p>{{productList[$index].year}}</p>
@@ -15,9 +21,9 @@
 		  	</div>
 	  	</a>
 	  	<!-- col-right -->
-	  	<a class="col col-50" ng-show="productList[$index+1] != null" ng-if="$index < productList.length" 
+	  	<a class="col col-50 p10" ng-show="productList[$index+1] != null" ng-if="$index < productList.length" 
 	  	ng-href="#/app/product/details/{{productList[$index+1].sku_code}}">
-		  	<div class="b1 border-color curve-box text-center bg-white">
+		  	<div class="b1 border-white curve-box text-center bg-white">
 			  	<img ng-src="{{img}}{{productList[$index+1].photo}}" class="width100">
 			  	<p class="ellipsis p5 m0 text-main">{{productList[$index+1].name}}</p>
 			  	<p>{{productList[$index+1].year}}</p>
@@ -27,5 +33,4 @@
 	  	</a>
 	</div>
 
-  </ion-content>
-</ion-view>
+</div>
