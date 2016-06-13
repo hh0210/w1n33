@@ -1,0 +1,48 @@
+<form name="signUpForm" ng-submit="signup(register)">
+          
+    <div class="list">
+     
+      <label class="item item-input item-floating-label" ng-class="{ 'has-errors' : signUpForm.email.$invalid, 'no-errors' : signUpForm.email.$valid}">
+        <span class="input-label font-small">Email</span>
+        <input type="email" name="email" ng-model="register.email" placeholder="Email" required style="border:0px;">
+      </label>
+
+       <!-- Error message for email -->
+      <div class="error-container" ng-show="signUpForm.email.$error" 
+          ng-messages="signUpForm.email.$error">
+          <div ng-messages-include="error-list.html"></div>
+          <div ng-message="email" style="color:red;">invalid email*</div>
+      </div>
+
+      <label class="item item-input item-floating-label bg-white" ng-class="{ 'has-errors' : signUpForm.password.$invalid, 'no-errors' : signUpForm.password.$valid}">
+        <span class="input-label font-small">Password</span>
+        <input type="password" name="password" ng-model="register.password" placeholder="Password" ng-minlength='5' ng-maxlength='20' required>
+      </label>
+
+      <!-- Error message for password -->
+      <div class="error-container" ng-show="signUpForm.password.$error" 
+          ng-messages="signUpForm.password.$error">
+          <div ng-messages-include="error-list.html"></div>
+      </div>
+
+      <label class="item item-input item-floating-label bg-white" ng-class="{ 'has-errors' : signUpForm.confpassword.$invalid, 'no-errors' : signUpForm.confpassword.$valid}">
+        <span class="input-label font-small">Confirm Password</span>
+        <input type="password" name="confpassword" ng-pattern="register.password" ng-model="register.confpassword" placeholder="Confirm Password" required>
+      <!-- compare-to="register.password"  -->
+      </label>
+
+      <!-- Error message for  confirm password -->
+      <!-- ng-show="signUpForm.confpassword.$error" -->
+      <div class="error-container" ng-show="signUpForm.confpassword.$error"
+          ng-messages="signUpForm.confpassword.$error">
+          <div ng-messages-include="error-list.html"></div>
+          <div ng-message="pattern" style="color:red;">Password not match!</div>
+      </div>
+
+    </div>
+
+    <!-- Button submit -->
+    <div class="row ro-center" class="col col-75 col-offset-25">
+      <button ng-disabled="signUpForm.$invalid" type="submit" class="button btn-main m0auto width50">Submit</button>
+    </div>
+</form>

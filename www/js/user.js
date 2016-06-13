@@ -3,55 +3,59 @@ angular.module('starter.user', ['ngMessages'])
 //REGISTRATION
 .controller("user", function($scope, $http, $ionicPopup, $state, $timeout) {
 
+
+  //temp
+  var apis = 'http://apis.wine-enterprise.com';
+
 	//SIGN UP
-	$scope.signup = function(register){
-		$http({
-		    method: 'POST',
-		    url: 'http://staging.wine-enterprise.com:8011/apis/user/registration',
-		    // data: 'username=' + register.username + '&email=' + register.email +
-        data: 'email=' + register.email +
-              '&password=' + register.password,
-		    // data: {"username=":'username1','password=':'passwod1'},
-		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-		    // headers: {'Content-Type': 'application/json'}
-		    responseType :'json',
-		}).then(function successCallback(response) {
-			console.log('status', response.data.status);
+  // $scope.signup = function(register){
+  // 	$http({
+  // 	    method: 'POST',
+  // 	    url: apis+'/apis/user/registration',
+  // 	    // data: 'username=' + register.username + '&email=' + register.email +
+  //       data: 'email=' + register.email +
+  //             '&password=' + register.password,
+  // 	    // data: {"username=":'username1','password=':'passwod1'},
+  // 	    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+  // 	    // headers: {'Content-Type': 'application/json'}
+  // 	    responseType :'json',
+  // 	}).then(function successCallback(response) {
+  // 		console.log('status', response.data.status);
         
-        if(response.data.status == true){
-         // Popup message for logout sucessfully.
-         var alertPopup = $ionicPopup.alert({
-            title: 'Message',
-            template: 'You have successfully register!'
-         });
-         alertPopup.then(function(res) {});
+  //       if(response.data.status == true){
+  //        // Popup message for logout sucessfully.
+  //        var alertPopup = $ionicPopup.alert({
+  //           title: 'Message',
+  //           template: 'You have successfully register!'
+  //        });
+  //        alertPopup.then(function(res) {});
 
-         // Close the popup message and modal and go to home page.
-         $timeout(function(){
-            alertPopup.close();
-         }, 1000);
+  //        // Close the popup message and modal and go to home page.
+  //        $timeout(function(){
+  //           alertPopup.close();
+  //        }, 1000);
 
-         $scope.closeLogin();
-         $state.go('app.home', {}, {reload:true});
-        }else{
-          var alertPopup = $ionicPopup.alert({
-            title: 'Message',
-            template: 'This email has already been used.'
-           });
-           alertPopup.then(function(res) {});
+  //        $scope.closeLogin();
+  //        $state.go('app.home', {}, {reload:true});
+  //       }else{
+  //         var alertPopup = $ionicPopup.alert({
+  //           title: 'Message',
+  //           template: 'This email has already been used.'
+  //          });
+  //          alertPopup.then(function(res) {});
 
-           // Close the popup message and modal and go to home page.
-           $timeout(function(){
-              alertPopup.close();
-           }, 1000);
-        }
+  //          // Close the popup message and modal and go to home page.
+  //          $timeout(function(){
+  //             alertPopup.close();
+  //          }, 1000);
+  //       }
 
-		}, function errorCallback(response) {
-			console.log('ERROR', response);
-		});
-	};
+  // 	}, function errorCallback(response) {
+  // 		console.log('ERROR', response);
+  // 	});
+  // };
   
-//login in controller.js
+//register and login in controller.js
 
 //FORGOT PASSWORD
  $scope.showPopup = function() {
@@ -97,9 +101,10 @@ angular.module('starter.user', ['ngMessages'])
     console.log('user_id',user_id);
   }
 
-  $http.get('http://staging.wine-enterprise.com:8011/apis/user/profile?user_id='+user_id)
+  $http.get(apis+'/apis/user/profile?user_id='+user_id)
     .then(function(response) {
         $scope.userdata = response.data;
+        $scope.userdata.referral_code = ($scope.userdata.referral_code != 'undefined' || '')?$scope.userdata.referral_code:'';
         $scope.promotion($scope.userdata.referral_code);
         console.log($scope.userdata);
       }, function(err){
@@ -115,9 +120,11 @@ angular.module('starter.user', ['ngMessages'])
   };
 
   $scope.promotion = function(promo_code){
-    $http.get('http://staging.wine-enterprise.com:8011/apis/verify/promotion?promo_code='+promo_code)
+    if(promo_code) $scope.referral_code = false; 
+    $http.get(apis+'/apis/verify/promotion?promo_code='+promo_code)
       .then(function(response) {
-          if(response.data != false) $scope.details = response.data;
+            $scope.details = response.data;
+            if($scope.details.code || promo_code == '') $scope.referral_code = true; 
         }, function(err){
           console.error('ERR', err);
     });
@@ -126,8 +133,8 @@ angular.module('starter.user', ['ngMessages'])
   $scope.ProfileForm = function(userdata){
     $http({
         method: 'POST',
-        url: 'http://staging.wine-enterprise.com:8011/apis/user/profile',
-        data: 'user_id=' + userdata.id_UserMaster + '&promo_code=' + userdata.promo_code + '&given_name=' + userdata.given_name + 
+        url: apis+'/apis/user/profile',
+        data: 'user_id=' + userdata.id_UserMaster + '&promo_code=' + userdata.referral_code + '&given_name=' + userdata.given_name + 
               '&family_name=' + userdata.family_name + '&email=' + userdata.email + '&phone=' + userdata.phone +
               '&address1=' + userdata.address1 + '&address2=' + userdata.address2 +
               '&postcode=' + userdata.postcode + '&city=' + userdata.city,

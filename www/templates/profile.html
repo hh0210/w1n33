@@ -1,10 +1,10 @@
-<ion-view view-title="Member Profile">
+<ion-view view-title="Profile">
   	<ion-content ng-controller="user">
     
-		<form ng-submit="ProfileForm(userdata)" name="profileform" class="form">
+		<form ng-submit="ProfileForm(userdata)" name="profileform" class="form mt20">
 			<input type="hidden" ng-model="userdata.id_UserMaster"/>
-			<div class="card border m0">
-				<div class="item item-divider font-medium">
+			<div class="card m0 b1 border-grey">
+				<div class="item item-divider font-medium bg-grey">
 					Profile Details
 				</div>
 				<div class="item item-text-wrap">
@@ -13,7 +13,7 @@
 							<span class="input-label font14">Referral Code:</span>
 							<input type="text" ng-keyup="promotion(userdata.referral_code)" ng-model="userdata.referral_code" placeholder="Referral Code">
 							<div class="font-small">
-								<div class="assertive" ng-if="details.code == null"><i class="ion-close"></i></div>
+								<div class="assertive" ng-if="referral_code == false"><i class="ion-close"></i></div>
 								<div class="balanced" ng-if="details.code != null"><i class="ion-checkmark"></i></div>
 							</div> 
 						</label>
@@ -56,7 +56,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<button ng-disabled="profileform.$invalid || details.code == null" type="submit" class="button button-full button-positive">Save</button>
+				<button ng-disabled="profileform.$invalid || referral_code == false" type="submit" class="button width50 btn-main m0auto">Save</button>
 			</div>
 		</form>
 

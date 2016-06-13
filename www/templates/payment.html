@@ -1,5 +1,5 @@
 <ion-view view-title="Payment">
-  <ion-content>
+  <ion-content class="bg" style="background-image: url('img/bg/billing.png')">
   	
   	<!-- info -->
   	<div class="row bg-default text-center border-bottom">
@@ -31,16 +31,18 @@
   	<div class="row">
 	  	<p class="p10 font-medium">
 		  	You will received a confirmation email shortly. Once you clear your payment, kindly 
-		    <span style="color:#F39C12;">attach a screenshot or copy of your transaction slip</span>
+		    <span class="text-danger">attach a screenshot or copy of your transaction slip</span>
 		     and mail to us at 
-		    <span class="positive">endytas@wine-enterprise.com</span>. 
-		    We will <span style="color:#2ECC71;">either ship to you</span> 
+		    <span class="text-danger" style="text-decoration: underline;">endytas@wine-enterprise.com</span>. 
+		    We will <span class="text-danger">either ship to you</span> 
 		    as soon as we received your payment
-		    <span class="royal"> or you can pickup your goods</span> at the location selected.
+		    <span class="text-danger"> or you can pickup your goods</span> at the location selected.
 	    </p>
   	</div>
 
-  	<a href="#/app/category" class="button button-positive width100">Continue Shopping</a>
+  	<div class="text-center">
+  	<a href="#/app/category" class="button btn-main m0">Continue Shopping</a>
+  	</div>
 
   </ion-content>
 </ion-view>

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.w1n33652943" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>wine-enterprise</name>
+<widget id="com.ionicframework.w1n33652943" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Vega Beverages</name>
   <description>
-        An Ionic Framework and Cordova project.
-    </description>
-  <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
-    </author>
+  Vega Beverages is the app where you can look for the best wine in town. Order from us and we will deliver them to your doorsteps.
+  We offer wines, whiskey, cognac, brandy, and many other kind of alcohol.
+  </description>
+  <author email="endytas@wine-enterprise.com" href="endytas@wine-enterprise.com">
+  Find Wine Trading
+  </author>
+
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>

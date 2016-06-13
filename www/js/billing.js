@@ -2,6 +2,9 @@ angular.module('starter.billing', [])
 
 .controller("billing", function($scope, $http, $state) {
 
+	//temp
+  	var apis = 'http://apis.wine-enterprise.com';
+
 	var cart_id = (localStorage.getItem('cart_id') != 'undefined')?JSON.parse(localStorage.getItem('cart_id')):'';
 	console.log('cart_id', cart_id);
 
@@ -9,7 +12,7 @@ angular.module('starter.billing', [])
 	console.log('user_id',user_id);
 
 	// billing info
-	$http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/person?cart_id='+cart_id+'&user_id='+user_id)
+	$http.get(apis+'/apis/sales/order/person?cart_id='+cart_id+'&user_id='+user_id)
 	.then(function(response) {
 		if(response.data.id) $scope.billing = response.data;
 		console.log('billing info', $scope.billing);
@@ -21,7 +24,7 @@ angular.module('starter.billing', [])
 	$scope.BillingForm = function(billing){
 		$http({
 		    method: 'POST',
-		    url: 'http://staging.wine-enterprise.com:8011/apis/sales/order/person',
+		    url: apis+'/apis/sales/order/person',
 		    data: 'cart_id='+ cart_id + '&given_name=' + billing.given_name + '&family_name=' + billing.family_name +
 		          '&email=' + billing.email + '&phone=' + billing.phone +
 		          '&address1=' + billing.address1 + '&address2=' + billing.address2 +

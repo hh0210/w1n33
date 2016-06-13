@@ -1,43 +1,42 @@
 <ion-view view-title="Order History Details">
-  <ion-content ng-controller="orderhistorydetails">
+  <ion-content ng-controller="orderhistorydetails" class="bg" style="background-image: url('img/bg/billing.png')">
 
   	<!-- table -->
-  	<div class="row bg-default border-bottom">
-      <div class="col">Product</div>
-      <div class="col col-20">Price <span class="font10">(MYR)</span></div>
-      <div class="col col-20">Qty</div>
-      <div class="col col-30 text-right">Subtotal <span class="font10">(MYR)</span></div>
+    <div class="row row-center bg-default border-bottom">
+      <div class="col col-50">Product</div>
+      <div class="col">Price <span class="font10">(MYR)</span></div>
+      <div class="col">Qty</div>
+      <div class="col text-right">Subtotal <span class="font10">(MYR)</span></div>
     </div>
     <!-- row -->
-    <div class="row border-bottom mt10" ng-repeat="Item in OrderInfo.Items">
-    	<div class="col">
-    		<img ng-src="{{img}}{{Item.photo}}" style="height:30px;">
-    		<p class="font10 m0">{{Item.product_name}}</p>
-    	</div>
-  		<div class="col col-20">{{Item.unit_price}}</div>
-  		<div class="col col-20">{{Item.qty}}</div>
-  		<div class="col col-30 text-right">{{Item.price}}</div>
+    <div class="row row-center border-bottom border-grey mt10" ng-repeat="Item in OrderInfo.Items">
+      <div class="col col-50">
+        <img ng-src="{{img}}{{Item.photo}}" class="width50">
+        <span class="m0 width50">{{Item.product_name}}</span>
+      </div>
+    <div class="col">{{Item.unit_price}}</div>
+    <div class="col">{{Item.qty}}</div>
+    <div class="col text-right">{{Item.price}}</div>
     </div>
-
     <!-- subtotal -->
-    <div class="row text-right pt5">
-      <div class="col col-75">SubTotal:</div>
-      <div class="col">{{OrderInfo.PriceInfo.sub_total}}</div>
-    </div>
-    <!-- discount -->
-    <div class="row text-right bg-default pt5">
-      <div class="col col-75">Discount ({{OrderInfo.PriceInfo.discount}}):</div>
-      <div class="col">{{OrderInfo.PriceInfo.after_discount}}</div>
-    </div>
+  <div class="row text-right pt5 text-danger">
+    <div class="col col-75">SubTotal:</div>
+    <div class="col">{{OrderInfo.PriceInfo.sub_total}}</div>
+  </div>
+  <!-- discount -->
+  <div class="row text-right pt5 text-danger">
+    <div class="col col-75">Discount ({{OrderInfo.PriceInfo.discount}}):</div>
+    <div class="col">{{OrderInfo.PriceInfo.discount_price}}</div>
+  </div>
     <!-- shipping -->
-    <div class="row text-right pt5">
+    <div class="row text-right pt5 text-danger">
   		<div class="col col-75">Shipping Fee</div>
   		<div class="col">
   			{{OrderInfo.PriceInfo.shipping_price}}
   		</div>
   	</div>
   	<!-- total -->
-  	<div class="row text-right font20 pt5 border-bottom bg-default">
+  	<div class="row text-right font20 pt5 bg-danger">
   		<div class="col col-75">Total:</div>
   		<div class="col"><b>{{OrderInfo.PriceInfo.total_price}}</b></div>
   	</div>

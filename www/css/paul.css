@@ -6,12 +6,19 @@ main:
 sub:
 #f4b4bd
 
+sub2:
+#ad213e
+
 ***/
 /*--------------------- ionic ---------------------*/
 .bar-header{
     background: #770a18 !important;
 }
 .header-item, button{
+    text-transform: uppercase;
+}
+.item-content{
+    background: transparent !important;
     text-transform: uppercase;
 }
 
@@ -44,6 +51,22 @@ a, p{
     margin-top: 87px;
 }
 
+.tabs-sub2 .tabs{
+    background: #ad213e;
+    color: white;
+    border: 0px;
+}
+.tabs-sub2 .tabs span{
+    font-size: 20px;
+}
+.tabs-sub2 .tabs .tab-item.tab-item-active{
+    border-width: 0 0 5px 0 !important;
+    border-color: white;
+}
+.tabs-sub2 ion-content{
+    margin-top: 87px;
+}
+
 
 /*--------------------- image ---------------------*/
 .img-small{
@@ -72,7 +95,7 @@ a, p{
 
 .text-overlay{
     position: absolute;
-    margin-top: 18%;
+    margin-top: 65px;
     padding: 20px;
     width: 100%;
     background: rgba(0, 0, 0, 0.5);
@@ -92,6 +115,11 @@ a, p{
     background-size: cover;
 }
 
+.bg-white{
+    background: white;
+    color: #2c2c2c;
+}
+
 .bg-grey{
     background: #2c2c2c;
     color: white !important;
@@ -100,6 +128,10 @@ a, p{
 .bg-sub{
     background: #f4b4bd;
     color: #770a18;
+}
+
+.bg-blank{
+    background: transparent !important;
 }
 
 /*--------------------- input ---------------------*/
@@ -158,19 +190,25 @@ a, p{
 }
 .text-detail{
     position: absolute;
-    margin-top: -22%;
-    margin-left: 7%;
+    margin-top: -83px;
+    margin-left: 25px;
     font-size: 18px;
     color: #f4b4bd;
 }
 .text-detail2{
     position: absolute;
-    margin-top: -13%;
-    margin-left: 10%;
+    margin-top: -47px;
+    margin-left: 33px;
     font-size: 15px;
     color: white;
 }
 
+.history-icon{
+    position: absolute;
+    margin-top: -44px;
+    right: 15px;
+    font-size: 20px;
+}
 
 
 /*--------------------- Unconfirm ---------------------*/

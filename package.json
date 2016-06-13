@@ -1,7 +1,8 @@
 {
-  "name": "wine-enterprise",
-  "version": "1.1.1",
-  "description": "wine-enterprise: An Ionic project",
+  "name": "vega_beverages",
+  "version": "1.0.0",
+  "description": "Vega Beverages is the app where you can look for the best wine in town. Order from us and we will deliver them to your doorsteps.
+  We offer wines, whiskey, cognac, brandy, and many other kind of alcohol.",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

@@ -2,6 +2,10 @@ angular.module('starter.ordersummary', [])
 
 .controller("ordersummary", function($scope, $http, $state) {
 
+
+	//temp
+  	var apis = 'http://apis.wine-enterprise.com';
+  	
 	// cart id
 	var cart_id = (localStorage.getItem('cart_id') != 'undefined')?JSON.parse(localStorage.getItem('cart_id')):'';
 	console.log('cart_id',cart_id);
@@ -11,7 +15,7 @@ angular.module('starter.ordersummary', [])
 	console.log('user_id',user_id);
 
     //get sales order
-    $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order?cart_id='+cart_id)
+    $http.get(apis+'/apis/sales/order?cart_id='+cart_id)
       .then(function(response) {
         $scope.SalesInfo = response.data;
         console.log('sales info', $scope.SalesInfo);
@@ -23,7 +27,7 @@ angular.module('starter.ordersummary', [])
 	});
 
     //billing info
-    $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/person?cart_id='+cart_id)
+    $http.get(apis+'/apis/sales/order/person?cart_id='+cart_id)
 	.then(function(response) {
 		$scope.email = response.data.email;
 		console.log('email: ', response.data.email);
@@ -34,7 +38,7 @@ angular.module('starter.ordersummary', [])
 	$scope.invoice = function(salesinfo){
 		$http({
 		    method: 'POST',
-		    url: 'http://staging.wine-enterprise.com:8011/apis/invoice',
+		    url: apis+'/apis/invoice',
 		    data: 'sales_id=' + $scope.SalesInfo.id + '&user_id='+$scope.SalesInfo.id_UserMaster,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',

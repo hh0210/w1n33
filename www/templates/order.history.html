@@ -1,29 +1,23 @@
 <ion-view view-title="Order History">
-	<ion-content ng-controller="orderhistory">
+	<ion-content ng-controller="orderhistory" class="bg" style="background-image: url('img/bg/billing.png')">
 
-	    <div class="font12 border-bottom" ng-repeat="OrderInfo in OrderList">
+	    <div class="border-bottom" ng-repeat="OrderInfo in OrderList">
 	    	<p ng-show="OrderList == null">No order yet.</p>
 	    	<a href="#/app/order/history/details/{{OrderInfo.code}}">
-		    	<div class="row">
+		    	<div class="row text-danger">
 			    	<div class="col col-50">Invoice #</div>
-			    	<div class="col col-50"><span class="text-color">{{OrderInfo.code}}</span></div>
+			    	<div class="col col-50"><span>{{OrderInfo.code}}</span></div>
 			    </div>
 			    <div class="row">
-			    	<div class="col col-50">Order Date</div>
-			    	<div class="col col-50"><span class="text-color">{{OrderInfo.purchase_date}}</span></div>
-			    </div>
-		    	<div class="row">
-			    	<div class="col col-50">Payment</div>
-			    	<div class="col col-50"><span class="text-color">{{OrderInfo.status}}</span></div>
-			    </div>
-			    <div class="row">
-			    	<div class="col col-50">Shipment Status</div>
-			    	<div class="col col-50">
-			    		<span class="text-color">{{OrderInfo.Shipment.trx_type}}
+			    	<div class="col">{{OrderInfo.purchase_date}}</div>
+			    	<div class="col">{{OrderInfo.status}}</div>
+			    	<div class="col">
+			    		<span>{{OrderInfo.Shipment.trx_type}}
 			    		<span ng-if="OrderInfo.Shipment.trx_type == null">N/A</span>
 			    		</span>
 			    	</div>
 			    </div>
+			    <i class="ion-chevron-right history-icon"></i>
 		    </a>
 	    </div>
 

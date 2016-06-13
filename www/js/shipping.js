@@ -2,12 +2,15 @@ angular.module('starter.shipping', [])
 
 .controller("shipping", function($scope, $http, $state) {
 
+	//temp
+  	var apis = 'http://apis.wine-enterprise.com';
+  	
 	// cart id
 	var cart_id = (localStorage.getItem('cart_id') != 'undefined')?JSON.parse(localStorage.getItem('cart_id')):'';
 	console.log('cart_id',cart_id);
 
 	//shipment type list
-	// $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/shipment/type')
+	// $http.get(apis+'/apis/sales/order/shipment/type')
 	//   .then(function(response) {
 	//     $scope.ShipmentList = response.data;
 	//     console.log('shipment list',$scope.ShipmentList);
@@ -16,7 +19,7 @@ angular.module('starter.shipping', [])
 	// });
 
 	//get sales order - shipping fee
-    $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order?cart_id='+cart_id)
+    $http.get(apis+'/apis/sales/order?cart_id='+cart_id)
       .then(function(response) {
       	console.log('here',response);
         $scope.SalesInfo = response.data;
@@ -26,7 +29,7 @@ angular.module('starter.shipping', [])
 	});
 
     //location list
-    $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/selfpickup/location')
+    $http.get(apis+'/apis/sales/order/selfpickup/location')
       .then(function(response) {
         $scope.locationList = response.data;
         console.log('location list',$scope.locationList);
@@ -35,7 +38,7 @@ angular.module('starter.shipping', [])
 	});
 
   	//get shipment info
-    $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/shipment?cart_id='+cart_id)
+    $http.get(apis+'/apis/sales/order/shipment?cart_id='+cart_id)
       .then(function(response) {
 		if(response.data.id) $scope.shipment = response.data;
         console.log('shipment info',$scope.shipment);
@@ -44,7 +47,7 @@ angular.module('starter.shipping', [])
 	});
 
     //get selfpickup info
-    $http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/selfpickup?cart_id='+cart_id)
+    $http.get(apis+'/apis/sales/order/selfpickup?cart_id='+cart_id)
       .then(function(response) {
         if(response.data.id) $scope.selfpickupinfo = response.data;
         console.log('location info', $scope.selfpickupinfo);
@@ -56,7 +59,7 @@ angular.module('starter.shipping', [])
 	$scope.showSelectValue = function(mySelect) {
 		$scope.item_id = mySelect;
 		console.log('shipment_id', $scope.item_id);
-		$http.get('http://staging.wine-enterprise.com:8011/apis/sales/order/selfpickup/location?id='+$scope.item_id)
+		$http.get(apis+'/apis/sales/order/selfpickup/location?id='+$scope.item_id)
 	      .then(function(response) {
 	        $scope.selfpickupinfo = response.data;
 	        console.log('address', $scope.selfpickupinfo);
@@ -69,12 +72,12 @@ angular.module('starter.shipping', [])
 	$scope.ShipmentForm = function(shipment){
 		$http({
 		    method: 'POST',
-		    url: 'http://staging.wine-enterprise.com:8011/apis/sales/order/shipment',
+		    url: apis+'/apis/sales/order/shipment',
 		    data: 'cart_id='+ cart_id + '&given_name=' + shipment.given_name + '&family_name=' + shipment.family_name +
 		          '&phone=' + shipment.phone + 
 		          '&address1=' + shipment.address1 + '&address2=' + shipment.address2 +
               	  '&postcode=' + shipment.postcode + '&city=' + shipment.city +
-              	  '&shipment_id=0',
+              	  '&shipment_id=0&shipment_fee='+$scope.SalesInfo.PriceInfo.shipping_price,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
 		}).then(function successCallback(response) {
@@ -89,7 +92,7 @@ angular.module('starter.shipping', [])
 	$scope.selfpickup = function(locationInfo){
 		$http({
 		    method: 'POST',
-		    url: 'http://staging.wine-enterprise.com:8011/apis/sales/order/selfpickup',
+		    url: apis+'/apis/sales/order/selfpickup',
 		    data: 'cart_id='+ cart_id + '&selfpickup_id=' + $scope.item_id,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
@@ -108,7 +111,7 @@ angular.module('starter.shipping', [])
 		// select to get billing data
 		if (checkboxData === true) {
 		$http({
-				url: 'http://staging.wine-enterprise.com:8011/apis/sales/order/person',
+				url: apis+'/apis/sales/order/person',
 				method: "GET",
 				params: {cart_id: cart_id}
 			})

@@ -20,78 +20,78 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <ion-view>
-        <img src="../img/logo/logo.png" width="100%"/>
+    <ion-header-bar>
+      <ion-view class="text-center bg-danger">
+        <img src="img/logo/logo.png" class="height100" />
       </ion-view>
     </ion-header-bar>
-    <ion-content>
+    <ion-content class="bg-danger">
       <ion-list>
 
-        <ion-item menu-close href="#/app/home">
+        <ion-item class="bg-danger" menu-close href="#/app/home">
           <i class="ion-home"></i>
-          Vega Beverages
+          Home
         </ion-item>
 
-        <ion-item menu-close href="#/app/search">
+        <ion-item class="bg-danger" menu-close href="#/app/search">
           <i class="ion-search"></i>
           Search
         </ion-item>
 
-        <ion-item menu-close href="#/app/categories">
+        <ion-item class="bg-danger" menu-close href="#/app/categories">
           <i class="ion-cube"></i>
           Categories
         </ion-item>
 
-        <!-- <ion-item menu-close href="#/app/product/list/"> 
+        <!-- <ion-item class="bg-danger" menu-close href="#/app/product/list/"> 
           <i class="ion-wineglass"></i>
           Products
         </ion-item> -->
 
         <!-- Login -->
-        <ion-item menu-close ng-click="login()" ng-if="userinfo.id == null">
+        <ion-item class="bg-danger" menu-close ng-click="login()" ng-if="userinfo.id == null">
           <i class="ion-log-in"></i>
-          Login / Sign Up
+          LOGIN / SIGN UP
         </ion-item>
 
-        <ion-item menu-close href="#/app/profile" ng-if="userinfo.id != null">
+        <ion-item class="bg-danger" menu-close href="#/app/profile" ng-if="userinfo.id != null">
           <i class="ion-log-in"></i>
           <!-- {{userinfo.given_name}} {{userinfo.family_name}} -->
           {{userinfo.email}}
         </ion-item>
         <!-- End Login -->
 
-        <ion-item menu-close href="#/app/order/history" ng-show="userinfo.id != null">
+        <ion-item class="bg-danger" menu-close href="#/app/order/history" ng-show="userinfo.id != null">
           <i class="ion-social-buffer"></i>
           Order History
         </ion-item>
 
-        <ion-item menu-close href="#/app/cart/list">
+        <ion-item class="bg-danger" menu-close href="#/app/cart/list">
           <i class="ion-android-cart"></i>
           Cart List
           <span class="badge badge-assertive">{{cartList.cart_count}}</span>
         </ion-item>
 
-        <ion-item menu-close ng-click="logout()" ng-if="userinfo.id != null" class="bg-danger">
+        <ion-item class="bg-white" menu-close ng-click="logout()" ng-if="userinfo.id != null">
           <i class="ion-log-out"></i>
           Logout
         </ion-item>
 
-        <!-- <ion-item menu-close href="#/app/device">
+        <!-- <ion-item class="bg-danger" menu-close href="#/app/device">
           Device
         </ion-item> -->
 
-        <!--  <ion-item menu-close href="#/app/promotion">
+        <!--  <ion-item class="bg-danger" menu-close href="#/app/promotion">
           <i class="ion-film-marker"></i>
           Promotion
         </ion-item> --> 
 
-        <!-- <ion-item menu-close href="#/app/cart/list">
+        <!-- <ion-item class="bg-danger" menu-close href="#/app/cart/list">
           <i class="ion-film-marker"></i>
           1
         </ion-item> -->
 
-        <!-- <ion-item menu-close href="#/app/order/summary">
+        <!-- <ion-item class="bg-danger" menu-close href="#/app/order/summary">
           <i class="ion-film-marker"></i>
           2
         </ion-item>  --> 

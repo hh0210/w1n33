@@ -3,12 +3,11 @@ angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $state, $http, $ionicPopup) {
 
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+  //temp
+  var apis = 'http://apis.wine-enterprise.com';
+
+  //logo
+  $scope.TitleImg='<img class="img-small ml20" src="img/logo/logo.png" />';
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -59,7 +58,7 @@ angular.module('starter.controllers', [])
     $scope.cartList = '';
     $http({
       method: 'POST',
-      url: 'http://staging.wine-enterprise.com:8011/apis/user/login',
+      url: apis+'/apis/user/login',
       data: 'username=' + userdata.username + '&password=' + userdata.password,
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       responseType :'json',
@@ -115,7 +114,7 @@ angular.module('starter.controllers', [])
       
     if(cart_id){
       //get cart count
-      $http.get('http://staging.wine-enterprise.com:8011/apis/cart/list?cart_id='+cart_id+'&user_id='+user_id)
+      $http.get(apis+'/apis/cart/list?cart_id='+cart_id+'&user_id='+user_id)
         .then(function(response) {
           $scope.cartList = response.data;
           console.log('cart info',response);
@@ -127,7 +126,7 @@ angular.module('starter.controllers', [])
     }
 
     if (user_id > 0) {
-      $http.get('http://staging.wine-enterprise.com:8011/apis/user/profile?user_id='+user_id)
+      $http.get(apis+'/apis/user/profile?user_id='+user_id)
         .then(function(response) {
             $scope.userinfo = response.data;
             console.log('userinfo', $scope.userinfo);
@@ -135,6 +134,51 @@ angular.module('starter.controllers', [])
               console.error('ERR', err);
       });
     }
+  };
+
+
+  //register
+  $scope.signup = function(register){
+    $http({
+        method: 'POST',
+        url: apis+'/apis/user/registration',
+        data: 'email=' + register.email +
+              '&password=' + register.password,
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        responseType :'json',
+    }).then(function successCallback(response) {
+      console.log('200', response);
+      if(response.data.status == true){
+         // Popup message for logout sucessfully.
+         var alertPopup = $ionicPopup.alert({
+            title: 'Message',
+            template: 'You have successfully register!'
+         });
+         alertPopup.then(function(res) {});
+
+         // Close the popup message and modal and go to home page.
+         $timeout(function(){
+            alertPopup.close();
+         }, 1000);
+
+         $scope.closeLogin();
+         $state.go('app.home', {}, {reload:true});
+        }else{
+          var alertPopup = $ionicPopup.alert({
+            title: 'Message',
+            template: 'This email has already been used.'
+           });
+           alertPopup.then(function(res) {});
+
+           // Close the popup message and modal and go to home page.
+           $timeout(function(){
+              alertPopup.close();
+           }, 3000);
+        }
+    }, function errorCallback(response) {
+      console.log('ERROR', response);
+    });
+
   };
 
 

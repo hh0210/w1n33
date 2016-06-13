@@ -1,123 +1,29 @@
 <ion-modal-view>
   <!-- Header  -->
   <ion-header-bar>
-     <div class="title center">Vega Beverages</div>
+    <div class="title center"><div ng-bind-html="TitleImg"></div></div>
     <div class="buttons">
-      <button class="button button-clear button-positive pull-right font-sm" ng-click="closeLogin()"><span class="font-medium" style="color:#fff;">Close</span></button>
+      <button class="button button-clear button-positive pull-right font-sm" ng-click="closeLogin()"><span class="font-medium" style="color:#fff;"><i class="ion-close"></i></span></button>
     </div>
   </ion-header-bar>
 
-  <!-- Tabs -->
-  <ion-tabs class="tabs-icon-only tabs-calm">
-    <ion-tab title="Login">
-      <!-- Tab 1 content -->
-      <!-- ng-submit="doLogin()" -->
-      <form name="loginForm" ng-submit="loginUser(userdata)" novalidate>
-        <!-- Login form -->
-        <div class="list pt80 mt20">
-            <!-- Remove Picture  -->
-            <!-- <div class="center">
-              <img class="cartImg mb20 mt20" ng-src="{{loginData.src}}">
-            </div> -->
-
-          <label class="item item-input item-icon-left" ng-class="{ 'has-errors' : loginForm.username.$invalid, 'no-errors' : loginForm.username.$valid}">
-            <i class="icon ion-android-person"></i>
-            <span class="input-label ml30 font-small">Email</span>
-            <input type="email" name="username" ng-model="userdata.username" required style="border:0px;">
-          </label>
-
-          <!-- Error message for username -->
-          <div class="error-container" ng-show="loginForm.username.$error" 
-              ng-messages="loginForm.username.$error">
-              <div ng-messages-include="error-list.html"></div>
-              <div ng-message="email" style="color:red;">invalid email*</div>
-          </div>
-
-
-          <label class="item item-input item-icon-left" ng-class="{ 'has-errors' : loginForm.password.$invalid, 'no-errors' : loginForm.password.$valid}">
-            <i class="icon ion-locked"></i>
-            <span class="input-label ml30 font-small">Password</span>
-            <input type="password" name="password" ng-model="userdata.password" required >
-            <!-- <input type="text" ng-model="name"> -->
-          </label>
-
-          <!-- Error message for password -->
-          <div class="error-container" ng-show="loginForm.password.$error" 
-              ng-messages="loginForm.password.$error">
-              <div ng-messages-include="error-list.html"></div>
-          </div>
-
-          <label class="item">
-            <button type="submit" class="button button-block button-positive font-medium"
-            ng-disabled="loginForm.$invalid">Log in</button>
-          </label>
-        </div>
-      </form>
-        <div class="row" ng-controller="user">
-            <div class="col">
-              <a class="button button-clear font-small" ng-click="showPopup()">Forgot password?</a>
-            </div>
-        </div>
-      <!-- Place forgot password outside form -->
+  <!-- tabs -->
+  <ion-tabs class="tabs-icon-only tabs-sub2">
+    
+    <!-- tab -->
+    <ion-tab title="LOGIN">
+      <ion-content class="bg" style="background-image: url('img/bg/login.png')">
+        <div class="mt20" ng-include src="'templates/includes/login.form.html'"></div>
+      </ion-content>
     </ion-tab>
 
-    <ion-tab title="Sign Up">
-      <!-- Tab 2 content -->
-        <ion-view view-title="Sign Up">
-          <ion-content ng-controller="user">
-          
-
-          <form name="signUpForm" ng-submit="signup(register)">
-          
-            <div class="list">
-             
-              <label class="item item-input item-floating-label" ng-class="{ 'has-errors' : signUpForm.email.$invalid, 'no-errors' : signUpForm.email.$valid}">
-                <span class="input-label font-small">Email</span>
-                <input type="email" name="email" ng-model="register.email" placeholder="Email" required style="border:0px;">
-              </label>
-
-               <!-- Error message for email -->
-              <div class="error-container" ng-show="signUpForm.email.$error" 
-                  ng-messages="signUpForm.email.$error">
-                  <div ng-messages-include="error-list.html"></div>
-                  <div ng-message="email" style="color:red;">invalid email*</div>
-              </div>
-
-              <label class="item item-input item-floating-label" ng-class="{ 'has-errors' : signUpForm.password.$invalid, 'no-errors' : signUpForm.password.$valid}">
-                <span class="input-label font-small">Password</span>
-                <input type="password" name="password" ng-model="register.password" placeholder="Password" ng-minlength='5' ng-maxlength='20' required>
-              </label>
-
-              <!-- Error message for password -->
-              <div class="error-container" ng-show="signUpForm.password.$error" 
-                  ng-messages="signUpForm.password.$error">
-                  <div ng-messages-include="error-list.html"></div>
-              </div>
-
-              <label class="item item-input item-floating-label" ng-class="{ 'has-errors' : signUpForm.confpassword.$invalid, 'no-errors' : signUpForm.confpassword.$valid}">
-                <span class="input-label font-small">Confirm Password</span>
-                <input type="password" name="confpassword" ng-pattern="register.password" ng-model="register.confpassword" placeholder="Confirm Password" required>
-              <!-- compare-to="register.password"  -->
-              </label>
-
-              <!-- Error message for  confirm password -->
-              <!-- ng-show="signUpForm.confpassword.$error" -->
-              <div class="error-container" ng-show="signUpForm.confpassword.$error"
-                  ng-messages="signUpForm.confpassword.$error">
-                  <div ng-messages-include="error-list.html"></div>
-                  <div ng-message="pattern" style="color:red;">Password not match!</div>
-              </div>
-
-            </div>
-
-            <!-- Button submit -->
-            <div class="row ro-center" class="col col-75 col-offset-25">
-              <button ng-disabled="signUpForm.$invalid" type="submit" class="button button-block button-positive">Submit</button>
-            </div>
-          </form>
-
-          </ion-content>
-        </ion-view>
+    <!-- tab -->
+    <ion-tab title="SIGN UP">
+      <ion-content class="bg" style="background-image: url('img/bg/login.png')">
+          <div class="mt20" ng-include src="'templates/includes/signup.form.html'"></div>
+      </ion-content>
     </ion-tab>
+
   </ion-tabs>
+
 </ion-modal-view>

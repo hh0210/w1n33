@@ -3,8 +3,12 @@ angular.module('starter.productdetails', [])
  // Product Details
 .controller('productdetails', function($scope, $state, $http, $stateParams, $ionicPopup, $timeout) {
 
+
+	//temp
+  	var apis = 'http://apis.wine-enterprise.com';
+  	
 	//GET PRODUCT DETAILS
-    $http.get('http://staging.wine-enterprise.com:8011/apis/productdetails?sku_code='+$stateParams.sku_code)
+    $http.get(apis+'/apis/productdetails?sku_code='+$stateParams.sku_code)
 		.then(function(response) {
 		$scope.productDetails = response.data;
 		$scope.productDetails.qty = 1;
@@ -66,7 +70,7 @@ angular.module('starter.productdetails', [])
 	$scope.addcart = function(productDetails){
 		$http({
 		    method: 'POST',
-		    url: 'http://staging.wine-enterprise.com:8011/apis/cart/list',
+		    url: apis+'/apis/cart/list',
 		    data: 'user_id=' + user_id + '&cart_id=' + cart_id +
 		    	  '&product_id=' + productDetails.id + '&qty=' + productDetails.qty,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},

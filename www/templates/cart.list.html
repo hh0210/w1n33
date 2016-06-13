@@ -26,7 +26,7 @@
 				</div>
 				<div class="row">
 					<p class="col text-danger">QTY:</p>
-					<input type="number" class="col text-danger input-box" value="{{Item.qty}}" />
+					<input type="number" ng-keyup="cart(Item)" class="col text-danger input-box" min="1" ng-model="Item.qty" />
 				</div>
 				<div class="row bg-grey p0">
 					<p class="col text-white m0">SUBTOTAL:</p>
@@ -41,10 +41,10 @@
 					<label class="text-center">HAVE REFERRAL?</label>
 				</div>
 				<div class="row">
-					<label class="b1">
+					<label class="b1 bg-white">
 						<input type="text" class="pull-left col-80 p10" ng-keyup="promotion(CartInfo.promo_code)" ng-model="CartInfo.promo_code" placeholder="Referral Code">
 						<div class="font-small p10 bg-white">
-							<div class="assertive" ng-if="details.code == null"><i class="ion-close"></i></div>
+							<div class="assertive" ng-if="referral_code == false"><i class="ion-close"></i></div>
 							<div class="balanced" ng-if="details.code != null"><i class="ion-checkmark"></i></div>
 						</div> 
 					</label>
@@ -64,7 +64,7 @@
         	</div>
         	<div class="col-50">
         		<form ng-submit="salesorder(CartInfo)">
-					<button ng-disabled="CartInfo.cart_count <= 0" type="submit" class="button button-full btn-sub m0">Check Out</button>
+					<button ng-disabled="CartInfo.cart_count <= 0 || referral_code == false" type="submit" class="button button-full btn-sub m0">Check Out</button>
 				</form>
         	</div>
 		</div>

@@ -2,6 +2,9 @@ angular.module('starter.cartlist', [])
 
 .controller("cartlist", function($scope, $http, $state, $ionicPopup, $timeout) {
 	
+	//temp
+  	var apis = 'http://apis.wine-enterprise.com';
+  	
 	var cart_id = (localStorage.getItem('cart_id') != 'undefined')?JSON.parse(localStorage.getItem('cart_id')):'';
 	console.log('cart_id', cart_id);
 
@@ -10,32 +13,34 @@ angular.module('starter.cartlist', [])
 
 	//promotion
 	$scope.promotion = function(promo_code){
-	    $http.get('http://staging.wine-enterprise.com:8011/apis/verify/promotion?promo_code='+promo_code)
-		  	.then(function(response) {
-		      if(response.data != false) $scope.details = response.data;
+		if(promo_code) $scope.referral_code = false; 
+		$http.get(apis+'/apis/verify/promotion?promo_code='+promo_code)
+		  .then(function(response) {
+		        $scope.details = response.data;
+		        if($scope.details.code || promo_code == '') $scope.referral_code = true; 
 		    }, function(err){
 		      console.error('ERR', err);
 		});
 	};
 
-	$http.get('http://staging.wine-enterprise.com:8011/apis/user/profile?user_id='+user_id)
-		.then(function(response) {
-			$scope.userdata = response.data;
-			console.log($scope.userdata);
-		}, function(err){
-			console.error('ERR', err);
+	$http.get(apis+'/apis/user/profile?user_id='+user_id)
+	.then(function(response) {
+	    $scope.userdata = response.data;
+	    $scope.userdata.referral_code = ($scope.userdata.referral_code != 'undefined' || '')?$scope.userdata.referral_code:'';
+	    console.log($scope.userdata);
+	  }, function(err){
+	      console.error('ERR', err);
 	});
 
 	/*========== Listing ==========*/
 
 	if(cart_id){
-	    $http.get('http://staging.wine-enterprise.com:8011/apis/cart/list?cart_id='+cart_id)
+	    $http.get(apis+'/apis/cart/list?cart_id='+cart_id)
 			.then(function(response) {
 				$scope.CartInfo = response.data;
 				$scope.CartInfo.promo_code = ($scope.CartInfo.promo_code)?$scope.CartInfo.promo_code:$scope.userdata.referral_code;
 				$scope.promotion($scope.CartInfo.promo_code);
 				$scope.img = "http://shared.wine-enterprise.com/upload/product/100x100_";
-
 				//session
 				// localStorage.setItem('cart_id',JSON.stringify($stateParams.cart_id));
 				// console.log('cartInfo', $scope.cartList);
@@ -44,12 +49,12 @@ angular.module('starter.cartlist', [])
 				console.error('error', err);
 		});
 	}
-	
+
 	/*========== Delete ==========*/
 	$scope.delete = function(item) {
 		$http({
 			method: 'POST',
-			url: 'http://staging.wine-enterprise.com:8011/apis/cart/list/delete',
+			url: apis+'/apis/cart/list/delete',
 			data: 'cartdetails_id='+item.id,
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 			responseType :'json',
@@ -66,7 +71,7 @@ angular.module('starter.cartlist', [])
 	$scope.salesorder = function(CartInfo){
 		$http({
 		    method: 'POST',
-		    url: 'http://staging.wine-enterprise.com:8011/apis/sales/order',
+		    url: apis+'/apis/sales/order',
 		    data: 'cart_id='+cart_id+'&user_id='+user_id+'&promo_code='+CartInfo.promo_code,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    responseType :'json',
@@ -107,7 +112,7 @@ angular.module('starter.cartlist', [])
 		
 			$http({
 			    method: 'POST',
-			    url: 'http://staging.wine-enterprise.com:8011/apis/cart/list/manageQty',
+			    url: apis+'/apis/cart/list/manageQty',
 			    data: 'cartdetails_id='+item.id + '&product_id=' + item.product_id + '&qty='+ item.qty,
 			    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 			    responseType :'json',
@@ -137,7 +142,7 @@ angular.module('starter.cartlist', [])
 
 			$http({
 			    method: 'POST',
-			    url: 'http://staging.wine-enterprise.com:8011/apis/cart/list/manageQty',
+			    url: apis+'/apis/cart/list/manageQty',
 			    data: 'cartdetails_id='+item.id + '&product_id=' + item.product_id + '&qty='+ item.qty,
 			    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 			    responseType :'json',
@@ -149,5 +154,33 @@ angular.module('starter.cartlist', [])
 			});
     	}
   	};
+
+
+  	//adjust cart
+  	$scope.cart = function(item){
+
+  		item.qty = parseInt(item.qty);
+  		if(item.qty > 0){
+	  		// console.log('cartdetails_id='+item.id + '&product_id=' + item.product_id + '&qty='+ item.qty);
+			$http({
+				method: 'POST',
+				url: apis+'/apis/cart/list/manageQty',
+				data: 'cartdetails_id='+item.id + '&product_id=' + item.product_id + '&qty='+ item.qty,
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+				responseType :'json',
+			}).then(function successCallback(response) {
+				console.log('status', response.data.status);
+				if(response.data.status == false){
+					$scope.showPopup();
+				}else{
+					$state.go('app.cartlist', {}, {reload: true});
+				}
+			}, function errorCallback(response) {
+				console.log('error', response);
+			});
+		}
+  	}
+
+
 
 });
